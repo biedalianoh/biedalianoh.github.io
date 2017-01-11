@@ -214,8 +214,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-global/" itemprop="url">
-                  nodejs深入系列--全局变量global
+                <a class="post-title-link" href="/2017/01/11/nodejs-http/" itemprop="url">
+                  nodejs深入系列--http
                 </a>
               
             
@@ -275,9 +275,9 @@
 
       
         
-          nodejs深入系列之全局变量global
+          nodejs深入系列之http
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-global/">
+            <a class="btn" href="/2017/01/11/nodejs-http/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -447,8 +447,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/call-apply/" itemprop="url">
-                  call, apply, callee, caller应用
+                <a class="post-title-link" href="/2017/01/11/angular/" itemprop="url">
+                  Angular 使用笔记
                 </a>
               
             
@@ -508,16 +508,9 @@
 
       
         
-          
-          call将函数绑定到另外一个对象上运行。1example.call(obj, [arg, ]);
-即将一个函数的上下文从初始的上下文改变为指定的thisArg。
-不带参数arg1234567891011121314function base() &#123;    this.name = 'zhou';    this.getName = function() &#123;        console.log(this.name);    &#125;;&#125;;function extend() &#123;    base.call(this)     //让base代替执行this    console.log(this)       var c = &#123;&#125;    base.call(c);       //让base代替执行c    console.log(c);&#125;;
-extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend 中：调用 this 时，都是调用 base调用 c 时，都是调用 base。
-带
-          ...
-
+          Angular当然是现在流行的前端框架之一，和React，Ember一起并称前端开发的三神器。不过由于前公司因为业务需要，使一直使用的是另外一个轻量级的MVVM框架Rivets，使得对angular一直闻其声，未尽用。趁此机会便想把angular学习应用了一遍，并对比工作中使用的rivets，熟悉MV*的框架结构。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/call-apply/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/angular/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -681,121 +674,6 @@ lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/contentEditble/" itemprop="url">
-                  让div标签可输入内容的几种方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Html-CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">Html, CSS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          可编辑这块本来还停留在div和input类相互转换的思路上，今天无意间看到几种新的实现方法。
-css方式: user-modifyuser-modify可以让普通元素可读写。目前可支持属性：1234user-modify: read-only;       // 只读user-modify: read-write;      // 可输入纯文本和富文本user-modify: write-only;      // 目前浏览器基本不支持user-modify: read-write-plaintext-only;   // 只能输入纯文本，只有webkit支持
-html方式: contenteditablecontenteditable可以让普通元素可读写。目前可支持属性：123456contenteditable=""contenteditable="events"            // 作用未知contenteditable="caret"             // 作用未知contenteditable="plaintext-only"    // 只能输入纯文本，只有
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/contentEditble/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2017/01/11/createElement_method/" itemprop="url">
                   几种创建标签节点和属性的方法
                 </a>
@@ -865,6 +743,121 @@ createAttribute(nam
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/01/11/createElement_method/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/contentEditble/" itemprop="url">
+                  让div标签可输入内容的几种方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Html-CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">Html, CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          可编辑这块本来还停留在div和input类相互转换的思路上，今天无意间看到几种新的实现方法。
+css方式: user-modifyuser-modify可以让普通元素可读写。目前可支持属性：1234user-modify: read-only;       // 只读user-modify: read-write;      // 可输入纯文本和富文本user-modify: write-only;      // 目前浏览器基本不支持user-modify: read-write-plaintext-only;   // 只能输入纯文本，只有webkit支持
+html方式: contenteditablecontenteditable可以让普通元素可读写。目前可支持属性：123456contenteditable=""contenteditable="events"            // 作用未知contenteditable="caret"             // 作用未知contenteditable="plaintext-only"    // 只能输入纯文本，只有
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/contentEditble/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1021,8 +1014,8 @@ createAttribute(nam
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/es6/" itemprop="url">
-                  es6实用中文api
+                <a class="post-title-link" href="/2017/01/11/foundation-1/" itemprop="url">
+                  Javascript基础--函数和定义优先级
                 </a>
               
             
@@ -1083,13 +1076,14 @@ createAttribute(nam
       
         
           
-          声明let, constlet和const不会有变量声明提升，作用域也会被限制。通过let，const，class声明的变量，不会成为 window 的属性。const需要在声明时赋值。const声明一个常量时，常量的值不能改变。const声明一个复合型变量时，变量不指向数据，而是指向数据所在的地址。因此变量可以添加属性。12345const a = 'hello';  // a 的值不可被重置const foo = &#123;&#125;;     // foo 可以添加属性foo.prop = 111;const arr = [];     // arr 可以添加元素arr.push('hello');
-如果想完全将对象冻结，不能更改，应该使用 Object.freeze 方法。1const foo = Object.freeze(&#123;&#125;);
-解构数组解构通过数组方式直接给对应数组中的对应变量赋值。12345var [a, b, c] = [1, 2, 3];let [a, [[b], c]] = [1, [[2], 3]];let [ , , third] =
+          Javascript中的包括变量的定义，函数的定义；函数的静态方法，原型方法；变量的前置定义，后置定义；运算符的优先级；变量的提升，等等经常容易发生混淆。避免在前端开发过程中再踩这些类似的坑，在此总结。
+js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值， 字符串， 数值， 对象判断的基本方式是，他们属于原始的基本类型，而不是对象，不能使用 new 命令。ES6 新增了一种基本数据类型： Symbol
+静态方法和原型方法静态方法的优先级高于原型方法。12345678910function Demo() &#123;    this.getName = function() &#123;        console.log(1);    &#125;&#125;;Demo.prototype.getName = function() &#123;    console.log(2);&#125;Demo.getName();   //  1
+变量声明提升所有的声明变量或声明函数都会被提升到当前函数的顶部。123console.log(x);console.
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/es6/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/foundation-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1246,8 +1240,8 @@ createAttribute(nam
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/foundation-1/" itemprop="url">
-                  Javascript基础--函数和定义优先级
+                <a class="post-title-link" href="/2017/01/11/es6/" itemprop="url">
+                  es6实用中文api
                 </a>
               
             
@@ -1308,14 +1302,13 @@ createAttribute(nam
       
         
           
-          Javascript中的包括变量的定义，函数的定义；函数的静态方法，原型方法；变量的前置定义，后置定义；运算符的优先级；变量的提升，等等经常容易发生混淆。避免在前端开发过程中再踩这些类似的坑，在此总结。
-js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值， 字符串， 数值， 对象判断的基本方式是，他们属于原始的基本类型，而不是对象，不能使用 new 命令。ES6 新增了一种基本数据类型： Symbol
-静态方法和原型方法静态方法的优先级高于原型方法。12345678910function Demo() &#123;    this.getName = function() &#123;        console.log(1);    &#125;&#125;;Demo.prototype.getName = function() &#123;    console.log(2);&#125;Demo.getName();   //  1
-变量声明提升所有的声明变量或声明函数都会被提升到当前函数的顶部。123console.log(x);console.
+          声明let, constlet和const不会有变量声明提升，作用域也会被限制。通过let，const，class声明的变量，不会成为 window 的属性。const需要在声明时赋值。const声明一个常量时，常量的值不能改变。const声明一个复合型变量时，变量不指向数据，而是指向数据所在的地址。因此变量可以添加属性。12345const a = 'hello';  // a 的值不可被重置const foo = &#123;&#125;;     // foo 可以添加属性foo.prop = 111;const arr = [];     // arr 可以添加元素arr.push('hello');
+如果想完全将对象冻结，不能更改，应该使用 Object.freeze 方法。1const foo = Object.freeze(&#123;&#125;);
+解构数组解构通过数组方式直接给对应数组中的对应变量赋值。12345var [a, b, c] = [1, 2, 3];let [a, [[b], c]] = [1, [[2], 3]];let [ , , third] =
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/foundation-1/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/es6/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
