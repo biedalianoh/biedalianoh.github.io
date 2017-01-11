@@ -1,0 +1,732 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs,net," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="nodejs深入系列之net">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs深入系列--net">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/nodejs-net/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="nodejs深入系列之net">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs深入系列--net">
+<meta name="twitter:description" content="nodejs深入系列之net">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> nodejs深入系列--net | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nodejs深入系列--net
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="net-Server"><a href="#net-Server" class="headerlink" title="net.Server"></a>net.Server</h1><p>用于创建一个TCP或者本地服务器。<br>net.Server能响应以下方法：</p>
+<h2 id="close"><a href="#close" class="headerlink" title="close"></a>close</h2><h2 id="connection"><a href="#connection" class="headerlink" title="connection"></a>connection</h2><h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><h2 id="listening"><a href="#listening" class="headerlink" title="listening"></a>listening</h2><h2 id="server-address"><a href="#server-address" class="headerlink" title="server.address()"></a>server.address()</h2><h2 id="server-close-callback"><a href="#server-close-callback" class="headerlink" title="server.close([callback])"></a>server.close([callback])</h2><h2 id="server-connections"><a href="#server-connections" class="headerlink" title="server.connections"></a>server.connections</h2><h2 id="server-getConnections-callback"><a href="#server-getConnections-callback" class="headerlink" title="server.getConnections(callback)"></a>server.getConnections(callback)</h2><h2 id="server-listen-handle-backlog-callback"><a href="#server-listen-handle-backlog-callback" class="headerlink" title="server.listen(handle[, backlog][, callback])"></a>server.listen(handle[, backlog][, callback])</h2><h2 id="server-listen-options-callback"><a href="#server-listen-options-callback" class="headerlink" title="server.listen(options[, callback])"></a>server.listen(options[, callback])</h2><h2 id="server-listen-path-backlog-callback"><a href="#server-listen-path-backlog-callback" class="headerlink" title="server.listen(path[, backlog][, callback])"></a>server.listen(path[, backlog][, callback])</h2><h2 id="server-listen-port-hostname-backlog-callback"><a href="#server-listen-port-hostname-backlog-callback" class="headerlink" title="server.listen([port][, hostname][, backlog][, callback])"></a>server.listen([port][, hostname][, backlog][, callback])</h2><h2 id="server-listening"><a href="#server-listening" class="headerlink" title="server.listening"></a>server.listening</h2><h2 id="server-maxConnections"><a href="#server-maxConnections" class="headerlink" title="server.maxConnections"></a>server.maxConnections</h2><h2 id="server-ref"><a href="#server-ref" class="headerlink" title="server.ref()"></a>server.ref()</h2><h2 id="server-unref"><a href="#server-unref" class="headerlink" title="server.unref()"></a>server.unref()</h2><h1 id="net-Socket"><a href="#net-Socket" class="headerlink" title="net.Socket"></a>net.Socket</h1><p>net.Socket是TCP或本地socket通信的抽象类。<br>net.Socket实现了双向通信。<br>能被用户创建用于客户端，也可被nodejs创建用于服务端。<br>拥有以下方法：</p>
+<h2 id="new-net-Socket-options"><a href="#new-net-Socket-options" class="headerlink" title="new net.Socket([options])"></a>new net.Socket([options])</h2><p>构造一个socket对象。<br>options有如下默认值：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  fd: null,                 //允许指定socket文件描述符</div><div class="line">  allowHalfOpen: <span class="literal">false</span>,     //关系到createServer()和end事件</div><div class="line">  readable: <span class="literal">false</span>,          </div><div class="line">  writable: <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="close-1"><a href="#close-1" class="headerlink" title="close"></a>close</h2><h2 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h2><h2 id="data"><a href="#data" class="headerlink" title="data"></a>data</h2><h2 id="drain"><a href="#drain" class="headerlink" title="drain"></a>drain</h2><h2 id="end"><a href="#end" class="headerlink" title="end"></a>end</h2><h2 id="error-1"><a href="#error-1" class="headerlink" title="error"></a>error</h2><h2 id="lookup"><a href="#lookup" class="headerlink" title="lookup"></a>lookup</h2><h2 id="timeout"><a href="#timeout" class="headerlink" title="timeout"></a>timeout</h2><h2 id="socket-address"><a href="#socket-address" class="headerlink" title="socket.address()"></a>socket.address()</h2><h2 id="socket-bufferSize"><a href="#socket-bufferSize" class="headerlink" title="socket.bufferSize"></a>socket.bufferSize</h2><h2 id="socket-bytesRead"><a href="#socket-bytesRead" class="headerlink" title="socket.bytesRead"></a>socket.bytesRead</h2><h2 id="socket-bytesWritten"><a href="#socket-bytesWritten" class="headerlink" title="socket.bytesWritten"></a>socket.bytesWritten</h2><h2 id="socket-connect-options-connectListener"><a href="#socket-connect-options-connectListener" class="headerlink" title="socket.connect(options[, connectListener])"></a>socket.connect(options[, connectListener])</h2><h2 id="socket-connect-path-connectListener"><a href="#socket-connect-path-connectListener" class="headerlink" title="socket.connect(path[, connectListener])"></a>socket.connect(path[, connectListener])</h2><h2 id="socket-connect-port-host-connectListener"><a href="#socket-connect-port-host-connectListener" class="headerlink" title="socket.connect(port[, host][, connectListener])"></a>socket.connect(port[, host][, connectListener])</h2><h2 id="socket-connecting"><a href="#socket-connecting" class="headerlink" title="socket.connecting"></a>socket.connecting</h2><h2 id="socket-destroy-exception"><a href="#socket-destroy-exception" class="headerlink" title="socket.destroy([exception])"></a>socket.destroy([exception])</h2><h2 id="socket-destroyed"><a href="#socket-destroyed" class="headerlink" title="socket.destroyed"></a>socket.destroyed</h2><h2 id="socket-end-data-encoding"><a href="#socket-end-data-encoding" class="headerlink" title="socket.end([data][, encoding])"></a>socket.end([data][, encoding])</h2><h2 id="socket-localAddress"><a href="#socket-localAddress" class="headerlink" title="socket.localAddress"></a>socket.localAddress</h2><h2 id="socket-localPort"><a href="#socket-localPort" class="headerlink" title="socket.localPort"></a>socket.localPort</h2><h2 id="socket-pause"><a href="#socket-pause" class="headerlink" title="socket.pause()"></a>socket.pause()</h2><h2 id="socket-ref"><a href="#socket-ref" class="headerlink" title="socket.ref()"></a>socket.ref()</h2><h2 id="socket-remoteAddress"><a href="#socket-remoteAddress" class="headerlink" title="socket.remoteAddress"></a>socket.remoteAddress</h2><h2 id="socket-remoteFamily"><a href="#socket-remoteFamily" class="headerlink" title="socket.remoteFamily"></a>socket.remoteFamily</h2><h2 id="socket-remotePort"><a href="#socket-remotePort" class="headerlink" title="socket.remotePort"></a>socket.remotePort</h2><h2 id="socket-resume"><a href="#socket-resume" class="headerlink" title="socket.resume()"></a>socket.resume()</h2><h2 id="socket-setEncoding-encoding"><a href="#socket-setEncoding-encoding" class="headerlink" title="socket.setEncoding([encoding])"></a>socket.setEncoding([encoding])</h2><h2 id="socket-setKeepAlive-enable-initialDelay"><a href="#socket-setKeepAlive-enable-initialDelay" class="headerlink" title="socket.setKeepAlive([enable][, initialDelay])"></a>socket.setKeepAlive([enable][, initialDelay])</h2><h2 id="socket-setNoDelay-noDelay"><a href="#socket-setNoDelay-noDelay" class="headerlink" title="socket.setNoDelay([noDelay])"></a>socket.setNoDelay([noDelay])</h2><h2 id="socket-setTimeout-timeout-callback"><a href="#socket-setTimeout-timeout-callback" class="headerlink" title="socket.setTimeout(timeout[, callback])"></a>socket.setTimeout(timeout[, callback])</h2><h2 id="socket-unref"><a href="#socket-unref" class="headerlink" title="socket.unref()"></a>socket.unref()</h2><h2 id="socket-write-data-encoding-callback"><a href="#socket-write-data-encoding-callback" class="headerlink" title="socket.write(data[, encoding][, callback])"></a>socket.write(data[, encoding][, callback])</h2><h2 id="net-connect-options-connectListener"><a href="#net-connect-options-connectListener" class="headerlink" title="net.connect(options[, connectListener])"></a>net.connect(options[, connectListener])</h2><h2 id="net-connect-path-connectListener"><a href="#net-connect-path-connectListener" class="headerlink" title="net.connect(path[, connectListener])"></a>net.connect(path[, connectListener])</h2><h2 id="net-connect-port-host-connectListener"><a href="#net-connect-port-host-connectListener" class="headerlink" title="net.connect(port[, host][, connectListener])"></a>net.connect(port[, host][, connectListener])</h2><h2 id="net-createConnection-options-connectListener"><a href="#net-createConnection-options-connectListener" class="headerlink" title="net.createConnection(options[, connectListener])"></a>net.createConnection(options[, connectListener])</h2><h2 id="net-createConnection-path-connectListener"><a href="#net-createConnection-path-connectListener" class="headerlink" title="net.createConnection(path[, connectListener])"></a>net.createConnection(path[, connectListener])</h2><h2 id="net-createConnection-port-host-connectListener"><a href="#net-createConnection-port-host-connectListener" class="headerlink" title="net.createConnection(port[, host][, connectListener])"></a>net.createConnection(port[, host][, connectListener])</h2><h2 id="net-createServer-options-connectionListener"><a href="#net-createServer-options-connectionListener" class="headerlink" title="net.createServer([options][, connectionListener])"></a>net.createServer([options][, connectionListener])</h2><h2 id="net-isIP-input"><a href="#net-isIP-input" class="headerlink" title="net.isIP(input)"></a>net.isIP(input)</h2><h2 id="net-isIPv4-input"><a href="#net-isIPv4-input" class="headerlink" title="net.isIPv4(input)"></a>net.isIPv4(input)</h2><h2 id="net-isIPv6-input"><a href="#net-isIPv6-input" class="headerlink" title="net.isIPv6(input)"></a>net.isIPv6(input)</h2>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/net/" rel="tag">#net</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-os/" rel="next" title="nodejs深入系列--os">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--os
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-https/" rel="prev" title="nodejs深入系列--https">
+                nodejs深入系列--https <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#net-Server"><span class="nav-number">1.</span> <span class="nav-text">net.Server</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#close"><span class="nav-number">1.1.</span> <span class="nav-text">close</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#connection"><span class="nav-number">1.2.</span> <span class="nav-text">connection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error"><span class="nav-number">1.3.</span> <span class="nav-text">error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#listening"><span class="nav-number">1.4.</span> <span class="nav-text">listening</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-address"><span class="nav-number">1.5.</span> <span class="nav-text">server.address()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-close-callback"><span class="nav-number">1.6.</span> <span class="nav-text">server.close([callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-connections"><span class="nav-number">1.7.</span> <span class="nav-text">server.connections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-getConnections-callback"><span class="nav-number">1.8.</span> <span class="nav-text">server.getConnections(callback)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-listen-handle-backlog-callback"><span class="nav-number">1.9.</span> <span class="nav-text">server.listen(handle[, backlog][, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-listen-options-callback"><span class="nav-number">1.10.</span> <span class="nav-text">server.listen(options[, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-listen-path-backlog-callback"><span class="nav-number">1.11.</span> <span class="nav-text">server.listen(path[, backlog][, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-listen-port-hostname-backlog-callback"><span class="nav-number">1.12.</span> <span class="nav-text">server.listen([port][, hostname][, backlog][, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-listening"><span class="nav-number">1.13.</span> <span class="nav-text">server.listening</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-maxConnections"><span class="nav-number">1.14.</span> <span class="nav-text">server.maxConnections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-ref"><span class="nav-number">1.15.</span> <span class="nav-text">server.ref()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-unref"><span class="nav-number">1.16.</span> <span class="nav-text">server.unref()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#net-Socket"><span class="nav-number">2.</span> <span class="nav-text">net.Socket</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#new-net-Socket-options"><span class="nav-number">2.1.</span> <span class="nav-text">new net.Socket([options])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#close-1"><span class="nav-number">2.2.</span> <span class="nav-text">close</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#connect"><span class="nav-number">2.3.</span> <span class="nav-text">connect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data"><span class="nav-number">2.4.</span> <span class="nav-text">data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#drain"><span class="nav-number">2.5.</span> <span class="nav-text">drain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#end"><span class="nav-number">2.6.</span> <span class="nav-text">end</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error-1"><span class="nav-number">2.7.</span> <span class="nav-text">error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lookup"><span class="nav-number">2.8.</span> <span class="nav-text">lookup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#timeout"><span class="nav-number">2.9.</span> <span class="nav-text">timeout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-address"><span class="nav-number">2.10.</span> <span class="nav-text">socket.address()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-bufferSize"><span class="nav-number">2.11.</span> <span class="nav-text">socket.bufferSize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-bytesRead"><span class="nav-number">2.12.</span> <span class="nav-text">socket.bytesRead</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-bytesWritten"><span class="nav-number">2.13.</span> <span class="nav-text">socket.bytesWritten</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-connect-options-connectListener"><span class="nav-number">2.14.</span> <span class="nav-text">socket.connect(options[, connectListener])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-connect-path-connectListener"><span class="nav-number">2.15.</span> <span class="nav-text">socket.connect(path[, connectListener])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-connect-port-host-connectListener"><span class="nav-number">2.16.</span> <span class="nav-text">socket.connect(port[, host][, connectListener])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-connecting"><span class="nav-number">2.17.</span> <span class="nav-text">socket.connecting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-destroy-exception"><span class="nav-number">2.18.</span> <span class="nav-text">socket.destroy([exception])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-destroyed"><span class="nav-number">2.19.</span> <span class="nav-text">socket.destroyed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-end-data-encoding"><span class="nav-number">2.20.</span> <span class="nav-text">socket.end([data][, encoding])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-localAddress"><span class="nav-number">2.21.</span> <span class="nav-text">socket.localAddress</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-localPort"><span class="nav-number">2.22.</span> <span class="nav-text">socket.localPort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-pause"><span class="nav-number">2.23.</span> <span class="nav-text">socket.pause()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-ref"><span class="nav-number">2.24.</span> <span class="nav-text">socket.ref()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-remoteAddress"><span class="nav-number">2.25.</span> <span class="nav-text">socket.remoteAddress</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-remoteFamily"><span class="nav-number">2.26.</span> <span class="nav-text">socket.remoteFamily</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-remotePort"><span class="nav-number">2.27.</span> <span class="nav-text">socket.remotePort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-resume"><span class="nav-number">2.28.</span> <span class="nav-text">socket.resume()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-setEncoding-encoding"><span class="nav-number">2.29.</span> <span class="nav-text">socket.setEncoding([encoding])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-setKeepAlive-enable-initialDelay"><span class="nav-number">2.30.</span> <span class="nav-text">socket.setKeepAlive([enable][, initialDelay])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-setNoDelay-noDelay"><span class="nav-number">2.31.</span> <span class="nav-text">socket.setNoDelay([noDelay])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-setTimeout-timeout-callback"><span class="nav-number">2.32.</span> <span class="nav-text">socket.setTimeout(timeout[, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-unref"><span class="nav-number">2.33.</span> <span class="nav-text">socket.unref()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-write-data-encoding-callback"><span class="nav-number">2.34.</span> <span class="nav-text">socket.write(data[, encoding][, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-connect-options-connectListener"><span class="nav-number">2.35.</span> <span class="nav-text">net.connect(options[, connectListener])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-connect-path-connectListener"><span class="nav-number">2.36.</span> <span class="nav-text">net.connect(path[, connectListener])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-connect-port-host-connectListener"><span class="nav-number">2.37.</span> <span class="nav-text">net.connect(port[, host][, connectListener])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-createConnection-options-connectListener"><span class="nav-number">2.38.</span> <span class="nav-text">net.createConnection(options[, connectListener])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-createConnection-path-connectListener"><span class="nav-number">2.39.</span> <span class="nav-text">net.createConnection(path[, connectListener])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-createConnection-port-host-connectListener"><span class="nav-number">2.40.</span> <span class="nav-text">net.createConnection(port[, host][, connectListener])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-createServer-options-connectionListener"><span class="nav-number">2.41.</span> <span class="nav-text">net.createServer([options][, connectionListener])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-isIP-input"><span class="nav-number">2.42.</span> <span class="nav-text">net.isIP(input)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-isIPv4-input"><span class="nav-number">2.43.</span> <span class="nav-text">net.isIPv4(input)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net-isIPv6-input"><span class="nav-number">2.44.</span> <span class="nav-text">net.isIPv6(input)</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

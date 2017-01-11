@@ -1,0 +1,874 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,angular," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Angular当然是现在流行的前端框架之一，和React，Ember一起并称前端开发的三神器。不过由于前公司因为业务需要，使一直使用的是另外一个轻量级的MVVM框架Rivets，使得对angular一直闻其声，未尽用。趁此机会便想把angular学习应用了一遍，并对比工作中使用的rivets，熟悉MV*的框架结构。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular 使用笔记">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/angular/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="Angular当然是现在流行的前端框架之一，和React，Ember一起并称前端开发的三神器。不过由于前公司因为业务需要，使一直使用的是另外一个轻量级的MVVM框架Rivets，使得对angular一直闻其声，未尽用。趁此机会便想把angular学习应用了一遍，并对比工作中使用的rivets，熟悉MV*的框架结构。">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular 使用笔记">
+<meta name="twitter:description" content="Angular当然是现在流行的前端框架之一，和React，Ember一起并称前端开发的三神器。不过由于前公司因为业务需要，使一直使用的是另外一个轻量级的MVVM框架Rivets，使得对angular一直闻其声，未尽用。趁此机会便想把angular学习应用了一遍，并对比工作中使用的rivets，熟悉MV*的框架结构。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Angular 使用笔记 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Angular 使用笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Angular当然是现在流行的前端框架之一，和React，Ember一起并称前端开发的三神器。不过由于前公司因为业务需要，使一直使用的是另外一个轻量级的MVVM框架Rivets，使得对angular一直闻其声，未尽用。趁此机会便想把angular学习应用了一遍，并对比工作中使用的rivets，熟悉MV*的框架结构。</p>
+<h1 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h1><p>可通过<a href="https://angularjs.org/" target="_blank" rel="external">官网</a>或<a href="http://www.apjs.net/#dir31" target="_blank" rel="external">中文社区</a>下载安装。</p>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>angular提供了多种api方法，全部api可查看 <a href="http://www.angularjs.cn/A02B" target="_blank" rel="external">api手册目录</a></p>
+<h2 id="构造应用"><a href="#构造应用" class="headerlink" title="构造应用"></a>构造应用</h2><p>通过定义作用域，模块，和控制器来建立一个angular应用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;html ng-app=<span class="string">"myApp"</span>&gt;</div><div class="line">    ...</div><div class="line">    &lt;div ng-controller=<span class="string">"myCtrl"</span>&gt;</div><div class="line">        ...</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">var app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.controller(<span class="string">'myCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>) &#123;</div><div class="line">    ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>其中angular模块module和控制器controller可以位于不同的js文件中。</p>
+<h2 id="两种初始化方式"><a href="#两种初始化方式" class="headerlink" title="两种初始化方式"></a>两种初始化方式</h2><p>angular在DOMContentLoaded事件触发时执行。</p>
+<ul>
+<li>自动初始化<br>通过ng-app找到根作用域。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;html ng-app&gt;</div><div class="line">    ...</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或直接指定注入器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;html ng-app=<span class="string">"moduleName"</span>&gt;</div><div class="line">    ...</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>手动初始化<br>当需要主动控制初始化过程，需要在angular编译页面之前做一些操作，则可以手动初始化。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        Hello &#123;&#123;<span class="string">'World'</span>&#125;&#125;!</div><div class="line">        &lt;script src=<span class="string">"http://code.angularjs.org/angular.js"</span>&gt;&lt;/script&gt;</div><div class="line">        &lt;script&gt;</div><div class="line">            //页面加载完成</div><div class="line">            angular.element(document).ready(<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">                //调用 api/angular.bootstrap将模板编译成可执行的、数据双向绑定的应用程序。   </div><div class="line">                angular.bootstrap(document);</div><div class="line">            &#125;);</div><div class="line">        &lt;/script&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h1><p>angular表达式  使html上居有简单运算能力。<br>可支持数字的 + - * /，和 字符串相加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;&#123;&#123;5 + 5&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="ng-指令"><a href="#ng-指令" class="headerlink" title="ng 指令"></a>ng 指令</h1><p>angular的指令是以 ng 作为前缀的 HTML 属性。也可使用 data-ng- 来让angular指令对html5有效(html5允许以 data- 扩展自定义属性).</p>
+<h2 id="ng-app"><a href="#ng-app" class="headerlink" title="ng-app"></a>ng-app</h2><p>定义一个angular应用的根元素。</p>
+<h2 id="ng-init"><a href="#ng-init" class="headerlink" title="ng-init"></a>ng-init</h2><p>初始化应用程序的一些变量。相当于把这个变量添加到 $scope 的属性上。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-init=<span class="string">"firstName='zhou';age=25"</span>&gt;</div><div class="line">    </div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-bind"><a href="#ng-bind" class="headerlink" title="ng-bind"></a>ng-bind</h2><p>添加数字或字符串到html中。相比表达式添加，ng-bind在页面加载时不会出现源代码。</p>
+<h2 id="ng-model"><a href="#ng-model" class="headerlink" title="ng-model"></a>ng-model</h2><p>把元素值绑定到$scope。用于表单项(input select textarea)。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-init=<span class="string">"name='zhou'"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> ng-model=<span class="string">"name"</span>&gt;</div><div class="line">    &lt;p&gt;输入的为： &#123;&#123;name&#125;&#125;&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>angular为表单项的ng-model提供了四个状态值：<br>如表单：</p>
+<ol>
+<li>$valid<br>输入合法，为true，否则为false</li>
+<li>$invalid<br>和valid相反</li>
+<li>$dirty<br>输入值改变了，为true，没有做过更改则为false</li>
+<li>$touched<br>通过触屏点击了，则为true，否则为false</li>
+<li>$error<br>判断是否输入正确。<br>$error.required： 当没有填写时为true<br>$error.email: 当邮箱格式不正确时为true</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;form ng-app=<span class="string">""</span> name=<span class="string">"myForm"</span> ng-init=<span class="string">"myText = 'test@runoob.com'"</span>&gt;</div><div class="line">    Email:</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"email"</span> name=<span class="string">"myAddress"</span> ng-model=<span class="string">"myText"</span> required&gt;</div><div class="line">    &lt;p&gt;编辑邮箱地址，查看状态的改变。&lt;/p&gt;</div><div class="line">    &lt;h1&gt;状态&lt;/h1&gt;</div><div class="line">    &lt;p&gt;Valid: &#123;&#123;myForm.myAddress.<span class="variable">$valid</span>&#125;&#125; (如果输入的值是合法的则为 <span class="literal">true</span>)。&lt;/p&gt;</div><div class="line">    &lt;p&gt;Dirty: &#123;&#123;myForm.myAddress.<span class="variable">$dirty</span>&#125;&#125; (如果值改变则为 <span class="literal">true</span>)。&lt;/p&gt;</div><div class="line">    &lt;p&gt;Touched: &#123;&#123;myForm.myAddress.<span class="variable">$touched</span>&#125;&#125; (如果通过触屏点击则为 <span class="literal">true</span>)。&lt;/p&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+<p>另外，angular为ng-model的状态，添加了对应的css类。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.ng-empty</div><div class="line">.ng-not-empty</div><div class="line">.ng-touched</div><div class="line">.ng-untouched</div><div class="line">.ng-valid</div><div class="line">.ng-invalid</div><div class="line">.ng-dirty</div><div class="line">.ng-pending</div><div class="line">.ng-pristine</div></pre></td></tr></table></figure></p>
+<h2 id="ng-model-options"><a href="#ng-model-options" class="headerlink" title="ng-model-options"></a>ng-model-options</h2><p>设置ng-model绑定触发时的选项。</p>
+<ol>
+<li><p>updateOn<br>触发事件更新绑定数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"userName"</span></div><div class="line">            ng-model=<span class="string">"user.name"</span></div><div class="line">            ng-model-options=<span class="string">"&#123; updateOn: 'blur' &#125;"</span> /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>debounce<br>定义更新绑定数据的延迟时间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//失去焦点500毫秒之后触发</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"userName"</span> ng-model=<span class="string">"user.name"</span></div><div class="line">    ng-model-options=<span class="string">"&#123; updateOn: 'default blur', debounce: &#123; 'default': 500, 'blur': 0 &#125; &#125;"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>allowInvalid<br>设置验证。</p>
+</li>
+<li>timezone<br>设置时间格式。</li>
+</ol>
+<h2 id="ng-mousedown"><a href="#ng-mousedown" class="headerlink" title="ng-mousedown"></a>ng-mousedown</h2><p>鼠标按下时触发。不会覆盖原生onmousedown事件。</p>
+<h2 id="ng-mouseenter"><a href="#ng-mouseenter" class="headerlink" title="ng-mouseenter"></a>ng-mouseenter</h2><p>鼠标移过元素时触发。不会覆盖原生onmouseenter事件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-mouseenter=<span class="string">"count = count + 1"</span> ng-init=<span class="string">"count=0"</span>&gt;鼠标穿过我!&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-mouseleave"><a href="#ng-mouseleave" class="headerlink" title="ng-mouseleave"></a>ng-mouseleave</h2><p>鼠标离开元素时触发。不会覆盖原生onmouseleave事件。</p>
+<h2 id="ng-mousemove"><a href="#ng-mousemove" class="headerlink" title="ng-mousemove"></a>ng-mousemove</h2><p>鼠标在元素上移动时触发。不会覆盖原生onmousemove事件。</p>
+<h2 id="ng-mouseover"><a href="#ng-mouseover" class="headerlink" title="ng-mouseover"></a>ng-mouseover</h2><p>鼠标移动到元素上时触发。不会覆盖原生onmouseover事件。</p>
+<h2 id="ng-non-bindable"><a href="#ng-non-bindable" class="headerlink" title="ng-non-bindable"></a>ng-non-bindable</h2><p>规定不编译当前元素和其子元素。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;p ng-non-bindable&gt;这个代码不需要使用 AngularJS: &#123;&#123; 5+5 &#125;&#125;&lt;/p&gt;</div><div class="line">//显示：   这个代码不需要使用 AngularJS: &#123;&#123; 5+5 &#125;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-open"><a href="#ng-open" class="headerlink" title="ng-open"></a>ng-open</h2><p>设置detail列表的open属性。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-model=<span class="string">"showDetails"</span>&gt;</div><div class="line"></div><div class="line">&lt;details ng-open=<span class="string">"showDetails"</span>&gt;</div><div class="line">    &lt;summary&gt;学的不仅是技术，更是梦想！&lt;/summary&gt;</div><div class="line">    &lt;p&gt; - 菜鸟教程&lt;/p&gt;</div><div class="line">&lt;/details&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-readonly"><a href="#ng-readonly" class="headerlink" title="ng-readonly"></a>ng-readonly</h2><p>设置input或textarea是否只读。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Readonly: &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-model=<span class="string">"all"</span>&gt;</div><div class="line">&lt;br&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> ng-readonly=<span class="string">"all"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-selected"><a href="#ng-selected" class="headerlink" title="ng-selected"></a>ng-selected</h2><p>设置select列表中的option的selected属性。即设置select中哪个option被选中。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-model=<span class="string">"mySel"</span>&gt;</div><div class="line"></div><div class="line">&lt;p&gt;我喜欢的车:&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;select&gt;</div><div class="line">&lt;option&gt;Volvo&lt;/option&gt;</div><div class="line">&lt;option ng-selected=<span class="string">"mySel"</span>&gt;BMW&lt;/option&gt;</div><div class="line">&lt;option&gt;Ford&lt;/option&gt; </div><div class="line">&lt;/select&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-srcset"><a href="#ng-srcset" class="headerlink" title="ng-srcset"></a>ng-srcset</h2><p>设置不同分辨率设备使用相应大小图片。<br>srcset为html5中img的新属性。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;img src=<span class="string">"small.jpg"</span></div><div class="line">     srcset=<span class="string">"large.jpg 1024w, medium.jpg 640w, small.jpg 320w"</span></div><div class="line">     sizes=<span class="string">"100vw"</span></div><div class="line">     alt=<span class="string">"A rad wolf"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p>ng-srcset用法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-init=<span class="string">"myVar = 'http://www.runoob.com/wp-content/uploads/2014/06/angular.jpg'"</span>&gt;</div><div class="line">    &lt;h1&gt;Angular&lt;/h1&gt;</div><div class="line">    &lt;img ng-srcset=<span class="string">"&#123;&#123;myVar&#125;&#125;"</span>&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-style"><a href="#ng-style" class="headerlink" title="ng-style"></a>ng-style</h2><p>设置元素行间样式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;h1 ng-style=<span class="string">"myObj"</span>&gt;菜鸟教程&lt;/h1&gt;</div><div class="line"></div><div class="line"><span class="variable">$scope</span>.myObj = &#123;</div><div class="line">    <span class="string">"color"</span> : <span class="string">"white"</span>,</div><div class="line">    <span class="string">"background-color"</span> : <span class="string">"coral"</span>,</div><div class="line">    <span class="string">"font-size"</span> : <span class="string">"60px"</span>,</div><div class="line">    <span class="string">"padding"</span> : <span class="string">"50px"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-submit"><a href="#ng-submit" class="headerlink" title="ng-submit"></a>ng-submit</h2><p>提交表单。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;form ng-submit=<span class="string">"myFunc()"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span>&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line"><span class="variable">$scope</span>.myFunc = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="variable">$scope</span>.myTxt = <span class="string">"你点击了提交!"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-switch"><a href="#ng-switch" class="headerlink" title="ng-switch"></a>ng-switch</h2><p>根据表达式显示或隐藏对应的部分。<br>使用 ng-switch-when 和 ng-switch-default 进行控制。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;select ng-model=<span class="string">"myVar"</span>&gt;</div><div class="line">  &lt;option value=<span class="string">"runoob"</span>&gt;www.runoob.com</div><div class="line">  &lt;option value=<span class="string">"google"</span>&gt;www.google.com</div><div class="line">  &lt;option value=<span class="string">"taobao"</span>&gt;www.taobao.com</div><div class="line">&lt;/select&gt;</div><div class="line"></div><div class="line">&lt;div ng-switch=<span class="string">"myVar"</span>&gt;</div><div class="line">  &lt;div ng-switch-when=<span class="string">"runoob"</span>&gt;</div><div class="line">     &lt;h1&gt;菜鸟教程&lt;/h1&gt;</div><div class="line">     &lt;p&gt;欢迎访问菜鸟教程&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;div ng-switch-when=<span class="string">"google"</span>&gt;</div><div class="line">     &lt;h1&gt;Google&lt;/h1&gt;</div><div class="line">     &lt;p&gt;欢迎访问Google&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;div ng-switch-when=<span class="string">"taobao"</span>&gt;</div><div class="line">     &lt;h1&gt;淘宝&lt;/h1&gt;</div><div class="line">     &lt;p&gt;欢迎访问淘宝&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;div ng-switch-default&gt;</div><div class="line">     &lt;h1&gt;切换&lt;/h1&gt;</div><div class="line">     &lt;p&gt;选择不同选项显示对应的值。&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-value"><a href="#ng-value" class="headerlink" title="ng-value"></a>ng-value</h2><p>设置input或select元素的value值。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input ng-value=<span class="string">"myVar"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-repeat"><a href="#ng-repeat" class="headerlink" title="ng-repeat"></a>ng-repeat</h2><p>迭代数组。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-init=<span class="string">"names=['zhou', 'chen']"</span>&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li ng-repeat=<span class="string">"name in names"</span>&gt;</div><div class="line">            &#123;&#123;name&#125;&#125;</div><div class="line">        &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-options"><a href="#ng-options" class="headerlink" title="ng-options"></a>ng-options</h2><p>创建一个下拉列表。数据源可为 数组，或 对象。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;select ng-model=<span class="string">"selectedName"</span> ng-options=<span class="string">"x for x in names"</span>&gt;&lt;/select&gt;</div><div class="line"></div><div class="line">app.controller(<span class="string">'myCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>) &#123;</div><div class="line">    <span class="variable">$scope</span>.names = [<span class="string">"Google"</span>, <span class="string">"Runoob"</span>, <span class="string">"Taobao"</span>];</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>当然也可使用ng-repeat，但是当选择的值为对象时，即ng-model对应的selectedName为对象时，要用ng-options，因为ng-repeat的ng-model值为字符串。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$scope</span>.sites = &#123;</div><div class="line">    site01 : <span class="string">"Google"</span>,</div><div class="line">    site02 : <span class="string">"Runoob"</span>,</div><div class="line">    site03 : <span class="string">"Taobao"</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">&lt;select ng-model=<span class="string">"selectedSite"</span> ng-options=<span class="string">"x for (x, y) in sites"</span>&gt;&lt;/select&gt;</div><div class="line">&lt;h1&gt;你选择的值是: &#123;&#123;selectedSite&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-disabled"><a href="#ng-disabled" class="headerlink" title="ng-disabled"></a>ng-disabled</h2><p>设置控件是否可用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-app=<span class="string">""</span> ng-init=<span class="string">"mySwitch=false"</span>&gt;</div><div class="line">&lt;p&gt;</div><div class="line">    &lt;button ng-disabled=<span class="string">"mySwitch"</span>&gt;点我!&lt;/button&gt;</div><div class="line">&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-show"><a href="#ng-show" class="headerlink" title="ng-show"></a>ng-show</h2><p>设置标签隐藏或显示。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;p ng-show=<span class="string">"true"</span>&gt;我是可见的。&lt;/p&gt;</div><div class="line">&lt;p ng-show=<span class="string">"false"</span>&gt;我是不可见的。&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-hide"><a href="#ng-hide" class="headerlink" title="ng-hide"></a>ng-hide</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;p ng-hide=<span class="string">"true"</span>&gt;我是不可见的。&lt;/p&gt;</div><div class="line">&lt;p ng-hide=<span class="string">"false"</span>&gt;我是可见的。&lt;/p&gt;</div></pre></td></tr></table></figure>
+<h2 id="ng-click"><a href="#ng-click" class="headerlink" title="ng-click"></a>ng-click</h2><p>设置点击事件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;button ng-click=<span class="string">"count = count + 1"</span>&gt;点我！&lt;/button&gt;</div><div class="line">&lt;p&gt;&#123;&#123; count &#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-include"><a href="#ng-include" class="headerlink" title="ng-include"></a>ng-include</h2><p>添加html文件内容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div class=<span class="string">"container"</span>&gt;</div><div class="line">  &lt;div ng-include=<span class="string">"'myUsers_List.htm'"</span>&gt;&lt;/div&gt;</div><div class="line">  &lt;div ng-include=<span class="string">"'myUsers_Form.htm'"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-bind-html"><a href="#ng-bind-html" class="headerlink" title="ng-bind-html"></a>ng-bind-html</h2><p>添加html代码到标签中。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-controller=<span class="string">"ExampleController"</span>&gt;</div><div class="line"> &lt;p ng-bind-html=<span class="string">"myHTML"</span>&gt;&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line"><span class="variable">$scope</span>.myHTML =</div><div class="line">     <span class="string">'I am an &lt;code&gt;HTML&lt;/code&gt;string with '</span> +</div><div class="line">     <span class="string">'&lt;a href="#"&gt;links!&lt;/a&gt; and other &lt;em&gt;stuff&lt;/em&gt;'</span>;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-bind-template"><a href="#ng-bind-template" class="headerlink" title="ng-bind-template"></a>ng-bind-template</h2><p>绑定多个表达式到标签中。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-bind-template=<span class="string">"&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125;"</span>&gt;&lt;/div&gt;</div><div class="line"></div><div class="line"><span class="variable">$scope</span>.firstName = <span class="string">"John"</span>;</div><div class="line"><span class="variable">$scope</span>.lastName = <span class="string">"Doe"</span>;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-blur"><a href="#ng-blur" class="headerlink" title="ng-blur"></a>ng-blur</h2><p>输入框失去焦点触发。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input ng-blur=<span class="string">"count = count + 1"</span> ng-init=<span class="string">"count=0"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-change"><a href="#ng-change" class="headerlink" title="ng-change"></a>ng-change</h2><p>输入框的值改变触发。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> ng-change=<span class="string">"myFunc()"</span> ng-model=<span class="string">"myValue"</span> /&gt;</div><div class="line">&lt;p&gt;The input field has changed &#123;&#123;count&#125;&#125; times.&lt;/p&gt;</div><div class="line"></div><div class="line"><span class="variable">$scope</span>.count = 0;</div><div class="line"><span class="variable">$scope</span>.myFunc = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="variable">$scope</span>.count++;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-checked"><a href="#ng-checked" class="headerlink" title="ng-checked"></a>ng-checked</h2><p>是否被选中。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-model=<span class="string">"all"</span>&gt; Check all&lt;br&gt;&lt;br&gt;</div><div class="line"></div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-checked=<span class="string">"all"</span>&gt;Volvo&lt;br&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-checked=<span class="string">"all"</span>&gt;Ford&lt;br&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-checked=<span class="string">"all"</span>&gt;Mercedes</div></pre></td></tr></table></figure></p>
+<h2 id="ng-class"><a href="#ng-class" class="headerlink" title="ng-class"></a>ng-class</h2><p>给元素绑定一个或多个类名。可添加字符串，对象，数组。</p>
+<ol>
+<li><p>字符串。<br>多个类名使用空格分隔。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;select ng-model=<span class="string">"home"</span>&gt;</div><div class="line">    &lt;option value=<span class="string">"sky"</span>&gt;Sky&lt;/option&gt;</div><div class="line">    &lt;option value=<span class="string">"tomato"</span>&gt;Tomato&lt;/option&gt;</div><div class="line">&lt;/select&gt;</div><div class="line"></div><div class="line">&lt;div ng-class=<span class="string">"home"</span>&gt;</div><div class="line">    &lt;h1&gt;Welcome Home!&lt;/h1&gt;</div><div class="line">    &lt;p&gt;I like it!&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>对象。<br>{key: value}。要添加的类名为 key, value为布尔值。只有当value为true时，添加key作为类名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;p ng-class=<span class="string">"&#123;strike: deleted, bold: important, 'has-error': error&#125;"</span>&gt;Map Syntax Example&lt;/p&gt;</div><div class="line">&lt;label&gt;</div><div class="line">   &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-model=<span class="string">"deleted"</span>&gt;</div><div class="line">&lt;/label&gt;&lt;br&gt;</div><div class="line">&lt;label&gt;</div><div class="line">   &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-model=<span class="string">"important"</span>&gt;</div><div class="line">&lt;/label&gt;&lt;br&gt;</div><div class="line">&lt;label&gt;</div><div class="line">   &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-model=<span class="string">"error"</span>&gt;</div><div class="line">&lt;/label&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>数组<br>数组的每一个值都会设置为类名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;p ng-class=<span class="string">"[style1, style2, style3]"</span>&gt;Using Array Syntax&lt;/p&gt;</div><div class="line">&lt;input ng-model=<span class="string">"style1"</span></div><div class="line">       placeholder=<span class="string">"Type: bold, strike or red"</span> aria-label=<span class="string">"Type: bold, strike or red"</span>&gt;&lt;br&gt;</div><div class="line">&lt;input ng-model=<span class="string">"style2"</span></div><div class="line">       placeholder=<span class="string">"Type: bold, strike or red"</span> aria-label=<span class="string">"Type: bold, strike or red 2"</span>&gt;&lt;br&gt;</div><div class="line">&lt;input ng-model=<span class="string">"style3"</span></div><div class="line">       placeholder=<span class="string">"Type: bold, strike or red"</span> aria-label=<span class="string">"Type: bold, strike or red 3"</span>&gt;&lt;br&gt;</div><div class="line">&lt;hr&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>数组和对象混搭<br>对象添加key为类名，数组元素添加本身类名。测试用例有问题，待解决。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;p ng-class=<span class="string">"[style4, &#123;orange: warning&#125;]"</span>&gt;Using Array and Map Syntax&lt;/p&gt;</div><div class="line">&lt;input ng-model=<span class="string">"style4"</span> placeholder=<span class="string">"Type: bold, strike"</span>&gt;&lt;br&gt;</div><div class="line">&lt;label&gt;&lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-model=<span class="string">"warning"</span>&gt; warning (apply <span class="string">"orange"</span> class)&lt;/label&gt;</div><div class="line">``` </div><div class="line"><span class="comment">## ng-class-even</span></div><div class="line">和ng-class类似，不过只在偶数行生效。</div><div class="line"> </div><div class="line"><span class="comment">## ng-class-odd</span></div><div class="line">和ng-class类似，不过只在奇数行生效。</div><div class="line"></div><div class="line"><span class="comment">## ng-cloak</span></div><div class="line">用于防止angular代码未生效时，出现js代码这种闪烁的问题。</div><div class="line">```bash</div><div class="line">&lt;p ng-cloak&gt;&#123;&#123; 5 + 5 &#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="ng-copy"><a href="#ng-copy" class="headerlink" title="ng-copy"></a>ng-copy</h2><p>html元素文本被拷贝时触发。不会覆盖原始的oncopy事件。二者都会执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input ng-copy=<span class="string">"count = count + 1"</span> ng-init=<span class="string">"count=0"</span> value=<span class="string">"Copy this text"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-cut"><a href="#ng-cut" class="headerlink" title="ng-cut"></a>ng-cut</h2><p>在剪切html元素文本时触发。不会覆盖原始的oncut事件。二者都会执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input ng-cut=<span class="string">"count = count + 1"</span> ng-init=<span class="string">"count=0"</span> value=<span class="string">"剪切这个文本"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-dblclick"><a href="#ng-dblclick" class="headerlink" title="ng-dblclick"></a>ng-dblclick</h2><p>双击时触发。不会覆盖原始的ondblclick事件。二者都会执行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h1 ng-dblclick=<span class="string">"count = count + 1"</span> ng-init=<span class="string">"count=0"</span>&gt;Welcome&lt;/h1&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-focus"><a href="#ng-focus" class="headerlink" title="ng-focus"></a>ng-focus</h2><p>元素在获取焦点时触发。不会覆盖原始的onfocus事件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;input ng-focus=<span class="string">"count = count + 1"</span> ng-init=<span class="string">"count=0"</span> /&gt;</div><div class="line">&lt;h1&gt;&#123;&#123;count&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-href"><a href="#ng-href" class="headerlink" title="ng-href"></a>ng-href</h2><p>设置链接。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a ng-href=<span class="string">"&#123;&#123;myVar&#125;&#125;"</span>&gt;&#123;&#123;myVar&#125;&#125;&lt;/a&gt; 学习!&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-if"><a href="#ng-if" class="headerlink" title="ng-if"></a>ng-if</h2><p>是否移除html元素。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-if=<span class="string">"myVar"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-keydown"><a href="#ng-keydown" class="headerlink" title="ng-keydown"></a>ng-keydown</h2><p>按下时触发。不会覆盖onkeydown</p>
+<h2 id="ng-keypress。"><a href="#ng-keypress。" class="headerlink" title="ng-keypress。"></a>ng-keypress。</h2><p>点击时触发。不会覆盖onkeypress</p>
+<h2 id="ng-keyup"><a href="#ng-keyup" class="headerlink" title="ng-keyup"></a>ng-keyup</h2><p>点击松开时触发。不会覆盖onkeyup</p>
+<h2 id="ng-list"><a href="#ng-list" class="headerlink" title="ng-list"></a>ng-list</h2><p>字符串转为数组。通过逗号分隔数组元素。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;input ng-model=<span class="string">"customers"</span> ng-list/&gt;    //字符串输入时有逗号时，分隔输出的数组元素。</div><div class="line">&lt;pre&gt;&#123;&#123;customers&#125;&#125;&lt;/pre&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ng-csp"><a href="#ng-csp" class="headerlink" title="ng-csp"></a>ng-csp</h2><p>设置网站内容安全策略。 来限制网站中是否可以包含某来源的资源。资源类型细分为 Script、Style、Image、Font、Connect、Media、Object、Frame 等<br>具体可见：<a href="http://angularjs.cn/A0G0" target="_blank" rel="external">浏览器安全策略 CSP 部署：teambition 实战</a></p>
+<h1 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h1><p>使用 .directive 函数添加自定义指令。<br>js中用驼峰法来命名自定义指令，如： myNg，但在html应用时，需要用 - 分割，如<my-ng></my-ng>.<br>自定义指令有四种调用方法（调用方法见 方法-directive）:</p>
+<ol>
+<li>元素名<br><runoob-directive></runoob-directive></li>
+<li>属性<div runoob-directive=""></div></li>
+<li>类名<div class="runoob-directive"></div></li>
+<li>注释<!-- 指令: runoob-directive -->
+</li>
+</ol>
+<p>均会添加template中的内容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;my-ng&gt;&lt;/my-ng&gt; //生成&lt;h1&gt;自定义指令&lt;/h1&gt;</div><div class="line">var myApp = angular.module(<span class="string">'app'</span>, []);</div><div class="line">myApp.directive(<span class="string">'myNg'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">        template: <span class="string">"&lt;h1&gt;自定义指令&lt;/h1&gt;"</span>  //template的内容会自动添加到自定义指令标签中</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h1 id="angular方法"><a href="#angular方法" class="headerlink" title="angular方法"></a>angular方法</h1><p>定义在全局函数angular上的方法。</p>
+<h2 id="angular-module"><a href="#angular-module" class="headerlink" title="angular.module()"></a>angular.module()</h2><p>定义一个angular的模块。<br>第二个参数的 [] 为定义模块的依赖。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(<span class="string">'myApp'</span>, [<span class="string">'jquery'</span>]);</div><div class="line">app.controller(<span class="string">'myCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>) &#123;</div><div class="line">    ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="angular-lowercase"><a href="#angular-lowercase" class="headerlink" title="angular.lowercase()"></a>angular.lowercase()</h2><p>转换字符串为小写</p>
+<h2 id="angular-uppercase"><a href="#angular-uppercase" class="headerlink" title="angular.uppercase()"></a>angular.uppercase()</h2><p>转换字符串为大写</p>
+<h2 id="angular-copy"><a href="#angular-copy" class="headerlink" title="angular.copy()"></a>angular.copy()</h2><p>数组或对象深度拷贝</p>
+<h2 id="angular-forEach"><a href="#angular-forEach" class="headerlink" title="angular.forEach()"></a>angular.forEach()</h2><p>对象或数组的迭代函数</p>
+<h2 id="angular-isString"><a href="#angular-isString" class="headerlink" title="angular.isString()"></a>angular.isString()</h2><p>判断给定的对象是否为字符串，如果是返回 true。</p>
+<h2 id="angular-isNumber"><a href="#angular-isNumber" class="headerlink" title="angular.isNumber()"></a>angular.isNumber()</h2><p>判断给定的对象是否为数字，如果是返回 true。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.controller(<span class="string">'myCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>) &#123;</div><div class="line">    <span class="variable">$scope</span>.x1 = <span class="string">"JOHN"</span>;</div><div class="line">    <span class="variable">$scope</span>.x2 = angular.isNumber(<span class="variable">$scope</span>.x1);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="angular-isArray"><a href="#angular-isArray" class="headerlink" title="angular.isArray()"></a>angular.isArray()</h2><p>如果引用的是数组返回 true</p>
+<h2 id="angular-isDate"><a href="#angular-isDate" class="headerlink" title="angular.isDate()"></a>angular.isDate()</h2><p>如果引用的是日期返回 true</p>
+<h2 id="angular-isDefined"><a href="#angular-isDefined" class="headerlink" title="angular.isDefined()"></a>angular.isDefined()</h2><p>如果引用的已定义返回 true</p>
+<h2 id="angular-isElement"><a href="#angular-isElement" class="headerlink" title="angular.isElement()"></a>angular.isElement()</h2><p>如果引用的是 DOM 元素返回 true</p>
+<h2 id="angular-isFunction"><a href="#angular-isFunction" class="headerlink" title="angular.isFunction()"></a>angular.isFunction()</h2><p>如果引用的是函数返回 true</p>
+<h2 id="angular-isObject"><a href="#angular-isObject" class="headerlink" title="angular.isObject()"></a>angular.isObject()</h2><p>如果引用的是对象返回 true</p>
+<h2 id="angular-isUndefined"><a href="#angular-isUndefined" class="headerlink" title="angular.isUndefined()"></a>angular.isUndefined()</h2><p>如果引用的未定义返回 true</p>
+<h2 id="angular-equals"><a href="#angular-equals" class="headerlink" title="angular.equals()"></a>angular.equals()</h2><p>如果两个对象相等返回 true</p>
+<h2 id="angular-fromJSON"><a href="#angular-fromJSON" class="headerlink" title="angular.fromJSON()"></a>angular.fromJSON()</h2><p>反序列化 JSON 字符串</p>
+<h2 id="angular-toJSON"><a href="#angular-toJSON" class="headerlink" title="angular.toJSON()"></a>angular.toJSON()</h2><p>序列化 JSON 字符串</p>
+<h2 id="angular-bootstrap"><a href="#angular-bootstrap" class="headerlink" title="angular.bootstrap()"></a>angular.bootstrap()</h2><p>手动启动 AngularJS</p>
+<h2 id="angular-element"><a href="#angular-element" class="headerlink" title="angular.element()"></a>angular.element()</h2><p>包裹着一部分DOM element或者是HTML字符串，把它作为一个jQuery元素来处理。</p>
+<h1 id="module-方法"><a href="#module-方法" class="headerlink" title="module 方法"></a>module 方法</h1><h2 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h2><p>定义angular模块的控制器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.controller(<span class="string">'myCtrol'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>) &#123;</div><div class="line">    ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="directive"><a href="#directive" class="headerlink" title="directive"></a>directive</h2><p>添加自定义指令。可指定使用类型。restrict默认为E A<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;div my-ng&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">var myApp = angular.module(<span class="string">"app"</span>, []);</div><div class="line">myApp.directive(<span class="string">"myNg"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">        restrict : <span class="string">"A"</span>,</div><div class="line">        template : <span class="string">"&lt;h1&gt;自定义指令!&lt;/h1&gt;"</span></div><div class="line">    &#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>restrict值：<br>E 只限元素名使用<br>A 只限属性使用<br>C 只限类名使用<br>M 只限注释使用</p>
+<h2 id="service"><a href="#service" class="headerlink" title="service"></a>service</h2><p>创建自定义方法，创建的方法可在控制器(controller)，指令(ng)，过滤器等服务中使用。<br>控制器中使用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">myApp.service(<span class="string">'myFunc'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    this.getUpperCase = <span class="keyword">function</span>(str) &#123;</div><div class="line">        <span class="built_in">return</span> str.upperCase(str);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">myApp.controller(<span class="string">'myCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>, myFunc) &#123;</div><div class="line">    <span class="variable">$scope</span>.upperStr = myFunc.getUpperCase(<span class="string">'sdfsdf'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>过滤器中使用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">app.filter(<span class="string">'myFormat'</span>,[<span class="string">'hexify'</span>, <span class="keyword">function</span>(hexify) &#123;</div><div class="line">    <span class="built_in">return</span> <span class="keyword">function</span>(x) &#123;</div><div class="line">        <span class="built_in">return</span> hexify.myFunc(x);</div><div class="line">    &#125;;</div><div class="line">&#125;]);</div><div class="line"></div><div class="line">&lt;ul&gt;</div><div class="line">    &lt;li ng-repeat=<span class="string">"x in counts"</span>&gt;&#123;&#123;x | myFormat&#125;&#125;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><h2 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h2><h2 id="factory"><a href="#factory" class="headerlink" title="factory"></a>factory</h2><h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><h2 id="provider"><a href="#provider" class="headerlink" title="provider"></a>provider</h2><h2 id="requires"><a href="#requires" class="headerlink" title="requires"></a>requires</h2><h2 id="run"><a href="#run" class="headerlink" title="run"></a>run</h2><h2 id="value"><a href="#value" class="headerlink" title="value"></a>value</h2><h1 id="命名空间对象"><a href="#命名空间对象" class="headerlink" title="命名空间对象 $"></a>命名空间对象 $</h1><p>命名空间对象须在创建controller时在参数中声明。</p>
+<h2 id="scope"><a href="#scope" class="headerlink" title="$scope"></a>$scope</h2><p>scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的纽带。<br>在html中，无需添加 $scope 前缀，即可直接使用 $scope 的属性。</p>
+<h2 id="rootScope"><a href="#rootScope" class="headerlink" title="$rootScope"></a>$rootScope</h2><p>根作用域。每个ng-app有一个根作用域 $rootScope。 这个ng-app下创建的每个controller自己的 $scope 都继承自 根作用域 $rootScope。<br>可将 $rootScope 作为参数传递，在应用中使用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.controller(<span class="string">'myCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>, <span class="variable">$rootScope</span>) &#123;</div><div class="line">    <span class="variable">$scope</span>.names = [<span class="string">"Emil"</span>, <span class="string">"Tobias"</span>, <span class="string">"Linus"</span>];</div><div class="line">    <span class="variable">$rootScope</span>.lastname = <span class="string">"Refsnes"</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="location"><a href="#location" class="headerlink" title="$location"></a>$location</h2><p>返回当前页面的 URL 地址。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.controller(<span class="string">'customersCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>, <span class="variable">$location</span>) &#123;</div><div class="line">    <span class="variable">$scope</span>.myUrl = <span class="variable">$location</span>.absUrl();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="http"><a href="#http" class="headerlink" title="$http"></a>$http</h2><p>$http 是 AngularJS 应用中最常用的服务。$http向服务器发送请求，并响应服务器传送过来的数据。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.controller(<span class="string">'myCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>, <span class="variable">$http</span>) &#123;</div><div class="line">    <span class="variable">$http</span>.get(<span class="string">"welcome.htm"</span>).then(<span class="keyword">function</span> (response) &#123;</div><div class="line">        <span class="variable">$scope</span>.myWelcome = response.data;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>其中 $http.get(url) 是用于读取服务器数据的函数。也可直接使用 .success() 做响应。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$http</span>.get(<span class="string">"welcome.htm"</span>).success(<span class="keyword">function</span> (response) &#123;</div><div class="line">    <span class="variable">$scope</span>.myWelcome = response.data;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="timeout"><a href="#timeout" class="headerlink" title="$timeout"></a>$timeout</h2><p>延时处理。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.controller(<span class="string">'myCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>, <span class="variable">$timeout</span>) &#123;</div><div class="line">    <span class="variable">$scope</span>.myHeader = <span class="string">"Hello World!"</span>;</div><div class="line">    <span class="variable">$timeout</span>(<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        <span class="variable">$scope</span>.myHeader = <span class="string">"How are you today?"</span>;</div><div class="line">    &#125;, 2000);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="interval"><a href="#interval" class="headerlink" title="$interval"></a>$interval</h2><p>计时器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.controller(<span class="string">'myCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>, <span class="variable">$interval</span>) &#123;</div><div class="line">    <span class="variable">$scope</span>.theTime = new Date().toLocaleTimeString();</div><div class="line">    <span class="variable">$interval</span>(<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        <span class="variable">$scope</span>.theTime = new Date().toLocaleTimeString();</div><div class="line">    &#125;, 1000);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="index"><a href="#index" class="headerlink" title="$index"></a>$index</h2><p>$index 为 ng-repeat 中的序号。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;table&gt;</div><div class="line">  &lt;tr ng-repeat=<span class="string">"x in names"</span>&gt;</div><div class="line">    &lt;td&gt;&#123;&#123; <span class="variable">$index</span> + 1 &#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;td&gt;&#123;&#123; x.Name &#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;td&gt;&#123;&#123; x.Country &#125;&#125;&lt;/td&gt;</div><div class="line">  &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="even-和-odd"><a href="#even-和-odd" class="headerlink" title="$even 和 $odd"></a>$even 和 $odd</h2><p>$even 为 ng-repeat 中判断为偶数。$odd 为奇数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;table&gt;</div><div class="line">    &lt;tr ng-repeat=<span class="string">"x in names"</span>&gt;</div><div class="line">        &lt;td ng-if=<span class="string">"<span class="variable">$odd</span>"</span> style=<span class="string">"background-color:#f1f1f1"</span>&gt;&#123;&#123; x.Name &#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td ng-if=<span class="string">"<span class="variable">$even</span>"</span>&gt;&#123;&#123; x.Name &#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td ng-if=<span class="string">"<span class="variable">$odd</span>"</span> style=<span class="string">"background-color:#f1f1f1"</span>&gt;&#123;&#123; x.Country &#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td ng-if=<span class="string">"<span class="variable">$even</span>"</span>&gt;&#123;&#123; x.Country &#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h1><p>AngularJS 过滤器用于转换数据。</p>
+<h2 id="currency"><a href="#currency" class="headerlink" title="currency"></a>currency</h2><p>格式化数字为货币格式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-app=<span class="string">"myApp"</span> ng-controller=<span class="string">"costCtrl"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"number"</span> ng-model=<span class="string">"quantity"</span>&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"number"</span> ng-model=<span class="string">"price"</span>&gt;</div><div class="line">    &lt;p&gt;总价 = &#123;&#123; (quantity * price) | currency &#125;&#125;&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="filter-1"><a href="#filter-1" class="headerlink" title="filter"></a>filter</h2><p>从数组项中选择一个子集。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-app=<span class="string">"myApp"</span> ng-controller=<span class="string">"namesCtrl"</span>&gt;</div><div class="line">    &lt;p&gt;&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> ng-model=<span class="string">"test"</span>&gt;&lt;/p&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">      &lt;li ng-repeat=<span class="string">"x in names | filter:test | orderBy:'country'"</span>&gt;</div><div class="line">        &#123;&#123; (x.name | uppercase) + <span class="string">', '</span> + x.country &#125;&#125;</div><div class="line">      &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="orderBy"><a href="#orderBy" class="headerlink" title="orderBy"></a>orderBy</h2><p>根据某个表达式排列数组。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-app=<span class="string">"myApp"</span> ng-controller=<span class="string">"namesCtrl"</span>&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">      &lt;li ng-repeat=<span class="string">"x in names | orderBy:'country'"</span>&gt;</div><div class="line">        &#123;&#123; x.name + <span class="string">', '</span> + x.country &#125;&#125;</div><div class="line">      &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="uppercase"><a href="#uppercase" class="headerlink" title="uppercase"></a>uppercase</h2><p>格式化字符串为大写。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-app=<span class="string">"myApp"</span> ng-controller=<span class="string">"personCtrl"</span>&gt;</div><div class="line">    &lt;p&gt;姓名为 &#123;&#123; lastName | uppercase &#125;&#125;&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="lowercase"><a href="#lowercase" class="headerlink" title="lowercase"></a>lowercase</h2><p>格式化字符串为小写。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-app=<span class="string">"myApp"</span> ng-controller=<span class="string">"personCtrl"</span>&gt;</div><div class="line">    &lt;p&gt;姓名为 &#123;&#123; lastName | lowercase &#125;&#125;&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/angular/" rel="tag">#angular</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-http/" rel="next" title="nodejs深入系列--http">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--http
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-events/" rel="prev" title="nodejs深入系列--events">
+                nodejs深入系列--events <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装部署"><span class="nav-number">1.</span> <span class="nav-text">安装部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用方法"><span class="nav-number">2.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造应用"><span class="nav-number">2.1.</span> <span class="nav-text">构造应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两种初始化方式"><span class="nav-number">2.2.</span> <span class="nav-text">两种初始化方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表达式"><span class="nav-number">3.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ng-指令"><span class="nav-number">4.</span> <span class="nav-text">ng 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-app"><span class="nav-number">4.1.</span> <span class="nav-text">ng-app</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-init"><span class="nav-number">4.2.</span> <span class="nav-text">ng-init</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-bind"><span class="nav-number">4.3.</span> <span class="nav-text">ng-bind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-model"><span class="nav-number">4.4.</span> <span class="nav-text">ng-model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-model-options"><span class="nav-number">4.5.</span> <span class="nav-text">ng-model-options</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-mousedown"><span class="nav-number">4.6.</span> <span class="nav-text">ng-mousedown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-mouseenter"><span class="nav-number">4.7.</span> <span class="nav-text">ng-mouseenter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-mouseleave"><span class="nav-number">4.8.</span> <span class="nav-text">ng-mouseleave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-mousemove"><span class="nav-number">4.9.</span> <span class="nav-text">ng-mousemove</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-mouseover"><span class="nav-number">4.10.</span> <span class="nav-text">ng-mouseover</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-non-bindable"><span class="nav-number">4.11.</span> <span class="nav-text">ng-non-bindable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-open"><span class="nav-number">4.12.</span> <span class="nav-text">ng-open</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-readonly"><span class="nav-number">4.13.</span> <span class="nav-text">ng-readonly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-selected"><span class="nav-number">4.14.</span> <span class="nav-text">ng-selected</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-srcset"><span class="nav-number">4.15.</span> <span class="nav-text">ng-srcset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-style"><span class="nav-number">4.16.</span> <span class="nav-text">ng-style</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-submit"><span class="nav-number">4.17.</span> <span class="nav-text">ng-submit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-switch"><span class="nav-number">4.18.</span> <span class="nav-text">ng-switch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-value"><span class="nav-number">4.19.</span> <span class="nav-text">ng-value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-repeat"><span class="nav-number">4.20.</span> <span class="nav-text">ng-repeat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-options"><span class="nav-number">4.21.</span> <span class="nav-text">ng-options</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-disabled"><span class="nav-number">4.22.</span> <span class="nav-text">ng-disabled</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-show"><span class="nav-number">4.23.</span> <span class="nav-text">ng-show</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-hide"><span class="nav-number">4.24.</span> <span class="nav-text">ng-hide</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-click"><span class="nav-number">4.25.</span> <span class="nav-text">ng-click</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-include"><span class="nav-number">4.26.</span> <span class="nav-text">ng-include</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-bind-html"><span class="nav-number">4.27.</span> <span class="nav-text">ng-bind-html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-bind-template"><span class="nav-number">4.28.</span> <span class="nav-text">ng-bind-template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-blur"><span class="nav-number">4.29.</span> <span class="nav-text">ng-blur</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-change"><span class="nav-number">4.30.</span> <span class="nav-text">ng-change</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-checked"><span class="nav-number">4.31.</span> <span class="nav-text">ng-checked</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-class"><span class="nav-number">4.32.</span> <span class="nav-text">ng-class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-copy"><span class="nav-number">4.33.</span> <span class="nav-text">ng-copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-cut"><span class="nav-number">4.34.</span> <span class="nav-text">ng-cut</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-dblclick"><span class="nav-number">4.35.</span> <span class="nav-text">ng-dblclick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-focus"><span class="nav-number">4.36.</span> <span class="nav-text">ng-focus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-href"><span class="nav-number">4.37.</span> <span class="nav-text">ng-href</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-if"><span class="nav-number">4.38.</span> <span class="nav-text">ng-if</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-keydown"><span class="nav-number">4.39.</span> <span class="nav-text">ng-keydown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-keypress。"><span class="nav-number">4.40.</span> <span class="nav-text">ng-keypress。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-keyup"><span class="nav-number">4.41.</span> <span class="nav-text">ng-keyup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-list"><span class="nav-number">4.42.</span> <span class="nav-text">ng-list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-csp"><span class="nav-number">4.43.</span> <span class="nav-text">ng-csp</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义指令"><span class="nav-number">5.</span> <span class="nav-text">自定义指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#angular方法"><span class="nav-number">6.</span> <span class="nav-text">angular方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-module"><span class="nav-number">6.1.</span> <span class="nav-text">angular.module()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-lowercase"><span class="nav-number">6.2.</span> <span class="nav-text">angular.lowercase()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-uppercase"><span class="nav-number">6.3.</span> <span class="nav-text">angular.uppercase()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-copy"><span class="nav-number">6.4.</span> <span class="nav-text">angular.copy()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-forEach"><span class="nav-number">6.5.</span> <span class="nav-text">angular.forEach()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-isString"><span class="nav-number">6.6.</span> <span class="nav-text">angular.isString()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-isNumber"><span class="nav-number">6.7.</span> <span class="nav-text">angular.isNumber()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-isArray"><span class="nav-number">6.8.</span> <span class="nav-text">angular.isArray()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-isDate"><span class="nav-number">6.9.</span> <span class="nav-text">angular.isDate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-isDefined"><span class="nav-number">6.10.</span> <span class="nav-text">angular.isDefined()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-isElement"><span class="nav-number">6.11.</span> <span class="nav-text">angular.isElement()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-isFunction"><span class="nav-number">6.12.</span> <span class="nav-text">angular.isFunction()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-isObject"><span class="nav-number">6.13.</span> <span class="nav-text">angular.isObject()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-isUndefined"><span class="nav-number">6.14.</span> <span class="nav-text">angular.isUndefined()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-equals"><span class="nav-number">6.15.</span> <span class="nav-text">angular.equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-fromJSON"><span class="nav-number">6.16.</span> <span class="nav-text">angular.fromJSON()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-toJSON"><span class="nav-number">6.17.</span> <span class="nav-text">angular.toJSON()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-bootstrap"><span class="nav-number">6.18.</span> <span class="nav-text">angular.bootstrap()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-element"><span class="nav-number">6.19.</span> <span class="nav-text">angular.element()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#module-方法"><span class="nav-number">7.</span> <span class="nav-text">module 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#controller"><span class="nav-number">7.1.</span> <span class="nav-text">controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#directive"><span class="nav-number">7.2.</span> <span class="nav-text">directive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service"><span class="nav-number">7.3.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config"><span class="nav-number">7.4.</span> <span class="nav-text">config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#constant"><span class="nav-number">7.5.</span> <span class="nav-text">constant</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#factory"><span class="nav-number">7.6.</span> <span class="nav-text">factory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter"><span class="nav-number">7.7.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#provider"><span class="nav-number">7.8.</span> <span class="nav-text">provider</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requires"><span class="nav-number">7.9.</span> <span class="nav-text">requires</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run"><span class="nav-number">7.10.</span> <span class="nav-text">run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value"><span class="nav-number">7.11.</span> <span class="nav-text">value</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命名空间对象"><span class="nav-number">8.</span> <span class="nav-text">命名空间对象 $</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#scope"><span class="nav-number">8.1.</span> <span class="nav-text">$scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rootScope"><span class="nav-number">8.2.</span> <span class="nav-text">$rootScope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#location"><span class="nav-number">8.3.</span> <span class="nav-text">$location</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http"><span class="nav-number">8.4.</span> <span class="nav-text">$http</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#timeout"><span class="nav-number">8.5.</span> <span class="nav-text">$timeout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interval"><span class="nav-number">8.6.</span> <span class="nav-text">$interval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index"><span class="nav-number">8.7.</span> <span class="nav-text">$index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#even-和-odd"><span class="nav-number">8.8.</span> <span class="nav-text">$even 和 $odd</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤器"><span class="nav-number">9.</span> <span class="nav-text">过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#currency"><span class="nav-number">9.1.</span> <span class="nav-text">currency</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter-1"><span class="nav-number">9.2.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orderBy"><span class="nav-number">9.3.</span> <span class="nav-text">orderBy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uppercase"><span class="nav-number">9.4.</span> <span class="nav-text">uppercase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lowercase"><span class="nav-number">9.5.</span> <span class="nav-text">lowercase</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

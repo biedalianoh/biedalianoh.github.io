@@ -1,0 +1,751 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,karma,jasmine," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Jasmine用来做单元测试，可不依赖其他任何javascript组建，即指做单元测试可直接添加jasmine到html文件中，并可在浏览器环境中执行测试。Karma自动化完成单元测试，是基于nodejs的测试过程管理工具，有一个强大的特性，可监控(watch)文件的变化并自动执行，然后通过console.log()显示结果，并且网络中任何其他设备如手机均可连接测试。jasmine和karma结合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Karma+jasmine实现自动化单元测试">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/karma-jasmine/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="Jasmine用来做单元测试，可不依赖其他任何javascript组建，即指做单元测试可直接添加jasmine到html文件中，并可在浏览器环境中执行测试。Karma自动化完成单元测试，是基于nodejs的测试过程管理工具，有一个强大的特性，可监控(watch)文件的变化并自动执行，然后通过console.log()显示结果，并且网络中任何其他设备如手机均可连接测试。jasmine和karma结合">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Karma+jasmine实现自动化单元测试">
+<meta name="twitter:description" content="Jasmine用来做单元测试，可不依赖其他任何javascript组建，即指做单元测试可直接添加jasmine到html文件中，并可在浏览器环境中执行测试。Karma自动化完成单元测试，是基于nodejs的测试过程管理工具，有一个强大的特性，可监控(watch)文件的变化并自动执行，然后通过console.log()显示结果，并且网络中任何其他设备如手机均可连接测试。jasmine和karma结合">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 使用Karma+jasmine实现自动化单元测试 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用Karma+jasmine实现自动化单元测试
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Jasmine用来做单元测试，可不依赖其他任何javascript组建，即指做单元测试可直接添加jasmine到html文件中，并可在浏览器环境中执行测试。Karma自动化完成单元测试，是基于nodejs的测试过程管理工具，有一个强大的特性，可监控(watch)文件的变化并自动执行，然后通过console.log()显示结果，并且网络中任何其他设备如手机均可连接测试。jasmine和karma结合，可实现一个自动化单元测试。</p>
+<h1 id="配置安装-Karma"><a href="#配置安装-Karma" class="headerlink" title="配置安装 Karma"></a>配置安装 Karma</h1><h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g karma</div></pre></td></tr></table></figure>
+<h2 id="配置karma-config-js"><a href="#配置karma-config-js" class="headerlink" title="配置karma.config.js"></a>配置karma.config.js</h2><p>切换到项目中想要放置配置文件的目录，通过karma init来配置karma运行环境。<br>建议选择：<br>testing framwork =&gt; jasmine<br>use Request.js =&gt; no<br>browsers automatically =&gt; Chrome<br>test files =&gt; 回车<br>previous patterns to be excluded =&gt; 回车<br>watch all the files and run the test =&gt; yes<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">karma init</div><div class="line">.</div><div class="line">.</div><div class="line">.</div></pre></td></tr></table></figure></p>
+<p>最终生成的karma.config.js对照表，也可根据自己需要进行配置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="keyword">function</span>(config) &#123;</div><div class="line">    config.set(&#123;</div><div class="line">        basePath: <span class="string">''</span>,</div><div class="line">        frameworks: [<span class="string">'jasmine'</span>],</div><div class="line">        files: [<span class="string">"*.js"</span>],</div><div class="line">        exclude: [<span class="string">"karma.config.js"</span>],</div><div class="line">        preprocessors: &#123;&#125;,</div><div class="line">        reporters: [<span class="string">'progress'</span>],</div><div class="line">        port: 9876,</div><div class="line">        colors: <span class="literal">true</span>,</div><div class="line">        <span class="built_in">log</span>Level: config.LOG_INFO,</div><div class="line">        autoWatch: <span class="literal">true</span>,</div><div class="line">        browsers: [<span class="string">'Chrome'</span>],</div><div class="line">        singleRun: <span class="literal">false</span></div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>其中files为包含所需要测试的js文件，可设置路径指明。如 ../<em>.js, ../**.</em>.js<br>需要<strong>注意</strong>的是，确保在files中引入需要使用的文件，karma会在此路径中监控并运行测试。</p>
+<h2 id="运行测试"><a href="#运行测试" class="headerlink" title="运行测试"></a>运行测试</h2><p>karma会监测文件变化，并自动化输出测试结果。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">karma start karma.config.js</div></pre></td></tr></table></figure></p>
+<p>Karma的一个很突出的特色是你可以在网络中使用任何设备连接并测试你的代码。试一下将你的手机浏览器指向Karma服务，你可以在电脑上任何一个运行的浏览器上找到这个测试的URL地址。它应该类似于： <a href="http://localhost:9876/?id=5359192。" target="_blank" rel="external">http://localhost:9876/?id=5359192。</a> 你可以将你的手机，虚拟机，或其他任何设备的浏览器指向 [你在网络上的IP地址]:9876/?id=5359192. 因为Karma是在运行一个 Node.js 实例，你的测试机器就像一个web服务器一样，会将测试发送到任何指向它的浏览器。</p>
+<h2 id="安装jasmine集成包"><a href="#安装jasmine集成包" class="headerlink" title="安装jasmine集成包"></a>安装jasmine集成包</h2><p>若在起动karma的时候，提示未找到jasmine，可单独安装karma-jasmine。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install karma-jasmine</div></pre></td></tr></table></figure></p>
+<h1 id="Jasmine单元测试"><a href="#Jasmine单元测试" class="headerlink" title="Jasmine单元测试"></a>Jasmine单元测试</h1><h2 id="jasmine安装"><a href="#jasmine安装" class="headerlink" title="jasmine安装"></a>jasmine安装</h2><ol>
+<li>可在github jasmine开源网站上选择版本<a href="https://github.com/jasmine/jasmine.github.io" target="_blank" rel="external">下载</a>。<br>下载后的zip文件中lib文件夹包含jasmine源码，可添加jasmine.js和jasmine-html.js至html文件中。</li>
+<li>使用npm来添加jasmine。<br>可参考jasmine<a href="https://www.npmjs.com/package/jasmine-node" target="_blank" rel="external">官网</a>说明，或 <a href="https://github.com/jasmine/jasmine-npm" target="_blank" rel="external">github</a>。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g jasmine</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="describe"><a href="#describe" class="headerlink" title="describe"></a>describe</h2><p>describe是jasmine的全局函数，是单元测试的开始。通常有2个参数，第一个参数为字符串，做为对此单元测试的描述，第二个参数为此单元测试要执行的操作。<br>describe中可以嵌套describe。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">describe(<span class="string">"This is an test suite"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="xdescribe"><a href="#xdescribe" class="headerlink" title="xdescribe"></a>xdescribe</h2><p>可使当前单元测试被跳过。可以方便的在项目中可以根据需要来禁用隐藏某些测试用例。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xdescribe(<span class="string">"This test suit won't be tested"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="it"><a href="#it" class="headerlink" title="it"></a>it</h2><p>it是jasmine的全局函数，用来执行具体的测试内容。通常有2个参数，第一个参数为字符串，对测试内容进行描述，第二个参数为测试内容。<br>所有it中的内容返回为true时，此单元测试describe则测试通过。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">describe(<span class="string">"This is an test suite"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    it(<span class="string">"This is an test content"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        ...</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="xit"><a href="#xit" class="headerlink" title="xit"></a>xit</h2><p>可使当前测试内容被跳过。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xit(<span class="string">"This test content won't be tested"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="expect"><a href="#expect" class="headerlink" title="expect"></a>expect</h2><p>期望值方法。参数为待测试内容所期望应该得到的值。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">it(<span class="string">"This is an test suite"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var num = 10;</div><div class="line">    expect(num).toEqual(10);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="expect方法"><a href="#expect方法" class="headerlink" title="expect方法"></a>expect方法</h2><p>expect带有多个执行测试的方法。</p>
+<h3 id="toBe"><a href="#toBe" class="headerlink" title=".toBe()"></a>.toBe()</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">describe(<span class="string">"This is an test suite"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    it(<span class="string">"The 'toBe' Matcher"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        var a = 3.6;</div><div class="line">        var b = a;</div><div class="line">        </div><div class="line">        expect(a).toBe(b);</div><div class="line">        expect(a).not.toBe(null);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="toNotBe"><a href="#toNotBe" class="headerlink" title=".toNotBe()"></a>.toNotBe()</h3><h3 id="not"><a href="#not" class="headerlink" title=".not"></a>.not</h3><h3 id="toEqual"><a href="#toEqual" class="headerlink" title=".toEqual()"></a>.toEqual()</h3><h3 id="toNotEqual"><a href="#toNotEqual" class="headerlink" title=".toNotEqual()"></a>.toNotEqual()</h3><h3 id="toBedefined"><a href="#toBedefined" class="headerlink" title=".toBedefined()"></a>.toBedefined()</h3><h3 id="toBeUndefined"><a href="#toBeUndefined" class="headerlink" title=".toBeUndefined()"></a>.toBeUndefined()</h3><h3 id="toBeNull"><a href="#toBeNull" class="headerlink" title=".toBeNull()"></a>.toBeNull()</h3><h3 id="toMatch"><a href="#toMatch" class="headerlink" title=".toMatch()"></a>.toMatch()</h3><h3 id="toNotMatch"><a href="#toNotMatch" class="headerlink" title=".toNotMatch()"></a>.toNotMatch()</h3><h3 id="toThrow"><a href="#toThrow" class="headerlink" title=".toThrow()"></a>.toThrow()</h3><h3 id="toBeTruthy"><a href="#toBeTruthy" class="headerlink" title=".toBeTruthy()"></a>.toBeTruthy()</h3><h3 id="toBeFalsy"><a href="#toBeFalsy" class="headerlink" title=".toBeFalsy()"></a>.toBeFalsy()</h3><h3 id="toBeLessThan"><a href="#toBeLessThan" class="headerlink" title=".toBeLessThan()"></a>.toBeLessThan()</h3><h3 id="toBeGreaterThan"><a href="#toBeGreaterThan" class="headerlink" title=".toBeGreaterThan()"></a>.toBeGreaterThan()</h3><h3 id="toContain"><a href="#toContain" class="headerlink" title=".toContain()"></a>.toContain()</h3><h3 id="toBeCloseTo"><a href="#toBeCloseTo" class="headerlink" title=".toBeCloseTo()"></a>.toBeCloseTo()</h3><h3 id="toHaveBeenCalled"><a href="#toHaveBeenCalled" class="headerlink" title=".toHaveBeenCalled()"></a>.toHaveBeenCalled()</h3><h3 id="toHaveBeenCalledWith"><a href="#toHaveBeenCalledWith" class="headerlink" title=".toHaveBeenCalledWith()"></a>.toHaveBeenCalledWith()</h3><h2 id="beforeEach"><a href="#beforeEach" class="headerlink" title="beforeEach"></a>beforeEach</h2><p>全局方法beforeEach在describe的每个it执行之前运行。以重置变量，避免在某个测试it中，改变了变量值，不利下一个测试it的运行。</p>
+<h2 id="afterEach"><a href="#afterEach" class="headerlink" title="afterEach"></a>afterEach</h2><p>全局方法afterEach在describe的每个it执行之后运行。以重置变量，避免在某个测试it中，改变了变量值，不利下一个测试it的运行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">describe(<span class="string">"An example of setup and teardown"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var gvar = 0;</div><div class="line">    beforeEach(<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        gvar = 3.5;</div><div class="line">        gvar++;</div><div class="line">    &#125;);</div><div class="line">    afterEach(<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        gvar = 0;</div><div class="line">    &#125;);</div><div class="line">    it(<span class="string">"after setup, gvar has a new value"</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        expect(gvar).toEqual(4.5);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/karma/" rel="tag">#karma</a>
+          
+            <a href="/tags/jasmine/" rel="tag">#jasmine</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/lodash/" rel="next" title="Lodash实用中文api">
+                <i class="fa fa-chevron-left"></i> Lodash实用中文api
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/karma-jasmine-angualr/" rel="prev" title="Angular自动化单元测试">
+                Angular自动化单元测试 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置安装-Karma"><span class="nav-number">1.</span> <span class="nav-text">配置安装 Karma</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境安装"><span class="nav-number">1.1.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置karma-config-js"><span class="nav-number">1.2.</span> <span class="nav-text">配置karma.config.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行测试"><span class="nav-number">1.3.</span> <span class="nav-text">运行测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装jasmine集成包"><span class="nav-number">1.4.</span> <span class="nav-text">安装jasmine集成包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jasmine单元测试"><span class="nav-number">2.</span> <span class="nav-text">Jasmine单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jasmine安装"><span class="nav-number">2.1.</span> <span class="nav-text">jasmine安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#describe"><span class="nav-number">2.2.</span> <span class="nav-text">describe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xdescribe"><span class="nav-number">2.3.</span> <span class="nav-text">xdescribe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#it"><span class="nav-number">2.4.</span> <span class="nav-text">it</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xit"><span class="nav-number">2.5.</span> <span class="nav-text">xit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expect"><span class="nav-number">2.6.</span> <span class="nav-text">expect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expect方法"><span class="nav-number">2.7.</span> <span class="nav-text">expect方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#toBe"><span class="nav-number">2.7.1.</span> <span class="nav-text">.toBe()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toNotBe"><span class="nav-number">2.7.2.</span> <span class="nav-text">.toNotBe()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#not"><span class="nav-number">2.7.3.</span> <span class="nav-text">.not</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toEqual"><span class="nav-number">2.7.4.</span> <span class="nav-text">.toEqual()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toNotEqual"><span class="nav-number">2.7.5.</span> <span class="nav-text">.toNotEqual()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toBedefined"><span class="nav-number">2.7.6.</span> <span class="nav-text">.toBedefined()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toBeUndefined"><span class="nav-number">2.7.7.</span> <span class="nav-text">.toBeUndefined()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toBeNull"><span class="nav-number">2.7.8.</span> <span class="nav-text">.toBeNull()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toMatch"><span class="nav-number">2.7.9.</span> <span class="nav-text">.toMatch()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toNotMatch"><span class="nav-number">2.7.10.</span> <span class="nav-text">.toNotMatch()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toThrow"><span class="nav-number">2.7.11.</span> <span class="nav-text">.toThrow()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toBeTruthy"><span class="nav-number">2.7.12.</span> <span class="nav-text">.toBeTruthy()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toBeFalsy"><span class="nav-number">2.7.13.</span> <span class="nav-text">.toBeFalsy()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toBeLessThan"><span class="nav-number">2.7.14.</span> <span class="nav-text">.toBeLessThan()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toBeGreaterThan"><span class="nav-number">2.7.15.</span> <span class="nav-text">.toBeGreaterThan()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toContain"><span class="nav-number">2.7.16.</span> <span class="nav-text">.toContain()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toBeCloseTo"><span class="nav-number">2.7.17.</span> <span class="nav-text">.toBeCloseTo()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toHaveBeenCalled"><span class="nav-number">2.7.18.</span> <span class="nav-text">.toHaveBeenCalled()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toHaveBeenCalledWith"><span class="nav-number">2.7.19.</span> <span class="nav-text">.toHaveBeenCalledWith()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#beforeEach"><span class="nav-number">2.8.</span> <span class="nav-text">beforeEach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#afterEach"><span class="nav-number">2.9.</span> <span class="nav-text">afterEach</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

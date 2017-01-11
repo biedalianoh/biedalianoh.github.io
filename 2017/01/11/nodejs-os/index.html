@@ -1,0 +1,774 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs,os," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="nodejs深入系列之os">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs深入系列--os">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/nodejs-os/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="nodejs深入系列之os">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs深入系列--os">
+<meta name="twitter:description" content="nodejs深入系列之os">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> nodejs深入系列--os | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nodejs深入系列--os
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="os方法"><a href="#os方法" class="headerlink" title="os方法"></a>os方法</h1><p>os模块提供了一些操作系统相关的实用方法。</p>
+<h2 id="os-EOL"><a href="#os-EOL" class="headerlink" title="os.EOL"></a>os.EOL</h2><p>定义操作系统换行符。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">\n          //POSIX</div><div class="line">\r\n        //Windows</div></pre></td></tr></table></figure></p>
+<h2 id="os-arch"><a href="#os-arch" class="headerlink" title="os.arch()"></a>os.arch()</h2><p>操作系统的cpu架构。<br>可能的值为：’arm’, ‘arm64’, ‘ia32’, ‘mips’, ‘mipsel’, ‘ppc’, ‘ppc64’, ‘s390’, ‘s390x’, ‘x32’, ‘x64’, and ‘x86’<br>等同于 process.arch</p>
+<h2 id="os-constants"><a href="#os-constants" class="headerlink" title="os.constants"></a>os.constants</h2><p>返回包含错误代码、进程信号等常用操作系统特定常量的对象</p>
+<h2 id="os-cpus"><a href="#os-cpus" class="headerlink" title="os.cpus()"></a>os.cpus()</h2><p>返回每个cpu或者核心的安装信息。如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &#123;</div><div class="line">    model: <span class="string">'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz'</span>,</div><div class="line">    speed: 2926,</div><div class="line">    <span class="built_in">times</span>: &#123;</div><div class="line">      user: 252020,</div><div class="line">      nice: 0,</div><div class="line">      sys: 30340,</div><div class="line">      idle: 1070356870,</div><div class="line">      irq: 0</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    model: <span class="string">'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz'</span>,</div><div class="line">    speed: 2926,</div><div class="line">    <span class="built_in">times</span>: &#123;</div><div class="line">      user: 306960,</div><div class="line">      nice: 0,</div><div class="line">      sys: 26980,</div><div class="line">      idle: 1071569080,</div><div class="line">      irq: 0</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h2 id="os-endianness"><a href="#os-endianness" class="headerlink" title="os.endianness()"></a>os.endianness()</h2><h2 id="os-freemem"><a href="#os-freemem" class="headerlink" title="os.freemem()"></a>os.freemem()</h2><h2 id="os-homedir"><a href="#os-homedir" class="headerlink" title="os.homedir()"></a>os.homedir()</h2><h2 id="os-hostname"><a href="#os-hostname" class="headerlink" title="os.hostname()"></a>os.hostname()</h2><h2 id="os-loadavg"><a href="#os-loadavg" class="headerlink" title="os.loadavg()"></a>os.loadavg()</h2><h2 id="os-networkInterfaces"><a href="#os-networkInterfaces" class="headerlink" title="os.networkInterfaces()"></a>os.networkInterfaces()</h2><h2 id="os-platform"><a href="#os-platform" class="headerlink" title="os.platform()"></a>os.platform()</h2><h2 id="os-release"><a href="#os-release" class="headerlink" title="os.release()"></a>os.release()</h2><h2 id="os-tmpdir"><a href="#os-tmpdir" class="headerlink" title="os.tmpdir()"></a>os.tmpdir()</h2><h2 id="os-totalmem"><a href="#os-totalmem" class="headerlink" title="os.totalmem()"></a>os.totalmem()</h2><h2 id="os-type"><a href="#os-type" class="headerlink" title="os.type()"></a>os.type()</h2><h2 id="os-uptime"><a href="#os-uptime" class="headerlink" title="os.uptime()"></a>os.uptime()</h2><h2 id="os-userInfo-options"><a href="#os-userInfo-options" class="headerlink" title="os.userInfo([options])"></a>os.userInfo([options])</h2><h2 id="OS-Constants"><a href="#OS-Constants" class="headerlink" title="OS Constants"></a>OS Constants</h2><h1 id="os常量"><a href="#os常量" class="headerlink" title="os常量"></a>os常量</h1><h2 id="Signal-Constants"><a href="#Signal-Constants" class="headerlink" title="Signal Constants"></a>Signal Constants</h2><p>os.constants输出的常量：  (不是所有的操作系统都可用)</p>
+<ol>
+<li>SIGHUP</li>
+<li>SIGINT</li>
+<li>SIGQUIT</li>
+<li>SIGILL</li>
+<li>SIGTRAP</li>
+<li>SIGABRT</li>
+<li>SIGIOT</li>
+<li>SIGBUS</li>
+<li>SIGFPE</li>
+<li>SIGKILL</li>
+<li>SIGUSR1 SIGUSR2</li>
+<li>SIGSEGV</li>
+<li>SIGPIPE</li>
+<li>SIGALRM</li>
+<li>SIGTERM</li>
+<li>SIGCHLD</li>
+<li>SIGSTKFLT</li>
+<li>SIGCONT</li>
+<li>SIGSTOP</li>
+<li>SIGTSTP</li>
+<li>SIGBREAK</li>
+<li>SIGTTIN</li>
+<li>SIGTTOU</li>
+<li>SIGURG</li>
+<li>SIGXCPU</li>
+<li>SIGXFSZ</li>
+<li>SIGVTALRM</li>
+<li>SIGPROF</li>
+<li>SIGWINCH</li>
+<li>SIGIO</li>
+<li>SIGPOLL</li>
+<li>SIGLOST</li>
+<li>SIGPWR</li>
+<li>SIGINFO</li>
+<li>SIGSYS</li>
+<li>SIGUNUSED</li>
+</ol>
+<h1 id="Error-常量"><a href="#Error-常量" class="headerlink" title="Error 常量"></a>Error 常量</h1><p>E2BIG<br>EACCES<br>EADDRINUSE<br>EADDRNOTAVAIL<br>EAFNOSUPPORT<br>EAGAIN<br>EALREADY<br>EBADF<br>EBADMSG<br>EBUSY<br>ECANCELED<br>ECHILD<br>ECONNABORTED<br>ECONNREFUSED<br>ECONNRESET<br>EDEADLK<br>EDESTADDRREQ<br>EDOM<br>EDQUOT<br>EEXIST<br>EFAULT<br>EFBIG<br>EHOSTUNREACH<br>EIDRM<br>EILSEQ<br>EINPROGRESS<br>EINTR<br>EINVAL<br>EIO<br>EISCONN<br>EISDIR<br>ELOOP<br>EMFILE<br>EMLINK<br>EMSGSIZE<br>EMULTIHOP<br>ENAMETOOLONG<br>ENETDOWN<br>ENETRESET<br>ENETUNREACH<br>ENFILE<br>ENOBUFS<br>ENODATA<br>ENODEV<br>ENOENT<br>ENOEXEC<br>ENOLCK<br>ENOLINK<br>ENOMEM<br>ENOMSG<br>ENOPROTOOPT<br>ENOSPC<br>ENOSR<br>ENOSTR<br>ENOSYS<br>ENOTCONN<br>ENOTDIR<br>ENOTEMPTY<br>ENOTSOCK<br>ENOTSUP<br>ENOTTY<br>ENXIO<br>EOPNOTSUPP<br>EOVERFLOW<br>EPERM<br>EPIPE<br>EPROTO<br>EPROTONOSUPPORT<br>EPROTOTYPE<br>ERANGE<br>EROFS<br>ESPIPE<br>ESRCH<br>ESTALE<br>ETIME<br>ETIMEDOUT<br>ETXTBSY<br>EWOULDBLOCK<br>EXDEV</p>
+<h1 id="windows特定Error常量"><a href="#windows特定Error常量" class="headerlink" title="windows特定Error常量"></a>windows特定Error常量</h1><h1 id="libuv常量"><a href="#libuv常量" class="headerlink" title="libuv常量"></a>libuv常量</h1>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/os/" rel="tag">#os</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-path/" rel="next" title="nodejs深入系列--path">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--path
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-net/" rel="prev" title="nodejs深入系列--net">
+                nodejs深入系列--net <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#os方法"><span class="nav-number">1.</span> <span class="nav-text">os方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#os-EOL"><span class="nav-number">1.1.</span> <span class="nav-text">os.EOL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-arch"><span class="nav-number">1.2.</span> <span class="nav-text">os.arch()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-constants"><span class="nav-number">1.3.</span> <span class="nav-text">os.constants</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-cpus"><span class="nav-number">1.4.</span> <span class="nav-text">os.cpus()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-endianness"><span class="nav-number">1.5.</span> <span class="nav-text">os.endianness()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-freemem"><span class="nav-number">1.6.</span> <span class="nav-text">os.freemem()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-homedir"><span class="nav-number">1.7.</span> <span class="nav-text">os.homedir()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-hostname"><span class="nav-number">1.8.</span> <span class="nav-text">os.hostname()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-loadavg"><span class="nav-number">1.9.</span> <span class="nav-text">os.loadavg()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-networkInterfaces"><span class="nav-number">1.10.</span> <span class="nav-text">os.networkInterfaces()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-platform"><span class="nav-number">1.11.</span> <span class="nav-text">os.platform()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-release"><span class="nav-number">1.12.</span> <span class="nav-text">os.release()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-tmpdir"><span class="nav-number">1.13.</span> <span class="nav-text">os.tmpdir()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-totalmem"><span class="nav-number">1.14.</span> <span class="nav-text">os.totalmem()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-type"><span class="nav-number">1.15.</span> <span class="nav-text">os.type()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-uptime"><span class="nav-number">1.16.</span> <span class="nav-text">os.uptime()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-userInfo-options"><span class="nav-number">1.17.</span> <span class="nav-text">os.userInfo([options])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OS-Constants"><span class="nav-number">1.18.</span> <span class="nav-text">OS Constants</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#os常量"><span class="nav-number">2.</span> <span class="nav-text">os常量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Signal-Constants"><span class="nav-number">2.1.</span> <span class="nav-text">Signal Constants</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Error-常量"><span class="nav-number">3.</span> <span class="nav-text">Error 常量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#windows特定Error常量"><span class="nav-number">4.</span> <span class="nav-text">windows特定Error常量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#libuv常量"><span class="nav-number">5.</span> <span class="nav-text">libuv常量</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

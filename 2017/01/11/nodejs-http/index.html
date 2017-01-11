@@ -1,0 +1,782 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs,http," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="nodejs深入系列之http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs深入系列--http">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/nodejs-http/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="nodejs深入系列之http">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs深入系列--http">
+<meta name="twitter:description" content="nodejs深入系列之http">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> nodejs深入系列--http | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nodejs深入系列--http
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="http-Agent"><a href="#http-Agent" class="headerlink" title="http.Agent"></a>http.Agent</h1><p>用于支持socket和Connection: keep-alive。</p>
+<h2 id="new-http-Agent-options"><a href="#new-http-Agent-options" class="headerlink" title="new http.Agent[options]"></a>new http.Agent[options]</h2><p>示例：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const http = require(<span class="string">'http'</span>);</div><div class="line">var keepAliveAgent = new http.Agent(&#123;keepAlive: <span class="literal">true</span>&#125;);</div><div class="line">options.agent = keepAliveAgent;</div><div class="line">http.request(options, onResponseCallback);</div></pre></td></tr></table></figure></p>
+<h3 id="options"><a href="#options" class="headerlink" title="options"></a>options</h3><ol>
+<li>keepAlive<br>保持链接池。默认为false</li>
+<li>keepAliveMsecs<br>发送TCP保持连接包的频率。当keepAlive为true时使用。默认为1000</li>
+<li>maxSockets<br>每个host能连接的最大sockets数量。默认为Infinity</li>
+<li>maxFreeSockets<br>空闲状态能打开的最大sockets数。当keepAlive为true时使用。默认为256<h2 id="globalAgent"><a href="#globalAgent" class="headerlink" title="globalAgent"></a>globalAgent</h2>Agent有一个全局实例globalAgent被用在所有的HTTP客户端请求。<h2 id="agent-createConnection-option-callback"><a href="#agent-createConnection-option-callback" class="headerlink" title="agent.createConnection(option[, callback])"></a>agent.createConnection(option[, callback])</h2>和net.createConnection()用法相同。<h2 id="agent-destroy"><a href="#agent-destroy" class="headerlink" title="agent.destroy()"></a>agent.destroy()</h2>摧毁所有正在使用的sockets<h2 id="agent-freeSockets"><a href="#agent-freeSockets" class="headerlink" title="agent.freeSockets"></a>agent.freeSockets</h2>当处于keepAlive状态时，显示所有空闲状态的sockets。不要修改。<h2 id="agent-getName-options"><a href="#agent-getName-options" class="headerlink" title="agent.getName(options)"></a>agent.getName(options)</h2>options可选择：</li>
+<li>host<string></string></li>
+<li>port<number></number></li>
+<li>localAddress<string><h2 id="agent-maxFreeSockets"><a href="#agent-maxFreeSockets" class="headerlink" title="agent.maxFreeSockets"></a>agent.maxFreeSockets</h2>获取空闲状态能打开的最大sockets数。<h2 id="agent-maxSockets"><a href="#agent-maxSockets" class="headerlink" title="agent.maxSockets"></a>agent.maxSockets</h2>获取每个host能连接的最大sockets数量。<h2 id="agent-requests"><a href="#agent-requests" class="headerlink" title="agent.requests"></a>agent.requests</h2>显示尚未分配给sokects的的请求队列。不要修改。<h2 id="agent-sockets"><a href="#agent-sockets" class="headerlink" title="agent.sockets"></a>agent.sockets</h2>显示正在被使用中的sockets列表。不要修改。</string></li>
+</ol>
+<h1 id="http-ClientRequest"><a href="#http-ClientRequest" class="headerlink" title="http.ClientRequest"></a>http.ClientRequest</h1><p>使用http.request()时返回的实例。代表一个正在进行的请求。<br>http.ClientRequest实例有两个参数：<br>http.request(options, function(res) {})</p>
+<ol>
+<li><p>options<br>设置host，port等</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var options = &#123;</div><div class="line">  port: 1337,</div><div class="line">  hostname: <span class="string">'127.0.0.1'</span>,</div><div class="line">  method: <span class="string">'CONNECT'</span>,</div><div class="line">  path: <span class="string">'www.baidu.com:80'</span></div><div class="line">&#125;</div><div class="line">var req = http.request(options);</div></pre></td></tr></table></figure>
+</li>
+<li><p>function(res) {}</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http.request(options,<span class="keyword">function</span>(res)&#123;</div><div class="line">  res.setEncoding(<span class="string">'utf8'</span>)  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>http.ClientRequest能响应以下方法：</p>
+<h2 id="abort"><a href="#abort" class="headerlink" title="abort"></a>abort</h2><p>当客户端被abort时，会emit触发http.ClientRequest实例的abort方法。只有第一次的时候会触发。</p>
+<h2 id="aborted"><a href="#aborted" class="headerlink" title="aborted"></a>aborted</h2><p>当服务端abort时，会emit触发。</p>
+<h2 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h2><p>服务端响应请求时每次都会触发此方法。如果没有去监听此方法，则客户端会关闭连接。<br>拥有response，socket，head参数。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var options = &#123;</div><div class="line">  port: 1337,</div><div class="line">  hostname: <span class="string">'127.0.0.1'</span>,</div><div class="line">  method: <span class="string">'CONNECT'</span>,</div><div class="line">  path: <span class="string">'www.baidu.com:80'</span></div><div class="line">&#125;</div><div class="line">var req = http.request(options);</div><div class="line">req.end();</div><div class="line">req.on(<span class="string">'connect'</span>, (res, socket, head) =&gt; &#123;</div><div class="line">  console.log(<span class="string">'got connected!'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h2><p>当服务端发送 ‘100 Continue’ 的http response时触发。这种是在请求中包含 ‘Expect: 100-continue’ 时会出现。</p>
+<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p>当响应请求时会触发此方法。此方法只会被触发一次。</p>
+<h2 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h2><p>当一哥socket被分配到请求时触发。</p>
+<h2 id="upgrade"><a href="#upgrade" class="headerlink" title="upgrade"></a>upgrade</h2><p>当服务端响应一个带有upgrade的请求时触发。若没有监听此方法，则带有upgrade header的请求会被关闭。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">// Create an HTTP server</div><div class="line">var srv = http.createServer( (req, res) =&gt; &#123;</div><div class="line">  res.writeHead(200, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>&#125;);</div><div class="line">  res.end(<span class="string">'okay'</span>);</div><div class="line">&#125;);</div><div class="line">srv.on(<span class="string">'upgrade'</span>, (req, socket, head) =&gt; &#123;</div><div class="line">  socket.write(<span class="string">'HTTP/1.1 101 Web Socket Protocol Handshake\r\n'</span> +</div><div class="line">               <span class="string">'Upgrade: WebSocket\r\n'</span> +</div><div class="line">               <span class="string">'Connection: Upgrade\r\n'</span> +</div><div class="line">               <span class="string">'\r\n'</span>);</div><div class="line"></div><div class="line">  socket.pipe(socket); // <span class="built_in">echo</span> back</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">// now that server is running</div><div class="line">srv.listen(1337, <span class="string">'127.0.0.1'</span>, () =&gt; &#123;</div><div class="line">  // make a request</div><div class="line">  var options = &#123;</div><div class="line">    port: 1337,</div><div class="line">    hostname: <span class="string">'127.0.0.1'</span>,</div><div class="line">    headers: &#123;</div><div class="line">      <span class="string">'Connection'</span>: <span class="string">'Upgrade'</span>,</div><div class="line">      <span class="string">'Upgrade'</span>: <span class="string">'websocket'</span></div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">  var req = http.request(options);</div><div class="line">  req.end();</div><div class="line">  req.on(<span class="string">'upgrade'</span>, (res, socket, upgradeHead) =&gt; &#123;</div><div class="line">    console.log(<span class="string">'got upgraded!'</span>);</div><div class="line">    socket.end();</div><div class="line">    process.exit(0);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="request-abort"><a href="#request-abort" class="headerlink" title="request.abort()"></a>request.abort()</h2><h2 id="request-end-data-encoding-callback"><a href="#request-end-data-encoding-callback" class="headerlink" title="request.end([data][, encoding][, callback])"></a>request.end([data][, encoding][, callback])</h2><h2 id="request-flushHeaders"><a href="#request-flushHeaders" class="headerlink" title="request.flushHeaders()"></a>request.flushHeaders()</h2><h2 id="request-setNoDelay-noDelay"><a href="#request-setNoDelay-noDelay" class="headerlink" title="request.setNoDelay([noDelay])"></a>request.setNoDelay([noDelay])</h2><h2 id="request-setSocketKeepAlive-enable-initialDelay"><a href="#request-setSocketKeepAlive-enable-initialDelay" class="headerlink" title="request.setSocketKeepAlive([enable][, initialDelay])"></a>request.setSocketKeepAlive([enable][, initialDelay])</h2><h2 id="request-setTimeout-timeout-callback"><a href="#request-setTimeout-timeout-callback" class="headerlink" title="request.setTimeout(timeout[, callback])"></a>request.setTimeout(timeout[, callback])</h2><h2 id="request-write-chunk-encoding-callback"><a href="#request-write-chunk-encoding-callback" class="headerlink" title="request.write(chunk[, encoding][, callback])"></a>request.write(chunk[, encoding][, callback])</h2><h1 id="http-Server"><a href="#http-Server" class="headerlink" title="http.Server"></a>http.Server</h1><p>http.Server继承自net.Server。并且添加了以下方法：</p>
+<h2 id="checkContinue"><a href="#checkContinue" class="headerlink" title="checkContinue"></a>checkContinue</h2><h2 id="checkExpectation"><a href="#checkExpectation" class="headerlink" title="checkExpectation"></a>checkExpectation</h2><h2 id="clientError"><a href="#clientError" class="headerlink" title="clientError"></a>clientError</h2><h2 id="close"><a href="#close" class="headerlink" title="close"></a>close</h2><h2 id="connect-1"><a href="#connect-1" class="headerlink" title="connect"></a>connect</h2><h2 id="connection"><a href="#connection" class="headerlink" title="connection"></a>connection</h2><h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><h2 id="upgrade-1"><a href="#upgrade-1" class="headerlink" title="upgrade"></a>upgrade</h2><h2 id="server-close-callback"><a href="#server-close-callback" class="headerlink" title="server.close([callback])"></a>server.close([callback])</h2><h2 id="server-listen-handle-callback"><a href="#server-listen-handle-callback" class="headerlink" title="server.listen(handle[, callback])"></a>server.listen(handle[, callback])</h2><h2 id="server-listen-path-callback"><a href="#server-listen-path-callback" class="headerlink" title="server.listen(path[, callback])"></a>server.listen(path[, callback])</h2><h2 id="server-listen-port-hostname-backlog-callback"><a href="#server-listen-port-hostname-backlog-callback" class="headerlink" title="server.listen([port][, hostname][, backlog][, callback])"></a>server.listen([port][, hostname][, backlog][, callback])</h2><h2 id="server-listening"><a href="#server-listening" class="headerlink" title="server.listening"></a>server.listening</h2><h2 id="server-maxHeadersCount"><a href="#server-maxHeadersCount" class="headerlink" title="server.maxHeadersCount"></a>server.maxHeadersCount</h2><h2 id="server-setTimeout-msecs-callback"><a href="#server-setTimeout-msecs-callback" class="headerlink" title="server.setTimeout(msecs, callback)"></a>server.setTimeout(msecs, callback)</h2><h2 id="server-timeout"><a href="#server-timeout" class="headerlink" title="server.timeout"></a>server.timeout</h2><h1 id="http-ServerResponse"><a href="#http-ServerResponse" class="headerlink" title="http.ServerResponse"></a>http.ServerResponse</h1><p>http.ServerResponse被http server所创建，当作request方法的第二个参数。<br>拥有以下方法：</p>
+<h2 id="close-1"><a href="#close-1" class="headerlink" title="close"></a>close</h2><h2 id="finish"><a href="#finish" class="headerlink" title="finish"></a>finish</h2><h2 id="response-addTrailers-headers"><a href="#response-addTrailers-headers" class="headerlink" title="response.addTrailers(headers)"></a>response.addTrailers(headers)</h2><h2 id="response-end-data-encoding-callback"><a href="#response-end-data-encoding-callback" class="headerlink" title="response.end([data][, encoding][, callback])"></a>response.end([data][, encoding][, callback])</h2><h2 id="response-finished"><a href="#response-finished" class="headerlink" title="response.finished"></a>response.finished</h2><h2 id="response-getHeader-name"><a href="#response-getHeader-name" class="headerlink" title="response.getHeader(name)"></a>response.getHeader(name)</h2><h2 id="response-headersSent"><a href="#response-headersSent" class="headerlink" title="response.headersSent"></a>response.headersSent</h2><h2 id="response-removeHeader-name"><a href="#response-removeHeader-name" class="headerlink" title="response.removeHeader(name)"></a>response.removeHeader(name)</h2><h2 id="response-sendDate"><a href="#response-sendDate" class="headerlink" title="response.sendDate"></a>response.sendDate</h2><h2 id="response-setHeader-name-value"><a href="#response-setHeader-name-value" class="headerlink" title="response.setHeader(name, value)"></a>response.setHeader(name, value)</h2><h2 id="response-setTimeout-msecs-callback"><a href="#response-setTimeout-msecs-callback" class="headerlink" title="response.setTimeout(msecs, callback)"></a>response.setTimeout(msecs, callback)</h2><h2 id="response-statusCode"><a href="#response-statusCode" class="headerlink" title="response.statusCode"></a>response.statusCode</h2><h2 id="response-statusMessage"><a href="#response-statusMessage" class="headerlink" title="response.statusMessage"></a>response.statusMessage</h2><h2 id="response-write-chunk-encoding-callback"><a href="#response-write-chunk-encoding-callback" class="headerlink" title="response.write(chunk[, encoding][, callback])"></a>response.write(chunk[, encoding][, callback])</h2><h2 id="response-writeContinue"><a href="#response-writeContinue" class="headerlink" title="response.writeContinue()"></a>response.writeContinue()</h2><h2 id="response-writeHead-statusCode-statusMessage-headers"><a href="#response-writeHead-statusCode-statusMessage-headers" class="headerlink" title="response.writeHead(statusCode[, statusMessage][, headers])"></a>response.writeHead(statusCode[, statusMessage][, headers])</h2><h1 id="http-IncomingMessage"><a href="#http-IncomingMessage" class="headerlink" title="http.IncomingMessage"></a>http.IncomingMessage</h1><p>http.IncomingMessage被http.Server或http.ClientRequest所创建，当作request和response方法的第一个参数。<br>可用于访问reponse status, headers, data.<br>拥有以下方法：</p>
+<h2 id="aborted-1"><a href="#aborted-1" class="headerlink" title="aborted"></a>aborted</h2><h2 id="close-2"><a href="#close-2" class="headerlink" title="close"></a>close</h2><h2 id="message-destroy-error"><a href="#message-destroy-error" class="headerlink" title="message.destroy([error])"></a>message.destroy([error])</h2><h2 id="message-headers"><a href="#message-headers" class="headerlink" title="message.headers"></a>message.headers</h2><h2 id="message-httpVersion"><a href="#message-httpVersion" class="headerlink" title="message.httpVersion"></a>message.httpVersion</h2><h2 id="message-method"><a href="#message-method" class="headerlink" title="message.method"></a>message.method</h2><h2 id="message-rawHeaders"><a href="#message-rawHeaders" class="headerlink" title="message.rawHeaders"></a>message.rawHeaders</h2><h2 id="message-rawTrailers"><a href="#message-rawTrailers" class="headerlink" title="message.rawTrailers"></a>message.rawTrailers</h2><h2 id="message-setTimeout-msecs-callback"><a href="#message-setTimeout-msecs-callback" class="headerlink" title="message.setTimeout(msecs, callback)"></a>message.setTimeout(msecs, callback)</h2><h2 id="message-statusCode"><a href="#message-statusCode" class="headerlink" title="message.statusCode"></a>message.statusCode</h2><h2 id="message-statusMessage"><a href="#message-statusMessage" class="headerlink" title="message.statusMessage"></a>message.statusMessage</h2><h2 id="message-socket"><a href="#message-socket" class="headerlink" title="message.socket"></a>message.socket</h2><h2 id="message-trailers"><a href="#message-trailers" class="headerlink" title="message.trailers"></a>message.trailers</h2><h2 id="message-url"><a href="#message-url" class="headerlink" title="message.url"></a>message.url</h2><h1 id="http-METHODS"><a href="#http-METHODS" class="headerlink" title="http.METHODS"></a>http.METHODS</h1><p>http 的方法列表</p>
+<h1 id="http-STATUS-CODES"><a href="#http-STATUS-CODES" class="headerlink" title="http.STATUS_CODES"></a>http.STATUS_CODES</h1><p>http 状态码集合</p>
+<h1 id="http-createServer-requestListener"><a href="#http-createServer-requestListener" class="headerlink" title="http.createServer([requestListener])"></a>http.createServer([requestListener])</h1><p>返回一个新的http.Server实例</p>
+<h1 id="http-get-options-callback"><a href="#http-get-options-callback" class="headerlink" title="http.get(options[, callback])"></a>http.get(options[, callback])</h1><p>返回一个新的http.ClientRequest实例</p>
+<h1 id="http-globalAgent"><a href="#http-globalAgent" class="headerlink" title="http.globalAgent"></a>http.globalAgent</h1><p>Agent全局实例，用于所有http 客户端请求。</p>
+<h1 id="http-request-options-callback"><a href="#http-request-options-callback" class="headerlink" title="http.request(options[, callback])"></a>http.request(options[, callback])</h1><p>返回一个新的http.ClientRequest实例<br>options:</p>
+<ol>
+<li>protocol</li>
+<li>host</li>
+<li>hostname</li>
+<li>family</li>
+<li>port</li>
+<li>localAddress</li>
+<li>socketPath</li>
+<li>method</li>
+<li>path</li>
+<li>headers</li>
+<li>auth</li>
+<li>agent</li>
+<li>createConnection</li>
+<li>timeout</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/http/" rel="tag">#http</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-https/" rel="next" title="nodejs深入系列--https">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--https
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/angular/" rel="prev" title="Angular 使用笔记">
+                Angular 使用笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#http-Agent"><span class="nav-number">1.</span> <span class="nav-text">http.Agent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#new-http-Agent-options"><span class="nav-number">1.1.</span> <span class="nav-text">new http.Agent[options]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#options"><span class="nav-number">1.1.1.</span> <span class="nav-text">options</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#globalAgent"><span class="nav-number">1.2.</span> <span class="nav-text">globalAgent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-createConnection-option-callback"><span class="nav-number">1.3.</span> <span class="nav-text">agent.createConnection(option[, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-destroy"><span class="nav-number">1.4.</span> <span class="nav-text">agent.destroy()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-freeSockets"><span class="nav-number">1.5.</span> <span class="nav-text">agent.freeSockets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-getName-options"><span class="nav-number">1.6.</span> <span class="nav-text">agent.getName(options)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-maxFreeSockets"><span class="nav-number">1.7.</span> <span class="nav-text">agent.maxFreeSockets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-maxSockets"><span class="nav-number">1.8.</span> <span class="nav-text">agent.maxSockets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-requests"><span class="nav-number">1.9.</span> <span class="nav-text">agent.requests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-sockets"><span class="nav-number">1.10.</span> <span class="nav-text">agent.sockets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-ClientRequest"><span class="nav-number">2.</span> <span class="nav-text">http.ClientRequest</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#abort"><span class="nav-number">2.1.</span> <span class="nav-text">abort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aborted"><span class="nav-number">2.2.</span> <span class="nav-text">aborted</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#connect"><span class="nav-number">2.3.</span> <span class="nav-text">connect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#continue"><span class="nav-number">2.4.</span> <span class="nav-text">continue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response"><span class="nav-number">2.5.</span> <span class="nav-text">response</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket"><span class="nav-number">2.6.</span> <span class="nav-text">socket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#upgrade"><span class="nav-number">2.7.</span> <span class="nav-text">upgrade</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request-abort"><span class="nav-number">2.8.</span> <span class="nav-text">request.abort()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request-end-data-encoding-callback"><span class="nav-number">2.9.</span> <span class="nav-text">request.end([data][, encoding][, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request-flushHeaders"><span class="nav-number">2.10.</span> <span class="nav-text">request.flushHeaders()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request-setNoDelay-noDelay"><span class="nav-number">2.11.</span> <span class="nav-text">request.setNoDelay([noDelay])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request-setSocketKeepAlive-enable-initialDelay"><span class="nav-number">2.12.</span> <span class="nav-text">request.setSocketKeepAlive([enable][, initialDelay])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request-setTimeout-timeout-callback"><span class="nav-number">2.13.</span> <span class="nav-text">request.setTimeout(timeout[, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request-write-chunk-encoding-callback"><span class="nav-number">2.14.</span> <span class="nav-text">request.write(chunk[, encoding][, callback])</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-Server"><span class="nav-number">3.</span> <span class="nav-text">http.Server</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#checkContinue"><span class="nav-number">3.1.</span> <span class="nav-text">checkContinue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checkExpectation"><span class="nav-number">3.2.</span> <span class="nav-text">checkExpectation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clientError"><span class="nav-number">3.3.</span> <span class="nav-text">clientError</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#close"><span class="nav-number">3.4.</span> <span class="nav-text">close</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#connect-1"><span class="nav-number">3.5.</span> <span class="nav-text">connect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#connection"><span class="nav-number">3.6.</span> <span class="nav-text">connection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request"><span class="nav-number">3.7.</span> <span class="nav-text">request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#upgrade-1"><span class="nav-number">3.8.</span> <span class="nav-text">upgrade</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-close-callback"><span class="nav-number">3.9.</span> <span class="nav-text">server.close([callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-listen-handle-callback"><span class="nav-number">3.10.</span> <span class="nav-text">server.listen(handle[, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-listen-path-callback"><span class="nav-number">3.11.</span> <span class="nav-text">server.listen(path[, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-listen-port-hostname-backlog-callback"><span class="nav-number">3.12.</span> <span class="nav-text">server.listen([port][, hostname][, backlog][, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-listening"><span class="nav-number">3.13.</span> <span class="nav-text">server.listening</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-maxHeadersCount"><span class="nav-number">3.14.</span> <span class="nav-text">server.maxHeadersCount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-setTimeout-msecs-callback"><span class="nav-number">3.15.</span> <span class="nav-text">server.setTimeout(msecs, callback)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-timeout"><span class="nav-number">3.16.</span> <span class="nav-text">server.timeout</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-ServerResponse"><span class="nav-number">4.</span> <span class="nav-text">http.ServerResponse</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#close-1"><span class="nav-number">4.1.</span> <span class="nav-text">close</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finish"><span class="nav-number">4.2.</span> <span class="nav-text">finish</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-addTrailers-headers"><span class="nav-number">4.3.</span> <span class="nav-text">response.addTrailers(headers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-end-data-encoding-callback"><span class="nav-number">4.4.</span> <span class="nav-text">response.end([data][, encoding][, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-finished"><span class="nav-number">4.5.</span> <span class="nav-text">response.finished</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-getHeader-name"><span class="nav-number">4.6.</span> <span class="nav-text">response.getHeader(name)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-headersSent"><span class="nav-number">4.7.</span> <span class="nav-text">response.headersSent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-removeHeader-name"><span class="nav-number">4.8.</span> <span class="nav-text">response.removeHeader(name)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-sendDate"><span class="nav-number">4.9.</span> <span class="nav-text">response.sendDate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-setHeader-name-value"><span class="nav-number">4.10.</span> <span class="nav-text">response.setHeader(name, value)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-setTimeout-msecs-callback"><span class="nav-number">4.11.</span> <span class="nav-text">response.setTimeout(msecs, callback)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-statusCode"><span class="nav-number">4.12.</span> <span class="nav-text">response.statusCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-statusMessage"><span class="nav-number">4.13.</span> <span class="nav-text">response.statusMessage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-write-chunk-encoding-callback"><span class="nav-number">4.14.</span> <span class="nav-text">response.write(chunk[, encoding][, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-writeContinue"><span class="nav-number">4.15.</span> <span class="nav-text">response.writeContinue()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-writeHead-statusCode-statusMessage-headers"><span class="nav-number">4.16.</span> <span class="nav-text">response.writeHead(statusCode[, statusMessage][, headers])</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-IncomingMessage"><span class="nav-number">5.</span> <span class="nav-text">http.IncomingMessage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#aborted-1"><span class="nav-number">5.1.</span> <span class="nav-text">aborted</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#close-2"><span class="nav-number">5.2.</span> <span class="nav-text">close</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-destroy-error"><span class="nav-number">5.3.</span> <span class="nav-text">message.destroy([error])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-headers"><span class="nav-number">5.4.</span> <span class="nav-text">message.headers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-httpVersion"><span class="nav-number">5.5.</span> <span class="nav-text">message.httpVersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-method"><span class="nav-number">5.6.</span> <span class="nav-text">message.method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-rawHeaders"><span class="nav-number">5.7.</span> <span class="nav-text">message.rawHeaders</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-rawTrailers"><span class="nav-number">5.8.</span> <span class="nav-text">message.rawTrailers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-setTimeout-msecs-callback"><span class="nav-number">5.9.</span> <span class="nav-text">message.setTimeout(msecs, callback)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-statusCode"><span class="nav-number">5.10.</span> <span class="nav-text">message.statusCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-statusMessage"><span class="nav-number">5.11.</span> <span class="nav-text">message.statusMessage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-socket"><span class="nav-number">5.12.</span> <span class="nav-text">message.socket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-trailers"><span class="nav-number">5.13.</span> <span class="nav-text">message.trailers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-url"><span class="nav-number">5.14.</span> <span class="nav-text">message.url</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-METHODS"><span class="nav-number">6.</span> <span class="nav-text">http.METHODS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-STATUS-CODES"><span class="nav-number">7.</span> <span class="nav-text">http.STATUS_CODES</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-createServer-requestListener"><span class="nav-number">8.</span> <span class="nav-text">http.createServer([requestListener])</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-get-options-callback"><span class="nav-number">9.</span> <span class="nav-text">http.get(options[, callback])</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-globalAgent"><span class="nav-number">10.</span> <span class="nav-text">http.globalAgent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-request-options-callback"><span class="nav-number">11.</span> <span class="nav-text">http.request(options[, callback])</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

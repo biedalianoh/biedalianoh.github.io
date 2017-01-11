@@ -1,0 +1,745 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs,process," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="nodejs深入系列之process">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs深入系列--process">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/nodejs-process/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="nodejs深入系列之process">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs深入系列--process">
+<meta name="twitter:description" content="nodejs深入系列之process">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> nodejs深入系列--process | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nodejs深入系列--process
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>process对象是全局对象。使用时无需require</p>
+<h1 id="process方法"><a href="#process方法" class="headerlink" title="process方法"></a>process方法</h1><p>process是EventEmitter的实例。</p>
+<h2 id="beforeExit"><a href="#beforeExit" class="headerlink" title="beforeExit"></a>beforeExit</h2><h2 id="disconnect"><a href="#disconnect" class="headerlink" title="disconnect"></a>disconnect</h2><h2 id="exit"><a href="#exit" class="headerlink" title="exit"></a>exit</h2><h2 id="message"><a href="#message" class="headerlink" title="message"></a>message</h2><h2 id="rejectionHandled"><a href="#rejectionHandled" class="headerlink" title="rejectionHandled"></a>rejectionHandled</h2><h2 id="uncaughtException"><a href="#uncaughtException" class="headerlink" title="uncaughtException"></a>uncaughtException</h2><h2 id="unhandledRejection"><a href="#unhandledRejection" class="headerlink" title="unhandledRejection"></a>unhandledRejection</h2><h2 id="warning"><a href="#warning" class="headerlink" title="warning"></a>warning</h2><h2 id="Signal-Events"><a href="#Signal-Events" class="headerlink" title="Signal Events"></a>Signal Events</h2><p>当nodejs进程收到一个信号，信号方法将被触发。<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">process.stdin.resume();           //收到信号</div><div class="line"></div><div class="line">process.on(&apos;SIGINT&apos;, () =&gt; &#123;      //触发方法</div><div class="line">  console.log(&apos;收到信号。&apos;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="process-abort"><a href="#process-abort" class="headerlink" title="process.abort()"></a>process.abort()</h2><h2 id="process-arch"><a href="#process-arch" class="headerlink" title="process.arch"></a>process.arch</h2><h2 id="process-argv"><a href="#process-argv" class="headerlink" title="process.argv"></a>process.argv</h2><h2 id="process-argv0"><a href="#process-argv0" class="headerlink" title="process.argv0"></a>process.argv0</h2><h2 id="process-channel"><a href="#process-channel" class="headerlink" title="process.channel"></a>process.channel</h2><h2 id="process-chdir-directory"><a href="#process-chdir-directory" class="headerlink" title="process.chdir(directory)"></a>process.chdir(directory)</h2><h2 id="process-config"><a href="#process-config" class="headerlink" title="process.config"></a>process.config</h2><h2 id="process-connected"><a href="#process-connected" class="headerlink" title="process.connected"></a>process.connected</h2><h2 id="process-cpuUsage-previousValue"><a href="#process-cpuUsage-previousValue" class="headerlink" title="process.cpuUsage([previousValue])"></a>process.cpuUsage([previousValue])</h2><h2 id="process-cwd"><a href="#process-cwd" class="headerlink" title="process.cwd()"></a>process.cwd()</h2><h2 id="process-disconnect"><a href="#process-disconnect" class="headerlink" title="process.disconnect()"></a>process.disconnect()</h2><h2 id="process-env"><a href="#process-env" class="headerlink" title="process.env"></a>process.env</h2><h2 id="process-emitWarning-warning-name-ctor"><a href="#process-emitWarning-warning-name-ctor" class="headerlink" title="process.emitWarning(warning[, name][, ctor])"></a>process.emitWarning(warning[, name][, ctor])</h2><h2 id="process-execArgv"><a href="#process-execArgv" class="headerlink" title="process.execArgv"></a>process.execArgv</h2><h2 id="process-execPath"><a href="#process-execPath" class="headerlink" title="process.execPath"></a>process.execPath</h2><h2 id="process-exit-code"><a href="#process-exit-code" class="headerlink" title="process.exit([code])"></a>process.exit([code])</h2><h2 id="process-exitCode"><a href="#process-exitCode" class="headerlink" title="process.exitCode"></a>process.exitCode</h2><h2 id="process-getegid"><a href="#process-getegid" class="headerlink" title="process.getegid()"></a>process.getegid()</h2><h2 id="process-geteuid"><a href="#process-geteuid" class="headerlink" title="process.geteuid()"></a>process.geteuid()</h2><h2 id="process-getgid"><a href="#process-getgid" class="headerlink" title="process.getgid()"></a>process.getgid()</h2><h2 id="process-getgroups"><a href="#process-getgroups" class="headerlink" title="process.getgroups()"></a>process.getgroups()</h2><h2 id="process-getuid"><a href="#process-getuid" class="headerlink" title="process.getuid()"></a>process.getuid()</h2><h2 id="process-hrtime-time"><a href="#process-hrtime-time" class="headerlink" title="process.hrtime([time])"></a>process.hrtime([time])</h2><h2 id="process-initgroups-user-extra-group"><a href="#process-initgroups-user-extra-group" class="headerlink" title="process.initgroups(user, extra_group)"></a>process.initgroups(user, extra_group)</h2><h2 id="process-kill-pid-signal"><a href="#process-kill-pid-signal" class="headerlink" title="process.kill(pid[, signal])"></a>process.kill(pid[, signal])</h2><h2 id="process-mainModule"><a href="#process-mainModule" class="headerlink" title="process.mainModule"></a>process.mainModule</h2><h2 id="process-memoryUsage"><a href="#process-memoryUsage" class="headerlink" title="process.memoryUsage()"></a>process.memoryUsage()</h2><h2 id="process-nextTick-callback-…args"><a href="#process-nextTick-callback-…args" class="headerlink" title="process.nextTick(callback[, …args])"></a>process.nextTick(callback[, …args])</h2><h2 id="process-pid"><a href="#process-pid" class="headerlink" title="process.pid"></a>process.pid</h2><h2 id="process-platform"><a href="#process-platform" class="headerlink" title="process.platform"></a>process.platform</h2><h2 id="process-release"><a href="#process-release" class="headerlink" title="process.release"></a>process.release</h2><h2 id="process-send-message-sendHandle-options-callback"><a href="#process-send-message-sendHandle-options-callback" class="headerlink" title="process.send(message[, sendHandle[, options]][, callback])"></a>process.send(message[, sendHandle[, options]][, callback])</h2><h2 id="process-setegid-id"><a href="#process-setegid-id" class="headerlink" title="process.setegid(id)"></a>process.setegid(id)</h2><h2 id="process-seteuid-id"><a href="#process-seteuid-id" class="headerlink" title="process.seteuid(id)"></a>process.seteuid(id)</h2><h2 id="process-setgid-id"><a href="#process-setgid-id" class="headerlink" title="process.setgid(id)"></a>process.setgid(id)</h2><h2 id="process-setgroups-groups"><a href="#process-setgroups-groups" class="headerlink" title="process.setgroups(groups)"></a>process.setgroups(groups)</h2><h2 id="process-setuid-id"><a href="#process-setuid-id" class="headerlink" title="process.setuid(id)"></a>process.setuid(id)</h2><h2 id="process-stderr"><a href="#process-stderr" class="headerlink" title="process.stderr"></a>process.stderr</h2><h2 id="process-stdin"><a href="#process-stdin" class="headerlink" title="process.stdin"></a>process.stdin</h2><h2 id="process-stdout"><a href="#process-stdout" class="headerlink" title="process.stdout"></a>process.stdout</h2><h2 id="process-title"><a href="#process-title" class="headerlink" title="process.title"></a>process.title</h2><h2 id="process-umask-mask"><a href="#process-umask-mask" class="headerlink" title="process.umask([mask])"></a>process.umask([mask])</h2><h2 id="process-uptime"><a href="#process-uptime" class="headerlink" title="process.uptime()"></a>process.uptime()</h2><h2 id="process-version"><a href="#process-version" class="headerlink" title="process.version"></a>process.version</h2><h2 id="process-versions"><a href="#process-versions" class="headerlink" title="process.versions"></a>process.versions</h2><h1 id="exit-codes"><a href="#exit-codes" class="headerlink" title="exit codes"></a>exit codes</h1><ol>
+<li>Uncaught Fatal Exception</li>
+<li>Unused</li>
+<li>Internal JavaScript Parse Error</li>
+<li>Internal JavaScript Evaluation Failure</li>
+<li>Fatal Error</li>
+<li>Non-function Internal Exception Handler</li>
+<li>Internal Exception Handler Run-Time Failure</li>
+<li>Unused</li>
+<li>Invalid Argument</li>
+<li>Internal JavaScript Run-Time Failure extremely rare, and generally can only happen during development of Node.js itself.</li>
+<li>Invalid Debug Argument</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/process/" rel="tag">#process</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-querystring/" rel="next" title="nodejs深入系列--querystring">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--querystring
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-path/" rel="prev" title="nodejs深入系列--path">
+                nodejs深入系列--path <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#process方法"><span class="nav-number">1.</span> <span class="nav-text">process方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#beforeExit"><span class="nav-number">1.1.</span> <span class="nav-text">beforeExit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disconnect"><span class="nav-number">1.2.</span> <span class="nav-text">disconnect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exit"><span class="nav-number">1.3.</span> <span class="nav-text">exit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message"><span class="nav-number">1.4.</span> <span class="nav-text">message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rejectionHandled"><span class="nav-number">1.5.</span> <span class="nav-text">rejectionHandled</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uncaughtException"><span class="nav-number">1.6.</span> <span class="nav-text">uncaughtException</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unhandledRejection"><span class="nav-number">1.7.</span> <span class="nav-text">unhandledRejection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#warning"><span class="nav-number">1.8.</span> <span class="nav-text">warning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Signal-Events"><span class="nav-number">1.9.</span> <span class="nav-text">Signal Events</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-abort"><span class="nav-number">1.10.</span> <span class="nav-text">process.abort()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-arch"><span class="nav-number">1.11.</span> <span class="nav-text">process.arch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-argv"><span class="nav-number">1.12.</span> <span class="nav-text">process.argv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-argv0"><span class="nav-number">1.13.</span> <span class="nav-text">process.argv0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-channel"><span class="nav-number">1.14.</span> <span class="nav-text">process.channel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-chdir-directory"><span class="nav-number">1.15.</span> <span class="nav-text">process.chdir(directory)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-config"><span class="nav-number">1.16.</span> <span class="nav-text">process.config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-connected"><span class="nav-number">1.17.</span> <span class="nav-text">process.connected</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-cpuUsage-previousValue"><span class="nav-number">1.18.</span> <span class="nav-text">process.cpuUsage([previousValue])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-cwd"><span class="nav-number">1.19.</span> <span class="nav-text">process.cwd()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-disconnect"><span class="nav-number">1.20.</span> <span class="nav-text">process.disconnect()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-env"><span class="nav-number">1.21.</span> <span class="nav-text">process.env</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-emitWarning-warning-name-ctor"><span class="nav-number">1.22.</span> <span class="nav-text">process.emitWarning(warning[, name][, ctor])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-execArgv"><span class="nav-number">1.23.</span> <span class="nav-text">process.execArgv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-execPath"><span class="nav-number">1.24.</span> <span class="nav-text">process.execPath</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-exit-code"><span class="nav-number">1.25.</span> <span class="nav-text">process.exit([code])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-exitCode"><span class="nav-number">1.26.</span> <span class="nav-text">process.exitCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-getegid"><span class="nav-number">1.27.</span> <span class="nav-text">process.getegid()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-geteuid"><span class="nav-number">1.28.</span> <span class="nav-text">process.geteuid()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-getgid"><span class="nav-number">1.29.</span> <span class="nav-text">process.getgid()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-getgroups"><span class="nav-number">1.30.</span> <span class="nav-text">process.getgroups()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-getuid"><span class="nav-number">1.31.</span> <span class="nav-text">process.getuid()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-hrtime-time"><span class="nav-number">1.32.</span> <span class="nav-text">process.hrtime([time])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-initgroups-user-extra-group"><span class="nav-number">1.33.</span> <span class="nav-text">process.initgroups(user, extra_group)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-kill-pid-signal"><span class="nav-number">1.34.</span> <span class="nav-text">process.kill(pid[, signal])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-mainModule"><span class="nav-number">1.35.</span> <span class="nav-text">process.mainModule</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-memoryUsage"><span class="nav-number">1.36.</span> <span class="nav-text">process.memoryUsage()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-nextTick-callback-…args"><span class="nav-number">1.37.</span> <span class="nav-text">process.nextTick(callback[, …args])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-pid"><span class="nav-number">1.38.</span> <span class="nav-text">process.pid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-platform"><span class="nav-number">1.39.</span> <span class="nav-text">process.platform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-release"><span class="nav-number">1.40.</span> <span class="nav-text">process.release</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-send-message-sendHandle-options-callback"><span class="nav-number">1.41.</span> <span class="nav-text">process.send(message[, sendHandle[, options]][, callback])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-setegid-id"><span class="nav-number">1.42.</span> <span class="nav-text">process.setegid(id)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-seteuid-id"><span class="nav-number">1.43.</span> <span class="nav-text">process.seteuid(id)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-setgid-id"><span class="nav-number">1.44.</span> <span class="nav-text">process.setgid(id)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-setgroups-groups"><span class="nav-number">1.45.</span> <span class="nav-text">process.setgroups(groups)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-setuid-id"><span class="nav-number">1.46.</span> <span class="nav-text">process.setuid(id)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-stderr"><span class="nav-number">1.47.</span> <span class="nav-text">process.stderr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-stdin"><span class="nav-number">1.48.</span> <span class="nav-text">process.stdin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-stdout"><span class="nav-number">1.49.</span> <span class="nav-text">process.stdout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-title"><span class="nav-number">1.50.</span> <span class="nav-text">process.title</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-umask-mask"><span class="nav-number">1.51.</span> <span class="nav-text">process.umask([mask])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-uptime"><span class="nav-number">1.52.</span> <span class="nav-text">process.uptime()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-version"><span class="nav-number">1.53.</span> <span class="nav-text">process.version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#process-versions"><span class="nav-number">1.54.</span> <span class="nav-text">process.versions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exit-codes"><span class="nav-number">2.</span> <span class="nav-text">exit codes</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

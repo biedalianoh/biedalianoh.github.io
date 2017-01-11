@@ -1,0 +1,782 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="持续更行。。。。
+lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE 9-11, Edge 13, Safari 8-9, Node.js 0.10.x, 0.12.x, 4.x, &amp;amp; 5.x, &amp;amp; PhantomJS 1.9.8。已不再支持IE6~IE8。如果想兼容IE6~IE8，可以使用3.x版本。3.x版本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端常用框架性能与兼容性">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/compatibility/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="持续更行。。。。
+lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE 9-11, Edge 13, Safari 8-9, Node.js 0.10.x, 0.12.x, 4.x, &amp;amp; 5.x, &amp;amp; PhantomJS 1.9.8。已不再支持IE6~IE8。如果想兼容IE6~IE8，可以使用3.x版本。3.x版本">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端常用框架性能与兼容性">
+<meta name="twitter:description" content="持续更行。。。。
+lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE 9-11, Edge 13, Safari 8-9, Node.js 0.10.x, 0.12.x, 4.x, &amp;amp; 5.x, &amp;amp; PhantomJS 1.9.8。已不再支持IE6~IE8。如果想兼容IE6~IE8，可以使用3.x版本。3.x版本">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 前端常用框架性能与兼容性 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端常用框架性能与兼容性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>持续更行。。。。</p>
+<h2 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h2><p>lodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE 9-11, Edge 13, Safari 8-9, Node.js 0.10.x, 0.12.x, 4.x, &amp; 5.x, &amp; PhantomJS 1.9.8。已不再支持IE6~IE8。<br>如果想兼容IE6~IE8，可以使用3.x版本。3.x版本支持的环境有：<br>Chrome 43-44, Firefox 38-39, IE 6-11, MS Edge, Safari 5-8, ChakraNode 0.12.2, io.js 2.5.0, Node.js 0.8.28, 0.10.40, &amp; 0.12.7, PhantomJS 1.9.8, RingoJS 0.11, &amp; Rhino1.7.6<br>lodash 3.x 版本没有直接提供可用的js， 需要手动构建。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -g lodash-cli@3.10.1</div></pre></td></tr></table></figure>
+<p>安装完成后执行<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lodash compat</div></pre></td></tr></table></figure></p>
+<p>会输出兼容IE6~IE8的版本lodash.custom.js及lodash.custom.min.js，使用时调用此版本即可。</p>
+<h2 id="rivets"><a href="#rivets" class="headerlink" title="rivets"></a>rivets</h2><p>兼容IE8，需要在使用rivets的代码之前添加解决方法。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"./assets/vendor/watch-shim.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;scirpt&gt;</div><div class="line">// Shimming up the model <span class="keyword">for</span> IE8</div><div class="line">rivets.adapters[<span class="string">'.'</span>].subscribe = <span class="keyword">function</span>(obj, keypath, callback) &#123;</div><div class="line">	var watching = createWatcher(obj);</div><div class="line">	watching.watch(keypath, callback);</div><div class="line">&#125;;</div><div class="line">rivets.adapters[<span class="string">'.'</span>].unsubscribe = <span class="keyword">function</span>(obj, keypath, callback) &#123;</div><div class="line">	watching.unwatch(keypath, callback);</div><div class="line">&#125;;</div><div class="line">// SHIMS</div><div class="line">String.prototype.trim = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	<span class="built_in">return</span> this.replace(/(^\s*|\s*$)/g,<span class="string">''</span>);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="swiper"><a href="#swiper" class="headerlink" title="swiper"></a>swiper</h2><p>兼容IE8，需要使用旧版：idangerous.swiper2.7.6.css 和 idangerous.swiper2.7.6.js</p>
+<h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><p>兼容IE9以下版本，需要使用jQuery-1.xx版本，经实际使用，jQuery v1.11.3 版本没有问题。</p>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>webpack在使用babel解析打包时，输出的为ES5版本。</p>
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p>ES5 不支持 IE6/7，8支持一点，IE9支持更多，IE10完美支持，IE11支持少量ES6</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>添加以下步骤：</p>
+<ol>
+<li>webpack进行babel对ES6，7语法的转码</li>
+<li><p>webpack引用es3ify-loader解决es3语法兼容问题。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">	loaders: [&#123;</div><div class="line">		<span class="built_in">test</span>: /\.jsx?$/,</div><div class="line">		loaders: [<span class="string">'es3ify-loader'</span>]</div><div class="line">	&#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>全局引用babel-polyfill, es5-shim/es5-sham, JSON的polyfill等<br>polyfill:</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// webpack.config.js</div><div class="line">require(<span class="string">'babel-polyfill'</span>);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">	entry: [<span class="string">'babel-polyfill'</span>, <span class="string">'./app/js'</span>]</div><div class="line">&#125;</div><div class="line">或</div><div class="line">// 在html种babel解析后的js代码之前加上polyfill.js</div><div class="line">&lt;script src=<span class="string">"dist/polyfill.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>es5-shim/es5-sham:<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"dist/es5-shim.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script src=<span class="string">"dist/es5-sham.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>不要在代码种用Object.defineProperty设置访问起属性，若第三方包种有，找到，改之。</p>
+</li>
+<li><p>模块导出不能使用 export default，改为export{xxx}</p>
+</li>
+<li><p>模块引入使用 import {} from ‘xxx’</p>
+</li>
+</ol>
+<h2 id="bootstrap3"><a href="#bootstrap3" class="headerlink" title="bootstrap3"></a>bootstrap3</h2><p>此为bootstrap3兼容ie8，若要兼容IE6，7，搜索bsie(bootstrap2)。</p>
+<ol>
+<li><p>使用html5文档声明。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">html:5 + tab</div></pre></td></tr></table></figure>
+</li>
+<li><p>加入meta标签</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</div><div class="line">&lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge"</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>引入bootstrap文件</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"bootstrap/css/bootstrap.min.css"</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>引入respond.js和html5.js</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!--[<span class="keyword">if</span> lte IE 9]&gt;</div><div class="line">&lt;script src=<span class="string">"bootstrap/js/respond.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script src=<span class="string">"bootstrap/js/html5.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用bootstrap的js时要引入1.x版本jquery</p>
+</li>
+<li><p>总结</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang=<span class="string">"zh-CN"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</div><div class="line">	&lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge"</span>&gt;</div><div class="line">	&lt;meta name=<span class="string">"author"</span> content=<span class="string">"Jophy"</span> /&gt;</div><div class="line">	&lt;title&gt;ie8&lt;/title&gt;</div><div class="line">	&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"bootstrap/css/bootstrap.min.css"</span>&gt;</div><div class="line">	&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"bootstrap/css/style.css"</span>&gt;</div><div class="line">	&lt;!--[<span class="keyword">if</span> lte IE 9]&gt;</div><div class="line">	&lt;script src=<span class="string">"bootstrap/js/respond.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">	&lt;script src=<span class="string">"bootstrap/js/html5.js"</span>&gt;&lt;/script&gt;</div><div class="line">	&lt;![endif]--&gt;</div><div class="line">	&lt;script src=<span class="string">"http://libs.baidu.com/jquery/1.10.2/jquery.js"</span>&gt;&lt;/script&gt;</div><div class="line">	&lt;script src=<span class="string">"bootstrap/js/bootstrap.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="css3"><a href="#css3" class="headerlink" title="css3"></a>css3</h2><p>通过引入<a href="http://www.zhangxinxu.com/study/down/ie-css3.htc" target="_blank" rel="external">.htc</a>脚本文件来让IE6/7/8模拟css3效果。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">	-moz-border-radius: 15px; /* Firefox */</div><div class="line">  -webkit-border-radius: 15px; /* Safari 和 Chrome */</div><div class="line">  border-radius: 15px; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */</div><div class="line"></div><div class="line">  -moz-box-shadow: 10px 10px 20px <span class="comment">#000; /* Firefox */</span></div><div class="line">  -webkit-box-shadow: 10px 10px 20px <span class="comment">#000; /* Safari 和 Chrome */</span></div><div class="line">  box-shadow: 10px 10px 20px <span class="comment">#000; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */</span></div><div class="line"></div><div class="line">  behavior: url(ie-css3.htc); /* 通知IE浏览器调用脚本作用于<span class="string">'box'</span>类 */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li>当前元素一定要有定位属性，像是position:relative或是position:absolute属性。</li>
+<li>z-index值一定要比周围元素的要高，否则……只能说抱歉了~~</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/contentEditble/" rel="next" title="让div标签可输入内容的几种方式">
+                <i class="fa fa-chevron-left"></i> 让div标签可输入内容的几种方式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/call-apply/" rel="prev" title="call, apply, callee, caller应用">
+                call, apply, callee, caller应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lodash"><span class="nav-number">1.</span> <span class="nav-text">lodash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rivets"><span class="nav-number">2.</span> <span class="nav-text">rivets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swiper"><span class="nav-number">3.</span> <span class="nav-text">swiper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-number">4.</span> <span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack"><span class="nav-number">5.</span> <span class="nav-text">webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容性"><span class="nav-number">5.1.</span> <span class="nav-text">兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number">5.2.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap3"><span class="nav-number">6.</span> <span class="nav-text">bootstrap3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3"><span class="nav-number">7.</span> <span class="nav-text">css3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">7.1.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

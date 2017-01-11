@@ -1,0 +1,769 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,form,ajax," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="H5表单项标签，ajax，formaction提交方式，表单包含文件提交方式，多风格展示数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="form表单元素以及提交方式">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/form/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="H5表单项标签，ajax，formaction提交方式，表单包含文件提交方式，多风格展示数据。">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="form表单元素以及提交方式">
+<meta name="twitter:description" content="H5表单项标签，ajax，formaction提交方式，表单包含文件提交方式，多风格展示数据。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> form表单元素以及提交方式 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                form表单元素以及提交方式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>H5表单项标签，ajax，formaction提交方式，表单包含文件提交方式，多风格展示数据。</p>
+<h1 id="新表单项标签"><a href="#新表单项标签" class="headerlink" title="新表单项标签"></a>新表单项标签</h1><h3 id="email"><a href="#email" class="headerlink" title="email"></a>email</h3><p>这种文本框在移动版浏览器下，其键盘会根据文本框类型不同而显示相对应的键盘<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"email"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="search"><a href="#search" class="headerlink" title="search"></a>search</h3><p>该文本框和普通文本框唯一区别，在 Safari 和 Chrome 浏览器下，文本框的外观为圆角<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"search"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="url"><a href="#url" class="headerlink" title="url"></a>url</h3><p>这种文本框在移动版浏览器下，其键盘会根据文本框类型不同而显示相对应的键盘</p>
+<h3 id="tel"><a href="#tel" class="headerlink" title="tel"></a>tel</h3><p>这种文本框在移动版浏览器下，其键盘会根据文本框类型不同而显示相对应的键盘<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"tel"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="number"><a href="#number" class="headerlink" title="number"></a>number</h3><p>可以配合 min、max、及step属性使用<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"number"</span> value=<span class="string">"0"</span> min=<span class="string">"0"</span> max=<span class="string">"10"</span> step=<span class="string">"1"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="range"><a href="#range" class="headerlink" title="range"></a>range</h3><p>提供的是一种滑动输入方式，需要配合 min、max、range等属性的使用<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"range"</span> min=<span class="string">"10"</span> max=<span class="string">"1000"</span> step=<span class="string">"5"</span> value=<span class="string">"20"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="color"><a href="#color" class="headerlink" title="color"></a>color</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"color"</span>&gt;</div></pre></td></tr></table></figure>
+<h3 id="image"><a href="#image" class="headerlink" title="image"></a>image</h3><p>只有当input的type为image时，可以直接设置width，height。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"image"</span> width=<span class="string">"100"</span> height=<span class="string">"100px"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="datetime"><a href="#datetime" class="headerlink" title="datetime"></a>datetime</h3><p>日期和时间(含时区)。选取时间、日、月、年（UTC 时间）<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"datetime"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="datetime-local"><a href="#datetime-local" class="headerlink" title="datetime-local"></a>datetime-local</h3><p>日期和时间(不含时区)。选取时间、日、月、年（本地时间）<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"datetime-local"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><p>时间选择器文本框。选取时间（小时和分钟）<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"time"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><p>选取日、月、年<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"date"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="month"><a href="#month" class="headerlink" title="month"></a>month</h3><p>选取月、年<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"month"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="week"><a href="#week" class="headerlink" title="week"></a>week</h3><p>选取周和年<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"week"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="list-datalist"><a href="#list-datalist" class="headerlink" title="list, datalist"></a>list, datalist</h3><p>list用来提示文本框输入，提示的数据源由datalist提供。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> list=<span class="string">"myDataList"</span>&gt;</div><div class="line">&lt;datalist id=<span class="string">"myDataList"</span>&gt;</div><div class="line">  &lt;option label=<span class="string">"1"</span>&gt;11111&lt;/option&gt;</div><div class="line">  &lt;option label=<span class="string">"2"</span>&gt;22222&lt;/option&gt;</div><div class="line">  &lt;option label=<span class="string">"3"</span>&gt;33333&lt;/option&gt;</div><div class="line">&lt;/datalist&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="progress"><a href="#progress" class="headerlink" title="progress"></a>progress</h3><p>progress 标签定义运行中的进度（进程）。可以使用 progress 标签来显示 JavaScript 中耗费时间的函数的进度。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;progress value=<span class="string">"22"</span> max=<span class="string">"100"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="meter"><a href="#meter" class="headerlink" title="meter"></a>meter</h3><p>标签定义度量衡。仅用于已知最大和最小值的度量。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;meter value=<span class="string">"3"</span> min=<span class="string">"0"</span> max=<span class="string">"10"</span>&gt;3/10&lt;/meter&gt;&lt;br&gt;</div><div class="line">&lt;meter value=<span class="string">"0.6"</span>&gt;60%&lt;/meter&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="output"><a href="#output" class="headerlink" title="output"></a>output</h3><p>output 标签定义不同类型的输出，比如脚本的输出。是一个数据的展示地。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;form oninput=<span class="string">"c.value = a.value + b.value"</span>&gt;</div><div class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"a"</span>&gt; + &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"b"</span>&gt;</div><div class="line">  &lt;output name=<span class="string">"c"</span>&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="keygen"><a href="#keygen" class="headerlink" title="keygen"></a>keygen</h3><p>keygen 标签规定用于表单的密钥对生成器字段。当提交表单时，私钥存储在本地，公钥发送到服务器。所有主流浏览器都支持 keygen 标签，除了 Internet Explorer 和 Safari。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;keygen name=<span class="string">"keygen"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="表单项属性"><a href="#表单项属性" class="headerlink" title="表单项属性"></a>表单项属性</h1><h3 id="accept-charset"><a href="#accept-charset" class="headerlink" title="accept-charset"></a>accept-charset</h3><h3 id="action"><a href="#action" class="headerlink" title="action"></a>action</h3><h3 id="autocomplete"><a href="#autocomplete" class="headerlink" title="autocomplete"></a>autocomplete</h3><p>表单自动完成。联想填过的属性。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">autocomplete=<span class="string">"on/off"</span></div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> autocomplete=<span class="string">"off"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="autofocus"><a href="#autofocus" class="headerlink" title="autofocus"></a>autofocus</h3><p>自动聚焦。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> autofocus=<span class="string">"autofocus"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="form"><a href="#form" class="headerlink" title="form"></a>form</h3><p>规定输入域所属的表单。添加form属性，外部的input就属于表单的提交范围.<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;form id=<span class="string">"formId1"</span>&gt;&lt;/form&gt;</div><div class="line">&lt;form id=<span class="string">"formId2"</span>&gt;&lt;/form&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> form=<span class="string">"formId1 formId2"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="formaction"><a href="#formaction" class="headerlink" title="formaction"></a>formaction</h3><p>重新指定表单的action属性。可以让表单的内容通过不同的提交按钮提交到不同的地方。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> formaction=<span class="string">"demo.jsp"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="enctype"><a href="#enctype" class="headerlink" title="enctype"></a>enctype</h3><p>enctype 属性可能的值：<br>application/x-www-form-urlencoded<br>multipart/form-data<br>text/plain</p>
+<h3 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h3><h3 id="step"><a href="#step" class="headerlink" title="step"></a>step</h3><p>step规定输入框中输入内容的合法字符的步进数。</p>
+<h3 id="multiple"><a href="#multiple" class="headerlink" title="multiple"></a>multiple</h3><p>规定输入域中是否可选多个值。如加此属性后file可选多个文件<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"file"</span> multiple=<span class="string">"multiple"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="named"><a href="#named" class="headerlink" title="named"></a>named</h3><h3 id="novalidate"><a href="#novalidate" class="headerlink" title="novalidate"></a>novalidate</h3><p>规定在表单提交时不验证form或input项<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">novalidate=<span class="string">"true"</span>  novalidate=<span class="string">"novalidate"</span></div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> novalidate=<span class="string">"true"</span> required &gt;</div></pre></td></tr></table></figure></p>
+<h3 id="pattern"><a href="#pattern" class="headerlink" title="pattern"></a>pattern</h3><p>验证input输入内容是否匹配正则表达式。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> pattern=<span class="string">"/d+/"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="target"><a href="#target" class="headerlink" title="target"></a>target</h3><h1 id="新表单方法"><a href="#新表单方法" class="headerlink" title="新表单方法"></a>新表单方法</h1><h3 id="H5自带表单验证"><a href="#H5自带表单验证" class="headerlink" title="H5自带表单验证"></a>H5自带表单验证</h3><p>当表单有类似required，pattern等对输入框有限制的条件时，submit提交时会验证并给出响应提示。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;form&gt;</div><div class="line"> &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> pattern=<span class="string">"^1[3-9]\d&#123;9&#125;$"</span> required /&gt;</div><div class="line"> &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> /&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure></p>
+<p>提示框内的文字可以使用setCustomValidity方法来自定义。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;form&gt;</div><div class="line"> &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> pattern=<span class="string">"^1[3-9]\d&#123;9&#125;$"</span> required /&gt;</div><div class="line"> &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> /&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&lt;script&gt;</div><div class="line">text.oninput = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  text.setCustomValidity(<span class="string">''</span>);</div><div class="line">&#125;</div><div class="line">text.oninvalid = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  text.setCustomValidity(<span class="string">'自定义错误信息!'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>invalid事件会再submit事件之前触发，而提交时会先验证所有表单元素是值是否有效。除了提交外还可以手动调用checkValidity方法来执行验证。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;input id=<span class="string">"text"</span> <span class="built_in">type</span>=<span class="string">"text"</span> pattern=<span class="string">"^1[3-9]\d&#123;9&#125;$"</span> required /&gt;</div><div class="line">&lt;script&gt;</div><div class="line">text.oninput = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  <span class="keyword">if</span>(!text.checkValidity()) &#123;</div><div class="line">    text.setCustomValidity(<span class="string">'走点心!'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>另外表单元素会有自己的validity属性，validity为一个表单元素所有匹配的信息<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;input id=<span class="string">"a"</span> <span class="built_in">type</span>=<span class="string">"text"</span> required pattern=<span class="string">"^\d&#123;4&#125;$"</span> oninput=<span class="string">"out(this)"</span> placeholder=<span class="string">"请输入代码"</span> &gt;</div><div class="line">console.log(a.validity);</div><div class="line">&#123;</div><div class="line">  badInput: <span class="literal">false</span>,</div><div class="line">  customError: <span class="literal">false</span>,</div><div class="line">  patternMismatch: <span class="literal">false</span>,</div><div class="line">  rangeOverflow: <span class="literal">false</span>,</div><div class="line">  rangeOverflow: <span class="literal">false</span>,</div><div class="line">  stepMismatch: <span class="literal">false</span>,</div><div class="line">  tooLong: <span class="literal">false</span>,</div><div class="line">  tooShort: <span class="literal">false</span>,</div><div class="line">  <span class="built_in">type</span>Mismatch: <span class="literal">false</span>,</div><div class="line">  valid: <span class="literal">false</span>,</div><div class="line">  valueMissing: <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="id和name选择器"><a href="#id和name选择器" class="headerlink" title="id和name选择器"></a>id和name选择器</h3><p>js中如果id名称不和内置属性或全局变量重名的话，该名称自动成为window对象的属性，即可以直接使用id获取元素。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"aaa"</span>&gt;&lt;/div&gt;</div><div class="line">aaa.onclick = <span class="function"><span class="title">function</span></span>()&#123;&#125;</div></pre></td></tr></table></figure></p>
+<p>对于name属性来说，只有某些类型的html元素具有类似的方法:<br>比如：form,img,iframe,applet,embed,object等。<br>这些元素可以通过全局变量或者document的属性来访问特定name属性的元素；<br>如果相同name属性的有多个元素，则返回一个NodeList的类似只读数组的对象。</p>
+<h1 id="表单提交"><a href="#表单提交" class="headerlink" title="表单提交"></a>表单提交</h1><h3 id="submit"><a href="#submit" class="headerlink" title="submit"></a>submit</h3><p>form标签中添加action和method，且有一个submit按钮，所提交的数据需要有name属性。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;form action=<span class="string">"/kylin/signList"</span> method=<span class="string">"post"</span>&gt;</div><div class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"username"</span>&gt;</div><div class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"password"</span> name=<span class="string">"password"</span>&gt;</div><div class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> value=<span class="string">"确定"</span>&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure></p>
+<p>这种方式会进行页面跳转。</p>
+<h3 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h3><p>jQuery.ajax支持属性：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">jQuery.ajax(&#123;</div><div class="line">  url: <span class="string">''</span>,</div><div class="line">  <span class="built_in">type</span>: <span class="string">''</span>,     //get, post</div><div class="line">  data: &#123;&#125;,</div><div class="line">  async: <span class="literal">true</span>, //是否异步</div><div class="line">  cache: <span class="literal">true</span>, //是否缓存</div><div class="line">  contentType: <span class="string">'application/x-www-form-urlencoded'</span>,</div><div class="line">  dataType: <span class="string">'json'</span>,   //预期服务器返回数据类型，默认通过MIME判断。xml,html,script,json,jsonp,text</div><div class="line">  context: this,      //指定回掉上下文，默认当前option json</div><div class="line">  timeout: 5000,      //超时时间</div><div class="line">  beforeSend: <span class="function"><span class="title">function</span></span>() &#123;&#125;,</div><div class="line">  complete: <span class="function"><span class="title">function</span></span>() &#123;&#125;,    //任何情况都会执行</div><div class="line">  success: <span class="function"><span class="title">function</span></span>() &#123;&#125;,</div><div class="line">  error: <span class="function"><span class="title">function</span></span>() &#123;&#125;,       //data=null, timeout, error, notmodified, parsererror</div><div class="line">  dataFilter: <span class="keyword">function</span>(data, dataType) &#123;<span class="built_in">return</span> data&#125;   //返回值预处理，需<span class="built_in">return</span>新的数据</div><div class="line">  global: <span class="literal">true</span>,   //是否触发全局ajax事件</div><div class="line">  <span class="keyword">if</span>Modified: <span class="literal">false</span>,  //仅在服务器数据改变时获取新数据。通过 HTTP 包 Last-Modified 头信息判断</div><div class="line">  jsonp: <span class="string">'callback'</span>,  //支持get。</div><div class="line">  jsonpCallback: <span class="string">'flightHandler'</span>,</div><div class="line">  username: <span class="string">'chavin'</span>,   //响应 HTTP 访问认证请求的用户名</div><div class="line">  password: <span class="string">'111'</span>,      //响应 HTTP 访问认证请求的密码</div><div class="line">  processData: <span class="literal">true</span>,  //&#123;&#125;对象会转化字符串以配合默认内容类型 <span class="string">"application/x-www-form-urlencoded"</span></div><div class="line">  scriptCharset: <span class="string">'UTF-8'</span>, //只有dataType为jsonp/script，且<span class="built_in">type</span>是GET才会用于强制修改charset</div><div class="line">  triditional: <span class="literal">false</span>, //传统的方式来序列化数据</div><div class="line">  xhr: <span class="function"><span class="title">function</span></span>() &#123;<span class="built_in">return</span> XHR&#125;    //重新定义XHR</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>jsonp:<br>远程服务器上设法把数据装进js格式的文件里，供客户端调用和进一步处理<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">//jQuery</div><div class="line">$.ajax(&#123;</div><div class="line">  <span class="built_in">type</span>: <span class="string">'get'</span>,</div><div class="line">  url: <span class="string">'http://kylin'</span>,</div><div class="line">  dataType: <span class="string">'jsonp'</span>,</div><div class="line">  jsonpCallback: <span class="string">'flightHandler'</span>,</div><div class="line">  success: <span class="keyword">function</span>(data) &#123;&#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">//原生</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> callbackFunction(result, methodName)</div><div class="line">  &#123;</div><div class="line">    var html = <span class="string">'&lt;ul&gt;'</span>;</div><div class="line">    <span class="keyword">for</span>(var i = 0; i &lt; result.length; i++)</div><div class="line">    &#123;</div><div class="line">        html += <span class="string">'&lt;li&gt;'</span> + result[i] + <span class="string">'&lt;/li&gt;'</span>;</div><div class="line">    &#125;</div><div class="line">    html += <span class="string">'&lt;/ul&gt;'</span>;</div><div class="line">    document.getElementById(<span class="string">'divCustomers'</span>).innerHTML = html;</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"http://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction"</span>&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;?php</div><div class="line">header(<span class="string">'Content-type: application/json'</span>);</div><div class="line">//获取回调函数名</div><div class="line"><span class="variable">$jsoncallback</span> = htmlspecialchars(<span class="variable">$_REQUEST</span> [<span class="string">'jsoncallback'</span>]);</div><div class="line">//json数据</div><div class="line"><span class="variable">$json_data</span> = <span class="string">'["customername1","customername2"]'</span>;</div><div class="line">//输出jsonp格式的数据</div><div class="line"><span class="built_in">echo</span> <span class="variable">$jsoncallback</span> . <span class="string">"("</span> . <span class="variable">$json_data</span> . <span class="string">")"</span>;</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="数据展示"><a href="#数据展示" class="headerlink" title="数据展示"></a>数据展示</h1><p>webgl, three.js, d3.js<br>webgl是HTML5中的一种3D绘图标准，允许把JavaScript和OpenGL ES 2.0结合在一起。<br>three.js是以webgl为基础的库，封装了一些3D渲染需求中重要的工具方法与渲染循环。<br>D3.js是一个数据可视化的库，技术基础是SVG。</p>
+<h3 id="d3"><a href="#d3" class="headerlink" title="d3"></a>d3</h3>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/form/" rel="tag">#form</a>
+          
+            <a href="/tags/ajax/" rel="tag">#ajax</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/foundation-1/" rel="next" title="Javascript基础--函数和定义优先级">
+                <i class="fa fa-chevron-left"></i> Javascript基础--函数和定义优先级
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/es6/" rel="prev" title="es6实用中文api">
+                es6实用中文api <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新表单项标签"><span class="nav-number">1.</span> <span class="nav-text">新表单项标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#email"><span class="nav-number">1.0.1.</span> <span class="nav-text">email</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#search"><span class="nav-number">1.0.2.</span> <span class="nav-text">search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url"><span class="nav-number">1.0.3.</span> <span class="nav-text">url</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tel"><span class="nav-number">1.0.4.</span> <span class="nav-text">tel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#number"><span class="nav-number">1.0.5.</span> <span class="nav-text">number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#range"><span class="nav-number">1.0.6.</span> <span class="nav-text">range</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#color"><span class="nav-number">1.0.7.</span> <span class="nav-text">color</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#image"><span class="nav-number">1.0.8.</span> <span class="nav-text">image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#datetime"><span class="nav-number">1.0.9.</span> <span class="nav-text">datetime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#datetime-local"><span class="nav-number">1.0.10.</span> <span class="nav-text">datetime-local</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#time"><span class="nav-number">1.0.11.</span> <span class="nav-text">time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#date"><span class="nav-number">1.0.12.</span> <span class="nav-text">date</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#month"><span class="nav-number">1.0.13.</span> <span class="nav-text">month</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#week"><span class="nav-number">1.0.14.</span> <span class="nav-text">week</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#list-datalist"><span class="nav-number">1.0.15.</span> <span class="nav-text">list, datalist</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#progress"><span class="nav-number">1.0.16.</span> <span class="nav-text">progress</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#meter"><span class="nav-number">1.0.17.</span> <span class="nav-text">meter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#output"><span class="nav-number">1.0.18.</span> <span class="nav-text">output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#keygen"><span class="nav-number">1.0.19.</span> <span class="nav-text">keygen</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表单项属性"><span class="nav-number">2.</span> <span class="nav-text">表单项属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#accept-charset"><span class="nav-number">2.0.1.</span> <span class="nav-text">accept-charset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#action"><span class="nav-number">2.0.2.</span> <span class="nav-text">action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#autocomplete"><span class="nav-number">2.0.3.</span> <span class="nav-text">autocomplete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#autofocus"><span class="nav-number">2.0.4.</span> <span class="nav-text">autofocus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#form"><span class="nav-number">2.0.5.</span> <span class="nav-text">form</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#formaction"><span class="nav-number">2.0.6.</span> <span class="nav-text">formaction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enctype"><span class="nav-number">2.0.7.</span> <span class="nav-text">enctype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#methods"><span class="nav-number">2.0.8.</span> <span class="nav-text">methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step"><span class="nav-number">2.0.9.</span> <span class="nav-text">step</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiple"><span class="nav-number">2.0.10.</span> <span class="nav-text">multiple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#named"><span class="nav-number">2.0.11.</span> <span class="nav-text">named</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#novalidate"><span class="nav-number">2.0.12.</span> <span class="nav-text">novalidate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pattern"><span class="nav-number">2.0.13.</span> <span class="nav-text">pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#target"><span class="nav-number">2.0.14.</span> <span class="nav-text">target</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新表单方法"><span class="nav-number">3.</span> <span class="nav-text">新表单方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#H5自带表单验证"><span class="nav-number">3.0.1.</span> <span class="nav-text">H5自带表单验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id和name选择器"><span class="nav-number">3.0.2.</span> <span class="nav-text">id和name选择器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表单提交"><span class="nav-number">4.</span> <span class="nav-text">表单提交</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#submit"><span class="nav-number">4.0.1.</span> <span class="nav-text">submit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax"><span class="nav-number">4.0.2.</span> <span class="nav-text">ajax</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据展示"><span class="nav-number">5.</span> <span class="nav-text">数据展示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#d3"><span class="nav-number">5.0.1.</span> <span class="nav-text">d3</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

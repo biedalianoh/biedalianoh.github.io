@@ -1,0 +1,753 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs,stream," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="nodejs深入系列之stream">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs深入系列--stream">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/nodejs-stream/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="nodejs深入系列之stream">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs深入系列--stream">
+<meta name="twitter:description" content="nodejs深入系列之stream">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> nodejs深入系列--stream | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nodejs深入系列--stream
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>stream是nodejs中处理流数据的抽象接口。<br>nodejs中有多种stream对象。<br>所有的stream对象都是EventEmitter的实例。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const stream = require(<span class="string">'stream'</span>);</div></pre></td></tr></table></figure></p>
+<p>分两部分讲解，一部分是通过继承自stream的实例来讲解。一部分是通过直接应用stream的使用来讲解。</p>
+<h1 id="Streams类型"><a href="#Streams类型" class="headerlink" title="Streams类型"></a>Streams类型</h1><p>有四种基本stream类型。</p>
+<ol>
+<li>Readable<br>如：fs.createReadStream()</li>
+<li>Writable<br>如：fs.createWriteStream()</li>
+<li>Duplex<br>既是Readable又是Writable<br>如：net.Socket</li>
+<li>Transform<br>能够修改和改变的Duplex<br>如：zlib.createDeflate()</li>
+</ol>
+<h2 id="Writable-Streams"><a href="#Writable-Streams" class="headerlink" title="Writable Streams"></a>Writable Streams</h2><p>使用writable streams的实例：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HTTP requests, on the client</div><div class="line">HTTP responses, on the server</div><div class="line">fs write streams</div><div class="line">zlib streams</div><div class="line">crypto streams</div><div class="line">TCP sockets</div><div class="line">child process stdin</div><div class="line">process.stdout, process.stderr</div></pre></td></tr></table></figure></p>
+<h2 id="stream-writable"><a href="#stream-writable" class="headerlink" title="stream.writable"></a>stream.writable</h2><h3 id="close"><a href="#close" class="headerlink" title="close"></a>close</h3><h3 id="drain"><a href="#drain" class="headerlink" title="drain"></a>drain</h3><h3 id="error"><a href="#error" class="headerlink" title="error"></a>error</h3><h3 id="finish"><a href="#finish" class="headerlink" title="finish"></a>finish</h3><h3 id="pipe"><a href="#pipe" class="headerlink" title="pipe"></a>pipe</h3><h3 id="unpipe"><a href="#unpipe" class="headerlink" title="unpipe"></a>unpipe</h3><h3 id="writable-cork"><a href="#writable-cork" class="headerlink" title="writable.cork()"></a>writable.cork()</h3><h3 id="writable-end-chunk-encoding-callback"><a href="#writable-end-chunk-encoding-callback" class="headerlink" title="writable.end([chunk][, encoding][, callback])"></a>writable.end([chunk][, encoding][, callback])</h3><h3 id="writable-setDefaultEncoding-encoding"><a href="#writable-setDefaultEncoding-encoding" class="headerlink" title="writable.setDefaultEncoding(encoding)"></a>writable.setDefaultEncoding(encoding)</h3><h3 id="writable-uncork"><a href="#writable-uncork" class="headerlink" title="writable.uncork()"></a>writable.uncork()</h3><h3 id="writable-write-chunk-encoding-callback"><a href="#writable-write-chunk-encoding-callback" class="headerlink" title="writable.write(chunk[, encoding][, callback])"></a>writable.write(chunk[, encoding][, callback])</h3><h2 id="Readable-Streams"><a href="#Readable-Streams" class="headerlink" title="Readable Streams"></a>Readable Streams</h2><p>使用readable streams的实例：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HTTP responses, on the client</div><div class="line">HTTP requests, on the server</div><div class="line">fs <span class="built_in">read</span> streams</div><div class="line">zlib streams</div><div class="line">crypto streams</div><div class="line">TCP sockets</div><div class="line">child process stdout and stderr</div><div class="line">process.stdin</div></pre></td></tr></table></figure></p>
+<p>readable streams有两种模式：flowing 和 paused<br>readable streams有三种状态：flowing 和 pause<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">readable._readableState.flowing = null</div><div class="line">readable._readableState.flowing = <span class="literal">false</span></div><div class="line">readable._readableState.flowing = <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<h2 id="stream-Readable"><a href="#stream-Readable" class="headerlink" title="stream.Readable"></a>stream.Readable</h2><h3 id="close-1"><a href="#close-1" class="headerlink" title="close"></a>close</h3><h3 id="data"><a href="#data" class="headerlink" title="data"></a>data</h3><h3 id="end"><a href="#end" class="headerlink" title="end"></a>end</h3><h3 id="error-1"><a href="#error-1" class="headerlink" title="error"></a>error</h3><h3 id="readable"><a href="#readable" class="headerlink" title="readable"></a>readable</h3><h3 id="readable-isPaused"><a href="#readable-isPaused" class="headerlink" title="readable.isPaused()"></a>readable.isPaused()</h3><h3 id="readable-pause"><a href="#readable-pause" class="headerlink" title="readable.pause()"></a>readable.pause()</h3><h3 id="readable-pipe-destination-options"><a href="#readable-pipe-destination-options" class="headerlink" title="readable.pipe(destination[, options])"></a>readable.pipe(destination[, options])</h3><h3 id="readable-read-size"><a href="#readable-read-size" class="headerlink" title="readable.read([size])"></a>readable.read([size])</h3><h3 id="readable-resume"><a href="#readable-resume" class="headerlink" title="readable.resume()"></a>readable.resume()</h3><h3 id="readable-setEncoding-encoding"><a href="#readable-setEncoding-encoding" class="headerlink" title="readable.setEncoding(encoding)"></a>readable.setEncoding(encoding)</h3><h3 id="readable-unpipe-destination"><a href="#readable-unpipe-destination" class="headerlink" title="readable.unpipe([destination])"></a>readable.unpipe([destination])</h3><h3 id="readable-unshift-chunk"><a href="#readable-unshift-chunk" class="headerlink" title="readable.unshift(chunk)"></a>readable.unshift(chunk)</h3><h3 id="readable-wrap-stream"><a href="#readable-wrap-stream" class="headerlink" title="readable.wrap(stream)"></a>readable.wrap(stream)</h3><h2 id="Duplex-and-Transform-Streams"><a href="#Duplex-and-Transform-Streams" class="headerlink" title="Duplex and Transform Streams"></a>Duplex and Transform Streams</h2><h2 id="stream-Duplex"><a href="#stream-Duplex" class="headerlink" title="stream.Duplex"></a>stream.Duplex</h2><p>使用duplex streams的实例：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">TCP sockets</div><div class="line">zlib streams</div><div class="line">crypto streams</div></pre></td></tr></table></figure></p>
+<h2 id="stream-Transform"><a href="#stream-Transform" class="headerlink" title="stream.Transform"></a>stream.Transform</h2><p>使用transform streams的实例：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zlib streams</div><div class="line">crypto streams</div></pre></td></tr></table></figure></p>
+<h1 id="Stream-Implements-API"><a href="#Stream-Implements-API" class="headerlink" title="Stream Implements API"></a>Stream Implements API</h1><p>在直接使用stream的时候，需要指明至少一个使用的基本类型。具体应用应指定继承的对象。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const Writable = require(<span class="string">'stream'</span>).Writable;</div><div class="line"></div><div class="line">class MyWritable extends Writable &#123;</div><div class="line">  constructor(options) &#123;</div><div class="line">    super(options);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>四种对应关系如下：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Readable:   _read</div><div class="line">Writable:   _write, _writev</div><div class="line">Duplex:     _read, _write, _writev</div><div class="line">Transform:  _transform, _flush</div></pre></td></tr></table></figure></p>
+<h2 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h2><p>简单实现无需使用继承。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">const Writable = require(<span class="string">'stream'</span>).Writable;</div><div class="line">const myWritable = new Writable(&#123;</div><div class="line">  write(chunk, encoding, callback) &#123;</div><div class="line">    // ...</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="实现writable-stream"><a href="#实现writable-stream" class="headerlink" title="实现writable stream"></a>实现writable stream</h2><p>需要继承Writable</p>
+<h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">new stream.Writable([options])</div></pre></td></tr></table></figure>
+<p>options有以下选项：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">highWaterMark &lt;Number&gt;</div><div class="line">decodeStrings &lt;Boolean&gt;</div><div class="line">objectMode &lt;Boolean&gt;</div><div class="line">write &lt;Function&gt;</div><div class="line">writev &lt;Function&gt;</div></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const Writable = require(<span class="string">'stream'</span>).Writable;</div><div class="line"></div><div class="line">class MyWritable extends Writable &#123;</div><div class="line">  constructor(options) &#123;</div><div class="line">    // Calls the stream.Writable() constructor</div><div class="line">    super(options);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="writable-write-chunk-encoding-callback-1"><a href="#writable-write-chunk-encoding-callback-1" class="headerlink" title="writable._write(chunk, encoding, callback)"></a>writable._write(chunk, encoding, callback)</h3><h3 id="writable-writev-chunks-callback"><a href="#writable-writev-chunks-callback" class="headerlink" title="writable._writev(chunks, callback)"></a>writable._writev(chunks, callback)</h3><h2 id="实现readable-stream"><a href="#实现readable-stream" class="headerlink" title="实现readable stream"></a>实现readable stream</h2><p>需要继承Readable</p>
+<h3 id="new-stream-Readable-options"><a href="#new-stream-Readable-options" class="headerlink" title="new stream.Readable([options])"></a>new stream.Readable([options])</h3><h3 id="readable-read-size-1"><a href="#readable-read-size-1" class="headerlink" title="readable._read(size)"></a>readable._read(size)</h3><h3 id="readable-push-chunk-encoding"><a href="#readable-push-chunk-encoding" class="headerlink" title="readable.push(chunk[, encoding])"></a>readable.push(chunk[, encoding])</h3><h2 id="实现duplex-stream"><a href="#实现duplex-stream" class="headerlink" title="实现duplex stream"></a>实现duplex stream</h2><p>需要继承Duplex</p>
+<h3 id="new-stream-Duplex-options"><a href="#new-stream-Duplex-options" class="headerlink" title="new stream.Duplex(options)"></a>new stream.Duplex(options)</h3><h2 id="实现transform-stream"><a href="#实现transform-stream" class="headerlink" title="实现transform stream"></a>实现transform stream</h2><p>需要继承Transform</p>
+<h3 id="new-stream-Transform-options"><a href="#new-stream-Transform-options" class="headerlink" title="new stream.Transform([options])"></a>new stream.Transform([options])</h3><h3 id="‘finish’-and-‘end’"><a href="#‘finish’-and-‘end’" class="headerlink" title="‘finish’ and ‘end’"></a>‘finish’ and ‘end’</h3><h3 id="transform-flush-callback"><a href="#transform-flush-callback" class="headerlink" title="transform._flush(callback)"></a>transform._flush(callback)</h3><h3 id="transform-transform-chunk-encoding-callback"><a href="#transform-transform-chunk-encoding-callback" class="headerlink" title="transform._transform(chunk, encoding, callback)"></a>transform._transform(chunk, encoding, callback)</h3><h2 id="stream-PassThrough"><a href="#stream-PassThrough" class="headerlink" title="stream.PassThrough"></a>stream.PassThrough</h2>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/stream/" rel="tag">#stream</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-url/" rel="next" title="nodejs深入系列--url">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--url
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/nodejs-server/" rel="prev" title="nodejs深入系列--服务器">
+                nodejs深入系列--服务器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Streams类型"><span class="nav-number">1.</span> <span class="nav-text">Streams类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Writable-Streams"><span class="nav-number">1.1.</span> <span class="nav-text">Writable Streams</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stream-writable"><span class="nav-number">1.2.</span> <span class="nav-text">stream.writable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#close"><span class="nav-number">1.2.1.</span> <span class="nav-text">close</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#drain"><span class="nav-number">1.2.2.</span> <span class="nav-text">drain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error"><span class="nav-number">1.2.3.</span> <span class="nav-text">error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finish"><span class="nav-number">1.2.4.</span> <span class="nav-text">finish</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pipe"><span class="nav-number">1.2.5.</span> <span class="nav-text">pipe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unpipe"><span class="nav-number">1.2.6.</span> <span class="nav-text">unpipe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#writable-cork"><span class="nav-number">1.2.7.</span> <span class="nav-text">writable.cork()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#writable-end-chunk-encoding-callback"><span class="nav-number">1.2.8.</span> <span class="nav-text">writable.end([chunk][, encoding][, callback])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#writable-setDefaultEncoding-encoding"><span class="nav-number">1.2.9.</span> <span class="nav-text">writable.setDefaultEncoding(encoding)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#writable-uncork"><span class="nav-number">1.2.10.</span> <span class="nav-text">writable.uncork()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#writable-write-chunk-encoding-callback"><span class="nav-number">1.2.11.</span> <span class="nav-text">writable.write(chunk[, encoding][, callback])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Readable-Streams"><span class="nav-number">1.3.</span> <span class="nav-text">Readable Streams</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stream-Readable"><span class="nav-number">1.4.</span> <span class="nav-text">stream.Readable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#close-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">close</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data"><span class="nav-number">1.4.2.</span> <span class="nav-text">data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#end"><span class="nav-number">1.4.3.</span> <span class="nav-text">end</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error-1"><span class="nav-number">1.4.4.</span> <span class="nav-text">error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable"><span class="nav-number">1.4.5.</span> <span class="nav-text">readable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-isPaused"><span class="nav-number">1.4.6.</span> <span class="nav-text">readable.isPaused()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-pause"><span class="nav-number">1.4.7.</span> <span class="nav-text">readable.pause()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-pipe-destination-options"><span class="nav-number">1.4.8.</span> <span class="nav-text">readable.pipe(destination[, options])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-read-size"><span class="nav-number">1.4.9.</span> <span class="nav-text">readable.read([size])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-resume"><span class="nav-number">1.4.10.</span> <span class="nav-text">readable.resume()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-setEncoding-encoding"><span class="nav-number">1.4.11.</span> <span class="nav-text">readable.setEncoding(encoding)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-unpipe-destination"><span class="nav-number">1.4.12.</span> <span class="nav-text">readable.unpipe([destination])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-unshift-chunk"><span class="nav-number">1.4.13.</span> <span class="nav-text">readable.unshift(chunk)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-wrap-stream"><span class="nav-number">1.4.14.</span> <span class="nav-text">readable.wrap(stream)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Duplex-and-Transform-Streams"><span class="nav-number">1.5.</span> <span class="nav-text">Duplex and Transform Streams</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stream-Duplex"><span class="nav-number">1.6.</span> <span class="nav-text">stream.Duplex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stream-Transform"><span class="nav-number">1.7.</span> <span class="nav-text">stream.Transform</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stream-Implements-API"><span class="nav-number">2.</span> <span class="nav-text">Stream Implements API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单实现"><span class="nav-number">2.1.</span> <span class="nav-text">简单实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现writable-stream"><span class="nav-number">2.2.</span> <span class="nav-text">实现writable stream</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造器"><span class="nav-number">2.2.1.</span> <span class="nav-text">构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#writable-write-chunk-encoding-callback-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">writable._write(chunk, encoding, callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#writable-writev-chunks-callback"><span class="nav-number">2.2.3.</span> <span class="nav-text">writable._writev(chunks, callback)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现readable-stream"><span class="nav-number">2.3.</span> <span class="nav-text">实现readable stream</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-stream-Readable-options"><span class="nav-number">2.3.1.</span> <span class="nav-text">new stream.Readable([options])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-read-size-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">readable._read(size)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-push-chunk-encoding"><span class="nav-number">2.3.3.</span> <span class="nav-text">readable.push(chunk[, encoding])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现duplex-stream"><span class="nav-number">2.4.</span> <span class="nav-text">实现duplex stream</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-stream-Duplex-options"><span class="nav-number">2.4.1.</span> <span class="nav-text">new stream.Duplex(options)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现transform-stream"><span class="nav-number">2.5.</span> <span class="nav-text">实现transform stream</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-stream-Transform-options"><span class="nav-number">2.5.1.</span> <span class="nav-text">new stream.Transform([options])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#‘finish’-and-‘end’"><span class="nav-number">2.5.2.</span> <span class="nav-text">‘finish’ and ‘end’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transform-flush-callback"><span class="nav-number">2.5.3.</span> <span class="nav-text">transform._flush(callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transform-transform-chunk-encoding-callback"><span class="nav-number">2.5.4.</span> <span class="nav-text">transform._transform(chunk, encoding, callback)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stream-PassThrough"><span class="nav-number">2.6.</span> <span class="nav-text">stream.PassThrough</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

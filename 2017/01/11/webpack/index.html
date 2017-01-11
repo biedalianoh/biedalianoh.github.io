@@ -1,0 +1,769 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,webpack," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="webpack 是一个更出色的前端自动化构建工具、模块化工具、资源管理工具。相比来说，传统的AMD RequireJs的各种参数设置繁琐，不易学习，很难完全掌握；个人认为和较为流行的Browserify各有优缺点，不相上下；当然还有Duo这样优秀的工具。webpack的优点简单来说是一个配置文件解决所有缓存依赖转换功能。纯从webpack的角度来说，更适合于SPA应用构建。Webpack 做的,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack 项目配置">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/webpack/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="webpack 是一个更出色的前端自动化构建工具、模块化工具、资源管理工具。相比来说，传统的AMD RequireJs的各种参数设置繁琐，不易学习，很难完全掌握；个人认为和较为流行的Browserify各有优缺点，不相上下；当然还有Duo这样优秀的工具。webpack的优点简单来说是一个配置文件解决所有缓存依赖转换功能。纯从webpack的角度来说，更适合于SPA应用构建。Webpack 做的,">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack 项目配置">
+<meta name="twitter:description" content="webpack 是一个更出色的前端自动化构建工具、模块化工具、资源管理工具。相比来说，传统的AMD RequireJs的各种参数设置繁琐，不易学习，很难完全掌握；个人认为和较为流行的Browserify各有优缺点，不相上下；当然还有Duo这样优秀的工具。webpack的优点简单来说是一个配置文件解决所有缓存依赖转换功能。纯从webpack的角度来说，更适合于SPA应用构建。Webpack 做的,">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> webpack 项目配置 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                webpack 项目配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>webpack 是一个更出色的前端自动化构建工具、模块化工具、资源管理工具。相比来说，传统的AMD RequireJs的各种参数设置繁琐，不易学习，很难完全掌握；个人认为和较为流行的Browserify各有优缺点，不相上下；当然还有Duo这样优秀的工具。webpack的优点简单来说是一个配置文件解决所有缓存依赖转换功能。纯从webpack的角度来说，更适合于SPA应用构建。Webpack 做的, 总体是从 entry 引入文件, 通过 loaders 编译, 从 output 输出。然后其他功能由 plugins 写的其他的方法引入, 进行分包, Hashing 等等</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
+<li>npm install webpack -g</li>
+<li>npm init之后，生成了package.json</li>
+<li>npm install webpack –save-dev</li>
+</ol>
+<h1 id="webpack应用"><a href="#webpack应用" class="headerlink" title="webpack应用"></a>webpack应用</h1><p>个人认为webpack最大的缺点在于官方文档黑魔法太多，底层设计机制不够透明。此处通过一个常用的webpack.config.js来大致理解webpack工作机制。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div></pre></td><td class="code"><pre><div class="line">var webpack = require(<span class="string">'webpack'</span>);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">    //页面入口文件配置</div><div class="line">    entry: &#123;    </div><div class="line">        page1: <span class="string">'./page1.js'</span>,</div><div class="line">        page2: <span class="string">'./page2.js'</span>,</div><div class="line"></div><div class="line">        //把第三方库单独合并</div><div class="line">        venders: [<span class="string">'jquery'</span>, <span class="string">'lodash'</span>]</div><div class="line">    &#125;,</div><div class="line">    //页面输出文件配置</div><div class="line">    output: &#123;</div><div class="line">        path: __dirname + <span class="string">'/build/'</span>,    //打包文件存放的绝对路径</div><div class="line">        filename: <span class="string">'bundle.js'</span>,          //合并生成bundle.js</div><div class="line">        filename: <span class="string">'[name]-[hash].js'</span>,   //或打包生成相应文件名</div><div class="line">        publicPath: <span class="string">'/build/'</span>,          //网站运行时的访问路径</div><div class="line">    &#125;,</div><div class="line">    //加载器配置</div><div class="line">    module: &#123;</div><div class="line">        //loaders处理编译各类资源。loaders无需require</div><div class="line">        loaders: [</div><div class="line">            /*css loader</div><div class="line">                npm install css-loader style-loader --save-dev</div><div class="line">                css-loader会遍历css文件，找到所有的url(...)并且处理。style-loader会把所有的样式插入到你页面的一个style tag中</div><div class="line">                css?<span class="built_in">source</span>Map为使用<span class="built_in">source</span>-map形式直接显示你出错代码的位置</div><div class="line">            */</div><div class="line">            &#123;<span class="built_in">test</span>: /\.scss$/, loaders: [<span class="string">'style'</span>, <span class="string">'css?sourceMap'</span>, <span class="string">'sass?sourceMap'</span>], include: __dirname+<span class="string">'/assets/styles'</span>&#125;,</div><div class="line"></div><div class="line">            /*url loader</div><div class="line">                处理图片和其他静态文件</div><div class="line">                npm install url-loader --save-dev</div><div class="line">                当图片大小小于<span class="built_in">limit</span>字节限制，会启动base64编码图片</div><div class="line">            */</div><div class="line">            &#123;<span class="built_in">test</span>: /\.png|jpg$/, loader: <span class="string">'url?limit=8192'</span>&#125;,</div><div class="line"></div><div class="line">            /*js loader--babel</div><div class="line">            编译es6，jsx等</div><div class="line">            */</div><div class="line">            &#123;<span class="built_in">test</span>: /\.jsx?$/, loader: <span class="string">'babel'</span>, include: __dirname+<span class="string">'/assets/javascripts'</span>, query: &#123;presets: [<span class="string">'es2015'</span>]&#125;&#125;,</div><div class="line"></div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    /*js排错和定位</div><div class="line">        代码是合并以后的代码，不利于排错和定位，只需要在config中添加devtool</div><div class="line">        出错以后就会采用<span class="built_in">source</span>-map的形式直接显示你出错代码的位置。</div><div class="line">    */</div><div class="line">    devtool: <span class="string">'eval-source-map'</span>,</div><div class="line"></div><div class="line">    //其他解决方案配置</div><div class="line">    resolve: &#123;</div><div class="line">        extensions: [<span class="string">''</span>, <span class="string">'.js'</span>, <span class="string">'.jsx'</span>],//扩展无需添加后缀</div><div class="line">        <span class="built_in">alias</span>: &#123;                        //设置调用别名</div><div class="line">            <span class="string">'restful'</span>: <span class="string">'../vendor/restful.min'</span>,</div><div class="line">            <span class="string">'sightglass'</span>: <span class="string">'../vendor/sightglass</span></div><div class="line">        &#125;,</div><div class="line">        //添加默认搜索路径。把node_modules路径添加到resolve search root列表里边，这样就可以直接load npm模块了</div><div class="line">        root: [                         </div><div class="line">            process.cwd() + '/src<span class="string">',</span></div><div class="line">            process.cwd() + '/node_modules<span class="string">'</span></div><div class="line">        ],</div><div class="line"></div><div class="line">        //当出现 Node.js 模块依赖查找失败的时候，可以尝试设置 resolve.fallback 和 resolveLoader.fallback 来解决问题。</div><div class="line">        fallback: path.join(__dirname, "node_modules"),</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    /*找不到依赖module</div><div class="line">        当出现 Node.js 模块依赖查找失败的时候，可以尝试设置 resolve.fallback 和 resolveLoader.fallback 来解决问题。</div><div class="line">        Webpack 中涉及路径配置最好使用绝对路径，建议通过 path.resolve(__dirname, "app/folder") 或 path.join(__dirname, "app", "folder") 的方式来配置，以兼容 Windows 环境。</div><div class="line">    */</div><div class="line">    resolveLoader: &#123;</div><div class="line">        fallback: path.join(__dirname, "node_modules")</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    /*插件项</div><div class="line">        1. webpack自身集成插件。无需安装直接使用</div><div class="line">            [官方列表](http://webpack.github.io/docs/list-of-plugins.html)</div><div class="line">        2. 第三方插件。需npm安装</div><div class="line">    */</div><div class="line">    plugins: [</div><div class="line">        /*自动生成一个html文件</div><div class="line">            npm install html-webpack-plugin --save-dev</div><div class="line">            var HtmlwebpackPlugin = require('html-webpack-plugin<span class="string">');</span></div><div class="line">        */</div><div class="line">        new HtmlwebpackPlugin(&#123;title: 'Hello World app<span class="string">'&#125;),</span></div><div class="line"></div><div class="line">        /*把全局变量插入所有代码</div><div class="line">            一些老的库不支持AMD或者CommonJS等一些先进的格式，如jquery。</div><div class="line">            以后无需require，直接使用</div><div class="line">            npm install jquery</div><div class="line">        */</div><div class="line">        new webpack.ProvidePlugin(&#123;$: "jquery", jQuery: "jquery", "window.jQuery": "jquery"&#125;),</div><div class="line"></div><div class="line">        //压缩js代码</div><div class="line">        new webpack.optimize.UglifyJsPlugin(&#123;minimize: true&#125;),</div><div class="line"></div><div class="line">        /*打包js代码</div><div class="line">            此插件会将多个打包后的资源中的公共部分打包成单独的文件</div><div class="line">            如： plugins: [ new webpack.CommonsChunkPlugin("init.js") ]</div><div class="line">            表示公共文件输出为 init.js</div><div class="line">        */</div><div class="line">        new webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">            name: 'venders<span class="string">',</span></div><div class="line">            filename: '[name]-[<span class="built_in">hash</span>].js<span class="string">'</span></div><div class="line">        &#125;),</div><div class="line"></div><div class="line">        //在输出文件头部添加注释信息</div><div class="line">        new webpack.BannerPlugin('This msg is add by plugin<span class="string">'),</span></div><div class="line">    ],</div><div class="line"></div><div class="line">    /*启动webpack本地服务器</div><div class="line">        npm install webpack-dev-server --save-dev</div><div class="line">        然后在package.json配置</div><div class="line">        ...</div><div class="line">        "scripts": &#123;</div><div class="line">          "start": "webpack-dev-server --hot --inline"</div><div class="line">        &#125;,</div><div class="line">        ...</div><div class="line">        启动pack以后的代码，并且当代码更新的时候自动刷新浏览器。</div><div class="line">    */</div><div class="line">    devServer: &#123;</div><div class="line">        historyApiFallback: true,</div><div class="line">        hot: true,</div><div class="line">        inline: true,</div><div class="line">        progress: true,</div><div class="line">        /*proxy代理</div><div class="line">        在做ajax请求时，简写url代码</div><div class="line">        如： /api/data，则是http://localhost: 5000/data</div><div class="line">        */</div><div class="line">        proxy: &#123;</div><div class="line">            '/api/*<span class="string">': &#123;</span></div><div class="line">                target: 'http://localhost: 5000<span class="string">',</span></div><div class="line">                secure: false</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>以上基本上就是一个比较全的webpack config，相应的plugin list可以查看<a href="http://webpack.github.io/docs/list-of-plugins.html" target="_blank" rel="external">官方文档</a>，loader list也有对应<a href="http://webpack.github.io/docs/list-of-loaders.html" target="_blank" rel="external">官方文档</a>。可根据项目需求进行相关选项取舍配置。</p>
+<h1 id="应用须知"><a href="#应用须知" class="headerlink" title="应用须知"></a>应用须知</h1><h2 id="监控模式"><a href="#监控模式" class="headerlink" title="监控模式"></a>监控模式</h2><p>在没有启动服务器配置时，我们并不希望每一个变更都需要去手动编译，则可以通过以下命令来改善。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ webpack --watch</div></pre></td></tr></table></figure></p>
+<p>可使当前webpack静态文件实时生成。</p>
+<h2 id="开发服务器"><a href="#开发服务器" class="headerlink" title="开发服务器"></a>开发服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install webpack-dev-server -g</div><div class="line">$ webpack-dev-server</div></pre></td></tr></table></figure>
+<p>这会在 localhost:8080 提供一个小的 express 服务器来提供静态资源以及自动编译的套件。<br>webpack-dev-server 已使用了 webpack 监控模式。</p>
+<h2 id="故障处理"><a href="#故障处理" class="headerlink" title="故障处理"></a>故障处理</h2><p>一般情况下，webpack 如果出问题，会打印一些简单的错误信息，比如模块没有找到。我们还可以通过参数 –display-error-details 来打印错误详情。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ webpack --display-error-details</div></pre></td></tr></table></figure></p>
+<h2 id="bebel"><a href="#bebel" class="headerlink" title="bebel"></a>bebel</h2><p>js编译器<br>可以编译es6，jsx，等等，因此如果网站中想使用这些目前浏览器兼容并不好的语法，可以使用bebel进行编译。</p>
+<h2 id="require-ensure"><a href="#require-ensure" class="headerlink" title="require.ensure"></a>require.ensure</h2><p>除了会打包配置文件中定义的，还可以在代码中进行定义：require.ensure，例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">require.ensure([<span class="string">"module-a"</span>, <span class="string">"module-b"</span>], <span class="keyword">function</span>(require) &#123;</div><div class="line">  var a = require(<span class="string">"module-a"</span>);</div><div class="line">  // ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>Webpack在编译时会扫描到这样的代码，并对依赖模块进行自动打包，运行过程中执行到这段代码时会自动找到打包后的文件进行按需加载。</p>
+<h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><p>如使用git管理项目，建议新建一个.gitignore文件，不要让git提交一些node依赖的模块</p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>尽管Webpack可以通过命令行来指定参数，但我们通常会将所有相关参数定义在配置文件中。一般我们会定义两个配置文件，一个用于开发时，另外一个用于产品发布。生产环境下的打包文件不需要包含sourcemap等用于开发时的代码。配置文件通常放在项目根目录之下，其本身也是一个标准的CommonJS模块。</p>
+<h2 id="package-json-中-scripts"><a href="#package-json-中-scripts" class="headerlink" title="package.json 中 scripts"></a>package.json 中 scripts</h2><p>实现命令行命令。<br>如要实现： node server.js<br>为了方便可在package.json中加入配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">  <span class="string">"start"</span>: <span class="string">"node ./js/server.js"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>或也可实现gulp命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"test"</span>: <span class="string">"gulp build:production"</span>     //production为调用build配置文件时传递的参数</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="行内加载资源加载器"><a href="#行内加载资源加载器" class="headerlink" title="行内加载资源加载器"></a>行内加载资源加载器</h2><p>也可无需webpack.config.js里的loader编译，直接使用行内编译。<br>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">require(<span class="string">'style!css!less!./bower_components/bootstrap/bootstrap.less'</span>);</div><div class="line">require(<span class="string">'style!css!./styles/main.css'</span>);</div><div class="line">require(<span class="string">'url!./images/logo.png'</span>);</div><div class="line">require(<span class="string">'json!./data.json'</span>);</div><div class="line">require(<span class="string">'coffee!./scripts/main.coffee'</span>);</div><div class="line">require(<span class="string">'babel!./scripts/es6.js'</span>);</div></pre></td></tr></table></figure></p>
+<p>需要注意的是，避免用babel作为加载器加载所有node_module模块，会出现意外结果，而且大量加载情况下，加载时间很长。</p>
+<h2 id="部署上线"><a href="#部署上线" class="headerlink" title="部署上线"></a>部署上线</h2><p>需要部署上线，应该新创建一个单独的config文件，因为部署上线使用webpack的时候我们不需要一些dev-tools,dev-server和jshint校验等<br>复制我们现有的config文件，命名为 webpack.production.config.js，将里面关于 devServer等和开发有关的东西删掉。<br>在package.json中添加一个命令。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"start"</span>: <span class="string">"webpack-dev-server --hot --inline"</span>,</div><div class="line">    <span class="string">"build"</span>: <span class="string">"webpack --progress --profile --colors --config webpack.production.config.js"</span>,</div><div class="line">    <span class="string">"test"</span>: <span class="string">"karma start"</span></div><div class="line">  &#125;,</div></pre></td></tr></table></figure></p>
+<p>当要上线的时候,运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure></p>
+<h1 id="小知识"><a href="#小知识" class="headerlink" title="小知识"></a>小知识</h1><ol>
+<li><p>如果项目变得越来越大，编译耗时将会越来越长。所以，我们希望能够展示一些进度条，同时增加颜色……</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ webpack --progress --colors</div></pre></td></tr></table></figure>
+</li>
+<li><p>Webpack中将打包后的文件都称之为“Chunk”</p>
+</li>
+<li>若entry不把后面的路径添加至 [] 中，会报依赖错误：Error: a dependency to an entry point is not allowed<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">entry: &#123;</div><div class="line">  <span class="string">'component/popicker'</span>: [jsSrc + <span class="string">'component/popicker.js'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="简单配置"><a href="#简单配置" class="headerlink" title="简单配置"></a>简单配置</h1><p>根据项目难易情况，可添加不同webpack项目配置。一个简单的小项目配置起来当然没那么复杂。比如需要单独打包两个html页面的js，并hash添加到页面中，经过上面的研究，会不会发现没那么复杂了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">var webpack = require(<span class="string">'webpack'</span>);</div><div class="line">var paths = require(<span class="string">'./'</span>);</div><div class="line">var HtmlwebpackPlugin = require(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"></div><div class="line">module.exports = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line"></div><div class="line">    var jsSrc = paths.sourceAssets + <span class="string">'/javascripts/'</span>;</div><div class="line">    var jsDst = paths.publicAssets + <span class="string">'/javascripts/'</span></div><div class="line"></div><div class="line">    var webpackConfig = &#123;</div><div class="line">        entry: &#123;</div><div class="line">            page1: jsSrc + <span class="string">'page1.js'</span>,</div><div class="line">            page2: jsSrc + <span class="string">'page2.js'</span></div><div class="line">        &#125;,</div><div class="line">        output: &#123;</div><div class="line">            path: jsDst,</div><div class="line">            filename: <span class="string">'[name]-[hash].js'</span></div><div class="line">        &#125;,</div><div class="line">        plugins: [</div><div class="line">            new HtmlwebpackPlugin(&#123;</div><div class="line">                template: <span class="string">'./app/views/page1.html'</span>,</div><div class="line">                filename: <span class="string">'page1.html'</span>,</div><div class="line">                inject: <span class="string">'body'</span>,</div><div class="line">                chunks: [<span class="string">'page1'</span>]</div><div class="line">            &#125;),</div><div class="line">            new HtmlwebpackPlugin(&#123;</div><div class="line">                template: <span class="string">'./app/views/page2.html'</span>,</div><div class="line">                filename: <span class="string">'page2.html'</span>,</div><div class="line">                inject: <span class="string">'body'</span>,</div><div class="line">                chunks: [<span class="string">'page2'</span>]</div><div class="line">            &#125;),</div><div class="line">        ]</div><div class="line">    &#125;;</div><div class="line">    <span class="built_in">return</span> webpackConfig;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>webpack当然是一个很好的前端构建工具，提供了前端在配置项目时多样化的选择。但是在很多实际应用场景，并不如期待的那么好用，比如配置多入口时，需要额外处理没有glob的情况，目录结构复杂时，file-loader的path功能无法自定义构建后的目录结构，源码复杂等等。这也可能和对webpack万物require期待过高的原因有关。经过几天的学习，发现找到一个理想的前端构建模式，仍然任重道远。</p>
+<h1 id="附"><a href="#附" class="headerlink" title="附"></a>附</h1><ol>
+<li><a href="http://webpack.github.io/" target="_blank" rel="external">webpack官网</a></li>
+<li><a href="http://webpack.github.io/docs/list-of-tutorials.html" target="_blank" rel="external">官方教程列表</a></li>
+<li><a href="https://github.com/liunian/webpack-doc" target="_blank" rel="external">webpack 文档翻译（非官方）</a></li>
+<li><a href="http://webpack.github.io/docs/list-of-plugins.html" target="_blank" rel="external">webpack plugin list</a></li>
+<li><a href="http://webpack.github.io/docs/list-of-loaders.html" target="_blank" rel="external">webpack loader list</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/webpack/" rel="tag">#webpack</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/nodejs/" rel="next" title="Nodejs 极速上手">
+                <i class="fa fa-chevron-left"></i> Nodejs 极速上手
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/stapes/" rel="prev" title="Stapes.js 用法详解">
+                Stapes.js 用法详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack应用"><span class="nav-number">2.</span> <span class="nav-text">webpack应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用须知"><span class="nav-number">3.</span> <span class="nav-text">应用须知</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#监控模式"><span class="nav-number">3.1.</span> <span class="nav-text">监控模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发服务器"><span class="nav-number">3.2.</span> <span class="nav-text">开发服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#故障处理"><span class="nav-number">3.3.</span> <span class="nav-text">故障处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bebel"><span class="nav-number">3.4.</span> <span class="nav-text">bebel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#require-ensure"><span class="nav-number">3.5.</span> <span class="nav-text">require.ensure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gitignore"><span class="nav-number">3.6.</span> <span class="nav-text">.gitignore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">3.7.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#package-json-中-scripts"><span class="nav-number">3.8.</span> <span class="nav-text">package.json 中 scripts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内加载资源加载器"><span class="nav-number">3.9.</span> <span class="nav-text">行内加载资源加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署上线"><span class="nav-number">3.10.</span> <span class="nav-text">部署上线</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小知识"><span class="nav-number">4.</span> <span class="nav-text">小知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单配置"><span class="nav-number">5.</span> <span class="nav-text">简单配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附"><span class="nav-number">7.</span> <span class="nav-text">附</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

@@ -1,0 +1,767 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,angular,karma,jasmine,mock," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。an">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular自动化单元测试">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/karma-jasmine-angualr/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。an">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular自动化单元测试">
+<meta name="twitter:description" content="在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。an">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Angular自动化单元测试 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Angular自动化单元测试
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。</p>
+<h1 id="angular-mock介绍"><a href="#angular-mock介绍" class="headerlink" title="angular-mock介绍"></a>angular-mock介绍</h1><p>因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等.<br>angular-mock辅助Karma、Jasmine等JS测试工具来模拟angular方法，测试angular应用。除此之外，Angular-mock还扩展了ng的多个核心服务，使之可以被测试代码以同步的方式进行审查和控制。</p>
+<h2 id="angular-mock"><a href="#angular-mock" class="headerlink" title="angular.mock"></a>angular.mock</h2><p>‘angular-mocks.js’的命名空间，其中包含测试代码。angular.mock.inject 和 angular.mock.module 为global方法，可以直接省略 angular.mock. 。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angular.mock.module(<span class="string">'Application'</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="angular-mock-module"><a href="#angular-mock-module" class="headerlink" title="angular.mock.module"></a>angular.mock.module</h2><p>方法同样在window命名空间下，即可以直接使用 module ,非常方便调用。<br>module是用来配置inject方法注入的模块信息,参数可以是字符串,函数,对象,可以像下面这样使用:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">beforeEach(module(<span class="string">'myApp.filters'</span>));    </div><div class="line">beforeEach(module(<span class="keyword">function</span>(<span class="variable">$provide</span>) &#123;</div><div class="line">      <span class="variable">$provide</span>.value(<span class="string">'version'</span>, <span class="string">'TEST_VER'</span>);</div><div class="line">&#125;));</div></pre></td></tr></table></figure></p>
+<p>它一般用在beforeEach方法里,因为这个可以确保在执行测试任务的时候,inject方法可以获取到模块配置</p>
+<h2 id="angular-mock-inject"><a href="#angular-mock-inject" class="headerlink" title="angular.mock.inject"></a>angular.mock.inject</h2><p>inject是用来注入上面配置好的ng模块,方面在it的测试函数里调用,常见的调用例子如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'myApplicationModule'</span>, []).value(<span class="string">'mode'</span>, <span class="string">'app'</span>).value(<span class="string">'version'</span>, <span class="string">'v1.0.1'</span>);</div><div class="line"></div><div class="line">describe(<span class="string">'MyApp'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    // You need to load modules that you want to <span class="built_in">test</span>,</div><div class="line">    // it loads only the <span class="string">"ng"</span> module by default.</div><div class="line">    beforeEach(module(<span class="string">'myApplicationModule'</span>));</div><div class="line"></div><div class="line">    // inject() is used to inject arguments of all given <span class="built_in">functions</span></div><div class="line">    it(<span class="string">'should provide a version'</span>, inject(<span class="keyword">function</span>(mode, version) &#123;</div><div class="line">      expect(version).toEqual(<span class="string">'v1.0.1'</span>);</div><div class="line">      expect(mode).toEqual(<span class="string">'app'</span>);</div><div class="line">    &#125;));</div><div class="line"></div><div class="line">    // The inject and module method can also be used inside of the it or beforeEach</div><div class="line">    it(<span class="string">'should override a version and test the new version is injected'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">      // module() takes <span class="built_in">functions</span> or strings (module aliases)</div><div class="line">      module(<span class="keyword">function</span>(<span class="variable">$provide</span>) &#123;</div><div class="line">        <span class="variable">$provide</span>.value(<span class="string">'version'</span>, <span class="string">'overridden'</span>); // override version here</div><div class="line">      &#125;);</div><div class="line">      inject(<span class="keyword">function</span>(version) &#123;</div><div class="line">        expect(version).toEqual(<span class="string">'overridden'</span>);</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>其实inject里面就是利用angular.inject方法创建的一个内置的依赖注入实例,然后里面的模块注入跟普通ng模块里的依赖处理是一样的</p>
+<h2 id="exceptionHandler"><a href="#exceptionHandler" class="headerlink" title="$exceptionHandler"></a>$exceptionHandler</h2><p>通过$exceptionHandler模拟实现重抛或记录错误信息。查看$exceptionHandlerProvider获取配置信息。</p>
+<h2 id="log"><a href="#log" class="headerlink" title="$log"></a>$log</h2><p>模拟实现 $log 收集所有数组中已记录的日志信息(每一个记录等级一个数组)。这些数组被作为logs属性可每个具体等级的log方法获取。 例：对于等级error数组可被 $log.error.logs获取。</p>
+<h2 id="interval"><a href="#interval" class="headerlink" title="$interval"></a>$interval</h2><p>模拟实现$interval服务。</p>
+<h2 id="httpBackend"><a href="#httpBackend" class="headerlink" title="$httpBackend"></a>$httpBackend</h2><p>为使用了$http service的应用提供单元测试的伪HTTP后台。</p>
+<h2 id="timeout"><a href="#timeout" class="headerlink" title="$timeout"></a>$timeout</h2><p>该服务仅是一个简单的装饰器，为$timeout 服务添加了”flush”和”verifyNoPendingTasks” 方法。</p>
+<h2 id="controller"><a href="#controller" class="headerlink" title="$controller"></a>$controller</h2><p>为$controller提供了额外的bindings参数，这在测试使用了 bindToController 指令的控制器时很有用处。</p>
+<h2 id="httpBackend-常用方法"><a href="#httpBackend-常用方法" class="headerlink" title="$httpBackend 常用方法"></a>$httpBackend 常用方法</h2><h3 id="when"><a href="#when" class="headerlink" title="when"></a>when</h3><p>新建一个后端定义。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">when(method, url, [data], [headers]);</div></pre></td></tr></table></figure></p>
+<h3 id="expect"><a href="#expect" class="headerlink" title="expect"></a>expect</h3><p>新建一个请求期望（request expectation）。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expect(method, url, [data], [headers]);</div></pre></td></tr></table></figure></p>
+<h3 id="when-和-expect-区别"><a href="#when-和-expect-区别" class="headerlink" title="when 和 expect 区别"></a>when 和 expect 区别</h3><p>when和expect都需要4个参数method, url, data, headers, 其中后2个参数可选。</p>
+<ul>
+<li>method表示http方法注意都需要是大写(GET, PUT…);<br></li>
+<li>url请求的url可以为正则或者字符串；</li>
+<li>data请求时带的参数，</li>
+<li>headers请求时设置的header。   </li>
+</ul>
+<p>如果这些参数都提供了，那只有当这些参数都匹配的时候才会正确的匹配请求。when和expect都会返回一个带respond方法的对象。respond方法有3个参数status，data，headers通过设置这3个参数就可以伪造返回的响应数据了。</p>
+<p>二者主要区别在于：<br>$httpBackend.expect的伪后台只能被调用一次(调用一次后会被清除)，第二次调用就会报错，而且$httpBackend.resetExpectations可以移除所有的expect而对when没有影响。</p>
+<h3 id="when-和-expect-快捷方法"><a href="#when-和-expect-快捷方法" class="headerlink" title="when 和 expect 快捷方法"></a>when 和 expect 快捷方法</h3><p>when和expect都有对应的快捷方法whenGET, whenPOST,whenHEAD, whenJSONP, whenDELETE, whenPUT; expect也一样。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//when</div><div class="line">whenGET(url, [headers]);</div><div class="line">whenHEAD(url, [headers]);</div><div class="line">whenDELETE(url, [headers]);</div><div class="line">whenPOST(url, [data], [headers]);</div><div class="line">whenPUT(url, [data], [headers]);</div><div class="line">whenJSONP(url);</div><div class="line">//expect</div><div class="line">expectGET(url, [headers]);</div><div class="line">expectHEAD(url, [headers]);</div><div class="line">expectDELETE(url, [headers]);</div><div class="line">expectPOST(url, [data], [headers]);</div><div class="line">expectPUT(url, [data], [headers]);</div><div class="line">expectPATCH(url, [data], [headers]);</div><div class="line">expectJSONP(url);</div></pre></td></tr></table></figure></p>
+<h1 id="和karma配合"><a href="#和karma配合" class="headerlink" title="和karma配合"></a>和karma配合</h1><p>在karma的配置文件karma.config.js中的 files: [“*.js”] 中，确保angular-mock.js被引入。</p>
+<h1 id="测试示例"><a href="#测试示例" class="headerlink" title="测试示例"></a>测试示例</h1><p>测试文件需<strong>按顺序</strong>将测试项目文件及依赖引入karma.confir.js。</p>
+<p>设置files类似：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">files: [</div><div class="line">  <span class="string">'ng/angular.js'</span>,</div><div class="line">  <span class="string">'ng/angular-mocks.js'</span>,</div><div class="line">  <span class="string">'js/demo.js'</span>,</div><div class="line">  <span class="string">'test/demo-test.js'</span></div><div class="line">],</div></pre></td></tr></table></figure></p>
+<p><strong>测试示例</strong>：<br><strong>js/demo.js</strong>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(<span class="string">'Application'</span>, []);</div><div class="line"></div><div class="line">app.controller(<span class="string">'MainCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>, <span class="variable">$http</span>) &#123;</div><div class="line">    <span class="variable">$http</span>.get(<span class="string">'user/users.json'</span>).success(<span class="keyword">function</span>(data) &#123;</div><div class="line">        <span class="variable">$scope</span>.users = data;</div><div class="line">    &#125;);</div><div class="line">    <span class="variable">$scope</span>.text = <span class="string">'Hello World'</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>针对上面示例，测试的时候，不需要真实的发送http请求来获取数据。只需测试逻辑，因此当发送请求的时候，我们使用 $httpBackend 将请求拦截下来，返回预定义好的数据。</p>
+<p><strong>test/demo-test.js</strong>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">describe(<span class="string">'MainCtrl'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    //在测试中使用这个scope代替</div><div class="line">    var scope, <span class="variable">$httpBackend</span>;</div><div class="line">    </div><div class="line">    //模拟Application模块，并注入自己的依赖</div><div class="line">    beforeEach(angular.mock.module(<span class="string">'Application'</span>));</div><div class="line">    </div><div class="line">    //模拟controller，并且包含 <span class="variable">$rootScope</span> 和 <span class="variable">$controller</span></div><div class="line">    beforeEach(angular.mock.inject(<span class="keyword">function</span>(<span class="variable">$rootScope</span>, <span class="variable">$controller</span>, _<span class="variable">$httpBackend_</span>) &#123;</div><div class="line">        //设置 <span class="variable">$httpBackend</span> 代替 <span class="variable">$http</span> 请求</div><div class="line">        <span class="variable">$httpBackend</span> = _<span class="variable">$httpBackend_</span>;</div><div class="line">        //使用when设置伪数据</div><div class="line">        <span class="variable">$httpBackend</span>.when(<span class="string">'GET'</span>, <span class="string">'users/user.json'</span>).respond([&#123;  </div><div class="line">            id: 1,</div><div class="line">            name: <span class="string">'zhou'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            id: 2,</div><div class="line">            name: <span class="string">'chen'</span></div><div class="line">        &#125;]);</div><div class="line">        </div><div class="line">        //创建一个空的 scope</div><div class="line">        scope = <span class="variable">$rootScope</span>.<span class="variable">$new</span>();</div><div class="line">        </div><div class="line">        //声明 controller 并且注入已创建的空 scope</div><div class="line">        <span class="variable">$controller</span>(<span class="string">'MainCtrl'</span>, &#123;<span class="variable">$scope</span>: scope&#125;);</div><div class="line">    &#125;));</div><div class="line">    </div><div class="line">    //测试从这里开始</div><div class="line">    it(<span class="string">'should have variable text = "Hello World"'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        expect(scope.text).toBe(<span class="string">'Hello World'</span>);</div><div class="line">    &#125;);</div><div class="line">    it(<span class="string">'should fetch list of users'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        <span class="variable">$httpBackend</span>.flush();   //执行完成http请求</div><div class="line">        expect(scope.users.length).toBe(2);</div><div class="line">        expect(scope.users[0].name).toBe(<span class="string">'zhou'</span>);</div><div class="line">        </div><div class="line">        //输出结果方便查看</div><div class="line">        <span class="keyword">for</span>(var i = 0; i &lt; scope.users.length; i++) &#123;</div><div class="line">            console.log(scope.users[i].name);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>上面利用了$rootScope来创建子作用域,然后把这个参数传进控制器的构建方法$controller里去,最终会执行上面的控制器里的方法,然后我们检查自己的判断逻辑是否正确.</p>
+<p>为保证测试与项目代码分离，我建议将配置文件及测试代码单独存放在test目录，项目打包时可直接删除。</p>
+<p>执行测试：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">karma start karma.config.js</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/angular/" rel="tag">#angular</a>
+          
+            <a href="/tags/karma/" rel="tag">#karma</a>
+          
+            <a href="/tags/jasmine/" rel="tag">#jasmine</a>
+          
+            <a href="/tags/mock/" rel="tag">#mock</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/karma-jasmine/" rel="next" title="使用Karma+jasmine实现自动化单元测试">
+                <i class="fa fa-chevron-left"></i> 使用Karma+jasmine实现自动化单元测试
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/job/" rel="prev" title="Javascript基础--前端基础知识总结">
+                Javascript基础--前端基础知识总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#angular-mock介绍"><span class="nav-number">1.</span> <span class="nav-text">angular-mock介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-mock"><span class="nav-number">1.1.</span> <span class="nav-text">angular.mock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-mock-module"><span class="nav-number">1.2.</span> <span class="nav-text">angular.mock.module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular-mock-inject"><span class="nav-number">1.3.</span> <span class="nav-text">angular.mock.inject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exceptionHandler"><span class="nav-number">1.4.</span> <span class="nav-text">$exceptionHandler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log"><span class="nav-number">1.5.</span> <span class="nav-text">$log</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interval"><span class="nav-number">1.6.</span> <span class="nav-text">$interval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#httpBackend"><span class="nav-number">1.7.</span> <span class="nav-text">$httpBackend</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#timeout"><span class="nav-number">1.8.</span> <span class="nav-text">$timeout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#controller"><span class="nav-number">1.9.</span> <span class="nav-text">$controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#httpBackend-常用方法"><span class="nav-number">1.10.</span> <span class="nav-text">$httpBackend 常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#when"><span class="nav-number">1.10.1.</span> <span class="nav-text">when</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expect"><span class="nav-number">1.10.2.</span> <span class="nav-text">expect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-和-expect-区别"><span class="nav-number">1.10.3.</span> <span class="nav-text">when 和 expect 区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-和-expect-快捷方法"><span class="nav-number">1.10.4.</span> <span class="nav-text">when 和 expect 快捷方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#和karma配合"><span class="nav-number">2.</span> <span class="nav-text">和karma配合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试示例"><span class="nav-number">3.</span> <span class="nav-text">测试示例</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

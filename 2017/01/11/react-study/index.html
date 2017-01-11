@@ -1,0 +1,805 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,react," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="React study。此篇属《React精髓》书本的学习笔记，记载一些常规的用法，书中对React的理解，以及自己在看书过程中的理解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/react-study/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="React study。此篇属《React精髓》书本的学习笔记，记载一些常规的用法，书中对React的理解，以及自己在看书过程中的理解。">
+<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React 学习笔记">
+<meta name="twitter:description" content="React study。此篇属《React精髓》书本的学习笔记，记载一些常规的用法，书中对React的理解，以及自己在看书过程中的理解。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> React 学习笔记 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React 学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="易出问题点"><a href="#易出问题点" class="headerlink" title="易出问题点"></a>易出问题点</h2><p>随着使用react过程中，不断发现容易出错的各种地方。在此更新总结。</p>
+<h3 id="webpack-解析-react"><a href="#webpack-解析-react" class="headerlink" title="webpack 解析 react"></a>webpack 解析 react</h3><p>在实验了各种方式去解析react和es6，发现以下方式可行。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">loaders: [</div><div class="line">  &#123;</div><div class="line">    <span class="built_in">test</span>: /\.jsx?$/,</div><div class="line">    loader: <span class="string">'babel-loader'</span>,</div><div class="line">    exclude: /node_modules/,</div><div class="line">    query: &#123;</div><div class="line">      presets: [<span class="string">'react'</span>, <span class="string">'es2015'</span>]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>有另一种方式–loader: ‘babel-loader!jsx-loader?harmony’，这种方式也属于链式解析，和query的链式解析相冲突，两种方式不能并存。<br>另外需要安装 babel-preset-es2015, babel-preset-react。</p>
+<h3 id="jsx格式"><a href="#jsx格式" class="headerlink" title="jsx格式"></a>jsx格式</h3><p>jsx 属于 xml 格式类型，单标签必须要有闭合 <input><br>render时，最上级只能有一个标签。</p>
+<h3 id="react事件"><a href="#react事件" class="headerlink" title="react事件"></a>react事件</h3><p>在给元素添加事件时，react默认this都为自身，不会为dom元素，需要调用dom元素，可以使用refs，或者event。在使用event时，可能会触发异步事件取消属性调用（暂不清楚原因），即event的属性全都无法调用，可使用如下代码解决：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event.persist();</div></pre></td></tr></table></figure></p>
+<h3 id="flux，reflux，redux"><a href="#flux，reflux，redux" class="headerlink" title="flux，reflux，redux"></a>flux，reflux，redux</h3><p>目前react采用的代码架构，reflux和redux使用比较方便。</p>
+<h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>和常规项目一样，需要安装nodejs环境，以及npm和git。<br>在测试项目时，可使用browserify来支持require()写法。<br>同时引入gulp来进行react解析和打包。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var gulp = require(<span class="string">'gulp'</span>);</div><div class="line">var browserify = require(<span class="string">'browserify'</span>);</div><div class="line">var babelify = require(<span class="string">'babelify'</span>);   //解析jsx语法</div><div class="line">var <span class="built_in">source</span> = require(<span class="string">'vinyl-source-stream'</span>);  //此模块能让我们同时使用browserify和gulp</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  <span class="built_in">return</span> browserify(<span class="string">'./source/app.js'</span>)</div><div class="line">    .transform(babelify)</div><div class="line">    .bundle()</div><div class="line">    .pipe(<span class="built_in">source</span>(<span class="string">'snapterest.js'</span>))    //生成的线上运行的js文件</div><div class="line">    .pipe(gulp.dest(<span class="string">'./build/'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h2><p>页面中的dom元素为react创建的react元素，然后通过reset渲染到页面上，并且一旦数据模型有变化，react reset重新渲染改变过的部分。<br>虚拟DOM在React中的调用方式比较灵活，任意位置均可以使用jsx方式调用。<br>常见调用方式：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 1. 直接<span class="built_in">return</span></div><div class="line">render: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  <span class="built_in">return</span> (</div><div class="line">    &lt;ul style = &#123;listStyle&#125;</div><div class="line">      &#123;tweetElements&#125;</div><div class="line">    &lt;/ul&gt;</div><div class="line">  )</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 2. 赋值</div><div class="line">var tweetElement = (</div><div class="line">  &lt;ul style = &#123;listStyle&#125;</div><div class="line">    &#123;tweetElements&#125;</div><div class="line">  &lt;/ul&gt;</div><div class="line">)</div><div class="line"><span class="built_in">return</span> tweetElement;</div><div class="line"></div><div class="line">// 3. 子组件</div><div class="line">//子组件，是在子组件中单独定义，并require进当前页面，引用子组件以 &lt; 方式直接引用，</div><div class="line">//并且定义的props会传递到子组件中, 子组件可以为单独的dom，也可以为列表。</div><div class="line">var Tweet = require(<span class="string">'./component/Tweet.react'</span>);</div><div class="line">var tweetElement = &lt;Tweet tweet = &#123;tweet&#125; onImageClick = &#123;handleRemoveTweetFromCollection&#125; /&gt;;</div></pre></td></tr></table></figure></p>
+<h3 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h3><p>创建元素。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">React.createElement(<span class="built_in">type</span>, props, children)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>type: 必须为字符串(html标签名)或ReactClass。</li>
+<li><p>props: 设置html的属性。如：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">React.createElement(<span class="string">'h1'</span>, &#123;className: <span class="string">'header'</span>&#125;);</div><div class="line">生成：</div><div class="line">&lt;h1 class=<span class="string">"header"</span> data-reactid=<span class="string">""</span>&gt;&lt;/h1&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>children: 设置html的子元素。可以直接为字符串，或一个react元素，或一个react元素数组。</p>
+</li>
+</ul>
+<h3 id="createFactory"><a href="#createFactory" class="headerlink" title="createFactory"></a>createFactory</h3><p>工厂函数。用来创建其它函数的函数。用来简化创建过程。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var createLi = React.createFactory(<span class="string">'li'</span>);</div><div class="line">var liItem1 = createLi(&#123;className: <span class="string">'item-1'</span>, key: <span class="string">'item-1'</span>&#125;, <span class="string">'Item1'</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="html内置工厂函数"><a href="#html内置工厂函数" class="headerlink" title="html内置工厂函数"></a>html内置工厂函数</h3><p>通用的html标签有内置的工厂函数。<br>如： React.DOM.ul(), React.DOM.div() 等<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var liItem1 = React.DOM.li(&#123;className: <span class="string">'item-1'</span>&#125;, <span class="string">'item1'</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><p>ReactDOM.render() 将我们的 ReactNode 渲染成 DOM 树。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ReactDOM.render(ReactElement, DOMElement, callback);</div><div class="line">// ReactElement 为容器中的 DOM节点</div><div class="line">// DOMElement 为 根节点</div><div class="line">// callback 在 DOM树 渲染或更新之后执行</div></pre></td></tr></table></figure></p>
+<h3 id="jsx"><a href="#jsx" class="headerlink" title="jsx"></a>jsx</h3><p>jsx是一个可选的类似HTML的语法。通过jsx，能更轻易的创建虚拟DOM树。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var lists = &lt;ul className=<span class="string">"list-of-items"</span>&gt;</div><div class="line">              &lt;li className=<span class="string">"item-1"</span>&gt;item1&lt;/li&gt;</div><div class="line">              &lt;li className=<span class="string">"item-2"</span>&gt;item2&lt;/li&gt;</div><div class="line">            &lt;/ul&gt;;</div><div class="line">ReactDOM.render(lists, document.getElementById(<span class="string">'react-application'</span>));</div></pre></td></tr></table></figure></p>
+<p>Babel 6.0之后，如果要转换jsx语法，需要安装babel-preset-react组件。<br>代码也要由.transform(babelify) 改成 .transform(babelify, {presets: [“react”]})</p>
+<h3 id="createClass"><a href="#createClass" class="headerlink" title="createClass()"></a>createClass()</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>React.createClass() 定义一个规范的创建dom元素的方式。在用createElement创建元素时只需把新建的 React.createClass() 对象当参数传入。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var headerClass = React.createClass(&#123;</div><div class="line">  render: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> React.createElement(<span class="string">'h1'</span>, &#123;className: <span class="string">'header'</span>&#125;, <span class="string">'react component'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line">var header = React.createElement(headerClass);</div><div class="line">var a = ReactDOM.render(header, document.getElementById(<span class="string">'react-application'</span>));</div></pre></td></tr></table></figure></p>
+<p>可在createClass的render函数中操作判断返回值。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">render: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  var elementState = &#123;isHidden: <span class="literal">true</span>&#125;;</div><div class="line">  <span class="keyword">if</span>(elementState.isHidden) &#123;</div><div class="line">    <span class="built_in">return</span> null;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> React.createElement(<span class="string">'h1'</span>, &#123;className: <span class="string">'header'</span>&#125;, <span class="string">'react component'</span>);</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h4 id="添加状态层"><a href="#添加状态层" class="headerlink" title="添加状态层"></a>添加状态层</h4><ul>
+<li><p>getInitialState<br>通过 getInitialState() 把react组件的状态保存在this.state中。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&#123;</div><div class="line">  getInitialState: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">      isHidden: <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  render: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="keyword">if</span>(this.state.isHidden) &#123;</div><div class="line">      <span class="built_in">return</span> null</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure>
+</li>
+<li><p>setState()<br>使用 this.setState(data, callback) 函数更新组件的 state 值。当 state 更新后组件会自动重新渲染。<br>如：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 初始状态值：</div><div class="line">this.state = &#123;</div><div class="line">  isHidden: <span class="literal">true</span>,</div><div class="line">  title: <span class="string">'stateful react'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 调用设置状态值:</div><div class="line">this.setState(&#123;</div><div class="line">  isHidden: <span class="literal">false</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">// state 状态值会变为：</div><div class="line">this.state = &#123;</div><div class="line">  isHidden: <span class="literal">false</span>,</div><div class="line">  title: <span class="string">'stateful react'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="添加事件层"><a href="#添加事件层" class="headerlink" title="添加事件层"></a>添加事件层</h3><p>React的事件层是通过props来添加的，可以直接绑定组件中定义的事件。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&#123;</div><div class="line">  getInitialState: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">      isHeaderHidden: <span class="literal">false</span>,</div><div class="line">      title: <span class="string">'stateful react component'</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  handleClick: <span class="function"><span class="title">function</span></span>() &#123;       //此处的handleClick不是系统函数，是自命名函数</div><div class="line">    this.setState(&#123;</div><div class="line">      isHeaderHidden: !this.state.isHeaderHidden</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  render: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var header = React.createElement(<span class="string">'h1'</span>, &#123;className: <span class="string">'header'</span>, key: <span class="string">'header'</span>&#125;, this.state.title);</div><div class="line">    var btn = React.createElement(<span class="string">'button'</span>, &#123;className: <span class="string">'btn'</span>, key: <span class="string">'button'</span>, onClick: this.handleClick&#125;, <span class="string">'ToggleHeader'</span>);    //绑定函数事件，驼峰命名</div><div class="line">    <span class="keyword">if</span>(this.state.isHeaderHidden) &#123;</div><div class="line">      <span class="built_in">return</span> React.createElement(<span class="string">'div'</span>, null, [btn]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> React.createElement(<span class="string">'div'</span>, null, [btn, header]);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>在用户事件层中，无需传递event，function即拥有event参数。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var btnElement = &lt;button onClick = &#123;this.handleClick&#125; /&gt;;</div><div class="line">....</div><div class="line">handleClick: <span class="keyword">function</span>(event) &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>前面已经介绍了组件的几个常用方法：createClass, render, getInitialState.<br>现在介绍组件生命周期（挂载，更新，卸载）常用的其它方法。<br>挂载：</p>
+<blockquote>
+<p>getInitialState() 是第一个被调用的，会在React将组件插入DOM之前被调用。<br>componentWillMount() 是第二个被调用的，会在React将组件即将插入DOM时被调用。<br>render()  是第三个被调用的，将组件插入DOM元素。<br>componentDidMount()   是第四个被调用的，插入完成。</p>
+</blockquote>
+<p>更新：</p>
+<blockquote>
+<p>componentWillReceiveProps() 更新阶段第一个被调用。组件从父组件接收到信属性时被调用<br>shouldComponentUpdate() 更新阶段第二个被调用。 决定组件是否重新渲染<br>componentWillUpdate() 更新阶段第三个被调用。即将更新DOM之前被调用。<br>render()  更新阶段第四个被调用。更新DOM。<br>componentDidUpdate()  更新阶段第五个被调用。更新DOM完成之后立即执行。</p>
+</blockquote>
+<p>卸载：</p>
+<blockquote>
+<p>componentWillUnmount() 组件被删除之前触发的方法。</p>
+</blockquote>
+<h3 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h3><p>componentDidMount() 仅仅会在初始化渲染完成之后调用一次。此时React已经创建了DOM树。<br>它最适合用来整合React和其它js库。</p>
+<h3 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount"></a>componentWillMount</h3><p>componentWillMount() 会在React将组件即将插入DOM时被调用。</p>
+<h3 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount"></a>componentWillUnmount</h3><p>componentWillUnmount() 方法在组件即将被卸载之前会被调用。</p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="style"><a href="#style" class="headerlink" title="style"></a>style</h3><p>组件的样式可以直接用js的格式定义并设置。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var headerStyle = &#123;</div><div class="line">  fontSize: <span class="string">'16px'</span>,</div><div class="line">  fontWeight: <span class="string">'300'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">...</div><div class="line">render: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  <span class="built_in">return</span> (</div><div class="line">    &lt;h2 style=&#123;**headerStyle**&#125;&gt;&#123;this.props.text&#125;&lt;/h2&gt;</div><div class="line">  );</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h3 id="propTypes"><a href="#propTypes" class="headerlink" title="propTypes"></a>propTypes</h3><p>使用 propTypes 来验证组件的属性。出于性能原因，propTypes 仅在React的开发版中被使用。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">propTypes: &#123;</div><div class="line">  propertyName: validator</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>React内置了一些验证器供使用：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">React.PropTypes.number</div><div class="line">React.PropTypes.string</div><div class="line">React.PropTypes.bool</div><div class="line">React.PropTypes.object</div><div class="line">React.PropTypes.element</div></pre></td></tr></table></figure></p>
+<p>React 验证器都是可选的，可以设置require：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">propTypes: &#123;</div><div class="line">  propertyName: React.PropTypes.number.isRequired</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也可以自定义验证器，在函数需要返回失败的时候返回一个 Error 对象：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">propTypes: &#123;</div><div class="line">  propertyName: <span class="keyword">function</span>(properties, propertyName, componentName) &#123;</div><div class="line">    // ...验证失败</div><div class="line">    <span class="built_in">return</span> new Error(<span class="string">'A property is not valid'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><h3 id="findDOMNode"><a href="#findDOMNode" class="headerlink" title="findDOMNode"></a>findDOMNode</h3><p>findDOMNode(this) 方法引用当前组件的DOM。</p>
+<h3 id="getDefaultProps"><a href="#getDefaultProps" class="headerlink" title="getDefaultProps"></a>getDefaultProps</h3><p>getDefaultProps() 方法可以设置默认值。含义类似 _.defaults()。</p>
+<h2 id="flux"><a href="#flux" class="headerlink" title="flux"></a>flux</h2><p>flux是一种代码架构，不是一种框架或者库，确切的说是一种解决问题的思路。一种用于构建良好扩展性的网页应用的思路。<br>flux需要加载组件：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install flux --save</div></pre></td></tr></table></figure></p>
+<p>flux分为四种逻辑模块：Action, Dispatcher, Store, View。<br>其中数据流为：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Actions &gt; Dispatcher &gt; Stores</div></pre></td></tr></table></figure></p>
+<h3 id="Action-动作"><a href="#Action-动作" class="headerlink" title="Action(动作)"></a>Action(动作)</h3><p>每当应用状态改变就创建一个Action对象。Action对象具有 type 属性，标志了它的类型。<br>Action对象也具有新 state 的属性。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var action = &#123;</div><div class="line">  <span class="built_in">type</span>: <span class="string">'receive_tweet'</span>,</div><div class="line">  tweet: tweet</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>可以创建 action生成器 来创建和分发一类动作：</p>
+<ol>
+<li>创建actions文件夹。统一存放 action生成器。</li>
+<li>创建 action生成器。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var AppDispatcher = require(<span class="string">'../dispatcher/AppDispatcher'</span>);</div><div class="line"><span class="keyword">function</span> receiveTweet(tweet) &#123;</div><div class="line">  var action = &#123;</div><div class="line">    <span class="built_in">type</span>: <span class="string">'receive_tweet'</span>,</div><div class="line">    tweet: tweet</div><div class="line">  &#125;;</div><div class="line">  AppDispatcher.dispatch(action);</div><div class="line">&#125;</div><div class="line">module.exports = &#123;</div><div class="line">  receiveTweet: receiveTweet</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>此后，所有在AppDispatcher中注册过的存储都能收到dispatch()方法分发的动作。</p>
+<h3 id="Dispatcher-分发器"><a href="#Dispatcher-分发器" class="headerlink" title="Dispatcher(分发器)"></a>Dispatcher(分发器)</h3><p>负责把所有的动作分发到各个存储中。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var Dispatcher = require(<span class="string">'flux'</span>).Dispatcher;</div><div class="line">module.exports = new Dispatcher();</div></pre></td></tr></table></figure></p>
+<h3 id="Store-存储"><a href="#Store-存储" class="headerlink" title="Store(存储)"></a>Store(存储)</h3><p>存储的作用是 储存，管理数据，同时对外向React组件提供数据。<br>存储只允许从外部读取数据，而不向外提供修改数据的方法。</p>
+<ol>
+<li>创建stores文件夹。统一存放 stores数据。</li>
+<li>创建 stores存储。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">// 1. 引入依赖模块，定义私有数据和方法</div><div class="line">var AppDispatcher = require(<span class="string">'../dispatcher/AppDispatcher'</span>);</div><div class="line">var EventEmitter = require(<span class="string">'events'</span>).EventEmitter;</div><div class="line">var assign = require(<span class="string">'object-assign'</span>);</div><div class="line">var tweet = null;</div><div class="line"><span class="keyword">function</span> <span class="built_in">set</span>Tweet(receivedTweet) &#123;</div><div class="line">  tweet = receivedTweet;</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">emitChange</span></span>() &#123;</div><div class="line">  TweetStore.emit(<span class="string">'change'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 2. 创建包含公共方法的TweetStore对象</div><div class="line">var TweetStore = assign(&#123;&#125;, EventEmitter.prototype, &#123;</div><div class="line">  addChangeListener: <span class="keyword">function</span>(callback) &#123;</div><div class="line">    this.on(<span class="string">'change'</span>, callback);</div><div class="line">  &#125;,</div><div class="line">  removeChangeListener: <span class="keyword">function</span>(callback) &#123;</div><div class="line">    this.removeListener(<span class="string">'change'</span>, callback);</div><div class="line">  &#125;,</div><div class="line">  getTweet: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> tweet;</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 3. 创建 action 回调处理器并向 dispatcher 注册 store</div><div class="line"><span class="keyword">function</span> handleAction(action) &#123;</div><div class="line">  <span class="keyword">if</span>(action.type === <span class="string">'receive_tweet'</span>) &#123; //flux中每个存储都会接收所有动作</div><div class="line">    <span class="built_in">set</span>Tweet(action.tweet);</div><div class="line">    emitChange();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 4. 将 dispatchToken 附加给 TweetStore 对象，并导出。</div><div class="line">TweetStore.dispatchToken = AppDispatcher.register(handleAction);</div><div class="line">module.exports = TweetStore;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="View-视图"><a href="#View-视图" class="headerlink" title="View(视图)"></a>View(视图)</h3><h2 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h2><p>Redux 由 flux 演变而来，受到 Elm 的启发，避开了 flux 的复杂性。<br>安装：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm i redux --save</div><div class="line">npm i react-redux --save</div><div class="line">npm i redux-devtools --save-dev</div></pre></td></tr></table></figure></p>
+<h3 id="redux流程"><a href="#redux流程" class="headerlink" title="redux流程"></a>redux流程</h3><p>应用中所有的 state 以一个对象树存储在一个单一的 store 中。<br>唯一改变 state 的方法是触发 action。action是描述发生什么的对象。<br>同时用 reducers 描述 action 如何改变 state 树。</p>
+<h3 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h3><p>描述 action 如何把 state 转变为下一个 state。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> counter(state = 0, action) &#123;</div><div class="line">  switch (action.type) &#123;</div><div class="line">    <span class="keyword">case</span>: <span class="string">'INCREMENT'</span>:</div><div class="line">      <span class="built_in">return</span> state + 1;</div><div class="line">    <span class="keyword">case</span>: <span class="string">'DECREMENT'</span>:</div><div class="line">      <span class="built_in">return</span> state - 1;</div><div class="line">    default:</div><div class="line">      <span class="built_in">return</span> state;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="store"><a href="#store" class="headerlink" title="store"></a>store</h3><p>store用来存放应用的状态。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> store = createStore(counter);   //把reducer当参数创建存储。</div></pre></td></tr></table></figure></p>
+<h3 id="改变状态-state"><a href="#改变状态-state" class="headerlink" title="改变状态 state"></a>改变状态 state</h3><p>改变内部 state 唯一的方法是 dispatch 一个 action。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">store.dispatch(&#123;<span class="built_in">type</span>: <span class="string">'INCREMENT'</span>&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/react/" rel="tag">#react</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/timeline-error/" rel="next" title="时间乱了">
+                <i class="fa fa-chevron-left"></i> 时间乱了
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/11/runorder/" rel="prev" title="关于Js中运算与赋值的执行顺序">
+                关于Js中运算与赋值的执行顺序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#易出问题点"><span class="nav-number">1.</span> <span class="nav-text">易出问题点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack-解析-react"><span class="nav-number">1.1.</span> <span class="nav-text">webpack 解析 react</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsx格式"><span class="nav-number">1.2.</span> <span class="nav-text">jsx格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react事件"><span class="nav-number">1.3.</span> <span class="nav-text">react事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flux，reflux，redux"><span class="nav-number">1.4.</span> <span class="nav-text">flux，reflux，redux</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备环境"><span class="nav-number">2.</span> <span class="nav-text">准备环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟DOM"><span class="nav-number">3.</span> <span class="nav-text">虚拟DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#createElement"><span class="nav-number">3.1.</span> <span class="nav-text">createElement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createFactory"><span class="nav-number">3.2.</span> <span class="nav-text">createFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html内置工厂函数"><span class="nav-number">3.3.</span> <span class="nav-text">html内置工厂函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#render"><span class="nav-number">3.4.</span> <span class="nav-text">render</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsx"><span class="nav-number">3.5.</span> <span class="nav-text">jsx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createClass"><span class="nav-number">3.6.</span> <span class="nav-text">createClass()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本用法"><span class="nav-number">3.6.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加状态层"><span class="nav-number">3.6.2.</span> <span class="nav-text">添加状态层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加事件层"><span class="nav-number">3.7.</span> <span class="nav-text">添加事件层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件"><span class="nav-number">4.</span> <span class="nav-text">组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#componentDidMount"><span class="nav-number">4.1.</span> <span class="nav-text">componentDidMount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#componentWillMount"><span class="nav-number">4.2.</span> <span class="nav-text">componentWillMount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#componentWillUnmount"><span class="nav-number">4.3.</span> <span class="nav-text">componentWillUnmount</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">5.</span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#style"><span class="nav-number">5.1.</span> <span class="nav-text">style</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#propTypes"><span class="nav-number">5.2.</span> <span class="nav-text">propTypes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用方法"><span class="nav-number">6.</span> <span class="nav-text">常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#findDOMNode"><span class="nav-number">6.1.</span> <span class="nav-text">findDOMNode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getDefaultProps"><span class="nav-number">6.2.</span> <span class="nav-text">getDefaultProps</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flux"><span class="nav-number">7.</span> <span class="nav-text">flux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Action-动作"><span class="nav-number">7.1.</span> <span class="nav-text">Action(动作)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dispatcher-分发器"><span class="nav-number">7.2.</span> <span class="nav-text">Dispatcher(分发器)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Store-存储"><span class="nav-number">7.3.</span> <span class="nav-text">Store(存储)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-视图"><span class="nav-number">7.4.</span> <span class="nav-text">View(视图)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux"><span class="nav-number">8.</span> <span class="nav-text">redux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redux流程"><span class="nav-number">8.1.</span> <span class="nav-text">redux流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reducer"><span class="nav-number">8.2.</span> <span class="nav-text">reducer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#store"><span class="nav-number">8.3.</span> <span class="nav-text">store</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变状态-state"><span class="nav-number">8.4.</span> <span class="nav-text">改变状态 state</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
