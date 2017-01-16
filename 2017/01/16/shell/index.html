@@ -1,0 +1,1221 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="shell," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="shell命令行与脚本编程进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell命令行与脚本编程进阶">
+<meta property="og:url" content="http://yoursite.com/2017/01/16/shell/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="shell命令行与脚本编程进阶">
+<meta property="og:updated_time" content="2017-01-16T02:41:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell命令行与脚本编程进阶">
+<meta name="twitter:description" content="shell命令行与脚本编程进阶">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> shell命令行与脚本编程进阶 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                shell命令行与脚本编程进阶
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-16T10:41:03+08:00" content="2017-01-16">
+              2017-01-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h2><p>可添加变量到帐号的home目录的初始化文件中，比如：~/.bash_profile，则每次登录后都可使用。</p>
+<h3 id="HOSTNAME"><a href="#HOSTNAME" class="headerlink" title="HOSTNAME"></a>HOSTNAME</h3><p>计算机主机名</p>
+<h3 id="PWD"><a href="#PWD" class="headerlink" title="PWD"></a>PWD</h3><p>当前工作目录路径</p>
+<h3 id="env"><a href="#env" class="headerlink" title="env"></a>env</h3><p>查看当前所有系统变量和自定义变量。</p>
+<h3 id="变量赋值"><a href="#变量赋值" class="headerlink" title="变量赋值"></a>变量赋值</h3><p>可直接用”=”赋值，但中间不能有空格。默认赋值是字符串相加，若要进行数字运算，需要用”let”<br>变量赋值后，可通过”$”来进行变量引用。<br>变量只能以字母下划线开头。并且大小写敏感。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">name=zhou       //zhou</div><div class="line">age=3+1         //3+1</div><div class="line"><span class="built_in">let</span> age=3+1     //4</div><div class="line"><span class="variable">$name</span>           //zhou</div></pre></td></tr></table></figure></p>
+<h3 id="打印-echo-printf"><a href="#打印-echo-printf" class="headerlink" title="打印 echo/printf"></a>打印 echo/printf</h3><ol>
+<li>printf<br>格式： printf <format> <arguments...><br>如：<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">printf</span> <span class="string">"FirstName: %s\nLastName: %s"</span> <span class="string">"<span class="variable">$FIRSTNAME</span>"</span> <span class="string">"LASTNAME"</span></div></pre></td></tr></table></figure>
+</arguments...></format></li>
+</ol>
+<p>其中 %s 为以字符串的格式打印参数。 \n 为换行。</p>
+<h3 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">unset</span> [-fv] [变量名/函数名]     //<span class="_">-f</span>表示删除函数， -v表示删除变量</div></pre></td></tr></table></figure>
+<h3 id="检查变量是否存在"><a href="#检查变量是否存在" class="headerlink" title="检查变量是否存在"></a>检查变量是否存在</h3><p>格式：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$&#123;varName? ERROR: The variable is not defined&#125;</span></div></pre></td></tr></table></figure></p>
+<h3 id="history"><a href="#history" class="headerlink" title="history"></a>history</h3><p>查看输入的历史命令</p>
+<ol>
+<li>搜索history – Ctrl+r</li>
+<li>重复上一条命令<br>上下键/!!</li>
+<li>重复具体行数命令<br>!991        //执行history中的第991行命令</li>
+<li>删除历史命令<br>history -c<h3 id="大括号"><a href="#大括号" class="headerlink" title="大括号{}"></a>大括号{}</h3></li>
+<li><p>大括号在shell中的作用为循环。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> a&#123;b,c,d&#125;e      // abe, ace, ade</div></pre></td></tr></table></figure>
+</li>
+<li><p>序列表达式</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> &#123;z..z&#125;       //a,b,c....z</div><div class="line"><span class="built_in">echo</span> &#123;0..10&#125;      //0,1,2....10</div></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套<br>大括号中可以嵌套大括号</p>
+</li>
+<li>第三个参数<br>大括号中第三个参数为序列表达式的间隔<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> &#123;0..10..3&#125;     //0,3,6,9</div><div class="line"><span class="built_in">echo</span> &#123;a..g..2&#125;      //a,c,e,g</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id=""><a href="#" class="headerlink" title="~"></a>~</h3><p>波浪号用来指代主目录。</p>
+<ol>
+<li><p>~单词<br>表示某用户的主目录。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~ucredit</div></pre></td></tr></table></figure>
+</li>
+<li><p>~+  – PWD</p>
+</li>
+<li>~-  – OLDPWD</li>
+</ol>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符 * ? []"></a>通配符 * ? []</h3><ol>
+<li><p>* 匹配任何个字符串，包括空格</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls /etc/*.conf      //显示etc下所有的.conf文件</div></pre></td></tr></table></figure>
+</li>
+<li><p>? 匹配任意单个字符</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls image?.jpg       //显示所有image .jpg文件，如image2.jpg</div></pre></td></tr></table></figure>
+</li>
+<li><p>[] 匹配方括号内的任意字符</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls /etc/[ab]*.conf    //显示etc下所有以a或b开头的.conf文件</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h3><p>把常用的命令行设置一个比较简短的别名。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">alias</span> ll=<span class="string">'ls -l'</span>      //下次直接用ll就可以实现ls <span class="_">-l</span>的功能</div></pre></td></tr></table></figure></p>
+<ol>
+<li>查看所有别名<br>alias</li>
+<li>查看特定别名<br>alias string</li>
+<li>暂时停止别名<br>\aliasname</li>
+<li>删除别名<br>unalias string</li>
+<li>删除所有别名<br>unalias -a</li>
+</ol>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>Bash窗口本身的行为由set和shopt控制。用于定制Bash窗口</p>
+<ol>
+<li>查看set控制的行为<br>set -o</li>
+<li><p>开启一个set控制的行为<br>set -o freature-name<br>如开启关闭ctrl+d退出shell的的功能：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> -o ignoreeof</div></pre></td></tr></table></figure>
+</li>
+<li><p>关闭一个set控制的行为<br>set +o freatrue-name</p>
+</li>
+</ol>
+<h3 id="shopt"><a href="#shopt" class="headerlink" title="shopt"></a>shopt</h3><p>Bash窗口本身的行为由set和shopt控制。用于定制Bash窗口</p>
+<ol>
+<li>查看<br>shopt -o</li>
+<li>开启<br>shopt -s freature-name</li>
+<li>关闭<br>shopt -u freature-name</li>
+</ol>
+<h1 id="常用Shell命令"><a href="#常用Shell命令" class="headerlink" title="常用Shell命令"></a>常用Shell命令</h1><h2 id="查看文件和目录"><a href="#查看文件和目录" class="headerlink" title="查看文件和目录"></a>查看文件和目录</h2><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><p>显示目录和文件</p>
+<ol>
+<li>-l —— 每行显示一条记录，并显示文档具体信息。</li>
+<li>-F —— 用不同的特殊字符，归类不同的文件类型。<br>/：表示目录<br>无特殊字符：表示普通文件<br>@：表示链接文件<br>*：表示可执行的文件</li>
+<li>–color=auto —— 不同文件类型显示不同颜色</li>
+<li>-R —— 递归的列出子文件</li>
+<li>-a —— 列出包括隐藏文件在内的所有文件和目录。包括当前目录和父目录</li>
+<li>-A —— 列出包括隐藏文件在内的所有文件和目录。不包括当前目录和父目录</li>
+</ol>
+<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>查看文件内容，连接文件，创建一个或多个文件。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat [option] [file]</div></pre></td></tr></table></figure></p>
+<p>如：cat public/index.html</p>
+<ol>
+<li><p>查看多个文件</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat public/index.html public/user.html</div></pre></td></tr></table></figure>
+</li>
+<li><p>显示行号 -n</p>
+</li>
+<li>显示非空白行的行号</li>
+<li><p>编辑文档<br>千万不要随意用cat &gt;，一用文档的内容就没了。<br>cat &gt;file<br>若文档不存在，则创建文档并编辑。若存在则完全覆盖性的编辑。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat &gt;public/a.html</div><div class="line">&lt;html&gt;&lt;/html&gt;       //输入内容之后按ctrl+d退出。</div></pre></td></tr></table></figure>
+</li>
+<li><p>合并文档到新的文档<br>cat file1 file2 &gt; file3</p>
+</li>
+</ol>
+<h3 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h3><p>和cat相反，以倒序的形式显示文件内容。从最后一行开始显示。</p>
+<h3 id="more"><a href="#more" class="headerlink" title="more"></a>more</h3><p>查看文件。windows上没有</p>
+<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><p>查看文件。windows上没有</p>
+<h3 id="head"><a href="#head" class="headerlink" title="head"></a>head</h3><p>默认打印文档前10行内容。</p>
+<ol>
+<li><p>-n<br>指定打印前n行内容</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head -n 5 public/index.html</div></pre></td></tr></table></figure>
+</li>
+<li><p>-c<br>打印前c个字节的数据</p>
+</li>
+</ol>
+<h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h3><p>默认打印文档结尾10行内容</p>
+<ol>
+<li>-n<br>指定打印最后n行内容</li>
+<li>-c<br>打印最后c个字节的数据</li>
+</ol>
+<h3 id="file"><a href="#file" class="headerlink" title="file"></a>file</h3><p>确定文件类型。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">file a.txt        // a.txt: ASCII text</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-i<br>以MIME格式显示文件类型信息。如：<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">file -i a.txt     // a.txt: text/plain; charset=us-ascii</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h3><p>wc用于查看文件的行数，单词数和字符数等信息。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wc filename     // X Y Z filename</div></pre></td></tr></table></figure></p>
+<p>X：表示行数。<br>Y：表示单词数<br>Z：表示字节数</p>
+<ol>
+<li>-l<br>只统计文件的行数信息。</li>
+<li>-w<br>只统计文件的单词数信息。</li>
+<li>-c<br>只统计文件的字节数信息。</li>
+<li>-L<br>统计文件中最长的行的长度。</li>
+</ol>
+<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>查找文件或目录。<br>可以通过权限，用户，用户组，文件类型，日期，大小和其他条件来查找文件。</p>
+<ol>
+<li><p>-name<br>查找指定目录下某个文件</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">find /etc -name a.txt     // /etc/a.txt</div><div class="line">find . -name a.txt        // ./a.txt</div><div class="line">find . -name <span class="string">".*"</span>         // 找出当前目录下的所有隐藏文件</div></pre></td></tr></table></figure>
+</li>
+<li><p>-iname<br>查找指定目录不区分大小写的某个文件</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -iname a.txt       //a.txt A.txt</div></pre></td></tr></table></figure>
+</li>
+<li><p>-type<br>指定查找的类型为目录或文件<br>-type d： 目录<br>-type f： 文件</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find . -type d -name tmp        //查找当前目录下tmp目录</div><div class="line">find . -type f -name <span class="string">"*.txt"</span>    //查找当前目录下所有的.txt文件</div></pre></td></tr></table></figure>
+</li>
+<li><p>-perm<br>查找指定权限的文件</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find . -type f -perm 0777       //当前目录下文件权限是777的文件</div><div class="line">find . -type f ! -perm 0777     //当前目录下文件权限不是777的文件</div><div class="line">find . -type f ! -perm /a+w     //当前目录下只读文件</div><div class="line">find . -type f -perm /a+x       //当前目录下可执行文件</div></pre></td></tr></table></figure>
+</li>
+<li><p>-empty<br>找出空文件和空目录</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find . -type f -empty       //空文件</div><div class="line">find . -type d -empty       //空目录</div></pre></td></tr></table></figure>
+</li>
+<li><p>-user<br>找出对应user的文件和目录</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find /tmp/ -user root     //所有者是root的文件和目录</div></pre></td></tr></table></figure>
+</li>
+<li><p>-group<br>找出对应group的文件和目录</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find /tmp/ -group developer   //用户组是develper的文件和目录</div></pre></td></tr></table></figure>
+</li>
+<li><p>-mtime<br>对应修改天数的文件和目录</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find ~ -type f -mtime 3       //3天前修改的文件</div><div class="line">find ~ -type f -mtime +3      //3天前修改的文件</div><div class="line">find ~ -type f -mtime -3      //3天内修改的文件</div><div class="line">find ~ -type f -mtime +3 -mtime -60    //3天前60天内修改的文件</div></pre></td></tr></table></figure>
+</li>
+<li><p>-cmin<br>对应修改分钟的文件和目录</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find ~ -type f -cmin -60    //60分钟以内变更过的文件</div></pre></td></tr></table></figure>
+</li>
+<li><p>-amin<br>对应访问分钟的文件和目录</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find ~ -type f -amin -60    //60分钟以内访问过的文件</div></pre></td></tr></table></figure>
+</li>
+<li><p>-size<br>对应大小的文件和目录</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find ~ -type f -size 50MB   //大小为50M的文件</div><div class="line">find ~ -type f -size +50MB -size -100MB   //大于50M小于100M的文件</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h2><h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h3><p>创建文件。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">touch a.txt</div><div class="line">touch a.txt b.txt</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>-a<br>更新最新访问时间。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch <span class="_">-a</span> house.txt      //若文件存在，则更新访问时间，不存在则创建文件</div></pre></td></tr></table></figure>
+</li>
+<li><p>-c<br>避免创建文件，仅更新文件的时间戳</p>
+</li>
+<li>-m<br>改变文件的修改时间，访问时间不变。</li>
+<li><p>-t<br>明确设置文件的时间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">touch -t YYMMDDHHMM filename</div><div class="line">touch -t 170114131030 a.txt     //设置a.txt的修改和访问时间为2017/01/14 13:10:30</div></pre></td></tr></table></figure>
+</li>
+<li><p>-r<br>用一个文件的时间戳更新另外文件的时间戳</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch -r a.txt b.txt</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>也可使用 &gt;filename 来创建一个空文件<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;add.txt</div></pre></td></tr></table></figure></p>
+<h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h3><p>创建目录。</p>
+<ol>
+<li>-p<br>自动创建还不存在的父目录。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p backup/old</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>或避免创建已存在目录时报错。</p>
+<ol>
+<li>-m<br>设置创建目录的权限。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir -p -m 777 backup/old          //创建任何人都由读写权限目录</div><div class="line">mkdir -p -m a=rwx backup/old        //创建任何人都由读写权限目录</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><p>复制文件或目录。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cp file.txt newfile.txt         //创建一个file.txt的newfile.txt副本</div><div class="line">cp file.txt /tmp                //复制file.txt到/tmp目录</div><div class="line">cp * /tmp                       //复制当前目录所有文件到/tmp目录</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-p<br>复制时，保留源文件的所有者，用户组，权限，时间戳等等信息。</li>
+<li><p>-R/-r<br>递归的复制目录及其下所有文件和子目录到另外一个目录。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp -R * /tmp</div></pre></td></tr></table></figure>
+</li>
+<li><p>-d<br>保留软连接。</p>
+</li>
+<li>-a<br>以上所有模式的集合。相当于 -pRd</li>
+</ol>
+<h3 id="ln"><a href="#ln" class="headerlink" title="ln"></a>ln</h3><p>ln用于创建软链接或硬链接。<br>软链接：又称符号链接，是一类特殊的文件。文件包含了另一个文件或目录的路径名(绝对或相对路径)<br>硬链接：一个文件的一个或多个文件名。引用的是文件在文件系统中的物理索引。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ln <span class="_">-s</span> /home/libaray.so /usr/lib        // 在usr/lib下创建一个软链接library.so，链接到/home/library.so</div><div class="line">ln targetFilePath linkFilePath</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-s<br>ln默认创建一个硬链接。使用-s之后创建一个软链接。</li>
+</ol>
+<h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><p>移动/重命名 文件或目录。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mv a.txt /tmp             //移动文件到目录</div><div class="line">mv dir1 dir2 dir_home     //移动目录到目录</div><div class="line">mv old.txt new.txt        //重命名文件</div><div class="line">mv oldDir newDir          //重命名目录</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-i<br>若目标文件或目录存在，则默认会直接覆盖。<br>使用-i则会在出现这种情况时，confirm的方式来提示是否要覆盖。</li>
+<li>-u<br>只想移动目标目录中没有的文件，使用-u<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv -u dir1/* dir2/</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><p>删除文件或目录<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm file1 file2 file3</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-i<br>-i会在删除每一个文件和目录前提示用户确认。</li>
+<li>-f<br>删除前不提示用户确认，并忽略不存在的文件。</li>
+<li>-r/R<br>递归的删除目录及其下的内容。</li>
+</ol>
+<h2 id="管理文件或目录权限"><a href="#管理文件或目录权限" class="headerlink" title="管理文件或目录权限"></a>管理文件或目录权限</h2><h3 id="ls-l"><a href="#ls-l" class="headerlink" title="ls -l"></a>ls -l</h3><p>ls -l 打印出的结果中，第一列代表文件类型和三个用户权限。如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-rwxr-xr-x 121 root root 20480 Jun 4 09:53 test.sh</div><div class="line">//文件，权限rwxr-xr-x，所有者是root，用户组是root。</div></pre></td></tr></table></figure></p>
+<p>第一个字符代表：<br>目录(d)，文件(-)，链接(l)<br>三组字符代表：<br>所有者权限(rwx)，用户组权限(r-x)，其他用户权限(r-x)<br>三个字符(rwx)含义：<br>r–读权限， w–写权限， x–执行权限</p>
+<h3 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h3><p>修改权限。<br>分为符号表达式模式和八进制位模式。</p>
+<ol>
+<li>符号表达式模式<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod [option]...[ugoa][[+-=][rwxug]][,...] file...</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>字母ugoa代表：<br>u: 指文件或目录的所有者<br>g: 指文件或目录的用户组的成员<br>o: 指不在文件或目录的用户组中的其他用户<br>a: 指所有用户，即(ugo)<br>当不给出ugoa的组合时，则默认和a的结果相同。<br>操作符+-=表示权限的授予或撤销：<br>+: 选定的权限被添加<br>-: 选定的权限被移除<br>=: 文件只拥有选定的权限<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">ls <span class="_">-l</span> example.sh   </div><div class="line">-rwxr-wx-r 1 yantao1 yantao1 0 Sep 10 18:40 example.sh</div><div class="line"></div><div class="line">chmod g-w example.sh      //移除用户组成员的写权限    </div><div class="line">-rwxr-xr 1 yantao1 yantao1 0 Sep 10 18:40 example.sh</div><div class="line"></div><div class="line">chmod o+x example.sh      //赋予其他用户执行文件的权限</div><div class="line">-rwxr-xr-x 1 yantao1 yantao1 0 Sep 10 18:40 example.sh</div><div class="line"></div><div class="line">chmod u=w example.sh      //只给文件的所有者写权限</div><div class="line">-w-r-xr-x 1 yantao1 yantao1 0 Sep 10 18:40 example.sh</div><div class="line"></div><div class="line">chmod u=g example.sh      //用文件的用户组权限替换文件的所有者权限</div><div class="line">-w-r-xr-x 1 yantao1 yantao1 0 Sep 10 18:40 example.sh</div><div class="line"></div><div class="line">chmod ugo+rwx example.sh  //赋予所有人对文件的读，写和执行权限</div></pre></td></tr></table></figure></p>
+<ol>
+<li>八进制模式<br>八进制的数字模式，用数字来表达读，写，执行权限。<br>每个用户权限组的值表示三个数字相加加得到的八进制数(0~7)来表示。<br>4: r(读权限)<br>2: w(写权限)<br>1: x(执行权限)<br>rwx： 4+2+1=7<br>rw：4+2+0=6<br>r: 4+0+0=4<br>r-x：4+0+1=5<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chomd 777 example.sh    //赋予所有人读，写，执行权限</div><div class="line">chomd 664 example.sh    //赋予所有者和用户组成员读写权限，其他用户只读权限</div><div class="line">chmod -R 775            //递归的修改目录的权限</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="chown-chgrp"><a href="#chown-chgrp" class="headerlink" title="chown, chgrp"></a>chown, chgrp</h3><p>修改文件所有者和用户组。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown [option]... [owner][:[group]] file</div></pre></td></tr></table></figure></p>
+<p>如，将example.sh的所有者修改为root：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown root example.sh</div></pre></td></tr></table></figure></p>
+<p>将example.sh的所有者和用户组修改为root<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown root:root example.sh</div></pre></td></tr></table></figure></p>
+<h3 id="setuid-setgid"><a href="#setuid-setgid" class="headerlink" title="setuid, setgid"></a>setuid, setgid</h3><p>设置用户和组的权限。<br>setuid: 允许用户以文件所有者的权限执行一个程序<br>setgid: 允许用户以用户组成员的权限执行一个程序<br>通过ls -l或stat命令查看权限位：<br>(所有者权限组中有s表示设置了setuid，用户组权限组有s表示设置了setgid)<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls <span class="_">-l</span> /usr/bin/passwd</div><div class="line">-rwsr-xr-x 1 root root 23324 Aug 11 2014 /usr/bin/passwd</div></pre></td></tr></table></figure></p>
+<p>使用chmod命令设置setuid<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod u+s example.sh    //字符模式</div><div class="line">chmod 4755 example.sh   //数字模式，在权限位前面加数字4</div></pre></td></tr></table></figure></p>
+<p>使用chmod命令设置setgid<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod g+s example.sh    //字符模式</div><div class="line">chmod 2755 example.sh   //数字模式，在权限位前面加数字2</div></pre></td></tr></table></figure></p>
+<p>使用chmod移除setuid和setgid<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 0755 example.sh   //在权限位前面加数字0</div></pre></td></tr></table></figure></p>
+<h2 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h2><h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><p>sort可直接排序文本文件。按单词的首字母排序。文字排在字母后面之后，按文字的首字母排序。<br>可同时排序多个文件<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">cat a.txt</div><div class="line">i<span class="string">'m</span></div><div class="line">周</div><div class="line">amazing</div><div class="line">name</div><div class="line">文</div><div class="line"></div><div class="line">sort example.txt</div><div class="line">amazing</div><div class="line">i'm</div><div class="line">name</div><div class="line">文</div><div class="line">周</div></pre></td></tr></table></figure></p>
+<p>数字也是按首字符排序，所以，100会排到60前面。</p>
+<ol>
+<li>-u<br>移除所有重复的行</li>
+<li>-n<br>将数字按数值的大小排序。</li>
+<li>-r<br>倒序方式排序。</li>
+<li>-t<br>指定列的分隔符。</li>
+<li>-k<br>指定排序的列<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">abc, 20</div><div class="line">def, 10</div><div class="line"></div><div class="line">sort -t <span class="string">','</span> -k2,2 example.txt</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h3><p>文本去重</p>
+<ol>
+<li><p>-c<br>统计重复行出现的次数</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">uniq -c example.txt</div><div class="line">2 aaa</div><div class="line">3 bbb</div></pre></td></tr></table></figure>
+</li>
+<li><p>-d<br>只显示有重复的行，且只显示一次。</p>
+</li>
+<li>-D<br>显示所有重复的行</li>
+<li>-u<br>只显示不重复的行</li>
+<li><p>-w<br>限制判断是否重复只比较前n个字符。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uniq -w 3 example.txt   //只比较前3个字符</div></pre></td></tr></table></figure>
+</li>
+<li><p>-s<br>判断时跳过前n个字符。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uniq <span class="_">-s</span> 3 example.txt   //从第4个字符开始比较</div></pre></td></tr></table></figure>
+</li>
+<li><p>-f<br>判断时跳过前n列。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uniq <span class="_">-f</span> 2 example.txt   //跳过前2列</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h3><p>替换或删除字符。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tr [option]... <span class="built_in">set</span>1 [<span class="built_in">set</span>2]</div></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> myString | tr abcdef ABCDEF        //将字符替换</div><div class="line"><span class="built_in">echo</span> myString | tr [:lower:] [:upper:]</div><div class="line"><span class="built_in">echo</span> myString | tr a-z A-Z</div></pre></td></tr></table></figure></p>
+<p>转换一个文件中的内容，并输出到另一个文件中：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tr <span class="string">'abc'</span> <span class="string">'ABC'</span> &lt; inputfile &gt; outputfile   //转换inputfile文件中的abc到ABC，并把整个内容输出到outputfile</div></pre></td></tr></table></figure></p>
+<p>将字符串中的空格转换为制表符：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"this is for test"</span> | tr [:space:] <span class="string">'\t'</span></div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>-s<br>压缩重复的内容至一个。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"this  is for test"</span> | tr <span class="_">-s</span> [:space] <span class="string">'\t'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>-d<br>删除字符串中所有数字</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"this is my 28birth"</span> | tr <span class="_">-d</span> [:digit:]</div><div class="line">this is my birth</div></pre></td></tr></table></figure>
+</li>
+<li><p>-c<br>取相反<br>如用-cd来删除除数字以外的额所有字符：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"this is my 28birth"</span> | tr -cd [:digit:]</div><div class="line">28</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p>查找字符串。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep abc a.txt</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-i<br>忽略大小写</li>
+<li>-r/R<br>递归搜索指定目录下的所有文件</li>
+<li>-l<br>返回匹配的文件名</li>
+<li>-w<br>匹配指定单词的行</li>
+<li>-c<br>返回匹配的次数</li>
+<li>-n<br>显示匹配的行的行号</li>
+<li>-v<br>取反。匹配不包含指定字符串的所有行</li>
+<li>–color<br>匹配的字符串以彩色标出。</li>
+</ol>
+<p>grep通常与shell管道(|)一起使用。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat public/index.html | grep -i --color myhouse</div></pre></td></tr></table></figure></p>
+<h3 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h3><p>比较两个文件。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff a.txt b.txt</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-w<br>忽略空格</li>
+<li>-y<br>并排的格式输出两个文件的比较结果<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ diff a.txt b.txt -y</div><div class="line">i<span class="string">'m             |   i'</span>m from b.txt</div><div class="line">from            /   haha</div><div class="line">周              &lt;</div><div class="line">a               &lt;</div><div class="line">文              &lt;</div><div class="line">amazing         &lt;</div><div class="line">country         &lt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>|: 表示有差异行<br>>: 表示第二个文件中多出的行<br>\&lt;: 表示第一个文件中多出的行</p>
+<ol>
+<li><p>-W<br>在用-y时，指定并排显示的列宽。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diff a.txt b.txt -y -W 60     //a.txt和b.txt都以60的宽度显示</div></pre></td></tr></table></figure>
+</li>
+<li><p>-c<br>上下对比的方式。<br>!: 表示有差异行<br>+: 表示第二个文件比第一个文件多出的行</p>
+</li>
+</ol>
+<h2 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h2><h3 id="hostname"><a href="#hostname" class="headerlink" title="hostname"></a>hostname</h3><p>查看或修改系统的主机名<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hostname          //查看主机名</div><div class="line">hostname myhost   //修改主机名。临时修改，重启丢失</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-F<br>从指定的文件中读取系统的主机名。注释行被忽略。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hostname -F /root/hostname.txt</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="w-who"><a href="#w-who" class="headerlink" title="w, who"></a>w, who</h3><p>w用于显示登录的用户及他们当前运行的进程。<br>who与w类似。功能比w强大。<br>运行who显示当前登录的所有用户的信息。</p>
+<ol>
+<li>-b<br>显示系统的启动时间。</li>
+<li>-l<br>显示系统登录的进程。</li>
+<li>-m<br>只显示与当前输入关联的用户信息</li>
+<li>-r<br>显示系统的运行级别。</li>
+<li>-q<br>只显示所有登录用户的用户名和登录的用户数。</li>
+</ol>
+<h3 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h3><p>查看系统运行时间</p>
+<h3 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h3><p>查看系统信息。内核名称，版本，主机名等。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname     //内核名称</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-n<br>只打印系统的主机名</li>
+<li>-r<br>只打印内核版本信息</li>
+<li>-m<br>打印系统的硬件名称</li>
+<li>-i<br>打印系统的硬件平台信息</li>
+<li>-a<br>打印以上所有信息</li>
+</ol>
+<h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><p>显示和设置系统日期和时间</p>
+<ol>
+<li><p>-d/–date<br>指定日期时间输出格式。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">date --date=<span class="string">"10/1/2013"</span></div><div class="line">date --date=<span class="string">"10 Oct 2013"</span></div><div class="line">date --date=<span class="string">"Oct 1 2013"</span></div><div class="line">date --date=<span class="string">"Oct 1 2013 12:13:14"</span></div><div class="line">data --date=<span class="string">"next mon"</span></div><div class="line">data --date=<span class="string">"next week"</span></div><div class="line">data --date=<span class="string">"last week"</span></div><div class="line">data --date=<span class="string">"1 week ago"</span></div><div class="line">data --date=<span class="string">"yesterday"</span></div><div class="line">data --date=<span class="string">"last day"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>-f/–file<br>从文档中获取日期时间，并打印</p>
+</li>
+<li><p>-s/–set<br>设置系统的日期和时间</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date <span class="_">-s</span> <span class="string">"Thu Sep 26 10:10:00 CST 2013"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>-u/–utc/–universal<br>打印世界标准时间</p>
+</li>
+<li>-r<br>打印出指定文件的最近修改时间。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date -r d.txt   //显示的为世界标准时间</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="id"><a href="#id" class="headerlink" title="id"></a>id</h3><p>打印用户的uid, gid, 用户名，组名等身份信息。</p>
+<ol>
+<li>-u<br>只打印uid</li>
+<li>-un<br>打印用户名</li>
+<li>-g<br>账号当前生效的gid</li>
+<li>-gn<br>账号当前生效的用户组名</li>
+<li>-G<br>账号所属的所有群组的id</li>
+<li>-Gn<br>账号所属的所有群组的名称</li>
+</ol>
+<h2 id="文件处理和归档"><a href="#文件处理和归档" class="headerlink" title="文件处理和归档"></a>文件处理和归档</h2><h3 id="paste"><a href="#paste" class="headerlink" title="paste"></a>paste</h3><p>合并多个文件的行。<br>默认情况下，各文件中的行将以制表符Tab分隔。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">paste a.txt b.txt</div><div class="line">a content       b content</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-d<br>指定合并时所用的分隔符<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">paste <span class="_">-d</span> <span class="string">'|'</span> a.txt b.txt</div><div class="line">a content   |   b content</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>合并两个以上文件时，可指定多个分隔符<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">paste <span class="_">-d</span> <span class="string">'|,'</span> a.txt b.txt c.txt</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>-s<br>每个文件自己内容合并，并各自占一行。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">paste <span class="_">-s</span> a.txt b.txt</div><div class="line">a content</div><div class="line">b content</div></pre></td></tr></table></figure>
+</li>
+<li><p>-s 和 -d 配合使用</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">paste <span class="_">-d</span><span class="string">'|'</span> <span class="_">-s</span> a.txt</div><div class="line">a content1|a content2</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="dd"><a href="#dd" class="headerlink" title="dd"></a>dd</h3><p>备份和拷贝文件<br>dd可以做很多事情，备份分区，DVD，U盘的数据，转换数据文件，硬盘和cpu速度测试。<br>dd有两个基本参数：</p>
+<ol>
+<li>if<br>指定输入文件的路径</li>
+<li>of<br>指定输出文件的路径<br>如：复制一个磁盘的数据到另一个磁盘<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dd <span class="keyword">if</span>=/dev/sda of=/dev/sdb</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>复制一个DVD光盘的数据到一个iso文件<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dd <span class="keyword">if</span>=/dev/sda of=/dev/adb</div></pre></td></tr></table></figure></p>
+<p>擦除一个分区的数据：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dd <span class="keyword">if</span>=/dev/zero of=/dev/sda2</div></pre></td></tr></table></figure></p>
+<ol>
+<li>bs<br>指定出入和输出的块大小。默认为字节</li>
+<li>count<br>从输入读取的块数量。<br>如：创建一个1MB大小的文件，并且块大小为1024bytes<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dd <span class="keyword">if</span>=/dev/zero of=/tmp/outfile bs=1024 count=1024</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h3><p>压缩和归档文件。<br>gzip用于压缩和解压缩文件。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gzip image1.jpg       //压缩文件，并删除原始文件，生成.gz文件</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>-c<br>指定输出文件，从而可保留原始文件</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gzip -c image1.jpg image1.jpg.gz</div></pre></td></tr></table></figure>
+</li>
+<li><p>-d<br>解压缩指定的文件</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gzip <span class="_">-d</span> image1.jpg.gz</div></pre></td></tr></table></figure>
+</li>
+<li><p>-r<br>递归的压缩指定目录下的文件。</p>
+</li>
+<li>-#<br>#代表1~9的数字。指定gzip压缩的级别。<br>-1 表示最快的压缩速度，但压缩率较低<br>-9 表示最慢的压缩速度，但压缩率较高<br>-6 默认压缩级别</li>
+</ol>
+<h3 id="bzip2"><a href="#bzip2" class="headerlink" title="bzip2"></a>bzip2</h3><p>同样用于压缩和解压缩文件。与gzip相比，bzip2具有更好的压缩率，但gzip2的压缩速度比gzip稍慢。<br>默认生成以.bz2结尾的文件，并删除原始文件。</p>
+<ol>
+<li>-k<br>压缩文件并保留原始文件</li>
+<li>-d<br>用于解压缩文件。</li>
+<li>-f<br>表示覆盖已经存在的文件</li>
+<li>-#<br>#代表1~9的数字。指定bzip2压缩的级别。<br>-9 默认压缩级别</li>
+</ol>
+<h3 id="gunzip"><a href="#gunzip" class="headerlink" title="gunzip"></a>gunzip</h3><p>解压缩。与gzip -d功能一样</p>
+<ol>
+<li>-c<br>重定向至一个文件，以保留原始压缩文件。</li>
+</ol>
+<h3 id="bunzip2"><a href="#bunzip2" class="headerlink" title="bunzip2"></a>bunzip2</h3><p>解压缩。与bzip2 -d功能一样</p>
+<ol>
+<li>-k<br>重定向至一个文件，以保留原始压缩文件。</li>
+</ol>
+<h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h3><p>打包和解包文件。<br>使用tar命令归档后的文件称作tar包。</p>
+<ol>
+<li><p>-cvfz<br>-c: 创建一个新的文档<br>-v: 冗长地列出被处理的文件<br>-f: 指定归档文件的名称<br>-z: 对归档后的文件使用gzip压缩。<br>-j: 对归档后的文件使用bzip2压缩。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -czvf test.tar.gz /home/public</div></pre></td></tr></table></figure>
+</li>
+<li><p>-xvf<br>-x: 对归档文件进行解包。可提取出指定的文件或目录</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -xvf test.tar</div><div class="line">tar -xvf test.tar /home/public/d.txt /home/public/c.txt</div></pre></td></tr></table></figure>
+</li>
+<li><p>–wildcards<br>配合-xvf使用，可以提取匹配指定模式的一组文件</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xvf test.tar --wildcards <span class="string">'*.txt'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>-z<br>对gzip压缩的tar包解包</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf test.tar.gz</div></pre></td></tr></table></figure>
+</li>
+<li><p>-j<br>对bzip2压缩的tar包解包</p>
+</li>
+<li><p>-tvf<br>不解包的情况下列出tar包文件中的内容。</p>
+</li>
+<li>-tzvf<br>不解包的情况下列出使用gzip压缩的tar包文件中的内容</li>
+<li>-tjvf<br>不解包的情况下列出使用bzip2压缩的tar包文件中的内容</li>
+<li>-rvf<br>添加文件或目录到一个已存在的tar包<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -rvf test.tar /home/public/newfile</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h3><p>循环匹配的文件<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> file <span class="keyword">in</span> *.txt; <span class="keyword">do</span>       //对匹配文件做循环</div><div class="line">&gt;                           //此处对文件做具体操作</div></pre></td></tr></table></figure></p>
+<h2 id="监测和管理磁盘"><a href="#监测和管理磁盘" class="headerlink" title="监测和管理磁盘"></a>监测和管理磁盘</h2><h3 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h3><p>挂载存储介质，或显示已挂载的文件系统的信息。<br>如要挂载某个文件系统，使用如下命令：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mount [option]... [device] [directory]</div></pre></td></tr></table></figure></p>
+<p>挂载和卸载文件系统，需要root账户权限。<br>比如，挂载一个CD-ROM设备到/mnt目录：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mount -t iso9660 -o ro /dev/cdrom /mnt</div></pre></td></tr></table></figure></p>
+<ol>
+<li>-t<br>默认情况下mount输出包括各种虚拟文件系统，如sysfs和tmpfs。<br>使用-t只显示指定文件系统类型。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mount -t ntfs</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="df"><a href="#df" class="headerlink" title="df"></a>df</h3><p>显示文件系统的可用磁盘空间。</p>
+<ol>
+<li>-a<br>显示所有文件系统的信息，包括虚拟文件系统。</li>
+<li>-h<br>显示的信息更人性化</li>
+<li>-T<br>显示文件系统类型。如ntfs，fat32</li>
+<li><p>-t<br>显示指定文件系统类型。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -t ntfs</div></pre></td></tr></table></figure>
+</li>
+<li><p>-x<br>显示除某一文件系统类型以外的文件系统信息</p>
+</li>
+<li>-m<br>以MB为块大小单位。</li>
+</ol>
+<h3 id="du"><a href="#du" class="headerlink" title="du"></a>du</h3><p>用于概述每个文件和目录所占磁盘空间的大小。</p>
+<ol>
+<li><p>–exclude<br>排除指定模式的文件大小</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -ah --exclude=<span class="string">"*.jpg"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>–time<br>同时列出条目的修改时间</p>
+</li>
+</ol>
+<h2 id="后台执行命令"><a href="#后台执行命令" class="headerlink" title="后台执行命令"></a>后台执行命令</h2><h3 id="cron"><a href="#cron" class="headerlink" title="cron"></a>cron</h3><p>执行定时计划任务的守护进程。当系统时多用户运行级别时，cron进程会从/etc/init.d中自动启动。<br>cron进程会在目录/var/spool/cron/crontabs/下搜索定时计划任务文件，找到后载入内存。</p>
+<h3 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h3><p>cronta用于创建，修改，删除和查看定时计划任务。</p>
+<h3 id="at"><a href="#at" class="headerlink" title="at"></a>at</h3><p>用于安排一个任务在指定的时间运行。</p>
+<h3 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h3><p>字符&amp;用于并行处理进程的操作符。<br>在命令行末尾添加&amp;将会在后台运行该命令。在当前的shell进程下启动一个子shell进程去执行命令。不影响我们接下来的操作。<br>使用jobs可查看后台正在运行的任务<br>要想让后台任务到前台执行，可使用fg 进程编号</p>
+<h1 id="shell编程"><a href="#shell编程" class="headerlink" title="shell编程"></a>shell编程</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="-1"><a href="#-1" class="headerlink" title="#!"></a>#!</h3><p>指定编译程序。shell脚本文件第一行，须为绝对路径<br>若未指定，则默认为/bin/sh，推荐使用/bin/bash<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/bin/bash     //指定编译程序</span></div></pre></td></tr></table></figure></p>
+<h3 id="-2"><a href="#-2" class="headerlink" title="#"></a>#</h3><ol>
+<li><p>注释<br>还可以使用bash的here document特性添加多行注释</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"say something"</span></div><div class="line">&lt;&lt;COMMONT</div><div class="line">    commont line 1</div><div class="line">    commont line 2</div><div class="line">    commont line n</div><div class="line">COMMONT</div><div class="line"><span class="built_in">echo</span> <span class="string">"do something"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>求字符串长度<br>在变量前加#</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name=<span class="string">"chavin"</span></div><div class="line"><span class="built_in">echo</span>&#123;<span class="comment">#name&#125;       //6</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="运行shell脚本"><a href="#运行shell脚本" class="headerlink" title="运行shell脚本"></a>运行shell脚本</h3><p>直接输入.sh文件路径即可。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./commonts.sh</div></pre></td></tr></table></figure></p>
+<p>但是需要文件具有可执行的权限。可通过chmod来添加执行权限。</p>
+<h2 id="Bash内部变量"><a href="#Bash内部变量" class="headerlink" title="Bash内部变量"></a>Bash内部变量</h2><h3 id="BASH"><a href="#BASH" class="headerlink" title="$BASH"></a>$BASH</h3><p>bash实例的全路径名。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="variable">$BASH</span>      //  /bin/bash</div></pre></td></tr></table></figure></p>
+<h3 id="HOME"><a href="#HOME" class="headerlink" title="$HOME"></a>$HOME</h3><p>当前用户的home目录</p>
+<h3 id="IFS"><a href="#IFS" class="headerlink" title="$IFS"></a>$IFS</h3><p>内部字段分隔符。$IFS定义了bash解析字符串时的单词分界线。默认为空格</p>
+<h3 id="OSTYPE"><a href="#OSTYPE" class="headerlink" title="$OSTYPE"></a>$OSTYPE</h3><p>操作系统类型</p>
+<h3 id="SECONDS"><a href="#SECONDS" class="headerlink" title="$SECONDS"></a>$SECONDS</h3><p>脚本已运行的秒数。</p>
+<h3 id="TMOUT"><a href="#TMOUT" class="headerlink" title="$TMOUT"></a>$TMOUT</h3><p>默认的超时秒数。</p>
+<h3 id="UID"><a href="#UID" class="headerlink" title="$UID"></a>$UID</h3><p>当前用户的账号标识码。</p>
+<h2 id="Bash中的位置参数和特殊参数"><a href="#Bash中的位置参数和特殊参数" class="headerlink" title="Bash中的位置参数和特殊参数"></a>Bash中的位置参数和特殊参数</h2><p>Bash中的位置参数是从1开始的，而不是从0开始的</p>
+<h3 id="declare"><a href="#declare" class="headerlink" title="declare"></a>declare</h3><p>指定变量的类型</p>
+<ol>
+<li>-r<br>指定变量为只读变量</li>
+<li>-i<br>指定为整数型变量</li>
+<li>-x<br>通过环境输出到后续命令</li>
+<li><p>-p<br>指定变量的属性和值</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">declare</span> -p NUMBER</div></pre></td></tr></table></figure>
+</li>
+<li><p>-a<br>声明一个数组变量</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">declare</span> <span class="_">-a</span> linux=(<span class="string">'Debian'</span> <span class="string">'Suse'</span>)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>或：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr1=(one two three)</div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;arr1[0]&#125;</span>       //one</div></pre></td></tr></table></figure></p>
+<p>使用unset删除一个数组或数组的成员变量。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">unset</span> arr1[2]</div><div class="line"><span class="built_in">unset</span> arr1</div></pre></td></tr></table></figure></p>
+<h2 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h2><h3 id="求幂"><a href="#求幂" class="headerlink" title="求幂"></a>求幂</h3><h1 id="管道和过滤器"><a href="#管道和过滤器" class="headerlink" title="管道和过滤器"></a>管道和过滤器</h1><h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><h3 id="和-gt"><a href="#和-gt" class="headerlink" title="| 和 &gt;"></a>| 和 &gt;</h3><p>管道符|执行的重定向与重定向操作符&gt;有什么不同：<br>commond &gt; file        // &gt;让命令与文件连接<br>commond | commond     // |让命令与命令连接</p>
+<h1 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="向进程发送信号"><a href="#向进程发送信号" class="headerlink" title="向进程发送信号"></a>向进程发送信号</h3><ol>
+<li>ctrl+c<br>中断信号。发送SIGINT信号到运行在前台的进程</li>
+<li>ctrl+y<br>延时挂起信号。</li>
+<li>ctrl+z<br>挂起信号。<h3 id="终结进程"><a href="#终结进程" class="headerlink" title="终结进程"></a>终结进程</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">killall firefox                 //杀掉所有firefox进程</div><div class="line">pkill firefox                   //杀掉所有firefox进程</div><div class="line">pkill -KILL -u ucredit firefox  //强制杀掉用户ucredit的forefox进程</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shell/" rel="tag">#shell</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/12/nodejs-express/" rel="next" title="nodejs深入系列--express">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--express
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/16/vim/" rel="prev" title="vim命令大全">
+                vim命令大全 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统变量"><span class="nav-number">1.1.</span> <span class="nav-text">系统变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HOSTNAME"><span class="nav-number">1.1.1.</span> <span class="nav-text">HOSTNAME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PWD"><span class="nav-number">1.1.2.</span> <span class="nav-text">PWD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#env"><span class="nav-number">1.1.3.</span> <span class="nav-text">env</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量赋值"><span class="nav-number">1.1.4.</span> <span class="nav-text">变量赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打印-echo-printf"><span class="nav-number">1.1.5.</span> <span class="nav-text">打印 echo/printf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除变量"><span class="nav-number">1.1.6.</span> <span class="nav-text">删除变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查变量是否存在"><span class="nav-number">1.1.7.</span> <span class="nav-text">检查变量是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history"><span class="nav-number">1.1.8.</span> <span class="nav-text">history</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大括号"><span class="nav-number">1.1.9.</span> <span class="nav-text">大括号{}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.1.10.</span> <span class="nav-text">~</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通配符"><span class="nav-number">1.1.11.</span> <span class="nav-text">通配符 * ? []</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alias"><span class="nav-number">1.1.12.</span> <span class="nav-text">alias</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set"><span class="nav-number">1.1.13.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shopt"><span class="nav-number">1.1.14.</span> <span class="nav-text">shopt</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用Shell命令"><span class="nav-number">2.</span> <span class="nav-text">常用Shell命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看文件和目录"><span class="nav-number">2.1.</span> <span class="nav-text">查看文件和目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ls"><span class="nav-number">2.1.1.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cat"><span class="nav-number">2.1.2.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tac"><span class="nav-number">2.1.3.</span> <span class="nav-text">tac</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#more"><span class="nav-number">2.1.4.</span> <span class="nav-text">more</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less"><span class="nav-number">2.1.5.</span> <span class="nav-text">less</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#head"><span class="nav-number">2.1.6.</span> <span class="nav-text">head</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tail"><span class="nav-number">2.1.7.</span> <span class="nav-text">tail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file"><span class="nav-number">2.1.8.</span> <span class="nav-text">file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wc"><span class="nav-number">2.1.9.</span> <span class="nav-text">wc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-number">2.1.10.</span> <span class="nav-text">find</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作文件和目录"><span class="nav-number">2.2.</span> <span class="nav-text">操作文件和目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#touch"><span class="nav-number">2.2.1.</span> <span class="nav-text">touch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mkdir"><span class="nav-number">2.2.2.</span> <span class="nav-text">mkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cp"><span class="nav-number">2.2.3.</span> <span class="nav-text">cp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ln"><span class="nav-number">2.2.4.</span> <span class="nav-text">ln</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mv"><span class="nav-number">2.2.5.</span> <span class="nav-text">mv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rm"><span class="nav-number">2.2.6.</span> <span class="nav-text">rm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管理文件或目录权限"><span class="nav-number">2.3.</span> <span class="nav-text">管理文件或目录权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ls-l"><span class="nav-number">2.3.1.</span> <span class="nav-text">ls -l</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chmod"><span class="nav-number">2.3.2.</span> <span class="nav-text">chmod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chown-chgrp"><span class="nav-number">2.3.3.</span> <span class="nav-text">chown, chgrp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setuid-setgid"><span class="nav-number">2.3.4.</span> <span class="nav-text">setuid, setgid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本处理"><span class="nav-number">2.4.</span> <span class="nav-text">文本处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sort"><span class="nav-number">2.4.1.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uniq"><span class="nav-number">2.4.2.</span> <span class="nav-text">uniq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tr"><span class="nav-number">2.4.3.</span> <span class="nav-text">tr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grep"><span class="nav-number">2.4.4.</span> <span class="nav-text">grep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#diff"><span class="nav-number">2.4.5.</span> <span class="nav-text">diff</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他常用命令"><span class="nav-number">2.5.</span> <span class="nav-text">其他常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hostname"><span class="nav-number">2.5.1.</span> <span class="nav-text">hostname</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#w-who"><span class="nav-number">2.5.2.</span> <span class="nav-text">w, who</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uptime"><span class="nav-number">2.5.3.</span> <span class="nav-text">uptime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uname"><span class="nav-number">2.5.4.</span> <span class="nav-text">uname</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#date"><span class="nav-number">2.5.5.</span> <span class="nav-text">date</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id"><span class="nav-number">2.5.6.</span> <span class="nav-text">id</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件处理和归档"><span class="nav-number">2.6.</span> <span class="nav-text">文件处理和归档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#paste"><span class="nav-number">2.6.1.</span> <span class="nav-text">paste</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dd"><span class="nav-number">2.6.2.</span> <span class="nav-text">dd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gzip"><span class="nav-number">2.6.3.</span> <span class="nav-text">gzip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzip2"><span class="nav-number">2.6.4.</span> <span class="nav-text">bzip2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gunzip"><span class="nav-number">2.6.5.</span> <span class="nav-text">gunzip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bunzip2"><span class="nav-number">2.6.6.</span> <span class="nav-text">bunzip2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tar"><span class="nav-number">2.6.7.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in"><span class="nav-number">2.6.8.</span> <span class="nav-text">for in</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监测和管理磁盘"><span class="nav-number">2.7.</span> <span class="nav-text">监测和管理磁盘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mount"><span class="nav-number">2.7.1.</span> <span class="nav-text">mount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#df"><span class="nav-number">2.7.2.</span> <span class="nav-text">df</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#du"><span class="nav-number">2.7.3.</span> <span class="nav-text">du</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台执行命令"><span class="nav-number">2.8.</span> <span class="nav-text">后台执行命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cron"><span class="nav-number">2.8.1.</span> <span class="nav-text">cron</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#crontab"><span class="nav-number">2.8.2.</span> <span class="nav-text">crontab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#at"><span class="nav-number">2.8.3.</span> <span class="nav-text">at</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#amp"><span class="nav-number">2.8.4.</span> <span class="nav-text">&</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell编程"><span class="nav-number">3.</span> <span class="nav-text">shell编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">3.1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">#!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-2"><span class="nav-number">3.1.2.</span> <span class="nav-text">#</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行shell脚本"><span class="nav-number">3.1.3.</span> <span class="nav-text">运行shell脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash内部变量"><span class="nav-number">3.2.</span> <span class="nav-text">Bash内部变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BASH"><span class="nav-number">3.2.1.</span> <span class="nav-text">$BASH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HOME"><span class="nav-number">3.2.2.</span> <span class="nav-text">$HOME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IFS"><span class="nav-number">3.2.3.</span> <span class="nav-text">$IFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSTYPE"><span class="nav-number">3.2.4.</span> <span class="nav-text">$OSTYPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SECONDS"><span class="nav-number">3.2.5.</span> <span class="nav-text">$SECONDS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TMOUT"><span class="nav-number">3.2.6.</span> <span class="nav-text">$TMOUT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UID"><span class="nav-number">3.2.7.</span> <span class="nav-text">$UID</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash中的位置参数和特殊参数"><span class="nav-number">3.3.</span> <span class="nav-text">Bash中的位置参数和特殊参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#declare"><span class="nav-number">3.3.1.</span> <span class="nav-text">declare</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术运算"><span class="nav-number">3.4.</span> <span class="nav-text">算术运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#求幂"><span class="nav-number">3.4.1.</span> <span class="nav-text">求幂</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#管道和过滤器"><span class="nav-number">4.</span> <span class="nav-text">管道和过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#管道"><span class="nav-number">4.1.</span> <span class="nav-text">管道</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#和-gt"><span class="nav-number">4.1.1.</span> <span class="nav-text">| 和 ></span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信号"><span class="nav-number">5.</span> <span class="nav-text">信号</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">5.1.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向进程发送信号"><span class="nav-number">5.1.1.</span> <span class="nav-text">向进程发送信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终结进程"><span class="nav-number">5.1.2.</span> <span class="nav-text">终结进程</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

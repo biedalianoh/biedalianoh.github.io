@@ -1,0 +1,851 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vim," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="vim命令大全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim命令大全">
+<meta property="og:url" content="http://yoursite.com/2017/01/16/vim/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="vim命令大全">
+<meta property="og:updated_time" content="2017-01-16T02:41:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim命令大全">
+<meta name="twitter:description" content="vim命令大全">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> vim命令大全 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                vim命令大全
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-16T10:41:08+08:00" content="2017-01-16">
+              2017-01-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/vim/" itemprop="url" rel="index">
+                    <span itemprop="name">vim</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="vim的几种模式"><a href="#vim的几种模式" class="headerlink" title="vim的几种模式"></a>vim的几种模式</h1><h2 id="正常模式"><a href="#正常模式" class="headerlink" title="正常模式"></a>正常模式</h2><p>按esc可回到正常模式</p>
+<h2 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h2><p>可输入文本。按i, a, o都能进入插入模式</p>
+<h2 id="可视模式"><a href="#可视模式" class="headerlink" title="可视模式"></a>可视模式</h2><p>按v进入可视模式。此时可选中文本</p>
+<h2 id="替换模式"><a href="#替换模式" class="headerlink" title="替换模式"></a>替换模式</h2><p>正常模式下，按r进入。</p>
+<h1 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h1><h2 id="vim-r-file"><a href="#vim-r-file" class="headerlink" title="vim -r file"></a>vim -r file</h2><p>恢复上次异常退出的文件；</p>
+<h2 id="vim-R-file"><a href="#vim-R-file" class="headerlink" title="vim -R file"></a>vim -R file</h2><p>以只读的方式打开文件，但可以强制保存；</p>
+<h2 id="vim-M-file"><a href="#vim-M-file" class="headerlink" title="vim -M file"></a>vim -M file</h2><p>以只读的方式打开文件，不可以强制保存；</p>
+<h2 id="vim-y-num-file"><a href="#vim-y-num-file" class="headerlink" title="vim -y num file"></a>vim -y num file</h2><p>将编辑窗口的大小设为num行；</p>
+<h2 id="vim-file"><a href="#vim-file" class="headerlink" title="vim + file"></a>vim + file</h2><p>从文件的末尾开始；</p>
+<h2 id="vim-num-file"><a href="#vim-num-file" class="headerlink" title="vim +num file"></a>vim +num file</h2><p>从第num行开始；</p>
+<h2 id="vim-string-file"><a href="#vim-string-file" class="headerlink" title="vim +/string file"></a>vim +/string file</h2><p>打开file，并将光标停留在第一个找到的string上。</p>
+<h2 id="vim-–remote-file"><a href="#vim-–remote-file" class="headerlink" title="vim –remote file"></a>vim –remote file</h2><p>用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。<br>但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim –remote file在已有的gvim中打开文件。</p>
+<h1 id="文档操作"><a href="#文档操作" class="headerlink" title="文档操作"></a>文档操作</h1><h2 id="e-file"><a href="#e-file" class="headerlink" title=":e file"></a>:e file</h2><p>关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。</p>
+<h2 id="e-file-1"><a href="#e-file-1" class="headerlink" title=":e! file"></a>:e! file</h2><p>放弃对当前文件的修改，编辑新的文件。</p>
+<h2 id="e-file-2"><a href="#e-file-2" class="headerlink" title=":e+file"></a>:e+file</h2><p>开始新的文件，并从文件尾开始编辑。</p>
+<h2 id="e-n-file"><a href="#e-n-file" class="headerlink" title=":e+n file"></a>:e+n file</h2><p>开始新的文件，并从第n行开始编辑。</p>
+<h2 id="enew"><a href="#enew" class="headerlink" title=":enew"></a>:enew</h2><p>编译一个未命名的新文档。(CTRL-W n)</p>
+<h2 id="e"><a href="#e" class="headerlink" title=":e"></a>:e</h2><p>重新加载当前文档。</p>
+<h2 id="e-1"><a href="#e-1" class="headerlink" title=":e!"></a>:e!</h2><p>重新加载当前文档，并丢弃已做的改动。</p>
+<h2 id="e-或ctrl"><a href="#e-或ctrl" class="headerlink" title=":e#或ctrl+^ -"></a>:e#或ctrl+^ -</h2><p>回到刚才编辑的文件，很实用。</p>
+<h2 id="f或ctrl-g"><a href="#f或ctrl-g" class="headerlink" title=":f或ctrl+g"></a>:f或ctrl+g</h2><p>显示文档名，是否修改，和光标位置。</p>
+<h2 id="f-filename"><a href="#f-filename" class="headerlink" title=":f filename"></a>:f filename</h2><p>改变编辑的文件名，这时再保存相当于另存为。</p>
+<h2 id="gf"><a href="#gf" class="headerlink" title="gf"></a>gf</h2><p>打开以光标所在字符串为文件名的文件。</p>
+<h2 id="w"><a href="#w" class="headerlink" title=":w"></a>:w</h2><p>保存修改。</p>
+<h2 id="n1-n2w-filename"><a href="#n1-n2w-filename" class="headerlink" title=":n1,n2w filename"></a>:n1,n2w filename</h2><p>选择性保存从某n1行到另n2行的内容。</p>
+<h2 id="wq"><a href="#wq" class="headerlink" title=":wq"></a>:wq</h2><p>保存并退出。</p>
+<h2 id="ZZ"><a href="#ZZ" class="headerlink" title="ZZ"></a>ZZ</h2><p>保存并退出。</p>
+<h2 id="x"><a href="#x" class="headerlink" title=":x"></a>:x</h2><p>保存并退出。</p>
+<h2 id="q-uit"><a href="#q-uit" class="headerlink" title=":q[uit]"></a>:q[uit]</h2><p>退出当前窗口。(CTRL-W q或CTRL-W CTRL-Q)</p>
+<h2 id="saveas-newfilename"><a href="#saveas-newfilename" class="headerlink" title=":saveas newfilename"></a>:saveas newfilename</h2><p>另存为</p>
+<h2 id="browse-e"><a href="#browse-e" class="headerlink" title=":browse e"></a>:browse e</h2><p>会打开一个文件浏览器让你选择要编辑的文件。<br>如果是终端中，则会打开netrw的文件浏览窗口； 如果是gvim，则会打开一个图形界面的浏览窗口。<br>实际上:browse后可以跟任何编辑文档的命令，如sp等。 ## 用browse打开的起始目录可以由browsedir来设置</p>
+<h2 id="set-browsedir-last"><a href="#set-browsedir-last" class="headerlink" title=":set browsedir=last"></a>:set browsedir=last</h2><p>用上次访问过的目录（默认）；</p>
+<h2 id="set-browsedir-buffer"><a href="#set-browsedir-buffer" class="headerlink" title=":set browsedir=buffer"></a>:set browsedir=buffer</h2><p>用当前文件所在目录；</p>
+<h2 id="set-browsedir-current"><a href="#set-browsedir-current" class="headerlink" title=":set browsedir=current"></a>:set browsedir=current</h2><p>用当前工作目录；</p>
+<h2 id="Sex"><a href="#Sex" class="headerlink" title=":Sex"></a>:Sex</h2><p>水平分割一个窗口，浏览文件系统；</p>
+<h2 id="Vex"><a href="#Vex" class="headerlink" title=":Vex"></a>:Vex</h2><p>垂直分割一个窗口，浏览文件系统；</p>
+<h1 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h1><h2 id="基本移动"><a href="#基本移动" class="headerlink" title="基本移动"></a>基本移动</h2><p>以下都是在normal模式下：</p>
+<h3 id="h或退格-左移一个字符；"><a href="#h或退格-左移一个字符；" class="headerlink" title="h或退格: 左移一个字符；"></a>h或退格: 左移一个字符；</h3><h3 id="l或空格-右移一个字符；"><a href="#l或空格-右移一个字符；" class="headerlink" title="l或空格: 右移一个字符；"></a>l或空格: 右移一个字符；</h3><h3 id="j-下移一行；"><a href="#j-下移一行；" class="headerlink" title="j: 下移一行；"></a>j: 下移一行；</h3><h3 id="k-上移一行；"><a href="#k-上移一行；" class="headerlink" title="k: 上移一行；"></a>k: 上移一行；</h3><h3 id="gj-移动到一段内的下一行；"><a href="#gj-移动到一段内的下一行；" class="headerlink" title="gj: 移动到一段内的下一行；"></a>gj: 移动到一段内的下一行；</h3><h3 id="gk-移动到一段内的上一行；"><a href="#gk-移动到一段内的上一行；" class="headerlink" title="gk: 移动到一段内的上一行；"></a>gk: 移动到一段内的上一行；</h3><h3 id="或Enter-把光标移至下一行第一个非空白字符。"><a href="#或Enter-把光标移至下一行第一个非空白字符。" class="headerlink" title="+或Enter: 把光标移至下一行第一个非空白字符。"></a>+或Enter: 把光标移至下一行第一个非空白字符。</h3><h3 id="把光标移至上一行第一个非空白字符。"><a href="#把光标移至上一行第一个非空白字符。" class="headerlink" title="-: 把光标移至上一行第一个非空白字符。"></a>-: 把光标移至上一行第一个非空白字符。</h3><h3 id="w-前移一个单词，光标停在下一个单词开头；"><a href="#w-前移一个单词，光标停在下一个单词开头；" class="headerlink" title="w: 前移一个单词，光标停在下一个单词开头；"></a>w: 前移一个单词，光标停在下一个单词开头；</h3><h3 id="W-移动下一个单词开头，但忽略一些标点；"><a href="#W-移动下一个单词开头，但忽略一些标点；" class="headerlink" title="W: 移动下一个单词开头，但忽略一些标点；"></a>W: 移动下一个单词开头，但忽略一些标点；</h3><h3 id="e-前移一个单词，光标停在下一个单词末尾；"><a href="#e-前移一个单词，光标停在下一个单词末尾；" class="headerlink" title="e: 前移一个单词，光标停在下一个单词末尾；"></a>e: 前移一个单词，光标停在下一个单词末尾；</h3><h3 id="E-移动到下一个单词末尾，如果词尾有标点，则移动到标点；"><a href="#E-移动到下一个单词末尾，如果词尾有标点，则移动到标点；" class="headerlink" title="E: 移动到下一个单词末尾，如果词尾有标点，则移动到标点；"></a>E: 移动到下一个单词末尾，如果词尾有标点，则移动到标点；</h3><h3 id="b-后移一个单词，光标停在上一个单词开头；"><a href="#b-后移一个单词，光标停在上一个单词开头；" class="headerlink" title="b: 后移一个单词，光标停在上一个单词开头；"></a>b: 后移一个单词，光标停在上一个单词开头；</h3><h3 id="B-移动到上一个单词开头，忽略一些标点；"><a href="#B-移动到上一个单词开头，忽略一些标点；" class="headerlink" title="B: 移动到上一个单词开头，忽略一些标点；"></a>B: 移动到上一个单词开头，忽略一些标点；</h3><h3 id="ge-后移一个单词，光标停在上一个单词末尾；"><a href="#ge-后移一个单词，光标停在上一个单词末尾；" class="headerlink" title="ge: 后移一个单词，光标停在上一个单词末尾；"></a>ge: 后移一个单词，光标停在上一个单词末尾；</h3><h3 id="gE-同-ge-，不过‘单词’包含单词相邻的标点。"><a href="#gE-同-ge-，不过‘单词’包含单词相邻的标点。" class="headerlink" title="gE: 同 ge ，不过‘单词’包含单词相邻的标点。"></a>gE: 同 ge ，不过‘单词’包含单词相邻的标点。</h3><h3 id="前移1句。"><a href="#前移1句。" class="headerlink" title="(: 前移1句。"></a>(: 前移1句。</h3><h3 id="后移1句。"><a href="#后移1句。" class="headerlink" title="): 后移1句。"></a>): 后移1句。</h3><h3 id="前移1段。"><a href="#前移1段。" class="headerlink" title="{: 前移1段。"></a>{: 前移1段。</h3><h3 id="后移1段。"><a href="#后移1段。" class="headerlink" title="}: 后移1段。"></a>}: 后移1段。</h3><h3 id="fc-把光标移到同一行的下一个c字符处"><a href="#fc-把光标移到同一行的下一个c字符处" class="headerlink" title="fc: 把光标移到同一行的下一个c字符处"></a>fc: 把光标移到同一行的下一个c字符处</h3><h3 id="Fc-把光标移到同一行的上一个c字符处"><a href="#Fc-把光标移到同一行的上一个c字符处" class="headerlink" title="Fc: 把光标移到同一行的上一个c字符处"></a>Fc: 把光标移到同一行的上一个c字符处</h3><h3 id="tc-把光标移到同一行的下一个c字符前"><a href="#tc-把光标移到同一行的下一个c字符前" class="headerlink" title="tc: 把光标移到同一行的下一个c字符前"></a>tc: 把光标移到同一行的下一个c字符前</h3><h3 id="Tc-把光标移到同一行的上一个c字符后"><a href="#Tc-把光标移到同一行的上一个c字符后" class="headerlink" title="Tc: 把光标移到同一行的上一个c字符后"></a>Tc: 把光标移到同一行的上一个c字符后</h3><h3 id="配合f-amp-t使用，重复一次"><a href="#配合f-amp-t使用，重复一次" class="headerlink" title=";: 配合f &amp; t使用，重复一次"></a>;: 配合f &amp; t使用，重复一次</h3><h3 id="配合f-amp-t使用，反向重复一次"><a href="#配合f-amp-t使用，反向重复一次" class="headerlink" title=",: 配合f &amp; t使用，反向重复一次"></a>,: 配合f &amp; t使用，反向重复一次</h3><p>上面的操作都可以配合n使用，比如在正常模式(下面会讲到)下输入3h， 则光标向左移动3个字符。</p>
+<h3 id="0-移动到行首。"><a href="#0-移动到行首。" class="headerlink" title="0: 移动到行首。"></a>0: 移动到行首。</h3><h3 id="g0-移到光标所在屏幕行行首。"><a href="#g0-移到光标所在屏幕行行首。" class="headerlink" title="g0: 移到光标所在屏幕行行首。"></a>g0: 移到光标所在屏幕行行首。</h3><h3 id="移动到本行第一个非空白字符。"><a href="#移动到本行第一个非空白字符。" class="headerlink" title="^: 移动到本行第一个非空白字符。"></a>^: 移动到本行第一个非空白字符。</h3><h3 id="g-同-，但是移动到当前屏幕行第一个非空字符处。"><a href="#g-同-，但是移动到当前屏幕行第一个非空字符处。" class="headerlink" title="g^: 同 ^ ，但是移动到当前屏幕行第一个非空字符处。"></a>g^: 同 ^ ，但是移动到当前屏幕行第一个非空字符处。</h3><h3 id="移动到行尾。"><a href="#移动到行尾。" class="headerlink" title="$: 移动到行尾。"></a>$: 移动到行尾。</h3><h3 id="g-移动光标所在屏幕行行尾。"><a href="#g-移动光标所在屏幕行行尾。" class="headerlink" title="g$: 移动光标所在屏幕行行尾。"></a>g$: 移动光标所在屏幕行行尾。</h3><h3 id="n-把光标移到递n列上。"><a href="#n-把光标移到递n列上。" class="headerlink" title="n|: 把光标移到递n列上。"></a>n|: 把光标移到递n列上。</h3><h3 id="nG-到文件第n行。"><a href="#nG-到文件第n行。" class="headerlink" title="nG: 到文件第n行。"></a>nG: 到文件第n行。</h3><h3 id="n-移动到第n行。"><a href="#n-移动到第n行。" class="headerlink" title=":n 移动到第n行。"></a>:n<cr> 移动到第n行。</cr></h3><h3 id="移动到最后一行。"><a href="#移动到最后一行。" class="headerlink" title=":$ 移动到最后一行。"></a>:$<cr> 移动到最后一行。</cr></h3><h3 id="H-把光标移到屏幕最顶端一行。"><a href="#H-把光标移到屏幕最顶端一行。" class="headerlink" title="H: 把光标移到屏幕最顶端一行。"></a>H: 把光标移到屏幕最顶端一行。</h3><h3 id="M-把光标移到屏幕中间一行。"><a href="#M-把光标移到屏幕中间一行。" class="headerlink" title="M: 把光标移到屏幕中间一行。"></a>M: 把光标移到屏幕中间一行。</h3><h3 id="L-把光标移到屏幕最底端一行。"><a href="#L-把光标移到屏幕最底端一行。" class="headerlink" title="L: 把光标移到屏幕最底端一行。"></a>L: 把光标移到屏幕最底端一行。</h3><h3 id="gg-到文件头部。"><a href="#gg-到文件头部。" class="headerlink" title="gg: 到文件头部。"></a>gg: 到文件头部。</h3><h3 id="G-到文件尾部。"><a href="#G-到文件尾部。" class="headerlink" title="G: 到文件尾部。"></a>G: 到文件尾部。</h3><h2 id="翻屏"><a href="#翻屏" class="headerlink" title="翻屏"></a>翻屏</h2><h3 id="ctrl-f-下翻一屏。"><a href="#ctrl-f-下翻一屏。" class="headerlink" title="ctrl+f: 下翻一屏。"></a>ctrl+f: 下翻一屏。</h3><h3 id="ctrl-b-上翻一屏。"><a href="#ctrl-b-上翻一屏。" class="headerlink" title="ctrl+b: 上翻一屏。"></a>ctrl+b: 上翻一屏。</h3><h3 id="ctrl-d-下翻半屏。"><a href="#ctrl-d-下翻半屏。" class="headerlink" title="ctrl+d: 下翻半屏。"></a>ctrl+d: 下翻半屏。</h3><h3 id="ctrl-u-上翻半屏。"><a href="#ctrl-u-上翻半屏。" class="headerlink" title="ctrl+u: 上翻半屏。"></a>ctrl+u: 上翻半屏。</h3><h3 id="ctrl-e-向下滚动一行。"><a href="#ctrl-e-向下滚动一行。" class="headerlink" title="ctrl+e: 向下滚动一行。"></a>ctrl+e: 向下滚动一行。</h3><h3 id="ctrl-y-向上滚动一行。"><a href="#ctrl-y-向上滚动一行。" class="headerlink" title="ctrl+y: 向上滚动一行。"></a>ctrl+y: 向上滚动一行。</h3><h3 id="n-到文件n-的位置。"><a href="#n-到文件n-的位置。" class="headerlink" title="n%: 到文件n%的位置。"></a>n%: 到文件n%的位置。</h3><h3 id="zz-将当前行移动到屏幕中央。"><a href="#zz-将当前行移动到屏幕中央。" class="headerlink" title="zz: 将当前行移动到屏幕中央。"></a>zz: 将当前行移动到屏幕中央。</h3><h3 id="zt-将当前行移动到屏幕顶端。"><a href="#zt-将当前行移动到屏幕顶端。" class="headerlink" title="zt: 将当前行移动到屏幕顶端。"></a>zt: 将当前行移动到屏幕顶端。</h3><h3 id="zb-将当前行移动到屏幕底端。"><a href="#zb-将当前行移动到屏幕底端。" class="headerlink" title="zb: 将当前行移动到屏幕底端。"></a>zb: 将当前行移动到屏幕底端。</h3><h1 id="插入文本"><a href="#插入文本" class="headerlink" title="插入文本"></a>插入文本</h1><h2 id="基本插入"><a href="#基本插入" class="headerlink" title="基本插入"></a>基本插入</h2><h3 id="i"><a href="#i" class="headerlink" title="i"></a>i</h3><p>在光标前插入；<br>一个小技巧：按8，再按i，进入插入模式，输入=， 按esc进入命令模式，就会出现8个=。 这在插入分割线时非常有用，如30i+<esc>就插入了36个+组成的分割线。</esc></p>
+<h3 id="I"><a href="#I" class="headerlink" title="I"></a>I</h3><p>在当前行第一个非空字符前插入；</p>
+<h3 id="gI"><a href="#gI" class="headerlink" title="gI"></a>gI</h3><p>在当前行第一列插入；</p>
+<h3 id="a"><a href="#a" class="headerlink" title="a"></a>a</h3><p>在光标后插入；</p>
+<h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>在当前行最后插入；</p>
+<h3 id="o"><a href="#o" class="headerlink" title="o"></a>o</h3><p>在下面新建一行插入；</p>
+<h3 id="O"><a href="#O" class="headerlink" title="O"></a>O</h3><p>在上面新建一行插入；</p>
+<h3 id="r"><a href="#r" class="headerlink" title=":r"></a>:r</h3><p>filename在当前位置插入另一个文件的内容。</p>
+<h3 id="n-r-filename"><a href="#n-r-filename" class="headerlink" title=":[n]r filename"></a>:[n]r filename</h3><p>在第n行插入另一个文件的内容。</p>
+<h3 id="r-date"><a href="#r-date" class="headerlink" title=":r !date"></a>:r !date</h3><p>在光标处插入当前日期与时间。同理，:r !command可以将其它shell命令的输出插入当前文档。</p>
+<h2 id="改写插入"><a href="#改写插入" class="headerlink" title="改写插入"></a>改写插入</h2><h3 id="c-n-w"><a href="#c-n-w" class="headerlink" title="c[n]w"></a>c[n]w</h3><p>改写光标后1(n)个词。</p>
+<h3 id="c-n-l"><a href="#c-n-l" class="headerlink" title="c[n]l"></a>c[n]l</h3><p>改写光标后n个字母。</p>
+<h3 id="c-n-h"><a href="#c-n-h" class="headerlink" title="c[n]h"></a>c[n]h</h3><p>改写光标前n个字母。</p>
+<h3 id="n-cc"><a href="#n-cc" class="headerlink" title="[n]cc"></a>[n]cc</h3><p>修改当前[n]行。</p>
+<h3 id="n-s"><a href="#n-s" class="headerlink" title="[n]s"></a>[n]s</h3><p>以输入的文本替代光标之后1(n)个字符，相当于c[n]l。</p>
+<h3 id="n-S"><a href="#n-S" class="headerlink" title="[n]S"></a>[n]S</h3><p>删除指定数目的行，并以所输入文本代替之。</p>
+<h1 id="剪切复制和寄存器"><a href="#剪切复制和寄存器" class="headerlink" title="剪切复制和寄存器"></a>剪切复制和寄存器</h1><h2 id="剪切复制和粘贴"><a href="#剪切复制和粘贴" class="headerlink" title="剪切复制和粘贴"></a>剪切复制和粘贴</h2><h3 id="n-x"><a href="#n-x" class="headerlink" title="[n]x:"></a>[n]x:</h3><p>剪切光标右边n个字符，相当于d[n]l。</p>
+<h3 id="n-X"><a href="#n-X" class="headerlink" title="[n]X:"></a>[n]X:</h3><p>剪切光标左边n个字符，相当于d[n]h。</p>
+<h3 id="y"><a href="#y" class="headerlink" title="y:"></a>y:</h3><p>复制在可视模式下选中的文本。</p>
+<h3 id="yy-or-Y"><a href="#yy-or-Y" class="headerlink" title="yy or Y:"></a>yy or Y:</h3><p>复制整行文本。</p>
+<h3 id="y-n-w"><a href="#y-n-w" class="headerlink" title="y[n]w:"></a>y[n]w:</h3><p>复制一(n)个词。</p>
+<h3 id="y-n-l"><a href="#y-n-l" class="headerlink" title="y[n]l:"></a>y[n]l:</h3><p>复制光标右边1(n)个字符。</p>
+<h3 id="y-n-h"><a href="#y-n-h" class="headerlink" title="y[n]h:"></a>y[n]h:</h3><p>复制光标左边1(n)个字符。</p>
+<h3 id="y-1"><a href="#y-1" class="headerlink" title="y$:"></a>y$:</h3><p>从光标当前位置复制到行尾。</p>
+<h3 id="y0"><a href="#y0" class="headerlink" title="y0:"></a>y0:</h3><p>从光标当前位置复制到行首。</p>
+<h3 id="m-ny"><a href="#m-ny" class="headerlink" title=":m,ny"></a>:m,ny<cr></cr></h3><p>复制m行到n行的内容。</p>
+<h3 id="y1G或ygg"><a href="#y1G或ygg" class="headerlink" title="y1G或ygg:"></a>y1G或ygg:</h3><p>复制光标以上的所有行。</p>
+<h3 id="yG"><a href="#yG" class="headerlink" title="yG:"></a>yG:</h3><p>复制光标以下的所有行。</p>
+<h3 id="yaw和yas："><a href="#yaw和yas：" class="headerlink" title="yaw和yas："></a>yaw和yas：</h3><p>复制一个词和复制一个句子，即使光标不在词首和句首也没关系。</p>
+<h3 id="d"><a href="#d" class="headerlink" title="d"></a>d</h3><p>删除（剪切）在可视模式下选中的文本。</p>
+<h3 id="d-or-D"><a href="#d-or-D" class="headerlink" title="d$ or D"></a>d$ or D</h3><p>删除（剪切）当前位置到行尾的内容。</p>
+<h3 id="d-n-w"><a href="#d-n-w" class="headerlink" title="d[n]w"></a>d[n]w</h3><p> 删除（剪切）1(n)个单词</p>
+<h3 id="d-n-l"><a href="#d-n-l" class="headerlink" title="d[n]l"></a>d[n]l</h3><p>删除（剪切）光标右边1(n)个字符。</p>
+<h3 id="d-n-h"><a href="#d-n-h" class="headerlink" title="d[n]h"></a>d[n]h</h3><p>删除（剪切）光标左边1(n)个字符。</p>
+<h3 id="d0"><a href="#d0" class="headerlink" title="d0"></a>d0</h3><p>删除（剪切）当前位置到行首的内容</p>
+<h3 id="n-dd"><a href="#n-dd" class="headerlink" title="[n] dd"></a>[n] dd</h3><p>删除（剪切）1(n)行。</p>
+<h3 id="m-nd"><a href="#m-nd" class="headerlink" title=":m,nd"></a>:m,nd<cr></cr></h3><p>剪切m行到n行的内容。</p>
+<h3 id="d1G或dgg"><a href="#d1G或dgg" class="headerlink" title="d1G或dgg"></a>d1G或dgg</h3><p>剪切光标以上的所有行。</p>
+<h3 id="dG"><a href="#dG" class="headerlink" title="dG"></a>dG</h3><p>剪切光标以下的所有行。</p>
+<h3 id="daw和das"><a href="#daw和das" class="headerlink" title="daw和das"></a>daw和das</h3><p>剪切一个词和剪切一个句子，即使光标不在词首和句首也没关系。</p>
+<h3 id="d-f"><a href="#d-f" class="headerlink" title="d/f"></a>d/f<cr></cr></h3><p>这是一个比较高级的组合命令，它将删除当前位置 到下一个f之间的内容。</p>
+<h3 id="p"><a href="#p" class="headerlink" title="p"></a>p</h3><p>在光标之后粘贴。</p>
+<h3 id="P"><a href="#P" class="headerlink" title="P"></a>P</h3><p>在光标之前粘贴。</p>
+<h2 id="文本对象"><a href="#文本对象" class="headerlink" title="文本对象"></a>文本对象</h2><h3 id="aw：一个词"><a href="#aw：一个词" class="headerlink" title="aw：一个词"></a>aw：一个词</h3><h3 id="as：一句。"><a href="#as：一句。" class="headerlink" title="as：一句。"></a>as：一句。</h3><h3 id="ap：一段。"><a href="#ap：一段。" class="headerlink" title="ap：一段。"></a>ap：一段。</h3><h3 id="ab：一块（包含在圆括号中的）。"><a href="#ab：一块（包含在圆括号中的）。" class="headerlink" title="ab：一块（包含在圆括号中的）。"></a>ab：一块（包含在圆括号中的）。</h3><h2 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h2><h3 id="a-z"><a href="#a-z" class="headerlink" title="a-z"></a>a-z</h3><p>都可以用作寄存器名。”ayy把当前行的内容放入a寄存器。</p>
+<h3 id="A-Z"><a href="#A-Z" class="headerlink" title="A-Z"></a>A-Z</h3><p>用大写字母索引寄存器，可以在寄存器中追加内容。 如”Ayy把当前行的内容追加到a寄存器中。</p>
+<h3 id="reg"><a href="#reg" class="headerlink" title=":reg"></a>:reg</h3><p>显示所有寄存器的内容。</p>
+<h3 id="“”"><a href="#“”" class="headerlink" title="“”"></a>“”</h3><p>不加寄存器索引时，默认使用的寄存器。</p>
+<h3 id="“"><a href="#“" class="headerlink" title="“*"></a>“*</h3><p>当前选择缓冲区，”*yy把当前行的内容放入当前选择缓冲区。</p>
+<h3 id="“-1"><a href="#“-1" class="headerlink" title="“+"></a>“+</h3><p>系统剪贴板。”+yy把当前行的内容放入系统剪贴板。</p>
+<h1 id="查找与替换"><a href="#查找与替换" class="headerlink" title="查找与替换"></a>查找与替换</h1><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h3 id="something"><a href="#something" class="headerlink" title="/something"></a>/something</h3><p>在后面的文本中查找something。</p>
+<h3 id="something-1"><a href="#something-1" class="headerlink" title="?something"></a>?something</h3><p>在前面的文本中查找something。</p>
+<h3 id="pattern-number"><a href="#pattern-number" class="headerlink" title="/pattern/+number"></a>/pattern/+number</h3><p>将光标停在包含pattern的行后面第number行上。</p>
+<h3 id="pattern-number-1"><a href="#pattern-number-1" class="headerlink" title="/pattern/-number"></a>/pattern/-number</h3><p>将光标停在包含pattern的行前面第number行上。</p>
+<h3 id="n"><a href="#n" class="headerlink" title="n"></a>n</h3><p>向后查找下一个。</p>
+<h3 id="N"><a href="#N" class="headerlink" title="N"></a>N</h3><p>向前查找下一个。</p>
+<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><h3 id="s-old-new"><a href="#s-old-new" class="headerlink" title=":s/old/new"></a>:s/old/new</h3><p>用new替换当前行第一个old。</p>
+<h3 id="s-old-new-g"><a href="#s-old-new-g" class="headerlink" title=":s/old/new/g"></a>:s/old/new/g</h3><p>用new替换当前行所有的old。</p>
+<h3 id="n1-n2s-old-new-g"><a href="#n1-n2s-old-new-g" class="headerlink" title=":n1,n2s/old/new/g"></a>:n1,n2s/old/new/g</h3><p>用new替换文件n1行到n2行所有的old。</p>
+<h3 id="s-old-new-g-1"><a href="#s-old-new-g-1" class="headerlink" title=":%s/old/new/g"></a>:%s/old/new/g</h3><p>用new替换文件中所有的old。</p>
+<h3 id="s-xxx-g"><a href="#s-xxx-g" class="headerlink" title=":%s/^/xxx/g"></a>:%s/^/xxx/g</h3><p>在每一行的行首插入xxx，^表示行首。</p>
+<h3 id="s-xxx-g-1"><a href="#s-xxx-g-1" class="headerlink" title=":%s/$/xxx/g"></a>:%s/$/xxx/g</h3><p>在每一行的行尾插入xxx，$表示行尾。<br>所有替换命令末尾加上c，每个替换都将需要用户确认。 如：%s/old/new/gc，加上i则忽略大小写(ignore)。</p>
+<h1 id="编辑多个文件"><a href="#编辑多个文件" class="headerlink" title="编辑多个文件"></a>编辑多个文件</h1><h2 id="一次编辑多个文件"><a href="#一次编辑多个文件" class="headerlink" title="一次编辑多个文件"></a>一次编辑多个文件</h2><ul>
+<li>我们可以一次打开多个文件，如 vi a.txt b.txt c.txt</li>
+<li>使用:next(:n)编辑下一个文件。</li>
+<li>:2n 编辑下2个文件。</li>
+<li>使用:previous或:N编辑上一个文件。</li>
+<li>使用:wnext，保存当前文件，并编辑下一个文件。</li>
+<li>使用:wprevious，保存当前文件，并编辑上一个文件。</li>
+<li>使用:args 显示文件列表。</li>
+<li>:n filenames或:args filenames 指定新的文件列表。</li>
+<li>vi -o filenames 在水平分割的多个窗口中编辑多个文件。</li>
+<li>vi -O filenames 在垂直分割的多个窗口中编辑多个文件。</li>
+</ul>
+<h2 id="关闭子窗口"><a href="#关闭子窗口" class="headerlink" title="关闭子窗口"></a>关闭子窗口</h2><h3 id="qall"><a href="#qall" class="headerlink" title=":qall"></a>:qall</h3><p>关闭所有窗口，退出vim。</p>
+<h3 id="wall"><a href="#wall" class="headerlink" title=":wall"></a>:wall</h3><p>保存所有修改过的窗口。</p>
+<h3 id="only"><a href="#only" class="headerlink" title=":only"></a>:only</h3><p>只保留当前窗口，关闭其它窗口。(CTRL-W o)</p>
+<h3 id="close"><a href="#close" class="headerlink" title=":close"></a>:close</h3><p>关闭当前窗口，CTRL-W c能实现同样的功能。 (象 :q :x同样工作 )</p>
+<h2 id="撤消与重做（normal模式）"><a href="#撤消与重做（normal模式）" class="headerlink" title="撤消与重做（normal模式）"></a>撤消与重做（normal模式）</h2><h3 id="n-u"><a href="#n-u" class="headerlink" title="[n] u"></a>[n] u</h3><p>取消一(n)个改动。</p>
+<h3 id="undo-5"><a href="#undo-5" class="headerlink" title=":undo 5"></a>:undo 5</h3><p>撤销5个改变。</p>
+<h3 id="undolist"><a href="#undolist" class="headerlink" title=":undolist"></a>:undolist</h3><p>你的撤销历史。</p>
+<h3 id="ctrl-r"><a href="#ctrl-r" class="headerlink" title="ctrl + r:"></a>ctrl + r:</h3><p>重做最后的改动。</p>
+<h3 id="U"><a href="#U" class="headerlink" title="U:"></a>U:</h3><p>取消当前行中所有的改动。</p>
+<h3 id="earlier-4m"><a href="#earlier-4m" class="headerlink" title=":earlier 4m"></a>:earlier 4m</h3><p>回到4分钟前</p>
+<h3 id="later-55s"><a href="#later-55s" class="headerlink" title=":later 55s"></a>:later 55s</h3><p>前进55秒</p>
+<h2 id="多行缩进缩出"><a href="#多行缩进缩出" class="headerlink" title="多行缩进缩出"></a>多行缩进缩出</h2><ul>
+<li>正常模式下，按两下&gt;;光标所在行会缩进。</li>
+<li>如果先按了n，再按两下&gt;;，光标以下的n行会缩进。</li>
+<li>对应的，按两下&lt;;，光标所在行会缩出。</li>
+<li>如果在编辑代码文件，可以用=进行调整。</li>
+<li>在可视模式下，选择要调整的代码块，按=，代码会按书写规则缩排好。</li>
+<li>或者n =，调整n行代码的缩排。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vim/" rel="tag">#vim</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/16/shell/" rel="next" title="shell命令行与脚本编程进阶">
+                <i class="fa fa-chevron-left"></i> shell命令行与脚本编程进阶
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim的几种模式"><span class="nav-number">1.</span> <span class="nav-text">vim的几种模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正常模式"><span class="nav-number">1.1.</span> <span class="nav-text">正常模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入模式"><span class="nav-number">1.2.</span> <span class="nav-text">插入模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视模式"><span class="nav-number">1.3.</span> <span class="nav-text">可视模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换模式"><span class="nav-number">1.4.</span> <span class="nav-text">替换模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打开文件"><span class="nav-number">2.</span> <span class="nav-text">打开文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-r-file"><span class="nav-number">2.1.</span> <span class="nav-text">vim -r file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-R-file"><span class="nav-number">2.2.</span> <span class="nav-text">vim -R file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-M-file"><span class="nav-number">2.3.</span> <span class="nav-text">vim -M file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-y-num-file"><span class="nav-number">2.4.</span> <span class="nav-text">vim -y num file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-file"><span class="nav-number">2.5.</span> <span class="nav-text">vim + file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-num-file"><span class="nav-number">2.6.</span> <span class="nav-text">vim +num file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-string-file"><span class="nav-number">2.7.</span> <span class="nav-text">vim +/string file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-–remote-file"><span class="nav-number">2.8.</span> <span class="nav-text">vim –remote file</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文档操作"><span class="nav-number">3.</span> <span class="nav-text">文档操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#e-file"><span class="nav-number">3.1.</span> <span class="nav-text">:e file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e-file-1"><span class="nav-number">3.2.</span> <span class="nav-text">:e! file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e-file-2"><span class="nav-number">3.3.</span> <span class="nav-text">:e+file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e-n-file"><span class="nav-number">3.4.</span> <span class="nav-text">:e+n file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enew"><span class="nav-number">3.5.</span> <span class="nav-text">:enew</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e"><span class="nav-number">3.6.</span> <span class="nav-text">:e</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e-1"><span class="nav-number">3.7.</span> <span class="nav-text">:e!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e-或ctrl"><span class="nav-number">3.8.</span> <span class="nav-text">:e#或ctrl+^ -</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#f或ctrl-g"><span class="nav-number">3.9.</span> <span class="nav-text">:f或ctrl+g</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#f-filename"><span class="nav-number">3.10.</span> <span class="nav-text">:f filename</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gf"><span class="nav-number">3.11.</span> <span class="nav-text">gf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#w"><span class="nav-number">3.12.</span> <span class="nav-text">:w</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n1-n2w-filename"><span class="nav-number">3.13.</span> <span class="nav-text">:n1,n2w filename</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wq"><span class="nav-number">3.14.</span> <span class="nav-text">:wq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZZ"><span class="nav-number">3.15.</span> <span class="nav-text">ZZ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x"><span class="nav-number">3.16.</span> <span class="nav-text">:x</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#q-uit"><span class="nav-number">3.17.</span> <span class="nav-text">:q[uit]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#saveas-newfilename"><span class="nav-number">3.18.</span> <span class="nav-text">:saveas newfilename</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#browse-e"><span class="nav-number">3.19.</span> <span class="nav-text">:browse e</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set-browsedir-last"><span class="nav-number">3.20.</span> <span class="nav-text">:set browsedir=last</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set-browsedir-buffer"><span class="nav-number">3.21.</span> <span class="nav-text">:set browsedir=buffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set-browsedir-current"><span class="nav-number">3.22.</span> <span class="nav-text">:set browsedir=current</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sex"><span class="nav-number">3.23.</span> <span class="nav-text">:Sex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vex"><span class="nav-number">3.24.</span> <span class="nav-text">:Vex</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#光标移动"><span class="nav-number">4.</span> <span class="nav-text">光标移动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本移动"><span class="nav-number">4.1.</span> <span class="nav-text">基本移动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h或退格-左移一个字符；"><span class="nav-number">4.1.1.</span> <span class="nav-text">h或退格: 左移一个字符；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l或空格-右移一个字符；"><span class="nav-number">4.1.2.</span> <span class="nav-text">l或空格: 右移一个字符；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#j-下移一行；"><span class="nav-number">4.1.3.</span> <span class="nav-text">j: 下移一行；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-上移一行；"><span class="nav-number">4.1.4.</span> <span class="nav-text">k: 上移一行；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gj-移动到一段内的下一行；"><span class="nav-number">4.1.5.</span> <span class="nav-text">gj: 移动到一段内的下一行；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gk-移动到一段内的上一行；"><span class="nav-number">4.1.6.</span> <span class="nav-text">gk: 移动到一段内的上一行；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#或Enter-把光标移至下一行第一个非空白字符。"><span class="nav-number">4.1.7.</span> <span class="nav-text">+或Enter: 把光标移至下一行第一个非空白字符。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把光标移至上一行第一个非空白字符。"><span class="nav-number">4.1.8.</span> <span class="nav-text">-: 把光标移至上一行第一个非空白字符。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#w-前移一个单词，光标停在下一个单词开头；"><span class="nav-number">4.1.9.</span> <span class="nav-text">w: 前移一个单词，光标停在下一个单词开头；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#W-移动下一个单词开头，但忽略一些标点；"><span class="nav-number">4.1.10.</span> <span class="nav-text">W: 移动下一个单词开头，但忽略一些标点；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-前移一个单词，光标停在下一个单词末尾；"><span class="nav-number">4.1.11.</span> <span class="nav-text">e: 前移一个单词，光标停在下一个单词末尾；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-移动到下一个单词末尾，如果词尾有标点，则移动到标点；"><span class="nav-number">4.1.12.</span> <span class="nav-text">E: 移动到下一个单词末尾，如果词尾有标点，则移动到标点；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-后移一个单词，光标停在上一个单词开头；"><span class="nav-number">4.1.13.</span> <span class="nav-text">b: 后移一个单词，光标停在上一个单词开头；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-移动到上一个单词开头，忽略一些标点；"><span class="nav-number">4.1.14.</span> <span class="nav-text">B: 移动到上一个单词开头，忽略一些标点；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ge-后移一个单词，光标停在上一个单词末尾；"><span class="nav-number">4.1.15.</span> <span class="nav-text">ge: 后移一个单词，光标停在上一个单词末尾；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gE-同-ge-，不过‘单词’包含单词相邻的标点。"><span class="nav-number">4.1.16.</span> <span class="nav-text">gE: 同 ge ，不过‘单词’包含单词相邻的标点。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前移1句。"><span class="nav-number">4.1.17.</span> <span class="nav-text">(: 前移1句。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后移1句。"><span class="nav-number">4.1.18.</span> <span class="nav-text">): 后移1句。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前移1段。"><span class="nav-number">4.1.19.</span> <span class="nav-text">{: 前移1段。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后移1段。"><span class="nav-number">4.1.20.</span> <span class="nav-text">}: 后移1段。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fc-把光标移到同一行的下一个c字符处"><span class="nav-number">4.1.21.</span> <span class="nav-text">fc: 把光标移到同一行的下一个c字符处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fc-把光标移到同一行的上一个c字符处"><span class="nav-number">4.1.22.</span> <span class="nav-text">Fc: 把光标移到同一行的上一个c字符处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tc-把光标移到同一行的下一个c字符前"><span class="nav-number">4.1.23.</span> <span class="nav-text">tc: 把光标移到同一行的下一个c字符前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tc-把光标移到同一行的上一个c字符后"><span class="nav-number">4.1.24.</span> <span class="nav-text">Tc: 把光标移到同一行的上一个c字符后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配合f-amp-t使用，重复一次"><span class="nav-number">4.1.25.</span> <span class="nav-text">;: 配合f & t使用，重复一次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配合f-amp-t使用，反向重复一次"><span class="nav-number">4.1.26.</span> <span class="nav-text">,: 配合f & t使用，反向重复一次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-移动到行首。"><span class="nav-number">4.1.27.</span> <span class="nav-text">0: 移动到行首。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#g0-移到光标所在屏幕行行首。"><span class="nav-number">4.1.28.</span> <span class="nav-text">g0: 移到光标所在屏幕行行首。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动到本行第一个非空白字符。"><span class="nav-number">4.1.29.</span> <span class="nav-text">^: 移动到本行第一个非空白字符。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#g-同-，但是移动到当前屏幕行第一个非空字符处。"><span class="nav-number">4.1.30.</span> <span class="nav-text">g^: 同 ^ ，但是移动到当前屏幕行第一个非空字符处。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动到行尾。"><span class="nav-number">4.1.31.</span> <span class="nav-text">$: 移动到行尾。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#g-移动光标所在屏幕行行尾。"><span class="nav-number">4.1.32.</span> <span class="nav-text">g$: 移动光标所在屏幕行行尾。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-把光标移到递n列上。"><span class="nav-number">4.1.33.</span> <span class="nav-text">n|: 把光标移到递n列上。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nG-到文件第n行。"><span class="nav-number">4.1.34.</span> <span class="nav-text">nG: 到文件第n行。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-移动到第n行。"><span class="nav-number">4.1.35.</span> <span class="nav-text">:n 移动到第n行。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动到最后一行。"><span class="nav-number">4.1.36.</span> <span class="nav-text">:$ 移动到最后一行。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H-把光标移到屏幕最顶端一行。"><span class="nav-number">4.1.37.</span> <span class="nav-text">H: 把光标移到屏幕最顶端一行。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#M-把光标移到屏幕中间一行。"><span class="nav-number">4.1.38.</span> <span class="nav-text">M: 把光标移到屏幕中间一行。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#L-把光标移到屏幕最底端一行。"><span class="nav-number">4.1.39.</span> <span class="nav-text">L: 把光标移到屏幕最底端一行。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gg-到文件头部。"><span class="nav-number">4.1.40.</span> <span class="nav-text">gg: 到文件头部。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#G-到文件尾部。"><span class="nav-number">4.1.41.</span> <span class="nav-text">G: 到文件尾部。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#翻屏"><span class="nav-number">4.2.</span> <span class="nav-text">翻屏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ctrl-f-下翻一屏。"><span class="nav-number">4.2.1.</span> <span class="nav-text">ctrl+f: 下翻一屏。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ctrl-b-上翻一屏。"><span class="nav-number">4.2.2.</span> <span class="nav-text">ctrl+b: 上翻一屏。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ctrl-d-下翻半屏。"><span class="nav-number">4.2.3.</span> <span class="nav-text">ctrl+d: 下翻半屏。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ctrl-u-上翻半屏。"><span class="nav-number">4.2.4.</span> <span class="nav-text">ctrl+u: 上翻半屏。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ctrl-e-向下滚动一行。"><span class="nav-number">4.2.5.</span> <span class="nav-text">ctrl+e: 向下滚动一行。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ctrl-y-向上滚动一行。"><span class="nav-number">4.2.6.</span> <span class="nav-text">ctrl+y: 向上滚动一行。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-到文件n-的位置。"><span class="nav-number">4.2.7.</span> <span class="nav-text">n%: 到文件n%的位置。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zz-将当前行移动到屏幕中央。"><span class="nav-number">4.2.8.</span> <span class="nav-text">zz: 将当前行移动到屏幕中央。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zt-将当前行移动到屏幕顶端。"><span class="nav-number">4.2.9.</span> <span class="nav-text">zt: 将当前行移动到屏幕顶端。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zb-将当前行移动到屏幕底端。"><span class="nav-number">4.2.10.</span> <span class="nav-text">zb: 将当前行移动到屏幕底端。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插入文本"><span class="nav-number">5.</span> <span class="nav-text">插入文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本插入"><span class="nav-number">5.1.</span> <span class="nav-text">基本插入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#i"><span class="nav-number">5.1.1.</span> <span class="nav-text">i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I"><span class="nav-number">5.1.2.</span> <span class="nav-text">I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gI"><span class="nav-number">5.1.3.</span> <span class="nav-text">gI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a"><span class="nav-number">5.1.4.</span> <span class="nav-text">a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A"><span class="nav-number">5.1.5.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#o"><span class="nav-number">5.1.6.</span> <span class="nav-text">o</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#O"><span class="nav-number">5.1.7.</span> <span class="nav-text">O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r"><span class="nav-number">5.1.8.</span> <span class="nav-text">:r</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-r-filename"><span class="nav-number">5.1.9.</span> <span class="nav-text">:[n]r filename</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r-date"><span class="nav-number">5.1.10.</span> <span class="nav-text">:r !date</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改写插入"><span class="nav-number">5.2.</span> <span class="nav-text">改写插入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#c-n-w"><span class="nav-number">5.2.1.</span> <span class="nav-text">c[n]w</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-n-l"><span class="nav-number">5.2.2.</span> <span class="nav-text">c[n]l</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-n-h"><span class="nav-number">5.2.3.</span> <span class="nav-text">c[n]h</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-cc"><span class="nav-number">5.2.4.</span> <span class="nav-text">[n]cc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-s"><span class="nav-number">5.2.5.</span> <span class="nav-text">[n]s</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-S"><span class="nav-number">5.2.6.</span> <span class="nav-text">[n]S</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#剪切复制和寄存器"><span class="nav-number">6.</span> <span class="nav-text">剪切复制和寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#剪切复制和粘贴"><span class="nav-number">6.1.</span> <span class="nav-text">剪切复制和粘贴</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#n-x"><span class="nav-number">6.1.1.</span> <span class="nav-text">[n]x:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-X"><span class="nav-number">6.1.2.</span> <span class="nav-text">[n]X:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#y"><span class="nav-number">6.1.3.</span> <span class="nav-text">y:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yy-or-Y"><span class="nav-number">6.1.4.</span> <span class="nav-text">yy or Y:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#y-n-w"><span class="nav-number">6.1.5.</span> <span class="nav-text">y[n]w:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#y-n-l"><span class="nav-number">6.1.6.</span> <span class="nav-text">y[n]l:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#y-n-h"><span class="nav-number">6.1.7.</span> <span class="nav-text">y[n]h:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#y-1"><span class="nav-number">6.1.8.</span> <span class="nav-text">y$:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#y0"><span class="nav-number">6.1.9.</span> <span class="nav-text">y0:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#m-ny"><span class="nav-number">6.1.10.</span> <span class="nav-text">:m,ny</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#y1G或ygg"><span class="nav-number">6.1.11.</span> <span class="nav-text">y1G或ygg:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yG"><span class="nav-number">6.1.12.</span> <span class="nav-text">yG:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yaw和yas："><span class="nav-number">6.1.13.</span> <span class="nav-text">yaw和yas：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d"><span class="nav-number">6.1.14.</span> <span class="nav-text">d</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-or-D"><span class="nav-number">6.1.15.</span> <span class="nav-text">d$ or D</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-n-w"><span class="nav-number">6.1.16.</span> <span class="nav-text">d[n]w</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-n-l"><span class="nav-number">6.1.17.</span> <span class="nav-text">d[n]l</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-n-h"><span class="nav-number">6.1.18.</span> <span class="nav-text">d[n]h</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d0"><span class="nav-number">6.1.19.</span> <span class="nav-text">d0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-dd"><span class="nav-number">6.1.20.</span> <span class="nav-text">[n] dd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#m-nd"><span class="nav-number">6.1.21.</span> <span class="nav-text">:m,nd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d1G或dgg"><span class="nav-number">6.1.22.</span> <span class="nav-text">d1G或dgg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dG"><span class="nav-number">6.1.23.</span> <span class="nav-text">dG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#daw和das"><span class="nav-number">6.1.24.</span> <span class="nav-text">daw和das</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-f"><span class="nav-number">6.1.25.</span> <span class="nav-text">d/f</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p"><span class="nav-number">6.1.26.</span> <span class="nav-text">p</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P"><span class="nav-number">6.1.27.</span> <span class="nav-text">P</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本对象"><span class="nav-number">6.2.</span> <span class="nav-text">文本对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#aw：一个词"><span class="nav-number">6.2.1.</span> <span class="nav-text">aw：一个词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#as：一句。"><span class="nav-number">6.2.2.</span> <span class="nav-text">as：一句。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ap：一段。"><span class="nav-number">6.2.3.</span> <span class="nav-text">ap：一段。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ab：一块（包含在圆括号中的）。"><span class="nav-number">6.2.4.</span> <span class="nav-text">ab：一块（包含在圆括号中的）。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寄存器"><span class="nav-number">6.3.</span> <span class="nav-text">寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-z"><span class="nav-number">6.3.1.</span> <span class="nav-text">a-z</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Z"><span class="nav-number">6.3.2.</span> <span class="nav-text">A-Z</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reg"><span class="nav-number">6.3.3.</span> <span class="nav-text">:reg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“”"><span class="nav-number">6.3.4.</span> <span class="nav-text">“”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“"><span class="nav-number">6.3.5.</span> <span class="nav-text">“*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“-1"><span class="nav-number">6.3.6.</span> <span class="nav-text">“+</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找与替换"><span class="nav-number">7.</span> <span class="nav-text">查找与替换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查找"><span class="nav-number">7.1.</span> <span class="nav-text">查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#something"><span class="nav-number">7.1.1.</span> <span class="nav-text">/something</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#something-1"><span class="nav-number">7.1.2.</span> <span class="nav-text">?something</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pattern-number"><span class="nav-number">7.1.3.</span> <span class="nav-text">/pattern/+number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pattern-number-1"><span class="nav-number">7.1.4.</span> <span class="nav-text">/pattern/-number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n"><span class="nav-number">7.1.5.</span> <span class="nav-text">n</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N"><span class="nav-number">7.1.6.</span> <span class="nav-text">N</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换"><span class="nav-number">7.2.</span> <span class="nav-text">替换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#s-old-new"><span class="nav-number">7.2.1.</span> <span class="nav-text">:s/old/new</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#s-old-new-g"><span class="nav-number">7.2.2.</span> <span class="nav-text">:s/old/new/g</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n1-n2s-old-new-g"><span class="nav-number">7.2.3.</span> <span class="nav-text">:n1,n2s/old/new/g</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#s-old-new-g-1"><span class="nav-number">7.2.4.</span> <span class="nav-text">:%s/old/new/g</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#s-xxx-g"><span class="nav-number">7.2.5.</span> <span class="nav-text">:%s/^/xxx/g</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#s-xxx-g-1"><span class="nav-number">7.2.6.</span> <span class="nav-text">:%s/$/xxx/g</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑多个文件"><span class="nav-number">8.</span> <span class="nav-text">编辑多个文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一次编辑多个文件"><span class="nav-number">8.1.</span> <span class="nav-text">一次编辑多个文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭子窗口"><span class="nav-number">8.2.</span> <span class="nav-text">关闭子窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#qall"><span class="nav-number">8.2.1.</span> <span class="nav-text">:qall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wall"><span class="nav-number">8.2.2.</span> <span class="nav-text">:wall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#only"><span class="nav-number">8.2.3.</span> <span class="nav-text">:only</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#close"><span class="nav-number">8.2.4.</span> <span class="nav-text">:close</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撤消与重做（normal模式）"><span class="nav-number">8.3.</span> <span class="nav-text">撤消与重做（normal模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#n-u"><span class="nav-number">8.3.1.</span> <span class="nav-text">[n] u</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undo-5"><span class="nav-number">8.3.2.</span> <span class="nav-text">:undo 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undolist"><span class="nav-number">8.3.3.</span> <span class="nav-text">:undolist</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ctrl-r"><span class="nav-number">8.3.4.</span> <span class="nav-text">ctrl + r:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#U"><span class="nav-number">8.3.5.</span> <span class="nav-text">U:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#earlier-4m"><span class="nav-number">8.3.6.</span> <span class="nav-text">:earlier 4m</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#later-55s"><span class="nav-number">8.3.7.</span> <span class="nav-text">:later 55s</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行缩进缩出"><span class="nav-number">8.4.</span> <span class="nav-text">多行缩进缩出</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
