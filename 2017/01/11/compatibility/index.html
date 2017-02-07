@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javascript," />
+  <meta name="keywords" content="javascript,compatibility," />
 
 
 
@@ -60,18 +60,21 @@
 
 
 <meta name="description" content="持续更行。。。。
-lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE 9-11, Edge 13, Safari 8-9, Node.js 0.10.x, 0.12.x, 4.x, &amp;amp; 5.x, &amp;amp; PhantomJS 1.9.8。已不再支持IE6~IE8。如果想兼容IE6~IE8，可以使用3.x版本。3.x版本">
+框架类rivets不兼容ie9以下版本。
+兼容IE8，需要在使用rivets的代码之前添加解决方法。经测试，此方法无法生效。123456789101112131415&amp;lt;script src=&quot;./assets/vendor/watch-shim.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;scirpt&amp;gt;// Shimming up the model for">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端常用框架性能与兼容性">
 <meta property="og:url" content="http://yoursite.com/2017/01/11/compatibility/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
 <meta property="og:description" content="持续更行。。。。
-lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE 9-11, Edge 13, Safari 8-9, Node.js 0.10.x, 0.12.x, 4.x, &amp;amp; 5.x, &amp;amp; PhantomJS 1.9.8。已不再支持IE6~IE8。如果想兼容IE6~IE8，可以使用3.x版本。3.x版本">
-<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+框架类rivets不兼容ie9以下版本。
+兼容IE8，需要在使用rivets的代码之前添加解决方法。经测试，此方法无法生效。123456789101112131415&amp;lt;script src=&quot;./assets/vendor/watch-shim.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;scirpt&amp;gt;// Shimming up the model for">
+<meta property="og:updated_time" content="2017-02-07T09:07:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端常用框架性能与兼容性">
 <meta name="twitter:description" content="持续更行。。。。
-lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE 9-11, Edge 13, Safari 8-9, Node.js 0.10.x, 0.12.x, 4.x, &amp;amp; 5.x, &amp;amp; PhantomJS 1.9.8。已不再支持IE6~IE8。如果想兼容IE6~IE8，可以使用3.x版本。3.x版本">
+框架类rivets不兼容ie9以下版本。
+兼容IE8，需要在使用rivets的代码之前添加解决方法。经测试，此方法无法生效。123456789101112131415&amp;lt;script src=&quot;./assets/vendor/watch-shim.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;scirpt&amp;gt;// Shimming up the model for">
 
 
 
@@ -268,13 +271,34 @@ lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE
 
       
         <p>持续更行。。。。</p>
-<h2 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h2><p>lodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE 9-11, Edge 13, Safari 8-9, Node.js 0.10.x, 0.12.x, 4.x, &amp; 5.x, &amp; PhantomJS 1.9.8。已不再支持IE6~IE8。<br>如果想兼容IE6~IE8，可以使用3.x版本。3.x版本支持的环境有：<br>Chrome 43-44, Firefox 38-39, IE 6-11, MS Edge, Safari 5-8, ChakraNode 0.12.2, io.js 2.5.0, Node.js 0.8.28, 0.10.40, &amp; 0.12.7, PhantomJS 1.9.8, RingoJS 0.11, &amp; Rhino1.7.6<br>lodash 3.x 版本没有直接提供可用的js， 需要手动构建。</p>
+<h1 id="框架类"><a href="#框架类" class="headerlink" title="框架类"></a>框架类</h1><h2 id="rivets"><a href="#rivets" class="headerlink" title="rivets"></a>rivets</h2><p>不兼容ie9以下版本。</p>
+<p>兼容IE8，需要在使用rivets的代码之前添加解决方法。经测试，此方法无法生效。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"./assets/vendor/watch-shim.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;scirpt&gt;</div><div class="line">// Shimming up the model <span class="keyword">for</span> IE8</div><div class="line">rivets.adapters[<span class="string">'.'</span>].subscribe = <span class="keyword">function</span>(obj, keypath, callback) &#123;</div><div class="line">	var watching = createWatcher(obj);</div><div class="line">	watching.watch(keypath, callback);</div><div class="line">&#125;;</div><div class="line">rivets.adapters[<span class="string">'.'</span>].unsubscribe = <span class="keyword">function</span>(obj, keypath, callback) &#123;</div><div class="line">	watching.unwatch(keypath, callback);</div><div class="line">&#125;;</div><div class="line">// SHIMS</div><div class="line">String.prototype.trim = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	<span class="built_in">return</span> this.replace(/(^\s*|\s*$)/g,<span class="string">''</span>);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h2><p>不兼容ie9以下版本。</p>
+<h2 id="angular"><a href="#angular" class="headerlink" title="angular"></a>angular</h2><p>angular1.3版本开始不支持IE8。<br>angular1.2版本继续支持IE8。<br>针对IE7及以下版本，需要确保如下方式：</p>
+<ol>
+<li><p>通过JSON2或JSON3为浏览器添加JSON.stringify方法</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!--[<span class="keyword">if</span> lte IE 7]&gt;</div><div class="line">&lt;script src=<span class="string">"json2.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>给根元素添加id=”ng-app”属性，与ng-app属性结合</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;html xmlns:ng=<span class="string">"http://angularjs.org"</span> id=<span class="string">"ng-app"</span> ng-app=<span class="string">"optionalModuleName"</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不使用自定义元素标签，比如<ng:view>, <mytag>some txt</mytag>，使用<div ng-view="">来取代<br>若一定要使用自定义元素标签，要在IE8及以下浏览器添加如下代码：</div></ng:view></p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html xmlns:ng=<span class="string">"http://angularjs.org"</span> id=<span class="string">"ng-app"</span> ng-app=<span class="string">"optionalModuleName"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;!--[<span class="keyword">if</span> lte IE 8]&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">			document.createElement(<span class="string">'ng-include'</span>);</div><div class="line">			document.createElement(<span class="string">'ng-pluralize'</span>);</div><div class="line">			document.createElement(<span class="string">'ng-view'</span>);</div><div class="line"></div><div class="line">			// Optionally these <span class="keyword">for</span> CSS</div><div class="line">			document.createElement(<span class="string">'ng:include'</span>);</div><div class="line">			document.createElement(<span class="string">'ng:pluralize'</span>);</div><div class="line">			document.createElement(<span class="string">'ng:view'</span>);</div><div class="line">    &lt;/script&gt;</div><div class="line">  &lt;![endif]--&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">...</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用ng-style标签来取代style=”“<br>style=”“能运行在chrome和firefox，但在IE11及以下浏览器无法运行。</p>
+</li>
+<li>对自定义标签使用css样式<br>需要createElement创建标签。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!--[<span class="keyword">if</span> lte IE 8]&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">	  document.createElement(<span class="string">'ng-include'</span>);</div><div class="line">	  document.createElement(<span class="string">'ng:view'</span>);</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div><div class="line">&lt;style&gt;</div><div class="line">ng\:view &#123;</div><div class="line">	display: block;</div><div class="line">	border:1px solid red;</div><div class="line">&#125;</div><div class="line">ng-include &#123;</div><div class="line">	display: block;</div><div class="line">	border:1px solid blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Avalon"><a href="#Avalon" class="headerlink" title="Avalon"></a>Avalon</h2><p>兼容IE6.<br>国内出的工具，使用<a href="https://github.com/RubyLouvre/avalon/blob/56f7bc948fc458531bd155c6133f701da6708b90/src/vmodel/parts/createViewModel.js" target="_blank" rel="external">vbs</a>解决了defineProperty在IE6,7,8的兼容问题。</p>
+<h1 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h1><h2 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h2><p>lodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE 9-11, Edge 13, Safari 8-9, Node.js 0.10.x, 0.12.x, 4.x, &amp; 5.x, &amp; PhantomJS 1.9.8。已不再支持IE6~IE8。<br>如果想兼容IE6~IE8，可以使用3.x版本。3.x版本支持的环境有：<br>Chrome 43-44, Firefox 38-39, IE 6-11, MS Edge, Safari 5-8, ChakraNode 0.12.2, io.js 2.5.0, Node.js 0.8.28, 0.10.40, &amp; 0.12.7, PhantomJS 1.9.8, RingoJS 0.11, &amp; Rhino1.7.6<br>lodash 3.x 版本没有直接提供可用的js， 需要手动构建。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -g lodash-cli@3.10.1</div></pre></td></tr></table></figure>
 <p>安装完成后执行<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lodash compat</div></pre></td></tr></table></figure></p>
 <p>会输出兼容IE6~IE8的版本lodash.custom.js及lodash.custom.min.js，使用时调用此版本即可。</p>
-<h2 id="rivets"><a href="#rivets" class="headerlink" title="rivets"></a>rivets</h2><p>兼容IE8，需要在使用rivets的代码之前添加解决方法。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"./assets/vendor/watch-shim.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;scirpt&gt;</div><div class="line">// Shimming up the model <span class="keyword">for</span> IE8</div><div class="line">rivets.adapters[<span class="string">'.'</span>].subscribe = <span class="keyword">function</span>(obj, keypath, callback) &#123;</div><div class="line">	var watching = createWatcher(obj);</div><div class="line">	watching.watch(keypath, callback);</div><div class="line">&#125;;</div><div class="line">rivets.adapters[<span class="string">'.'</span>].unsubscribe = <span class="keyword">function</span>(obj, keypath, callback) &#123;</div><div class="line">	watching.unwatch(keypath, callback);</div><div class="line">&#125;;</div><div class="line">// SHIMS</div><div class="line">String.prototype.trim = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	<span class="built_in">return</span> this.replace(/(^\s*|\s*$)/g,<span class="string">''</span>);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="swiper"><a href="#swiper" class="headerlink" title="swiper"></a>swiper</h2><p>兼容IE8，需要使用旧版：idangerous.swiper2.7.6.css 和 idangerous.swiper2.7.6.js</p>
-<h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><p>兼容IE9以下版本，需要使用jQuery-1.xx版本，经实际使用，jQuery v1.11.3 版本没有问题。</p>
+<h2 id="swiper"><a href="#swiper" class="headerlink" title="swiper"></a>swiper</h2><p>兼容IE8，需要使用旧版：idangerous.swiper2.7.6.css 和 idangerous.swiper2.7.6.js<br>兼容IE7待测，可能需要包含jquery</p>
+<h2 id="fullpage"><a href="#fullpage" class="headerlink" title="fullpage"></a>fullpage</h2><p>兼容IE8<br>fullpage与wow.js(滚动条滑到某个位置，才显示动画)的兼容:<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#fullpage'</span>).fullpage(&#123;</div><div class="line">	verticalCentered:<span class="literal">true</span>,</div><div class="line">	css3:<span class="literal">true</span>,</div><div class="line">	paddingTop:70,</div><div class="line">	anchors: [<span class="string">'page1'</span>, <span class="string">'page2'</span>, <span class="string">'page3],</span></div><div class="line">	scrollBar: true,</div><div class="line">	afterRender: function()&#123;</div><div class="line">		wow = new WOW(&#123;</div><div class="line">			animateClass: 'animated<span class="string">',</span></div><div class="line">		&#125;);</div><div class="line">		wow.init();</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>主要起作用的代码是要把scrollBar设置为true,并且把动画事件放在afterRender里面。    </p>
+<h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><p>兼容IE9以下版本，需要使用jQuery-1.xx版本，经实际使用，jQuery v1.11.3 版本没有问题。<br>为防止jquery与其他框架强夺 $ 标志符，要执行jQuery.noConflict()<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var jq = jQuery.noConflict()</div></pre></td></tr></table></figure></p>
 <h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>webpack在使用babel解析打包时，输出的为ES5版本。</p>
 <h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p>ES5 不支持 IE6/7，8支持一点，IE9支持更多，IE10完美支持，IE11支持少量ES6</p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>添加以下步骤：</p>
@@ -316,7 +340,7 @@ lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE
 <figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang=<span class="string">"zh-CN"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</div><div class="line">	&lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge"</span>&gt;</div><div class="line">	&lt;meta name=<span class="string">"author"</span> content=<span class="string">"Jophy"</span> /&gt;</div><div class="line">	&lt;title&gt;ie8&lt;/title&gt;</div><div class="line">	&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"bootstrap/css/bootstrap.min.css"</span>&gt;</div><div class="line">	&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"bootstrap/css/style.css"</span>&gt;</div><div class="line">	&lt;!--[<span class="keyword">if</span> lte IE 9]&gt;</div><div class="line">	&lt;script src=<span class="string">"bootstrap/js/respond.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">	&lt;script src=<span class="string">"bootstrap/js/html5.js"</span>&gt;&lt;/script&gt;</div><div class="line">	&lt;![endif]--&gt;</div><div class="line">	&lt;script src=<span class="string">"http://libs.baidu.com/jquery/1.10.2/jquery.js"</span>&gt;&lt;/script&gt;</div><div class="line">	&lt;script src=<span class="string">"bootstrap/js/bootstrap.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="css3"><a href="#css3" class="headerlink" title="css3"></a>css3</h2><p>通过引入<a href="http://www.zhangxinxu.com/study/down/ie-css3.htc" target="_blank" rel="external">.htc</a>脚本文件来让IE6/7/8模拟css3效果。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">	-moz-border-radius: 15px; /* Firefox */</div><div class="line">  -webkit-border-radius: 15px; /* Safari 和 Chrome */</div><div class="line">  border-radius: 15px; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */</div><div class="line"></div><div class="line">  -moz-box-shadow: 10px 10px 20px <span class="comment">#000; /* Firefox */</span></div><div class="line">  -webkit-box-shadow: 10px 10px 20px <span class="comment">#000; /* Safari 和 Chrome */</span></div><div class="line">  box-shadow: 10px 10px 20px <span class="comment">#000; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */</span></div><div class="line"></div><div class="line">  behavior: url(ie-css3.htc); /* 通知IE浏览器调用脚本作用于<span class="string">'box'</span>类 */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="样式类"><a href="#样式类" class="headerlink" title="样式类"></a>样式类</h1><h2 id="css3"><a href="#css3" class="headerlink" title="css3"></a>css3</h2><p>通过引入<a href="http://www.zhangxinxu.com/study/down/ie-css3.htc" target="_blank" rel="external">.htc</a>脚本文件来让IE6/7/8模拟css3效果。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">	-moz-border-radius: 15px; /* Firefox */</div><div class="line">  -webkit-border-radius: 15px; /* Safari 和 Chrome */</div><div class="line">  border-radius: 15px; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */</div><div class="line"></div><div class="line">  -moz-box-shadow: 10px 10px 20px <span class="comment">#000; /* Firefox */</span></div><div class="line">  -webkit-box-shadow: 10px 10px 20px <span class="comment">#000; /* Safari 和 Chrome */</span></div><div class="line">  box-shadow: 10px 10px 20px <span class="comment">#000; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */</span></div><div class="line"></div><div class="line">  behavior: url(ie-css3.htc); /* 通知IE浏览器调用脚本作用于<span class="string">'box'</span>类 */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
 <li>当前元素一定要有定位属性，像是position:relative或是position:absolute属性。</li>
 <li>z-index值一定要比周围元素的要高，否则……只能说抱歉了~~</li>
@@ -337,6 +361,8 @@ lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE
           
             <a href="/tags/javascript/" rel="tag">#javascript</a>
           
+            <a href="/tags/compatibility/" rel="tag">#compatibility</a>
+          
         </div>
       
 
@@ -344,16 +370,16 @@ lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/11/form/" rel="next" title="form表单元素以及提交方式">
-                <i class="fa fa-chevron-left"></i> form表单元素以及提交方式
+              <a href="/2017/01/11/nodejs-global/" rel="next" title="nodejs深入系列--全局变量global">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--全局变量global
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/11/contentEditble/" rel="prev" title="让div标签可输入内容的几种方式">
-                让div标签可输入内容的几种方式 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/11/matrix/" rel="prev" title="CSS3中的Matrix矩阵">
+                CSS3中的Matrix矩阵 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -422,7 +448,7 @@ lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -430,7 +456,7 @@ lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -439,7 +465,7 @@ lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -505,7 +531,7 @@ lodashlodash 从4.0.0开始支持的环境有： Chrome 46-47, Firefox 42-43, IE
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lodash"><span class="nav-number">1.</span> <span class="nav-text">lodash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rivets"><span class="nav-number">2.</span> <span class="nav-text">rivets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swiper"><span class="nav-number">3.</span> <span class="nav-text">swiper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-number">4.</span> <span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack"><span class="nav-number">5.</span> <span class="nav-text">webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容性"><span class="nav-number">5.1.</span> <span class="nav-text">兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number">5.2.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap3"><span class="nav-number">6.</span> <span class="nav-text">bootstrap3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3"><span class="nav-number">7.</span> <span class="nav-text">css3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">7.1.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#框架类"><span class="nav-number">1.</span> <span class="nav-text">框架类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rivets"><span class="nav-number">1.1.</span> <span class="nav-text">rivets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue"><span class="nav-number">1.2.</span> <span class="nav-text">vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular"><span class="nav-number">1.3.</span> <span class="nav-text">angular</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Avalon"><span class="nav-number">1.4.</span> <span class="nav-text">Avalon</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具类"><span class="nav-number">2.</span> <span class="nav-text">工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lodash"><span class="nav-number">2.1.</span> <span class="nav-text">lodash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swiper"><span class="nav-number">2.2.</span> <span class="nav-text">swiper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fullpage"><span class="nav-number">2.3.</span> <span class="nav-text">fullpage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-number">2.4.</span> <span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack"><span class="nav-number">2.5.</span> <span class="nav-text">webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容性"><span class="nav-number">2.5.1.</span> <span class="nav-text">兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number">2.5.2.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap3"><span class="nav-number">2.6.</span> <span class="nav-text">bootstrap3</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#样式类"><span class="nav-number">3.</span> <span class="nav-text">样式类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#css3"><span class="nav-number">3.1.</span> <span class="nav-text">css3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">3.1.1.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

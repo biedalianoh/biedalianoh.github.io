@@ -1,0 +1,872 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swift," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="swift定义和方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="swift变量和方法">
+<meta property="og:url" content="http://yoursite.com/2017/01/18/swift/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="swift定义和方法">
+<meta property="og:updated_time" content="2017-01-19T05:37:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="swift变量和方法">
+<meta name="twitter:description" content="swift定义和方法">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> swift变量和方法 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                swift变量和方法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-18T10:50:33+08:00" content="2017-01-18">
+              2017-01-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>常量和变量必须在使用前声明</p>
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>let用来声明常量，不能改变。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>var用来声明变量。<br>声明变量和常量时，可指定类型：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var msg: String</div><div class="line">msg = <span class="string">"hello"</span></div><div class="line"></div><div class="line"><span class="built_in">let</span> msg: Int = 32;</div></pre></td></tr></table></figure></p>
+<h2 id="print-println"><a href="#print-println" class="headerlink" title="print, println"></a>print, println</h2><p>打印到console面板上，println换行</p>
+<h2 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值()"></a>字符串插值()</h2><p>在字符串中使用变量和常量时，用 <code>\()</code><br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var msg = <span class="string">"hello"</span></div><div class="line">println(<span class="string">"I want to say \(msg)"</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>注释和js相同</p>
+<h2 id="Int"><a href="#Int" class="headerlink" title="Int"></a>Int</h2><p>swift提供了8，16，32三种有符号和无符号整数类型：Int8/UInt8, Int16/UInt16, Int32/UInt32<br>一般直接使用Int就可以。</p>
+<h2 id="Double-Float"><a href="#Double-Float" class="headerlink" title="Double, Float"></a>Double, Float</h2><p>浮点数。<br>Double表示64位浮点数，高精度<br>Float表示32位浮点数。</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>显式转换。即需要SomeType(value)<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> three = 3</div><div class="line"><span class="built_in">let</span> pi = 3.14125921</div><div class="line"><span class="built_in">let</span> plus = Double(three) + pi</div></pre></td></tr></table></figure></p>
+<p>也有类似.toInt()之类的方法，类型转换有可能失败，所以需要进行if判断<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> str = <span class="string">'hello'</span></div><div class="line"><span class="built_in">let</span> new = str.toInt()</div><div class="line"><span class="keyword">if</span> new &#123;</div><div class="line">  println(<span class="string">'成功'</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  println(<span class="string">'失败'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="类型别名-typealias"><a href="#类型别名-typealias" class="headerlink" title="类型别名 typealias"></a>类型别名 typealias</h2><p>给现有类型定义一个别名<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">typealias AudioSample = UInt16</div><div class="line">var min = AudioSample.min</div></pre></td></tr></table></figure></p>
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><ol>
+<li><p>多个值组合成一个组合值</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> http404Error = (404, <span class="string">"Not Found"</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>赋值时可对应元组赋值</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> (code, msg) = http404Error</div><div class="line">println(<span class="string">"status code is \(code)"</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>只需要部分元组值，用下划线填充：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> (code, _) = http404Error</div></pre></td></tr></table></figure>
+</li>
+<li><p>还可用数字下标来访问元组数据：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">println(http404Error.0)</div></pre></td></tr></table></figure>
+</li>
+<li><p>还可以像json一样定义元组</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> http200Status = (code: 200, description: <span class="string">"ok"</span>)</div><div class="line">println(http200Status.code)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="可选赋值"><a href="#可选赋值" class="headerlink" title="可选赋值"></a>可选赋值</h2><ol>
+<li><p>可选变量。有一种情况为可选，即值可能缺失。在类型后加?</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var code = Int? = 404</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过if或while语句来进行赋值，符合条件才赋值</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> snum = <span class="string">'123'</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">let</span> num = snum.<span class="function"><span class="title">toInt</span></span>() &#123;</div><div class="line">  println(<span class="string">'赋值成功'</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  println(<span class="string">'赋值失败'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>只有可选才能使用if判断</p>
+<ol>
+<li>nil<br>给可选变量赋值nil来清空值：<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var code = Int? = 404</div><div class="line">code = nil      // code此时没有值</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>只能给可选变量使用<br>若声明变量时没有赋值，则自动被设置成nil</p>
+<ol>
+<li>隐式可选<br>在变量后加上!就是隐式可选。<br>隐式可选是可选值，但是可以当做普通值来使用<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> str: String? = <span class="string">'an string'</span></div><div class="line">println(str!)</div><div class="line"></div><div class="line"><span class="built_in">let</span> str2: String! = <span class="string">'an string'</span></div><div class="line">println(str2)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="断言assert"><a href="#断言assert" class="headerlink" title="断言assert"></a>断言assert</h2><p>相当于做有条件的debugger<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> age = -1</div><div class="line">assert(age &gt; 0, <span class="string">"message"</span>)</div><div class="line"></div><div class="line">assert(age &gt; 0)</div></pre></td></tr></table></figure></p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="区间运算符…"><a href="#区间运算符…" class="headerlink" title="区间运算符…"></a>区间运算符…</h3><p>即通过常用的数字，字母来表示数组值，常用于循环</p>
+<ol>
+<li><p>闭区间运算符<br>循环集合的所有值，如从a到b</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> 1...5 &#123;</div><div class="line">  println(<span class="string">"\(index)"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>半闭区间<br>不包含集合的所有制，如从a到b，不包含b</p>
+</li>
+</ol>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><ol>
+<li>转义\<br>通过\转义的特殊字符：<br>\0  空字符<br>\  反斜线<br>\t  水平制表符<br>\n  换行符<br>\r  回车符<br>\”  双引号<br>\’  单引号</li>
+<li>单字节\x<br>单字节Unicode标量，写成\xnn，其中nn为两位十六进制数</li>
+<li>双字节\u<br>双字节Unicode标量，写成\unnnn，其中nnnn为四位十六进制数</li>
+<li>四字节\U<br>四字节Unicode标量，写成\Unnnnnnnn，其中nnnnnnnn为八位十六进制数<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> words = <span class="string">"\"路飞\""</span></div><div class="line"><span class="built_in">let</span> sign = <span class="string">"\x24"</span>     //$</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="空字符串"><a href="#空字符串" class="headerlink" title="空字符串"></a>空字符串</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var emptyStr = <span class="string">""</span></div><div class="line">var emptyStr2 = String()</div></pre></td></tr></table></figure>
+<p>可通过 str.isEmpty() 来判断是否空字符串</p>
+<h3 id="计算长度"><a href="#计算长度" class="headerlink" title="计算长度"></a>计算长度</h3><p>通过调用全局 countElements 函数来计算长度<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> count = countElements(<span class="string">"hello world"</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="uppercaseString-lowercaseString"><a href="#uppercaseString-lowercaseString" class="headerlink" title="uppercaseString/lowercaseString"></a>uppercaseString/lowercaseString</h3><p>字符串大小写</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组普通格式为[value1, value2]<br>数组创建时可以指定元素类型<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var list: String = [<span class="string">"a"</span>, <span class="string">"b"</span>]</div><div class="line">var ints = Int[]()</div><div class="line">var doubles = Double[](count: 2, repeatedValue: 0.0)    //[0.0, 0.0]</div><div class="line">var doubles2 = Array(count: 3, repeatedValue: 2.3)      //[2.3, 2.3, 2.3]</div></pre></td></tr></table></figure></p>
+<h3 id="array-count"><a href="#array-count" class="headerlink" title="array.count"></a>array.count</h3><p>获取数组的长度</p>
+<h3 id="array-isEmpty"><a href="#array-isEmpty" class="headerlink" title="array.isEmpty"></a>array.isEmpty</h3><p>判断数组是否为空</p>
+<h3 id="array-append"><a href="#array-append" class="headerlink" title="array.append"></a>array.append</h3><p>数组末尾添加一个元素<br>也可直接相加，就可添加元素<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var list = [<span class="string">'a'</span>, <span class="string">'b'</span>]</div><div class="line">list += <span class="string">'c'</span>               // [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div></pre></td></tr></table></figure></p>
+<p>这种相加也可直接相加一个数组：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var list = [<span class="string">'a'</span>, <span class="string">'b'</span>]</div><div class="line">list += [<span class="string">'c'</span>, <span class="string">'d'</span>]        // [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>]</div></pre></td></tr></table></figure></p>
+<h3 id="修改数组元素"><a href="#修改数组元素" class="headerlink" title="修改数组元素"></a>修改数组元素</h3><p>通过数组下标来修改。也可批量修改<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var list = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]</div><div class="line">list[0] = <span class="string">"f"</span></div><div class="line">list[1...2] = [<span class="string">"g"</span>, <span class="string">"h"</span>]        //[<span class="string">'f'</span>, <span class="string">'g'</span>, <span class="string">'h'</span>]</div></pre></td></tr></table></figure></p>
+<p>不能通过下标设置超出数组长度的方式，来增加数组元素。</p>
+<h3 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h3><p>用insert插入一个元素到atIndex指定的位置。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var list = [<span class="string">"a"</span>, <span class="string">"b"</span>]</div><div class="line">list.insert(<span class="string">"c"</span>, atIndex: 0)    //[<span class="string">'c'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>]</div></pre></td></tr></table></figure></p>
+<h3 id="removeAtIndex"><a href="#removeAtIndex" class="headerlink" title="removeAtIndex"></a>removeAtIndex</h3><p>删除一个元素。并返回删除的元素<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list.removeAtIndex(1)</div></pre></td></tr></table></figure></p>
+<h3 id="removeLast"><a href="#removeLast" class="headerlink" title="removeLast"></a>removeLast</h3><p>删除数组最后的那个元素</p>
+<h3 id="数组for-in"><a href="#数组for-in" class="headerlink" title="数组for in"></a>数组for in</h3><p>数组通过for in循环来迭代整个数组<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list &#123;</div><div class="line">  // item</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="enumerate"><a href="#enumerate" class="headerlink" title="enumerate"></a>enumerate</h3><p>通过全局函数 enumerate 方法迭代数组，会得到索引和值<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (index, value) <span class="keyword">in</span> enumerate(list) &#123;</div><div class="line">  // index, value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="字典Dictionary"><a href="#字典Dictionary" class="headerlink" title="字典Dictionary"></a>字典Dictionary</h2><p>字典是储存类型相同元素的容器。每个元素是key value的键值对<br>其中key的要求是可哈希，即是唯一值。如String，Int，Double，Bool都是可哈希的值<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var airports = [<span class="string">"TYO"</span>: <span class="string">"Tokyo"</span>, <span class="string">"DUB"</span>: <span class="string">"Dublin"</span>]</div></pre></td></tr></table></figure></p>
+<h3 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h3><p>直接下标添加<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">airports[<span class="string">"LHR"</span>] = <span class="string">"London"</span></div></pre></td></tr></table></figure></p>
+<h3 id="更新元素-updateValue"><a href="#更新元素-updateValue" class="headerlink" title="更新元素 updateValue"></a>更新元素 updateValue</h3><p>直接下标更新。<br>或使用updateValue(forKey)来更新。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">airports.updateValue(<span class="string">"Dublin Inter"</span>, <span class="keyword">for</span>Key: <span class="string">"DUB"</span>)</div></pre></td></tr></table></figure></p>
+<p>用updateValue()方法时，对应key存在时，就更新，不存在则添加元素</p>
+<h3 id="删除元素-removeValueForKey"><a href="#删除元素-removeValueForKey" class="headerlink" title="删除元素 removeValueForKey"></a>删除元素 removeValueForKey</h3><p>返回被删除的值<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> removedValue = airports.removeValueForKey(<span class="string">"DUB"</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ol>
+<li><p>通过for in迭代字典。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(code, name) <span class="keyword">in</span> airports &#123;</div><div class="line">  //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>迭代字典的key<br>通过.keys进行迭代</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> code <span class="keyword">in</span> airports.keys &#123;</div><div class="line">  //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>迭代字典的value<br>通过.values进行迭代</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> name <span class="keyword">in</span> airports.values &#123;</div><div class="line">  //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>可直接把字典的key或value放到一个Array对象里<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> arr = Array(airports.keys)    // [<span class="string">"TYO"</span>, <span class="string">"LHR"</span>]</div></pre></td></tr></table></figure></p>
+<ol>
+<li>生成空字典<br>如：<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var names = Dictionary&lt;Int, String&gt;()   //键为int类型，值为string类型</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><h3 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h3><ol>
+<li>迭代封闭操作符<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> 1...5 &#123;</div><div class="line">  //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>…为封闭范围操作符。规律递增或递减<br>其中index不需要被定义。如不需要index，也可用_来忽略：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> 1...10 &#123;</div><div class="line">  //</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>迭代数组</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> names = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]</div><div class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>迭代字典</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> legNums = [<span class="string">"spider"</span>: 8, <span class="string">"ant"</span>: 6, <span class="string">"cat"</span>: 4]</div><div class="line"><span class="keyword">for</span> (name, legCount) <span class="keyword">in</span> legNums &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>迭代字符串</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> character <span class="keyword">in</span> <span class="string">"hello"</span> &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="for-条件递增"><a href="#for-条件递增" class="headerlink" title="for 条件递增"></a>for 条件递增</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> var index = 0; index &lt; 3; ++index &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><p>循环开头计算条件</p>
+<h3 id="do-while"><a href="#do-while" class="headerlink" title="do while"></a>do while</h3><p>循环结尾计算条件</p>
+<h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> a &gt; 0 &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><p>switch无需break。<br>若需要在执行一个case之后，接着进入下面的case，需要使用 fallthrough<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">switch a &#123;</div><div class="line">  <span class="keyword">case</span> 1:</div><div class="line">    a += 2 fallthrough</div><div class="line">  default:</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="switch-where"><a href="#switch-where" class="headerlink" title="switch where"></a>switch where</h3><p>在case中使用where来进一步判断<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> point = (1, -1)</div><div class="line">switch point &#123;</div><div class="line">  <span class="keyword">case</span> <span class="built_in">let</span> (x, y) <span class="built_in">where</span> x == y:</div><div class="line">    <span class="built_in">print</span>(<span class="string">""</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="控制转移"><a href="#控制转移" class="headerlink" title="控制转移"></a>控制转移</h2><p>使代码能跳转到别的部分: continue, break, fallthrough, return<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> input = <span class="string">"great minds"</span></div><div class="line">var ouput = <span class="string">""</span></div><div class="line"><span class="keyword">for</span> character <span class="keyword">in</span> input &#123;</div><div class="line">  switch character &#123;</div><div class="line">    <span class="keyword">case</span>: <span class="string">"a"</span>, <span class="string">"e"</span>, <span class="string">"i"</span>, <span class="string">"o"</span>, <span class="string">" "</span>:</div><div class="line">      <span class="built_in">continue</span></div><div class="line">    default:</div><div class="line">      output += character</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">在使用<span class="built_in">continue</span>，<span class="built_in">break</span>时，可直接指定循环。</div><div class="line">```zsh</div><div class="line">gameLoop: <span class="keyword">while</span> square != finalSquare &#123;</div><div class="line">  <span class="keyword">if</span> ++diceRoll == 7 &#123; diceRoll = 1 &#125;</div><div class="line">  switch square + diceRoll &#123;</div><div class="line">    <span class="keyword">case</span> finalSquare:</div><div class="line">      <span class="built_in">break</span> gameLoop</div><div class="line">    <span class="keyword">case</span> <span class="built_in">let</span> new Squere <span class="built_in">where</span> newSquare &gt; finalSquare</div><div class="line">      <span class="built_in">continue</span> gameLoop</div><div class="line">    default:</div><div class="line">      square += diceRoll</div><div class="line">      square += board[square]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>swift的函数，可指定参数的类型，和返回值的类型<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func sayHello(personName: String) -&gt; String &#123;</div><div class="line">  <span class="built_in">let</span> greeting = <span class="string">"hello!"</span></div><div class="line">  <span class="built_in">return</span> greeting</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>当函数没有指定返回值时，实际上返回了一个空的元组。<br>也可返回多个值<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func nums() -&gt; (num1: Int, num2: Int, num3: Int) &#123;</div><div class="line">  var num1 = 0, num2 = 1, num3 = 2</div><div class="line">  <span class="built_in">return</span> (num1, num2, num3)</div><div class="line">&#125;</div><div class="line"><span class="built_in">let</span> a = nums().num1</div></pre></td></tr></table></figure></p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ol>
+<li><p>内部参数<br>内部参数即在函数定义内部使用的，一般为Int，String等</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func somFunction(param: Int) &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>外部参数<br>外部参数主要作用为让参数的意义更加明显。<br>需要在函数定义时，设定外部参数，然后调用的时候也要加上</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func join(str s1: String, toStr s2: String, withJoiner joiner: String) -&gt; String&#123;</div><div class="line">  <span class="built_in">return</span> s1 + joiner + s2</div><div class="line">&#125;</div><div class="line">join(str: <span class="string">"hello"</span>, toStr: <span class="string">"world"</span>, withJoiner: <span class="string">", "</span>)    //hello, world</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>外部参数快捷定义：#<br>当外部参数和参数名重合时，使用#<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func myCharacter(<span class="comment">#string: String, #characterToFind: Character) -&gt; Bool &#123;</span></div><div class="line">  <span class="keyword">for</span> character <span class="keyword">in</span> string &#123;</div><div class="line">    <span class="keyword">if</span> character == characterToFind &#123; <span class="built_in">return</span> <span class="literal">true</span>&#125;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> <span class="literal">false</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">let</span> bMyCharacter = myCharacter(string: <span class="string">"aardvard"</span>, characterToFind: <span class="string">"v"</span>)</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>参数默认值<br>在函数定义时，可给参数一个默认值</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func join(string s1: String = <span class="string">"defalutStr"</span>) -&gt; String &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>可变参数<br>参数个数不定时，可加上…<br>此时，常用循环来解析参数</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func join(numbers: Double...) -&gt; Double &#123;</div><div class="line">  var total = 0</div><div class="line">  <span class="keyword">for</span>(number <span class="keyword">in</span> numbers) &#123;</div><div class="line">    total += number</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> total</div><div class="line">&#125;</div><div class="line">join(1, 2, 3)</div><div class="line">join(1, 2, 3, 4, 5)</div></pre></td></tr></table></figure>
+</li>
+<li><p>变量参数<br>函数的参数一般都是常量，若想让参数变为变量，可给参数添加var</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func alignRight(var string: String, pad: Character) -&gt; String &#123;</div><div class="line">  string = pad + string</div><div class="line">  <span class="built_in">return</span> string</div><div class="line">&#125;</div><div class="line">alignRight(<span class="string">'aaa'</span>, <span class="string">'bbb'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>输入输出参数 inout<br>改变参数，并返回参数。<br>函数定义处在参数前添加 inout，调用处加&amp;</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func swapTwoInts(inout a: Int, inout b: Int) &#123;</div><div class="line">  <span class="built_in">let</span> temporaryA = a</div><div class="line">  a = b</div><div class="line">  b = temporaryA</div><div class="line">&#125;</div><div class="line">var someInt = 3, anotherInt = 107</div><div class="line">swapTwoInts(&amp;someInt, &amp;anotherInt)    //someInt = 107, anotherInt = 3</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数类型参数<br>参数为一个函数，传参时要传入符合格式的函数，无需带参数</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func <span class="built_in">print</span>MathResult(mathFunction: (Int, Int) -&gt; Int, a: Int, b: Int) &#123;</div><div class="line">  <span class="built_in">print</span>(<span class="string">"Result: \(mathFunction(a, b))"</span>)</div><div class="line">&#125;</div><div class="line">func addTwoInts(a: Int, b: Int) -&gt; Int &#123;</div><div class="line">  <span class="built_in">return</span> a + b</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>MathResult(addTwoInts, 3, 5)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数</h3><p>函数中可嵌套函数<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func <span class="function"><span class="title">aaa</span></span>() &#123;</div><div class="line">  func <span class="function"><span class="title">bbb</span></span>() &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag">#swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/16/vim/" rel="next" title="vim命令大全">
+                <i class="fa fa-chevron-left"></i> vim命令大全
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常量"><span class="nav-number">1.1.</span> <span class="nav-text">常量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">1.1.1.</span> <span class="nav-text">let</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.2.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">1.2.1.</span> <span class="nav-text">var</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#print-println"><span class="nav-number">1.3.</span> <span class="nav-text">print, println</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串插值"><span class="nav-number">1.4.</span> <span class="nav-text">字符串插值()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">1.5.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Int"><span class="nav-number">1.6.</span> <span class="nav-text">Int</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Double-Float"><span class="nav-number">1.7.</span> <span class="nav-text">Double, Float</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-number">1.8.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型别名-typealias"><span class="nav-number">1.9.</span> <span class="nav-text">类型别名 typealias</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组"><span class="nav-number">1.10.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可选赋值"><span class="nav-number">1.11.</span> <span class="nav-text">可选赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#断言assert"><span class="nav-number">1.12.</span> <span class="nav-text">断言assert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">1.13.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#区间运算符…"><span class="nav-number">1.13.1.</span> <span class="nav-text">区间运算符…</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.14.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊字符"><span class="nav-number">1.14.1.</span> <span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空字符串"><span class="nav-number">1.14.2.</span> <span class="nav-text">空字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算长度"><span class="nav-number">1.14.3.</span> <span class="nav-text">计算长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uppercaseString-lowercaseString"><span class="nav-number">1.14.4.</span> <span class="nav-text">uppercaseString/lowercaseString</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.15.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#array-count"><span class="nav-number">1.15.1.</span> <span class="nav-text">array.count</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-isEmpty"><span class="nav-number">1.15.2.</span> <span class="nav-text">array.isEmpty</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-append"><span class="nav-number">1.15.3.</span> <span class="nav-text">array.append</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改数组元素"><span class="nav-number">1.15.4.</span> <span class="nav-text">修改数组元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert"><span class="nav-number">1.15.5.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#removeAtIndex"><span class="nav-number">1.15.6.</span> <span class="nav-text">removeAtIndex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#removeLast"><span class="nav-number">1.15.7.</span> <span class="nav-text">removeLast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组for-in"><span class="nav-number">1.15.8.</span> <span class="nav-text">数组for in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enumerate"><span class="nav-number">1.15.9.</span> <span class="nav-text">enumerate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典Dictionary"><span class="nav-number">1.16.</span> <span class="nav-text">字典Dictionary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加元素"><span class="nav-number">1.16.1.</span> <span class="nav-text">添加元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新元素-updateValue"><span class="nav-number">1.16.2.</span> <span class="nav-text">更新元素 updateValue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除元素-removeValueForKey"><span class="nav-number">1.16.3.</span> <span class="nav-text">删除元素 removeValueForKey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代"><span class="nav-number">1.16.4.</span> <span class="nav-text">迭代</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for"><span class="nav-number">1.17.</span> <span class="nav-text">for</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in"><span class="nav-number">1.17.1.</span> <span class="nav-text">for in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-条件递增"><span class="nav-number">1.17.2.</span> <span class="nav-text">for 条件递增</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#while循环"><span class="nav-number">1.18.</span> <span class="nav-text">while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#while"><span class="nav-number">1.18.1.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do-while"><span class="nav-number">1.18.2.</span> <span class="nav-text">do while</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if"><span class="nav-number">1.19.</span> <span class="nav-text">if</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#switch"><span class="nav-number">1.20.</span> <span class="nav-text">switch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#switch-where"><span class="nav-number">1.20.1.</span> <span class="nav-text">switch where</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制转移"><span class="nav-number">1.21.</span> <span class="nav-text">控制转移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.22.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">1.22.1.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.22.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套函数"><span class="nav-number">1.22.3.</span> <span class="nav-text">嵌套函数</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

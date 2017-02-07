@@ -324,123 +324,6 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/call-apply/" itemprop="url">
-                  call, apply, callee, caller应用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          call将函数绑定到另外一个对象上运行。1example.call(obj, [arg, ]);
-即将一个函数的上下文从初始的上下文改变为指定的thisArg。
-不带参数arg1234567891011121314function base() &#123;    this.name = 'zhou';    this.getName = function() &#123;        console.log(this.name);    &#125;;&#125;;function extend() &#123;    base.call(this)     //让base代替执行this    console.log(this)       var c = &#123;&#125;    base.call(c);       //让base代替执行c    console.log(c);&#125;;
-extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend 中：调用 this 时，都是调用 base调用 c 时，都是调用 base。
-带
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/call-apply/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2017/01/11/nodejs-net/" itemprop="url">
                   nodejs深入系列--net
                 </a>
@@ -551,8 +434,8 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-os/" itemprop="url">
-                  nodejs深入系列--os
+                <a class="post-title-link" href="/2017/01/11/call-apply/" itemprop="url">
+                  call, apply, callee, caller应用
                 </a>
               
             
@@ -612,9 +495,16 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
 
       
         
-          nodejs深入系列之os
+          
+          call将函数绑定到另外一个对象上运行。1example.call(obj, [arg, ]);
+即将一个函数的上下文从初始的上下文改变为指定的thisArg。
+不带参数arg1234567891011121314function base() &#123;    this.name = 'zhou';    this.getName = function() &#123;        console.log(this.name);    &#125;;&#125;;function extend() &#123;    base.call(this)     //让base代替执行this    console.log(this)       var c = &#123;&#125;    base.call(c);       //让base代替执行c    console.log(c);&#125;;
+extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend 中：调用 this 时，都是调用 base调用 c 时，都是调用 base。
+带
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-os/">
+            <a class="btn" href="/2017/01/11/call-apply/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -881,8 +771,8 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-querystring/" itemprop="url">
-                  nodejs深入系列--querystring
+                <a class="post-title-link" href="/2017/01/11/nodejs-path/" itemprop="url">
+                  nodejs深入系列--path
                 </a>
               
             
@@ -942,119 +832,9 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
 
       
         
-          nodejs深入系列之querystring
+          nodejs深入系列之path
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-querystring/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-server/" itemprop="url">
-                  nodejs深入系列--服务器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之建立服务器
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-server/">
+            <a class="btn" href="/2017/01/11/nodejs-path/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1211,8 +991,8 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-path/" itemprop="url">
-                  nodejs深入系列--path
+                <a class="post-title-link" href="/2017/01/11/nodejs-stream/" itemprop="url">
+                  nodejs深入系列--stream
                 </a>
               
             
@@ -1272,9 +1052,236 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
 
       
         
-          nodejs深入系列之path
+          nodejs深入系列之stream
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-path/">
+            <a class="btn" href="/2017/01/11/nodejs-stream/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/nodejs-querystring/" itemprop="url">
+                  nodejs深入系列--querystring
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          nodejs深入系列之querystring
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/nodejs-querystring/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/runorder/" itemprop="url">
+                  关于Js中运算与赋值的执行顺序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Js中涉及到赋值，调用，函数的执行，赋值，参数赋值等计算，赋值的机制并不是按照统一的顺序，在此对于常用的执行顺序进行总结。
+参数的赋值参数的解析顺序是： 从左到右Es6提到TDZ(暂存死区)，指这样的程序区域：初始化前的变量或参数不能被访问。函数的参数既是这样的典型区域。123456// 下面的代码出错// 参数中 x = x，会让x被解释为参数级作用于中的x，全局的x会被屏蔽，而且x位于TDZ，因此初始化前不能被访问，因此出错var x = 1;function foo(x = x) &#123;     ...&#125;
+12345// 下面代码正确// 因为参数解析从左到右，因此 y=x 时，x已经可用function foo(x, y = x) &#123;  ...&#125;
+赋值表达式赋值赋值顺序为：从右到左1a = b = 5;    // 1. b = 5;  2. a = b
+运算符优先级其中 () 优先级高于 . 高于 new此处的 () 为把表达式括起来的括号，而不是 new 操作符后面跟随的 ()123new Foo.getName();      //实际
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/runorder/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1346,7 +1353,7 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1354,7 +1361,7 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1363,7 +1370,7 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
