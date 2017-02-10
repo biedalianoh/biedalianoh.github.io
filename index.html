@@ -764,8 +764,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-https/" itemprop="url">
-                  nodejs深入系列--https
+                <a class="post-title-link" href="/2017/01/11/nodejs-http/" itemprop="url">
+                  nodejs深入系列--http
                 </a>
               
             
@@ -825,9 +825,9 @@
 
       
         
-          nodejs深入系列之https
+          nodejs深入系列之http
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-https/">
+            <a class="btn" href="/2017/01/11/nodejs-http/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -984,8 +984,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/form/" itemprop="url">
-                  form表单元素以及提交方式
+                <a class="post-title-link" href="/2017/01/11/job/" itemprop="url">
+                  Javascript基础--前端基础知识总结
                 </a>
               
             
@@ -1045,9 +1045,144 @@
 
       
         
-          H5表单项标签，ajax，formaction提交方式，表单包含文件提交方式，多风格展示数据。
+          
+          HTMLDoctypeDoctype 的作用？ 标准模式与兼容模式的区别告知浏览器用什么标准解析文档。 Doctype不存在或不正确会触发文档以兼容模式呈现。标准模式会以浏览器最高标准运行。兼容模式以宽松的向后兼容的方式显示。
+xhtml 和 html 的区别xhtml是xml向html过渡的语言。比html严谨性更高。设置doctype标志各种类型的xhtml(过渡型-transitional，严格型-strict，框架集-frameset)
+
+xhtml要求正确嵌套
+标签必须关闭
+区分大小写
+属性值要求双引号
+用id代替name属性
+
+行内元素，块级元素，空元素依据css的display属性区分块元素和行内元素。
+
+块元素： div, ul, ol, li, dl, dt, dd, p, h1, h2….
+行内元素： a, b, span, img, input, select, strong
+空元素： br, hr, img, input, link, meta
+
+link 和 import 的区别
+link除了加载css，还能定义rss；import只能用于加载css
+页面加载
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/form/">
+            <a class="btn" href="/2017/01/11/job/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/es6/" itemprop="url">
+                  es6实用中文api
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          声明let, constlet和const不会有变量声明提升，作用域也会被限制。通过let，const，class声明的变量，不会成为 window 的属性。const需要在声明时赋值。const声明一个常量时，常量的值不能改变。const声明一个复合型变量时，变量不指向数据，而是指向数据所在的地址。因此变量可以添加属性。12345const a = 'hello';  // a 的值不可被重置const foo = &#123;&#125;;     // foo 可以添加属性foo.prop = 111;const arr = [];     // arr 可以添加元素arr.push('hello');
+如果想完全将对象冻结，不能更改，应该使用 Object.freeze 方法。1const foo = Object.freeze(&#123;&#125;);
+解构数组解构通过数组方式直接给对应数组中的对应变量赋值。12345var [a, b, c] = [1, 2, 3];let [a, [[b], c]] = [1, [[2], 3]];let [ , , third] =
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/es6/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1164,121 +1299,6 @@ js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值�
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/01/11/foundation-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/es6/" itemprop="url">
-                  es6实用中文api
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          声明let, constlet和const不会有变量声明提升，作用域也会被限制。通过let，const，class声明的变量，不会成为 window 的属性。const需要在声明时赋值。const声明一个常量时，常量的值不能改变。const声明一个复合型变量时，变量不指向数据，而是指向数据所在的地址。因此变量可以添加属性。12345const a = 'hello';  // a 的值不可被重置const foo = &#123;&#125;;     // foo 可以添加属性foo.prop = 111;const arr = [];     // arr 可以添加元素arr.push('hello');
-如果想完全将对象冻结，不能更改，应该使用 Object.freeze 方法。1const foo = Object.freeze(&#123;&#125;);
-解构数组解构通过数组方式直接给对应数组中的对应变量赋值。12345var [a, b, c] = [1, 2, 3];let [a, [[b], c]] = [1, [[2], 3]];let [ , , third] =
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/es6/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

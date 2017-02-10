@@ -214,8 +214,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/stapes/" itemprop="url">
-                  Stapes.js 用法详解
+                <a class="post-title-link" href="/2017/01/11/contentEditble/" itemprop="url">
+                  让div标签可输入内容的几种方式
                 </a>
               
             
@@ -242,8 +242,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
+                  <a href="/categories/Html-CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">Html, CSS</span>
                   </a>
                 </span>
 
@@ -275,9 +275,14 @@
 
       
         
-          Stapes.js是一个灵活，简单，轻量级的Javascript框架。因为框架的易用性以及所能提供的丰富的功能，在之前的项目中已经用到stapes.js，近期由于想查询一些问题，发现当时项目中没有相关的注释，加上官网api排列很乱，查阅起来很麻烦，便由此想到写一篇stapes.js入门，以增强记忆并以备之后查阅。
+          
+          可编辑这块本来还停留在div和input类相互转换的思路上，今天无意间看到几种新的实现方法。
+css方式: user-modifyuser-modify可以让普通元素可读写。目前可支持属性：1234user-modify: read-only;       // 只读user-modify: read-write;      // 可输入纯文本和富文本user-modify: write-only;      // 目前浏览器基本不支持user-modify: read-write-plaintext-only;   // 只能输入纯文本，只有webkit支持
+html方式: contenteditablecontenteditable可以让普通元素可读写。目前可支持属性：123456contenteditable=""contenteditable="events"            // 作用未知contenteditable="caret"             // 作用未知contenteditable="plaintext-only"    // 只能输入纯文本，只有
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/stapes/">
+            <a class="btn" href="/2017/01/11/contentEditble/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -549,6 +554,122 @@ createAttribute(nam
             
               
                 
+                <a class="post-title-link" href="/2017/01/11/vue/" itemprop="url">
+                  Vue1.0用法详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          兼容性Vue.js 不支持 IE8 及其以下版本，因为 Vue.js 使用了 IE8 不能实现的 ECMAScript 5 特性。
+开发环境部署可参考使用 vue+webpack。
+基本用法1234567891011&lt;div id="app"&gt;  &#123;&#123;message&#125;&#125;  &lt;input v-model="message"&gt;&lt;/div&gt;new Vue(&#123;  ele: '#app',  data: &#123;    message: 'hello'  &#125;&#125;)
+列表1234567891011121314&lt;div id="app"&gt;  &lt;li v-for="todo in todos"&gt;&#123;&#123;todo.text&#125;&#125;&lt;/li&gt;&lt;/div&gt;new Vue(&#123;  ele: '#app',  data: &#123;    todos: [&#123;      text: '111'    &#12
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/vue/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/11/nodejs/" itemprop="url">
                   Nodejs 极速上手
                 </a>
@@ -620,122 +741,6 @@ NodeJS的作者说，他创造NodeJS的目的是为了实现高性能Web服务�
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/01/11/nodejs/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/vue/" itemprop="url">
-                  Vue1.0用法详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          兼容性Vue.js 不支持 IE8 及其以下版本，因为 Vue.js 使用了 IE8 不能实现的 ECMAScript 5 特性。
-开发环境部署可参考使用 vue+webpack。
-基本用法1234567891011&lt;div id="app"&gt;  &#123;&#123;message&#125;&#125;  &lt;input v-model="message"&gt;&lt;/div&gt;new Vue(&#123;  ele: '#app',  data: &#123;    message: 'hello'  &#125;&#125;)
-列表1234567891011121314&lt;div id="app"&gt;  &lt;li v-for="todo in todos"&gt;&#123;&#123;todo.text&#125;&#125;&lt;/li&gt;&lt;/div&gt;new Vue(&#123;  ele: '#app',  data: &#123;    todos: [&#123;      text: '111'    &#12
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/vue/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
