@@ -1,0 +1,796 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vue," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="使用vue搭建项目框架，实现vue-router路由，引入element ui框架，开发component组件，到最终上线。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue项目搭建/开发实战">
+<meta property="og:url" content="http://yoursite.com/2017/02/09/vue-cli/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="使用vue搭建项目框架，实现vue-router路由，引入element ui框架，开发component组件，到最终上线。">
+<meta property="og:updated_time" content="2017-02-09T10:24:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue项目搭建/开发实战">
+<meta name="twitter:description" content="使用vue搭建项目框架，实现vue-router路由，引入element ui框架，开发component组件，到最终上线。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> vue项目搭建/开发实战 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                vue项目搭建/开发实战
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-09T16:11:56+08:00" content="2017-02-09">
+              2017-02-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>使用了官方的(vue-cli脚手架)[<a href="https://github.com/vuejs/vue-cli]来进行开发。" target="_blank" rel="external">https://github.com/vuejs/vue-cli]来进行开发。</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ol>
+<li><p>首先安装脚手架</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -g vue-cli</div></pre></td></tr></table></figure>
+</li>
+<li><p>生成vue项目</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vue init webpack my-project</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装依赖</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i</div></pre></td></tr></table></figure>
+</li>
+<li><p>生成不同环境</p>
+</li>
+</ol>
+<ul>
+<li>开发环境：<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>运行一个本地环境：localhost:8080</p>
+<ul>
+<li>线上环境：<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>生成线上代码 dist，可修改config中index.js 11行 的static路径来让项目以dist路径运行。</p>
+<ul>
+<li><p>运行单元测试：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run unit</div></pre></td></tr></table></figure>
+</li>
+<li><p>运行e2e测试：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run e2e</div></pre></td></tr></table></figure>
+</li>
+<li><p>运行所有测试：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="built_in">test</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><h2 id="build"><a href="#build" class="headerlink" title="build"></a>build</h2><p>build目录为运行不同环境时所使用的webpack命令</p>
+<h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><p>config目录为运行不同环境时的配置文件</p>
+<h2 id="dist"><a href="#dist" class="headerlink" title="dist"></a>dist</h2><p>为运行线上环境所生成的代码，线上访问时访问的文件。</p>
+<h2 id="src"><a href="#src" class="headerlink" title="src"></a>src</h2><p>项目开发的主目录。</p>
+<h3 id="assets"><a href="#assets" class="headerlink" title="assets"></a>assets</h3><p>存放图片，音视频等资源文件</p>
+<h3 id="components"><a href="#components" class="headerlink" title="components"></a>components</h3><p>存放vue各种组件</p>
+<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>静态资源。即编译时原样输出的文件。</p>
+<h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2><p>运行测试的文件。</p>
+<h1 id="搭建路由"><a href="#搭建路由" class="headerlink" title="搭建路由"></a>搭建路由</h1><p>搭建vue路由主要通过vue-router包来实现。可分为路由实现和路由配置文件两个文件。</p>
+<h2 id="路由实现"><a href="#路由实现" class="headerlink" title="路由实现"></a>路由实现</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//router.vue</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">  import VueRouter from <span class="string">'vue-router'</span></div><div class="line">  import routerConfig from <span class="string">'./router_config'</span></div><div class="line">  <span class="built_in">export</span> default new VueRouter(&#123;</div><div class="line">    mode: <span class="string">'history'</span>,</div><div class="line">    base: __dirname,</div><div class="line">    routes: routerConfig.config</div><div class="line">  &#125;)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>路由中主要的部分为routes，即路径。其他额外选项功能可查看(vue-router)[<a href="http://router.vuejs.org/zh-cn/essentials/getting-started.html" target="_blank" rel="external">http://router.vuejs.org/zh-cn/essentials/getting-started.html</a>]</p>
+<h2 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">//router_config.vue</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">import Home from <span class="string">'./home'</span></div><div class="line">import About from <span class="string">'./about'</span></div><div class="line">const Users = &#123;</div><div class="line">  template: `</div><div class="line">    &lt;div&gt;</div><div class="line">      &lt;h2&gt;Users&lt;/h2&gt;</div><div class="line">      &lt;router-view&gt;&lt;/router-view&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  `</div><div class="line">&#125;</div><div class="line">const User = &#123;</div><div class="line">  template: <span class="string">'&lt;div&gt;&#123;&#123;$route.params.username&#125;&#125;&lt;/div&gt;'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">  config: [&#123;</div><div class="line">    path: <span class="string">'/'</span>, component: Home</div><div class="line">  &#125;, &#123;</div><div class="line">    path: <span class="string">'/about'</span>, component: About</div><div class="line">  &#125;, &#123;</div><div class="line">    path: <span class="string">'/users'</span>, component: Users, children: [&#123;path: <span class="string">':username'</span>, name: <span class="string">'user'</span>, component: User&#125;]</div><div class="line">  &#125;]</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>路由配置文件，需要定义响应路径path，和这个path下对应的component。<br>component内容可以单独使用文件引入，也可直接在配置文件中定义。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//home.vue</div><div class="line"></div><div class="line">&lt;template id=<span class="string">""</span>&gt;</div><div class="line">  &lt;div class=<span class="string">"home"</span>&gt;</div><div class="line">    &lt;h2 v-html=<span class="string">"title"</span>&gt;&lt;/h2&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">  <span class="function"><span class="title">data</span></span> () &#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">      title: <span class="string">'&lt;em&gt;欢迎来到财务系统&lt;/em&gt;'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="页面开发"><a href="#页面开发" class="headerlink" title="页面开发"></a>页面开发</h1><p>项目组成为，使用main.js为总成文件，引入各类框架，如element，vue-router，并定义了总入口的vue文件，和绑定的dom元素。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">import Vue from <span class="string">'vue'</span></div><div class="line">import App from <span class="string">'./App'</span></div><div class="line">import VueRouter from <span class="string">'vue-router'</span></div><div class="line">import router from <span class="string">'./components/router'</span></div><div class="line">import <span class="string">'../static/bootstrap/css/bootstrap.css'</span></div><div class="line">import Element from <span class="string">'element-ui'</span></div><div class="line">import <span class="string">'element-ui/lib/theme-default/index.css'</span></div><div class="line">import <span class="string">'./components/filter'</span></div><div class="line"></div><div class="line">Vue.use(Element)</div><div class="line">Vue.use(VueRouter)</div><div class="line"></div><div class="line">new Vue(&#123;</div><div class="line">  router,</div><div class="line">  el: <span class="string">'#app'</span>,</div><div class="line">  template: <span class="string">'&lt;App/&gt;'</span>,</div><div class="line">  components: &#123; App &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="vue页面组成"><a href="#vue页面组成" class="headerlink" title="vue页面组成"></a>vue页面组成</h2><p>一个vue页面中，可以包含三种类型元素：template，script，style，分别代表了html,js,css</p>
+<h2 id="vue页面语法"><a href="#vue页面语法" class="headerlink" title="vue页面语法"></a>vue页面语法</h2><h3 id="组件引用"><a href="#组件引用" class="headerlink" title="组件引用"></a>组件引用</h3><p>项目入口处，引用vue总组件<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">new Vue(&#123;</div><div class="line">  router,</div><div class="line">  el: <span class="string">'#app'</span>,</div><div class="line">  template: <span class="string">'&lt;App/&gt;'</span>,     //其中的html文件</div><div class="line">  components: &#123; App &#125;     //components，注册局部组件</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>除了项目入口之外，组件可直接在template的语法中引用。<br>并且js中为驼峰写法，html中用-连接<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;top-header&gt;&lt;/top-header&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">import TopHeader from <span class="string">'./components/header'</span></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="组件间数据传递"><a href="#组件间数据传递" class="headerlink" title="组件间数据传递"></a>组件间数据传递</h3><ol>
+<li><p>父组件传数据给子组件<br>使用props传递数据</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//父组件</div><div class="line">&lt;child msg1=<span class="string">"hello"</span> msg2=<span class="string">"world"</span>&gt;&lt;/child&gt;</div><div class="line">//子组件</div><div class="line">Vue.component(<span class="string">'child'</span>, &#123;</div><div class="line">  props: [<span class="string">'msg1'</span>, <span class="string">'msg2'</span>]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>子组件传数据给父组件<br>通过自定义事件来触发状态。<br>父组件上使用v-on方法来监听一个事件，子组件中使用$emit()来触发这个事件</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//父组件</div><div class="line">&lt;div&gt;</div><div class="line">  &lt;button-counter v-on:increment=<span class="string">"incrementTotal"</span>&gt;&lt;/button-counter&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">new Vue(&#123;</div><div class="line">  methods: &#123;</div><div class="line">    <span class="function"><span class="title">incrementTotal</span></span>() &#123;</div><div class="line">      this.total += 1</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">//子组件</div><div class="line">Vue.component(<span class="string">'button-counter'</span>, &#123;</div><div class="line">  methods: &#123;</div><div class="line">    <span class="function"><span class="title">increment</span></span>() &#123;</div><div class="line">      this.<span class="variable">$emit</span>(<span class="string">'increment'</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>若只想监听原生时间，则用.native修饰v-on<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;my-component v-on:click.native=<span class="string">"doTheThing"</span>&gt;&lt;/my-component&gt;</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>父组件访问子组件<br>尽管有props，但有时仍想在js中之杰访问子组件。可使用v-ref指定索引ID后访问。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//父组件</div><div class="line">&lt;div id=<span class="string">"parent"</span>&gt;</div><div class="line">  &lt;child v-ref:childId&gt;&lt;/child&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">var parent = new Vue(&#123;el: <span class="string">'#parent'</span>&#125;)</div><div class="line">var child = parent.<span class="variable">$refs</span>.childId</div></pre></td></tr></table></figure>
+</li>
+<li><p>父组件传递数据覆盖子组件默认数据<br>通过slot传递父组件数据</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 父组件</div><div class="line">&lt;child&gt;</div><div class="line">  &lt;p&gt;11111&lt;/p&gt;</div><div class="line">&lt;/child&gt;</div><div class="line">// 子组件</div><div class="line">&lt;div&gt;</div><div class="line">  &lt;h1&gt;000&lt;/h1&gt;</div><div class="line">  &lt;slot&gt;默认数据&lt;/slot&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// 渲染结果</div><div class="line">&lt;div&gt;</div><div class="line">  &lt;h1&gt;000&lt;/h1&gt;</div><div class="line">  &lt;p&gt;111&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>也可以给slot具体的name属性，以对应响应的覆盖数据<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 父组件</div><div class="line">&lt;child&gt;</div><div class="line">  &lt;p slot=<span class="string">"one"</span>&gt;1&lt;/p&gt;</div><div class="line">  &lt;p slot=<span class="string">"two"</span>&gt;2&lt;/p&gt;</div><div class="line">  &lt;p&gt;default&lt;/p&gt;</div><div class="line">&lt;/child&gt;</div><div class="line">// 子组件</div><div class="line">&lt;div&gt;</div><div class="line">  &lt;slot name=<span class="string">"one"</span>&gt;&lt;/slot&gt;</div><div class="line">  &lt;slot&gt;默认数据&lt;/slot&gt;</div><div class="line">  &lt;slot name=<span class="string">"two"</span>&gt;&lt;/slot&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// 渲染结果</div><div class="line">&lt;div&gt;</div><div class="line">  &lt;p slot=<span class="string">"one"</span>&gt;1&lt;/p&gt;</div><div class="line">  &lt;p&gt;default&lt;/p&gt;</div><div class="line">  &lt;p slot=<span class="string">"two"</span>&gt;2&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>传递数据验证<br>验证props，此时props为一个json对象<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//子组件</div><div class="line">Vue.component(<span class="string">'child'</span>, &#123;</div><div class="line">  props: &#123;</div><div class="line">    msg1: Number,     //需为数字</div><div class="line">    msg2: [String, Number],   //需为字符串或数字</div><div class="line">    msg3: &#123;<span class="built_in">type</span>: String, required: <span class="literal">true</span>&#125;,   //需为字符串，且必须</div><div class="line">    msg4: &#123;<span class="built_in">type</span>: Number, default: 100&#125;,   //需为数字，默认值为100</div><div class="line">    msg5: &#123;<span class="built_in">type</span>: Object, default: <span class="function"><span class="title">function</span></span>()&#123;<span class="built_in">return</span> &#123;msg: <span class="string">'hello'</span>&#125;&#125;&#125;,   //需为对象，默认函数返回</div><div class="line">    msg6: &#123;twoWay: <span class="literal">true</span>&#125;,   //双向绑定</div><div class="line">    msg7: &#123;validator: <span class="keyword">function</span>(val)&#123;<span class="built_in">return</span> val &gt; 10&#125;&#125;,    //自定义验证函数</div><div class="line">    msg8: &#123;coerce: <span class="keyword">function</span>(val)&#123;<span class="built_in">return</span> val + <span class="string">''</span>&#125;&#125;,   //设置之前转换值</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其中type可能为 String, Number, Boolean, Function, Object, Array</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag">#vue</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/18/swift/" rel="next" title="swift变量和方法">
+                <i class="fa fa-chevron-left"></i> swift变量和方法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录结构"><span class="nav-number">2.</span> <span class="nav-text">目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#build"><span class="nav-number">2.1.</span> <span class="nav-text">build</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config"><span class="nav-number">2.2.</span> <span class="nav-text">config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dist"><span class="nav-number">2.3.</span> <span class="nav-text">dist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#src"><span class="nav-number">2.4.</span> <span class="nav-text">src</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#assets"><span class="nav-number">2.4.1.</span> <span class="nav-text">assets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#components"><span class="nav-number">2.4.2.</span> <span class="nav-text">components</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static"><span class="nav-number">2.5.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test"><span class="nav-number">2.6.</span> <span class="nav-text">test</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建路由"><span class="nav-number">3.</span> <span class="nav-text">搭建路由</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#路由实现"><span class="nav-number">3.1.</span> <span class="nav-text">路由实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由配置"><span class="nav-number">3.2.</span> <span class="nav-text">路由配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#页面开发"><span class="nav-number">4.</span> <span class="nav-text">页面开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue页面组成"><span class="nav-number">4.1.</span> <span class="nav-text">vue页面组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue页面语法"><span class="nav-number">4.2.</span> <span class="nav-text">vue页面语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件引用"><span class="nav-number">4.2.1.</span> <span class="nav-text">组件引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件间数据传递"><span class="nav-number">4.2.2.</span> <span class="nav-text">组件间数据传递</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

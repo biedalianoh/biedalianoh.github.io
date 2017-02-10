@@ -59,22 +59,22 @@
 
 
 
-<meta name="description" content="call将函数绑定到另外一个对象上运行。1example.call(obj, [arg, ]);
+<meta name="description" content="call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
 即将一个函数的上下文从初始的上下文改变为指定的thisArg。
-不带参数arg1234567891011121314function base() &amp;#123;    this.name = &apos;zhou&apos;;    this.getName = function() &amp;#123;        cons">
+不带参数arg1234567891011121314function base() &amp;#123;    this.name = &apos;zhou&apos;;    this.getName = function()">
 <meta property="og:type" content="article">
 <meta property="og:title" content="call, apply, callee, caller应用">
 <meta property="og:url" content="http://yoursite.com/2017/01/11/call-apply/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
-<meta property="og:description" content="call将函数绑定到另外一个对象上运行。1example.call(obj, [arg, ]);
+<meta property="og:description" content="call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
 即将一个函数的上下文从初始的上下文改变为指定的thisArg。
-不带参数arg1234567891011121314function base() &amp;#123;    this.name = &apos;zhou&apos;;    this.getName = function() &amp;#123;        cons">
-<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+不带参数arg1234567891011121314function base() &amp;#123;    this.name = &apos;zhou&apos;;    this.getName = function()">
+<meta property="og:updated_time" content="2017-02-08T03:20:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="call, apply, callee, caller应用">
-<meta name="twitter:description" content="call将函数绑定到另外一个对象上运行。1example.call(obj, [arg, ]);
+<meta name="twitter:description" content="call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
 即将一个函数的上下文从初始的上下文改变为指定的thisArg。
-不带参数arg1234567891011121314function base() &amp;#123;    this.name = &apos;zhou&apos;;    this.getName = function() &amp;#123;        cons">
+不带参数arg1234567891011121314function base() &amp;#123;    this.name = &apos;zhou&apos;;    this.getName = function()">
 
 
 
@@ -270,7 +270,7 @@
       
 
       
-        <h1 id="call"><a href="#call" class="headerlink" title="call"></a>call</h1><p>将函数绑定到另外一个对象上运行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">example.call(obj, [arg, ]);</div></pre></td></tr></table></figure></p>
+        <h1 id="call"><a href="#call" class="headerlink" title="call"></a>call</h1><p>将函数绑定到另外一个对象上运行。<br>即函数通过绑定的对象为主体执行了一遍。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">example.call(obj, [arg, ]);</div></pre></td></tr></table></figure></p>
 <p>即将一个函数的上下文从初始的上下文改变为指定的thisArg。</p>
 <h2 id="不带参数arg"><a href="#不带参数arg" class="headerlink" title="不带参数arg"></a>不带参数arg</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">base</span></span>() &#123;</div><div class="line">    this.name = <span class="string">'zhou'</span>;</div><div class="line">    this.getName = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        console.log(this.name);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">extend</span></span>() &#123;</div><div class="line">    base.call(this)     //让base代替执行this</div><div class="line">    console.log(this)   </div><div class="line"></div><div class="line">    var c = &#123;&#125;</div><div class="line">    base.call(c);       //让base代替执行c</div><div class="line">    console.log(c);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>extend 中，将 this 改变为 base，将 c 改变为调用 base<br>即在 extend 中：<br>调用 this 时，都是调用 base<br>调用 c 时，都是调用 base。</p>
@@ -281,7 +281,7 @@
 <p>即哪个函数调用的这个函数，即返回那个函数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">demo</span></span>() &#123;</div><div class="line">    var a = demo.caller;</div><div class="line">    console.log(a);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">demoCaller</span></span>() &#123;</div><div class="line">    demo();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h1 id="callee"><a href="#callee" class="headerlink" title="callee"></a>callee</h1><p>返回函数自身。是arguments的一个属性。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">calleeDemo</span></span>() &#123;</div><div class="line">     console.log(arguments.callee);     //将把函数 calleeDemo 整个打印出来</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>可通过arguments.callee.length获取形参<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> calleeDemo(arg1, arg2) &#123;</div><div class="line">    <span class="keyword">if</span>(arguments.length == arguments.callee.length) &#123;</div><div class="line">        console.log(<span class="string">'形参和实参个数相等'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>也可用在递归算法中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> demo(num) &#123;</div><div class="line">    <span class="keyword">if</span>(num &lt;= 1)    </div><div class="line">        <span class="built_in">return</span> 1;</div><div class="line">    <span class="keyword">else</span> </div><div class="line">        <span class="built_in">return</span> num * arguments.callee(num - 1);</div><div class="line">&#125;</div><div class="line">var anotherDemo = demo;</div><div class="line">demo = null;</div><div class="line"></div><div class="line">anotherDemo(8);</div></pre></td></tr></table></figure></p>
+<p>也可用在递归算法中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> demo(num) &#123;</div><div class="line">    <span class="keyword">if</span>(num &lt;= 1)    </div><div class="line">        <span class="built_in">return</span> 1;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">return</span> num * arguments.callee(num - 1);</div><div class="line">&#125;</div><div class="line">var anotherDemo = demo;</div><div class="line">demo = null;</div><div class="line"></div><div class="line">anotherDemo(8);</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -313,16 +313,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/11/nodejs-https/" rel="next" title="nodejs深入系列--https">
-                <i class="fa fa-chevron-left"></i> nodejs深入系列--https
+              <a href="/2017/01/11/nodejs-net/" rel="next" title="nodejs深入系列--net">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--net
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/11/nodejs-net/" rel="prev" title="nodejs深入系列--net">
-                nodejs深入系列--net <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/11/nodejs-global/" rel="prev" title="nodejs深入系列--全局变量global">
+                nodejs深入系列--全局变量global <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -391,7 +391,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

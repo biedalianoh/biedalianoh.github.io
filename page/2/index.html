@@ -214,8 +214,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/karma-jasmine/" itemprop="url">
-                  使用Karma+jasmine实现自动化单元测试
+                <a class="post-title-link" href="/2017/01/11/karma-jasmine-angualr/" itemprop="url">
+                  Angular自动化单元测试
                 </a>
               
             
@@ -275,9 +275,9 @@
 
       
         
-          Jasmine用来做单元测试，可不依赖其他任何javascript组建，即指做单元测试可直接添加jasmine到html文件中，并可在浏览器环境中执行测试。Karma自动化完成单元测试，是基于nodejs的测试过程管理工具，有一个强大的特性，可监控(watch)文件的变化并自动执行，然后通过console.log()显示结果，并且网络中任何其他设备如手机均可连接测试。jasmine和karma结合，可实现一个自动化单元测试。
+          在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。angular-mock辅助Karma、Jasmine等JS测试工具来模拟angular方法，测试angular应用。除此之外，Angular-mock还扩展了ng的多个核心服务，使之可以被测试代码以同步的方式进行审查和控制。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/karma-jasmine/">
+            <a class="btn" href="/2017/01/11/karma-jasmine-angualr/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -439,8 +439,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/job/" itemprop="url">
-                  Javascript基础--前端基础知识总结
+                <a class="post-title-link" href="/2017/01/11/karma-jasmine/" itemprop="url">
+                  使用Karma+jasmine实现自动化单元测试
                 </a>
               
             
@@ -500,29 +500,9 @@
 
       
         
-          
-          HTMLDoctypeDoctype 的作用？ 标准模式与兼容模式的区别告知浏览器用什么标准解析文档。 Doctype不存在或不正确会触发文档以兼容模式呈现。标准模式会以浏览器最高标准运行。兼容模式以宽松的向后兼容的方式显示。
-xhtml 和 html 的区别xhtml是xml向html过渡的语言。比html严谨性更高。设置doctype标志各种类型的xhtml(过渡型-transitional，严格型-strict，框架集-frameset)
-
-xhtml要求正确嵌套
-标签必须关闭
-区分大小写
-属性值要求双引号
-用id代替name属性
-
-行内元素，块级元素，空元素依据css的display属性区分块元素和行内元素。
-
-块元素： div, ul, ol, li, dl, dt, dd, p, h1, h2….
-行内元素： a, b, span, img, input, select, strong
-空元素： br, hr, img, input, link, meta
-
-link 和 import 的区别
-link除了加载css，还能定义rss；import只能用于加载css
-页面加载
-          ...
-
+          Jasmine用来做单元测试，可不依赖其他任何javascript组建，即指做单元测试可直接添加jasmine到html文件中，并可在浏览器环境中执行测试。Karma自动化完成单元测试，是基于nodejs的测试过程管理工具，有一个强大的特性，可监控(watch)文件的变化并自动执行，然后通过console.log()显示结果，并且网络中任何其他设备如手机均可连接测试。jasmine和karma结合，可实现一个自动化单元测试。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/job/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/karma-jasmine/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -569,8 +549,8 @@ link除了加载css，还能定义rss；import只能用于加载css
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-console/" itemprop="url">
-                  nodejs深入系列--console
+                <a class="post-title-link" href="/2017/01/11/my first blog/" itemprop="url">
+                  新的记载，新的开端
                 </a>
               
             
@@ -588,135 +568,6 @@ link除了加载css，还能定义rss；import只能用于加载css
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之console
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-console/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nbsp/" itemprop="url">
-                  类&amp;nbsp多种空格方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -741,15 +592,12 @@ link除了加载css，还能定义rss；import只能用于加载css
       
         
           
-          html提供了5种实体空格(&amp;ensp; &amp;emsp; &amp;thinsp; &amp;zwnj; &amp;zwj;)和1种非断行空格(&amp;nbsp;)。关于空格大家常用的是 &amp;nbsp; ，但是在不同的浏览器，&amp;nbsp; 显示的宽度不一样，可能会导致无法对齐。可使用其他空格方式替代。
-&amp;nbsp;不换行空格。是按下space键产生的空格。在HTML中，如果你用空格键产生此空格，空格是不会累加的（只算1个）。要使用html实体表示才可累加，该空格占据宽度受字体影响明显而强烈。
-&amp;ensp;半角空格。全称是En Space，en是字体排印学的计量单位，为em宽度的一半。此空格有个相当稳健的特性，就是其占据的宽度正好是1/2个中文宽度，而且基本上不受字体影响。
-&amp;emsp;全角空格。全称是Em Space，em是字体排印学的计量单位，相当于当前指定的点数。此空格也有个相当稳健的特性，就是其占据的宽度正好是1个中文宽度，而且基本上不受字体影响。
-&amp;thinsp;窄空格。全称是Thin Space。占据的宽度比较小。
-          ...
+          花了三个小时时间，把github+hexo的博客建成功了。作为一个已经工作了六年的前端开发coder，现在开始系统的通过blog来开始记录Program，确实有点来的迟了点。近两年主要通过wiznote来记录一些前端开发的心得和总结，包括常用框架的翻译和填坑，还有一些前端知识的分享是通过个人网站来发布分享。此后会逐步把以前发布过的内容转移到此blog，并且有新的和好的内容也会在此发布。目前已经写过的内容包含：webpack，angular，velocity，git，lodash，gulp，ndenv，es6，pure。近几年前端的飞跃式发展，让我们FEs突然变得忙碌起来，这些所发布的知识也是其中的冰山一角，让我们所有人一起去揭开这些面纱，找到属于每个人成长中的喜悦。
+
+          
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nbsp/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/my first blog/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -911,8 +759,8 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/compatibility/" itemprop="url">
-                  前端常用框架性能与兼容性
+                <a class="post-title-link" href="/2017/01/11/nbsp/" itemprop="url">
+                  类&amp;nbsp多种空格方式
                 </a>
               
             
@@ -939,8 +787,8 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
                   </a>
                 </span>
 
@@ -973,123 +821,15 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
       
         
           
-          持续更行。。。。
-框架类rivets不兼容ie9以下版本。
-兼容IE8，需要在使用rivets的代码之前添加解决方法。经测试，此方法无法生效。123456789101112131415&lt;script src="./assets/vendor/watch-shim.js"&gt;&lt;/script&gt;&lt;scirpt&gt;// Shimming up the model for IE8rivets.adapters['.'].subscribe = function(obj, keypath, callback) &#123;	var watching = createWatcher(obj);	watching.watch(keypath, callback);&#125;;rivets.adapters['.'].unsubscribe = function(obj, keypath, callback) &#123;	watching.unwatch(keypath, callback);&#125;;// SHIMSString.prototype.trim 
+          html提供了5种实体空格(&amp;ensp; &amp;emsp; &amp;thinsp; &amp;zwnj; &amp;zwj;)和1种非断行空格(&amp;nbsp;)。关于空格大家常用的是 &amp;nbsp; ，但是在不同的浏览器，&amp;nbsp; 显示的宽度不一样，可能会导致无法对齐。可使用其他空格方式替代。
+&amp;nbsp;不换行空格。是按下space键产生的空格。在HTML中，如果你用空格键产生此空格，空格是不会累加的（只算1个）。要使用html实体表示才可累加，该空格占据宽度受字体影响明显而强烈。
+&amp;ensp;半角空格。全称是En Space，en是字体排印学的计量单位，为em宽度的一半。此空格有个相当稳健的特性，就是其占据的宽度正好是1/2个中文宽度，而且基本上不受字体影响。
+&amp;emsp;全角空格。全称是Em Space，em是字体排印学的计量单位，相当于当前指定的点数。此空格也有个相当稳健的特性，就是其占据的宽度正好是1个中文宽度，而且基本上不受字体影响。
+&amp;thinsp;窄空格。全称是Thin Space。占据的宽度比较小。
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/compatibility/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-global/" itemprop="url">
-                  nodejs深入系列--全局变量global
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之全局变量global
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-global/">
+            <a class="btn" href="/2017/01/11/nbsp/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1335,6 +1075,239 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/nodejs-console/" itemprop="url">
+                  nodejs深入系列--console
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          nodejs深入系列之console
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/nodejs-console/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/algorithm/" itemprop="url">
+                  前端常用算法汇总
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          去重去重算法。
+
+设置两个循环，i和j，让初始j=i+1
+然后让i的元素去和j的元素做对比，如果arr[i]=arr[j]，则让i加1，是为了让i的当前元素被过滤掉。
+把当前的arr[i]添加至新数组中。
+循环完成返回新的数组123456789101112131415function delRepeat(arr)&#123;  var newArray=new Array();  var len=arr.length;  for(var i=0;i&lt;len;i++)&#123;     for(var j=i+1;j&lt;len;j++)     &#123;       if(arr[i]==arr[j])       &#123;         ++i;         &#125;     &#125;    newArray.push(arr[i]);  &#125; return newArray;&#125;
+
+
+二分法(折半查找)查找对应值的index。必须为升序或降序排列。
+
+设定开始的startIndex为0， 结束的endIndex为length-1，中间
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/algorithm/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
@@ -1381,7 +1354,7 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
