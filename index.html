@@ -214,6 +214,236 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/24/settimeout-setinterval/" itemprop="url">
+                  setTimeout和setInterval详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-24T16:11:32+08:00" content="2017-02-24">
+              2017-02-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。
+setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为待执行的函数。第二个参数为等待时间。第三个参数为第一个参数的参数。123setTimeout(function(id) &#123;&#125;, 3000, 'my_id');
+
+          
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/24/settimeout-setinterval/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/24/promise/" itemprop="url">
+                  Promise等异步控制流程综述
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-24T10:24:55+08:00" content="2017-02-24">
+              2017-02-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          曾经管理异步的主要机制是使用函数回调。ES6中添加了一种新特性：Promise，来更好的实现异步。也可通过Bluebird, Q等工具，来实现异步控制。
+PromisePromise不是回调的替代品。可作为一种事件监听器，是一个仅会被触发一次的事件。一个Promise只可能拥有两种解析结果：完成或拒绝，并带有一个可选的信号值。
+创建Promise实例：1234567891011121314151617181920var getUserInfo = new Promise(function(resolve, reject) &#123;  $.ajax(&#123;    url: 'index.aspx',    success: function(data) &#123;      if(data.code == 1) &#123;        resolve(data.data);      &#125; else &#123;        reject(data.msg);      &#125;    &#125;  &#125;)&#125;);getUserInfo.t
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/24/promise/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/17/android/" itemprop="url">
                   Anroid开发入门
                 </a>
@@ -889,226 +1119,6 @@ finish()方法如：123456button1.setOnClickListener(new View.OnClic
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/lodash/" itemprop="url">
-                  Lodash实用中文api
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Lodash.js是一个现代模块化性能良好的Javascript工具库。和Underscore功能类似，并提供了更为丰富的API。 近期会持续更新一份实用的lodash(v4.6)使用参考，数组部分参考了cnblogs的shikelong(v3.8)，这拼音和我一个同事kelong的还挺像的，难道是他？
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/lodash/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/css3-sizes/" itemprop="url">
-                  Css3中各类尺寸应用详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          随着响应式页面开发的需求增多，前端页面中响应浏览器容器大小比例显示对应尺寸的应用变得越来越重要。随着em, rem, vw, vh等应用，css设置响应式大小尺寸也变得多样化起来。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/css3-sizes/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2017/01/11/form/" itemprop="url">
                   form表单元素以及提交方式
                 </a>
@@ -1219,8 +1229,8 @@ finish()方法如：123456button1.setOnClickListener(new View.OnClic
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/foundation-1/" itemprop="url">
-                  Javascript基础--函数和定义优先级
+                <a class="post-title-link" href="/2017/01/11/es6/" itemprop="url">
+                  es6实用中文api
                 </a>
               
             
@@ -1281,14 +1291,13 @@ finish()方法如：123456button1.setOnClickListener(new View.OnClic
       
         
           
-          Javascript中的包括变量的定义，函数的定义；函数的静态方法，原型方法；变量的前置定义，后置定义；运算符的优先级；变量的提升，等等经常容易发生混淆。避免在前端开发过程中再踩这些类似的坑，在此总结。
-js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值， 字符串， 数值， 对象判断的基本方式是，他们属于原始的基本类型，而不是对象，不能使用 new 命令。ES6 新增了一种基本数据类型： Symbol
-静态方法和原型方法静态方法的优先级高于原型方法。12345678910function Demo() &#123;    this.getName = function() &#123;        console.log(1);    &#125;&#125;;Demo.prototype.getName = function() &#123;    console.log(2);&#125;Demo.getName();   //  1
-变量声明提升所有的声明变量或声明函数都会被提升到当前函数的顶部。123console.log(x);console.
+          声明let, constlet和const不会有变量声明提升，作用域也会被限制。通过let，const，class声明的变量，不会成为 window 的属性。const需要在声明时赋值。const声明一个常量时，常量的值不能改变。const声明一个复合型变量时，变量不指向数据，而是指向数据所在的地址。因此变量可以添加属性。12345const a = 'hello';  // a 的值不可被重置const foo = &#123;&#125;;     // foo 可以添加属性foo.prop = 111;const arr = [];     // arr 可以添加元素arr.push('hello');
+如果想完全将对象冻结，不能更改，应该使用 Object.freeze 方法。1const foo = Object.freeze(&#123;&#125;);
+解构数组解构通过数组方式直接给对应数组中的对应变量赋值。12345var [a, b, c] = [1, 2, 3];let [a, [[b], c]] = [1, [[2], 3]];let [ , , third] =
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/foundation-1/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/es6/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1360,7 +1369,7 @@ js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1377,7 +1386,7 @@ js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
