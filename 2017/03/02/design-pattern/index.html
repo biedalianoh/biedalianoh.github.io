@@ -1,0 +1,761 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="design,pattern," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="工厂模式核心思想是把创建实例和使用实例分开。通过复杂程度，分为简单工厂和抽象工厂。
+简单工厂通常是专门建立一个创建实例的类，包含创建和验证接口的方法。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354var BicycleShop = function">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript设计模式">
+<meta property="og:url" content="http://yoursite.com/2017/03/02/design-pattern/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="工厂模式核心思想是把创建实例和使用实例分开。通过复杂程度，分为简单工厂和抽象工厂。
+简单工厂通常是专门建立一个创建实例的类，包含创建和验证接口的方法。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354var BicycleShop = function">
+<meta property="og:updated_time" content="2017-08-12T05:32:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript设计模式">
+<meta name="twitter:description" content="工厂模式核心思想是把创建实例和使用实例分开。通过复杂程度，分为简单工厂和抽象工厂。
+简单工厂通常是专门建立一个创建实例的类，包含创建和验证接口的方法。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354var BicycleShop = function">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Javascript设计模式 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Javascript设计模式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-02T10:14:00+08:00" content="2017-03-02">
+              2017-03-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h1><p>核心思想是把创建实例和使用实例分开。<br>通过复杂程度，分为简单工厂和抽象工厂。</p>
+<h2 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h2><p>通常是专门建立一个创建实例的类，包含创建和验证接口的方法。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">var BicycleShop = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</div><div class="line">BicycleShop.prototype = &#123;</div><div class="line">  sellBicycle(model) &#123;</div><div class="line">    &lt;!-- <span class="built_in">let</span> bicycle;</div><div class="line">    switch(model) &#123;</div><div class="line">      <span class="keyword">case</span> <span class="string">'SpeedSter'</span>:</div><div class="line">        bicycle = new SpeedSter();</div><div class="line">        <span class="built_in">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'Lowrider'</span>:</div><div class="line">        bicycle = new Lowrider();</div><div class="line">        <span class="built_in">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'ComfortCruiser'</span>:</div><div class="line">      default:</div><div class="line">        bicycle = new ComfortCruiser()</div><div class="line">    &#125;</div><div class="line">    Interface.ensureImplements(bicycle, Bicycle); --&gt;</div><div class="line">    //以上注释代码，使用工厂方法代替</div><div class="line">    <span class="built_in">let</span> bicycle = BicycleFactory.createBicycle(model);</div><div class="line">    bicycle.assemble();</div><div class="line">    bicycle.wash();</div><div class="line">    <span class="built_in">return</span> bicycle;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var Bicycle = new Interface(<span class="string">'Bicycle'</span>, [<span class="string">'assemble'</span>, <span class="string">'wash'</span>, <span class="string">'ride'</span>, <span class="string">'repare'</span>]);</div><div class="line">var SpeedSter = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  //...</div><div class="line">&#125;</div><div class="line">SpeedSter.prototype = &#123;</div><div class="line">  <span class="function"><span class="title">assemble</span></span>() &#123;&#125;,</div><div class="line">  <span class="function"><span class="title">wash</span></span>() &#123;&#125;,</div><div class="line">  <span class="function"><span class="title">ride</span></span>() &#123;&#125;,</div><div class="line">  <span class="function"><span class="title">repare</span></span>() &#123;&#125;</div><div class="line">&#125;</div><div class="line">var Fenghuang = new BicycleShop();</div><div class="line">var yourNewBike = Fenghuang.sellBicycle(<span class="string">'SpeedSter'</span>);</div><div class="line"></div><div class="line">var BicycleFactory = &#123;</div><div class="line">  createBicycle(model) &#123;</div><div class="line">    <span class="built_in">let</span> bicycle;</div><div class="line">    switch(model) &#123;</div><div class="line">      <span class="keyword">case</span> <span class="string">'SpeedSter'</span>:</div><div class="line">        bicycle = new SpeedSter();</div><div class="line">        <span class="built_in">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'Lowrider'</span>:</div><div class="line">        bicycle = new Lowrider();</div><div class="line">        <span class="built_in">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'ComfortCruiser'</span>:</div><div class="line">      default:</div><div class="line">        bicycle = new ComfortCruiser()</div><div class="line">    &#125;</div><div class="line">    Interface.ensureImplements(bicycle, Bicycle);</div><div class="line">    <span class="built_in">return</span> bicycle;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h2><p>把创建实例的方法提取成子类。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">var BicycleShop = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</div><div class="line">BicycleShop.prototype = &#123;</div><div class="line">  sellBicycle(model) &#123;</div><div class="line">    <span class="built_in">let</span> bicycle = this.createBicycle(model);</div><div class="line">    bicycle.assemble();</div><div class="line">    bicycle.wash();</div><div class="line">    <span class="built_in">return</span> bicycle;</div><div class="line">  &#125;,</div><div class="line">  createBicycle(model) &#123;</div><div class="line">    throw new Error(<span class="string">'unsupport on an abstract class'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var BeijingBicycleShop = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</div><div class="line">extend(BeijingBicycleShop, BicycleShop);</div><div class="line">BeijingBicycleShop.prototype.createBicycle = <span class="keyword">function</span>(model) &#123;</div><div class="line">  <span class="built_in">let</span> bicycle;</div><div class="line">  switch(model) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">'SpeedSter'</span>:</div><div class="line">      bicycle = new BeijingSpeedSter();</div><div class="line">      <span class="built_in">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="string">'Lowrider'</span>:</div><div class="line">      bicycle = new BeijingLowrider();</div><div class="line">      <span class="built_in">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="string">'ComfortCruiser'</span>:</div><div class="line">    default:</div><div class="line">      bicycle = new BeijingComfortCruiser()</div><div class="line">  &#125;</div><div class="line">  Interface.ensureImplements(bicycle, Bicycle);</div><div class="line">  <span class="built_in">return</span> bicycle;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="适用场合"><a href="#适用场合" class="headerlink" title="适用场合"></a>适用场合</h2><p>如果不想让某个子系统，与较大的对象之间形成强耦合，而是想在运行时从许多子系统中进行挑选，工厂方法是好的选择</p>
+<h1 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h1><p>在具体实现的行为之外，通过桥梁函数，实现获取私有值，减少依赖，联结多个类等功能。<br>最终是以实现将抽象和其实现隔离开来的目的。</p>
+<h2 id="减少依赖"><a href="#减少依赖" class="headerlink" title="减少依赖"></a>减少依赖</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">addEvent(element, <span class="string">'click'</span>, getBeerById);</div><div class="line"><span class="keyword">function</span> getBeerById(e) &#123;</div><div class="line">  <span class="built_in">let</span> id = this.id;</div><div class="line">  asyncRequest(<span class="string">'GET'</span>, <span class="string">'kylin?id='</span> + id, <span class="keyword">function</span>(res) &#123;</div><div class="line">    console.log(res.responseText);</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">//做单元测试，或非浏览器环境如命令行环境执行时，无法进行</div><div class="line">addEvent(element, <span class="string">'click'</span>, getBeerByIdBridge);</div><div class="line"><span class="keyword">function</span> getBeerByIdBridge(e) &#123;</div><div class="line">  getBeerById(this.id, <span class="keyword">function</span>(res) &#123;</div><div class="line">    console.log(res.responseText);</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> getBeerById(id, callback) &#123;</div><div class="line">  asyncRequest(<span class="string">'GET'</span>, <span class="string">'kylin?id='</span> + id, callback(res));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="获取私有值"><a href="#获取私有值" class="headerlink" title="获取私有值"></a>获取私有值</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var Public = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  <span class="built_in">let</span> secret = 3;</div><div class="line">  this.privilegedGetter = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> secret;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var a = new Public;</div><div class="line">var data = a.privilegedGetter();</div></pre></td></tr></table></figure>
+<h2 id="连接多个类"><a href="#连接多个类" class="headerlink" title="连接多个类"></a>连接多个类</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var Class1 = <span class="keyword">function</span>(a, b) &#123;</div><div class="line">  this.a = a;</div><div class="line">  this.b = b;</div><div class="line">&#125;</div><div class="line">var Class2 = <span class="keyword">function</span>(c) &#123;</div><div class="line">  this.c = c;</div><div class="line">&#125;</div><div class="line">var BridgeClass = <span class="keyword">function</span>(a, b, c) &#123;</div><div class="line">  this.one = new Class1(a, b);</div><div class="line">  this.two = new Class2(c);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="适用场合-1"><a href="#适用场合-1" class="headerlink" title="适用场合"></a>适用场合</h2><p>把抽象和实现分离开来，有助于独立管理程序的各组成部分。<br>大多数桥接模式非常有用，但是会提高代码的复杂程度。</p>
+<h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><p>为组合对象，叶对象等复杂组合体，添加统一执行方法。<br>web上动态页面界面量身定制的模式。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.test'</span>).addClass(<span class="string">'cls1'</span>).removeClass(<span class="string">'cls2'</span>);</div></pre></td></tr></table></figure></p>
+<p>其中.test可能为多个，也可能为单个。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">UfangOrder</span></span>() &#123;&#125;</div><div class="line">UfangOrder.prototype.create = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  console.log(<span class="string">'ufang create'</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">WeOrder</span></span>() &#123;&#125;</div><div class="line">WeOrder.prototype.create = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  console.log(<span class="string">'we create'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">TotalOrder</span></span>() &#123;</div><div class="line">  this.orderList = [];</div><div class="line">&#125;</div><div class="line">TotalOrder.prototype.addOrder = <span class="keyword">function</span>(order) &#123;</div><div class="line">  this.orderList.push(order)</div><div class="line">&#125;</div><div class="line">TotalOrder.prototype.create = <span class="keyword">function</span>(order) &#123;</div><div class="line">  <span class="keyword">for</span>(var i = 0, len = this.orderList.length; i &lt; len; i++) &#123;</div><div class="line">    this.orderList[i].create();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var orders = new TotalOrder;</div><div class="line">orders.addOrder(new UfangOrder);</div><div class="line">orders.addOrder(new WeOrder);</div><div class="line">orders.create();</div></pre></td></tr></table></figure></p>
+<h2 id="适用场合-2"><a href="#适用场合-2" class="headerlink" title="适用场合"></a>适用场合</h2><p>对一类对象进行统一操作，无需大量手工遍历，只需对最顶层的对象进行操作。<br>各对象的耦合很松散，只要它们实现了同样的接口。<br>但是，如果程序层次体系很大，性能可能会受到影响。<br>此模式比较适合动态的HTML用户界面。</p>
+<h1 id="门面模式"><a href="#门面模式" class="headerlink" title="门面模式"></a>门面模式</h1><p>用来创建便利函数。为执行各种复杂任务提供了一个简单的接口。<br>常用在把经常相伴出现的常用函数组合在一起。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var DED = window.DED || &#123;&#125;;</div><div class="line">DED.util = &#123;</div><div class="line">  stopPropagation: <span class="keyword">function</span>(e) &#123;</div><div class="line">    e.stopPropagation ? e.stopPropagation() : e.cancelBubble = <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  preventDefault: <span class="keyword">function</span>(e) &#123;</div><div class="line">    e.preventDefault ? e.preventDefault : e.returnValue = <span class="literal">false</span>;</div><div class="line">  &#125;,</div><div class="line">  stopEvent: <span class="keyword">function</span>(e) &#123;</div><div class="line">    DED.util.stopPropagation(e);</div><div class="line">    DED.util.preventDefault(e);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="适用场合-3"><a href="#适用场合-3" class="headerlink" title="适用场合"></a>适用场合</h2><p>当出现反复成组出现的代码，可考虑使用门面模式。<br>提供了简化接口，能让程序员在编程时更轻松。</p>
+<h1 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h1><p>用来在引用新的接口时，和现有接口不兼容情况。<br>避免大规模修改现有代码。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//基本原理</div><div class="line"><span class="keyword">function</span> interfaceMethodA(str1, str2, str3) &#123;  //A方法需要字符串参数</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">interfaceMethodB</span></span>() &#123; //B方法返回对象</div><div class="line">  <span class="built_in">return</span> &#123;str1: <span class="string">'foo'</span>, str2: <span class="string">'bar'</span>, str3: <span class="string">'baz'</span>&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> interfaceAAdapter(o) &#123;</div><div class="line">  interfaceMethodA(o.str1, o.str2, o.str3)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>jQuery和YUI冲突<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> $() &#123;    //没有列出参数</div><div class="line">  var elements = new Array();</div><div class="line">  <span class="keyword">for</span>(var i = 0; i &lt; arguments.length; i++) &#123;</div><div class="line">    var element = arguments[i];</div><div class="line">    <span class="keyword">if</span>(typeof element == <span class="string">'string'</span>)</div><div class="line">      element = document.getElementById(element);</div><div class="line">    <span class="keyword">if</span>(arguments.length == 1)</div><div class="line">      <span class="built_in">return</span> element</div><div class="line">    elements.push(element);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> elements;</div><div class="line">&#125;</div><div class="line"></div><div class="line">YAHOO.util.Dom.get = <span class="keyword">function</span>(el) &#123;   //需要一个参数</div><div class="line">  <span class="keyword">if</span>(YAHOO.lang.isString(el)) &#123;</div><div class="line">    <span class="built_in">return</span> document.getElementById(el);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(YAHOO.lang.isArray(el)) &#123;</div><div class="line">    var c = [];</div><div class="line">    <span class="keyword">for</span>(var i = 0, len = el.length; i &lt; len; ++i) &#123;</div><div class="line">      c[c.length] = YAHOO.util.Dom.get(el[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> c;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(el) &#123;</div><div class="line">    <span class="built_in">return</span> el;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可添加适配器函数：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">jQueryToYUIAdapter</span></span>() &#123;    //YUI适配器</div><div class="line">  <span class="built_in">return</span> YAHOO.util.Dom.get(arguments);</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> YUIToJqueryAdapter(el) &#123;    //$适配器</div><div class="line">  <span class="built_in">return</span> $.apply(window, el instanceof Array ? el : [el]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="适用场合-4"><a href="#适用场合-4" class="headerlink" title="适用场合"></a>适用场合</h2><p>适合新添加接口和现在程序出现不兼容这种场合，用来协调语法上的差异。<br>用一个新的接口对现有类进行包装，有助于避免大规模改写现有程序代码。</p>
+<h1 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h1><p>实现为对象添加功能特性，而又不用大量创建子类的模式。<br>所要添加的功能为一个装饰者类，这个装饰类实现了上一个实例的所有现有功能，并且可以修改，替换，添加方法。想让实例添加新的功能，只需要把上一个实例传到装饰类，生成一个新的实例即可。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">var ComfortCruiser = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line">ComfortCruiser.prototype = &#123;</div><div class="line">  assemble: <span class="function"><span class="title">function</span></span>()&#123;&#125;,</div><div class="line">  wash: <span class="function"><span class="title">function</span></span>()&#123;&#125;,</div><div class="line">  ride: <span class="function"><span class="title">function</span></span>()&#123;&#125;,</div><div class="line">  repair: <span class="function"><span class="title">function</span></span>()&#123;&#125;,</div><div class="line">  getPrice: <span class="function"><span class="title">function</span></span>()&#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var BicycleDecorator = <span class="keyword">function</span>(bicycle) &#123;</div><div class="line">  Interface.ensureImplements(bicycle, Bicycle);</div><div class="line">  this.bicycle = bicycle;</div><div class="line">&#125;</div><div class="line">BicycleDecorator.prototype = &#123;</div><div class="line">  assemble: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.bicycle.assemble();</div><div class="line">  &#125;,</div><div class="line">  wash: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.bicycle.wash();</div><div class="line">  &#125;,</div><div class="line">  ride: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.bicycle.ride();</div><div class="line">  &#125;,</div><div class="line">  repair: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.bicycle.repair();</div><div class="line">  &#125;,</div><div class="line">  getPrice: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.bicycle.getPrice();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var HeadlightDecorator = <span class="keyword">function</span>(bicycle) &#123;</div><div class="line">  HeadlightDecorator.superclass.constructor.call(this, bicycle);</div><div class="line">&#125;</div><div class="line">extend(HeadlightDecorator, BicycleDecorator);</div><div class="line">HeadlightDecorator.prototype.assemble = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  <span class="built_in">return</span> this.bicycle.assemble() + <span class="string">' my operation'</span>;</div><div class="line">&#125;</div><div class="line">HeadlightDecorator.prototype.getPrice = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  <span class="built_in">return</span> this.bicycle.getPrice() + 15;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var myBicycle = new ComfortCruiser();</div><div class="line">myBicycle = new HeadlightDecorator(myBicycle);</div><div class="line">myBicycle.getPrice();</div></pre></td></tr></table></figure></p>
+<p>需要添加功能，则添加相应的装饰类，并把实例传给装饰类来获取功能。<br>可多次添加功能，但是如果在中间过程中添加的装饰类中，有新增的方法，即基础装饰类中没有此方法，则在后续的装饰类中，会遗失此方法。<br>可在基础装饰类中做一次判断。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">var BicycleDecorator = <span class="keyword">function</span>(bicycle) &#123;</div><div class="line">  this.bicycle = bicycle;</div><div class="line">  this.interface = Bicycle;</div><div class="line"></div><div class="line">  outerloop: <span class="keyword">for</span>(var key <span class="keyword">in</span> this.bicycle) &#123;</div><div class="line">    <span class="keyword">if</span>(typeof this.bicycle[key] !== <span class="string">'function'</span>) &#123;</div><div class="line">      <span class="built_in">continue</span> outerloop;</div><div class="line">    &#125;</div><div class="line">    innerloop: <span class="keyword">for</span>(var i = 0, len = this.interface.methods.length; i &lt; len; i++) &#123;</div><div class="line">      <span class="keyword">if</span>(key === this.interface.methods[i]) &#123;</div><div class="line">        <span class="built_in">continue</span> outerloop;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var that = this;</div><div class="line">    (<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">      that[methodName] = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> that.bicycle[methodName]();</div><div class="line">      &#125;</div><div class="line">    &#125;)(key);</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="适用场合-5"><a href="#适用场合-5" class="headerlink" title="适用场合"></a>适用场合</h2><p>需要为类添加功能，但是从该类派生子类来实现功能不太现实的话，可使用装饰者模式。<br>另外，想为类添加功能，但是不想改变使用该对象的代码，也可使用装饰者模式。<br>但是此模式会增加架构的复杂程度。</p>
+<h1 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h1><p>通过把对象中的数据分为内在数据，和外在数据分离，把内在数据相同的对象替换为同一个共享对象。<br>解决因创建大量对象，而产生的性能问题。</p>
+<h2 id="适用场合-6"><a href="#适用场合-6" class="headerlink" title="适用场合"></a>适用场合</h2><p>对象数目巨大，并且有一部分数据能被转化为外在数据。<br>编程难度和代码量大大增加。</p>
+<h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><p>代理是一个对象，用来控制对另一个对象的访问。<br>在实例化时由于尺寸较大等原因，实例化比较费劲需要很长时间才能完成时，比较有用。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">var Book = <span class="keyword">function</span>(isbn, title, author) &#123;</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line">Book.prototype = &#123;</div><div class="line">  getIsbn: <span class="function"><span class="title">function</span></span>() &#123;&#125;,</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">var PublicLibrary = <span class="keyword">function</span>(books) &#123;</div><div class="line">  this.catalog = &#123;&#125;;</div><div class="line">  <span class="keyword">for</span>(var i = 0, len = books.length; i &lt; len; i++) &#123;</div><div class="line">    this.catalog[books[i].getIsbn()] = &#123;book: books[i], available: <span class="literal">true</span>&#125;;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">PublicLibrary.prototype = &#123;</div><div class="line">  findBooks: <span class="keyword">function</span>(searchString) &#123;</div><div class="line">    ...</div><div class="line">  &#125;,</div><div class="line">  checkoutBook: <span class="keyword">function</span>(book) &#123;</div><div class="line">    ...</div><div class="line">  &#125;,</div><div class="line">  <span class="built_in">return</span>Book: <span class="keyword">function</span>(book) &#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var PublicLibraryProxy = <span class="keyword">function</span>(catalog) &#123;</div><div class="line">  this.library = null;</div><div class="line">  this.catalog = catalog;</div><div class="line">&#125;</div><div class="line">PublicLibraryProxy.prototype = &#123;</div><div class="line">  _initializeLibrary: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="keyword">if</span>(this.library === null) &#123;</div><div class="line">      this.library = new PublicLibrary(this.catalog);</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  findBooks: <span class="keyword">function</span>(searchString) &#123;</div><div class="line">    this._initializeLibrary();</div><div class="line">    <span class="built_in">return</span> this.library.findBooks(searchString);</div><div class="line">  &#125;,</div><div class="line">  checkoutBook: <span class="keyword">function</span>(book) &#123;</div><div class="line">    this._initializeLibrary();</div><div class="line">    <span class="built_in">return</span> this.library.checkoutBook(book);</div><div class="line">  &#125;,</div><div class="line">  <span class="built_in">return</span>Book: <span class="keyword">function</span>(book) &#123;</div><div class="line">    this._initializeLibrary();</div><div class="line">    <span class="built_in">return</span> this.library.returnBook(book);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var library = new PublicLibraryProxy([.....]);</div></pre></td></tr></table></figure></p>
+<h2 id="适用场合-7"><a href="#适用场合-7" class="headerlink" title="适用场合"></a>适用场合</h2><p>对于类或对象需要使用大量内存，并且并不需要实例化后立即访问这些数据。<br>当其他程序员立即访问本体，会出错，需要文档详细。<br>其他的保护代理和远程代理无法在Javascript中实现。</p>
+<h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><p>检测事件的进行状态，监测事件的发生。<br>如事件监听器就是观察模式应用的一种。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  console.log(<span class="string">'clicked'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="适用场合-8"><a href="#适用场合-8" class="headerlink" title="适用场合"></a>适用场合</h2><p>把特定的元素的操作提取出来，变成一个可监听的事件。不用再给每个元素进行绑定。<br>是对系统进行抽象的有力手段。</p>
+<h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><p>通过一个中间方法对象，连接接受者和调用者，降低了两者的耦合度，便于代码的修改和维护。</p>
+<h2 id="适用场合-9"><a href="#适用场合-9" class="headerlink" title="适用场合"></a>适用场合</h2><p>适合需要把操作和调用分离时，或需要对操作进行规范化处理时再用它。<br>但降低了代码的可阅读性（毕竟谁都不愿意看个代码的具体实现要逐层找半天，从调用者，到接收者），增加了代码的难度。</p>
+<h1 id="职责链模式"><a href="#职责链模式" class="headerlink" title="职责链模式"></a>职责链模式</h1><p>有多个对象可执行方法。可根据情况选择使用哪个方法。</p>
+<h2 id="适用场合-10"><a href="#适用场合-10" class="headerlink" title="适用场合"></a>适用场合</h2><p>可动态的选择由哪个对象来处理请求。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/design/" rel="tag">#design</a>
+          
+            <a href="/tags/pattern/" rel="tag">#pattern</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/24/settimeout-setinterval/" rel="next" title="setTimeout和setInterval详解">
+                <i class="fa fa-chevron-left"></i> setTimeout和setInterval详解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/06/extend/" rel="prev" title="继承中constructor及superclass等属性解析">
+                继承中constructor及superclass等属性解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#工厂模式"><span class="nav-number">1.</span> <span class="nav-text">工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单工厂"><span class="nav-number">1.1.</span> <span class="nav-text">简单工厂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象工厂"><span class="nav-number">1.2.</span> <span class="nav-text">抽象工厂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合"><span class="nav-number">1.3.</span> <span class="nav-text">适用场合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#桥接模式"><span class="nav-number">2.</span> <span class="nav-text">桥接模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#减少依赖"><span class="nav-number">2.1.</span> <span class="nav-text">减少依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取私有值"><span class="nav-number">2.2.</span> <span class="nav-text">获取私有值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接多个类"><span class="nav-number">2.3.</span> <span class="nav-text">连接多个类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合-1"><span class="nav-number">2.4.</span> <span class="nav-text">适用场合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组合模式"><span class="nav-number">3.</span> <span class="nav-text">组合模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合-2"><span class="nav-number">3.1.</span> <span class="nav-text">适用场合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#门面模式"><span class="nav-number">4.</span> <span class="nav-text">门面模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合-3"><span class="nav-number">4.1.</span> <span class="nav-text">适用场合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#适配器模式"><span class="nav-number">5.</span> <span class="nav-text">适配器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合-4"><span class="nav-number">5.1.</span> <span class="nav-text">适用场合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰者模式"><span class="nav-number">6.</span> <span class="nav-text">装饰者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合-5"><span class="nav-number">6.1.</span> <span class="nav-text">适用场合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#享元模式"><span class="nav-number">7.</span> <span class="nav-text">享元模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合-6"><span class="nav-number">7.1.</span> <span class="nav-text">适用场合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理模式"><span class="nav-number">8.</span> <span class="nav-text">代理模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合-7"><span class="nav-number">8.1.</span> <span class="nav-text">适用场合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#观察者模式"><span class="nav-number">9.</span> <span class="nav-text">观察者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合-8"><span class="nav-number">9.1.</span> <span class="nav-text">适用场合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令模式"><span class="nav-number">10.</span> <span class="nav-text">命令模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合-9"><span class="nav-number">10.1.</span> <span class="nav-text">适用场合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#职责链模式"><span class="nav-number">11.</span> <span class="nav-text">职责链模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场合-10"><span class="nav-number">11.1.</span> <span class="nav-text">适用场合</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
