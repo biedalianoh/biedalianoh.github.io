@@ -618,13 +618,9 @@ Statevuex使用单一状态树，即一个对象包含了所有的应用层级�
 
       
         
-          
-          工厂模式核心思想是把创建实例和使用实例分开。通过复杂程度，分为简单工厂和抽象工厂。
-简单工厂通常是专门建立一个创建实例的类，包含创建和验证接口的方法。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354var BicycleShop = function()&#123;&#125;;BicycleShop.prototype = &#123;  sellBicycle(model) &#123;    &lt;!-- let bicycle;    switch(model) &#123;      case 'SpeedSter':        bicycle = new SpeedSter();        break;      case 'Lowrider':        bicycle = new Lowrider();        break;      case 'ComfortCruiser':      defaul
-          ...
-
+          共11种设计模式
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/02/design-pattern/#more" rel="contents">
+            <a class="btn" href="/2017/03/02/design-pattern/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -672,7 +668,7 @@ Statevuex使用单一状态树，即一个对象包含了所有的应用层级�
               
                 
                 <a class="post-title-link" href="/2017/02/24/settimeout-setinterval/" itemprop="url">
-                  setTimeout和setInterval详解
+                  setTimeout,setInterval,requestAnimationFrame详解
                 </a>
               
             
@@ -733,10 +729,9 @@ Statevuex使用单一状态树，即一个对象包含了所有的应用层级�
       
         
           
-          setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。
-setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为待执行的函数。第二个参数为等待时间。第三个参数为第一个参数的参数。123setTimeout(function(id) &#123;&#125;, 3000, 'my_id');
-
-          
+          setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。大多数电脑显示器的刷新频率是60Hz，大概相当于每秒钟重绘60次。大多数浏览器都会对重绘操作加以限制，不超过显示器的重绘频率，因为即使超过那个频率用户体验也不会有提升。因此，最平滑动画的最佳循环间隔是1000ms/60，约等于16.6ms而setTimeout和setInterval的问题是，它们都不精确。它们的内在运行机制决定了时间间隔参数实际上只是指定了把动画代码添加到浏览器UI线程队列中以等待执行的时间。如果队列前面已经加入了其他任务，那动画代码就要等前面的任务完成后再执行requestAnimationFrame采用系统时间间隔，保持最佳绘制效率，不会因为间隔时间过短，造成过度绘制，增加开销；也不会因为间隔时间太长，使用动画卡顿不流畅，让各种网页动画效果能够有一个统一的刷新机制，从而节省系统资源，提高系统性能，改善视觉效果
+setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为待执行的函数。第二个参数为等待时间。第三个参数为第一个参数的参数。123setTim
+          ...
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/02/24/settimeout-setinterval/#more" rel="contents">
@@ -1471,7 +1466,7 @@ vim –remote file用已有的vim进程打开指定的文件。 如果你不想�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">62</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="setTimeout,setInterval," />
+  <meta name="keywords" content="setTimeout,setInterval,requestAnimationFrame," />
 
 
 
@@ -59,19 +59,16 @@
 
 
 
-<meta name="description" content="setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。
-setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为待执行的函数。第二个参数为等待时间。第三个参数为第一个参数的参数。123setTimeout(function(id) &amp;#123;&amp;#125;, 3000, &apos;my_id&apos;);">
+<meta name="description" content="setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。大多数电脑显示器的刷新频率是60Hz，大概相当于每秒钟重绘60次。大多数浏览器都会对重绘操作加以限制，不超过显示器的重绘频率，因为即使超过那个频率用户体验也不会有提升。因此，最平滑动画的最佳循环间隔是1000ms/60，约等于16.6ms而setTimeout和setInterval的问题是，它们都不精确。它">
 <meta property="og:type" content="article">
-<meta property="og:title" content="setTimeout和setInterval详解">
+<meta property="og:title" content="setTimeout,setInterval,requestAnimationFrame详解">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/settimeout-setinterval/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
-<meta property="og:description" content="setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。
-setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为待执行的函数。第二个参数为等待时间。第三个参数为第一个参数的参数。123setTimeout(function(id) &amp;#123;&amp;#125;, 3000, &apos;my_id&apos;);">
-<meta property="og:updated_time" content="2017-02-24T08:15:14.000Z">
+<meta property="og:description" content="setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。大多数电脑显示器的刷新频率是60Hz，大概相当于每秒钟重绘60次。大多数浏览器都会对重绘操作加以限制，不超过显示器的重绘频率，因为即使超过那个频率用户体验也不会有提升。因此，最平滑动画的最佳循环间隔是1000ms/60，约等于16.6ms而setTimeout和setInterval的问题是，它们都不精确。它">
+<meta property="og:updated_time" content="2017-08-12T15:32:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="setTimeout和setInterval详解">
-<meta name="twitter:description" content="setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。
-setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为待执行的函数。第二个参数为等待时间。第三个参数为第一个参数的参数。123setTimeout(function(id) &amp;#123;&amp;#125;, 3000, &apos;my_id&apos;);">
+<meta name="twitter:title" content="setTimeout,setInterval,requestAnimationFrame详解">
+<meta name="twitter:description" content="setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。大多数电脑显示器的刷新频率是60Hz，大概相当于每秒钟重绘60次。大多数浏览器都会对重绘操作加以限制，不超过显示器的重绘频率，因为即使超过那个频率用户体验也不会有提升。因此，最平滑动画的最佳循环间隔是1000ms/60，约等于16.6ms而setTimeout和setInterval的问题是，它们都不精确。它">
 
 
 
@@ -89,7 +86,7 @@ setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为�
   };
 </script>
 
-  <title> setTimeout和setInterval详解 | Chavin's Blog </title>
+  <title> setTimeout,setInterval,requestAnimationFrame详解 | Chavin's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -209,7 +206,7 @@ setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为�
             
             
               
-                setTimeout和setInterval详解
+                setTimeout,setInterval,requestAnimationFrame详解
               
             
           </h1>
@@ -267,8 +264,15 @@ setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为�
       
 
       
-        <p>setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。</p>
+        <p>setTimeout和setInterval在单线程的js环境中，能起到很多作用，待总结。<br>大多数电脑显示器的刷新频率是60Hz，大概相当于每秒钟重绘60次。大多数浏览器都会对重绘操作加以限制，不超过显示器的重绘频率，因为即使超过那个频率用户体验也不会有提升。因此，最平滑动画的最佳循环间隔是1000ms/60，约等于16.6ms<br>而setTimeout和setInterval的问题是，它们都不精确。它们的内在运行机制决定了时间间隔参数实际上只是指定了把动画代码添加到浏览器UI线程队列中以等待执行的时间。如果队列前面已经加入了其他任务，那动画代码就要等前面的任务完成后再执行<br>requestAnimationFrame采用系统时间间隔，保持最佳绘制效率，不会因为间隔时间过短，造成过度绘制，增加开销；也不会因为间隔时间太长，使用动画卡顿不流畅，让各种网页动画效果能够有一个统一的刷新机制，从而节省系统资源，提高系统性能，改善视觉效果</p>
 <h1 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout()"></a>setTimeout()</h1><p>setTimeout()可以有两个或者三个参数。<br>第一个参数为待执行的函数。<br>第二个参数为等待时间。<br>第三个参数为第一个参数的参数。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span>Timeout(<span class="keyword">function</span>(id) &#123;</div><div class="line"></div><div class="line">&#125;, 3000, <span class="string">'my_id'</span>);</div></pre></td></tr></table></figure></p>
+<h1 id="setInterval"><a href="#setInterval" class="headerlink" title="setInterval()"></a>setInterval()</h1><h1 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame()"></a>requestAnimationFrame()</h1><ol>
+<li>requestAnimationFrame会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率</li>
+<li>在隐藏或不可见的元素中，requestAnimationFrame将不会进行重绘或回流，这当然就意味着更少的CPU、GPU和内存使用量</li>
+<li>requestAnimationFrame是由浏览器专门为动画提供的API，在运行时浏览器会自动优化方法的调用，并且如果页面不是激活状态下的话，动画会自动暂停，有效节省了CPU开销<br>requestAnimationFrame的用法与settimeout很相似，只是不需要设置时间间隔而已。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var timer = requestAnimationFrame(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"></div><div class="line">&#125;);   console.log(timer);//1</div><div class="line"></div><div class="line">//cancelAnimationFrame方法用于取消定时器</div><div class="line">cancelAnimationFrame(timer);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>IE9-浏览器不支持该方法，可以使用setTimeout来兼容</p>
 
       
     </div>
@@ -286,6 +290,8 @@ setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为�
             <a href="/tags/setTimeout/" rel="tag">#setTimeout</a>
           
             <a href="/tags/setInterval/" rel="tag">#setInterval</a>
+          
+            <a href="/tags/requestAnimationFrame/" rel="tag">#requestAnimationFrame</a>
           
         </div>
       
@@ -389,7 +395,7 @@ setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">62</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -455,7 +461,7 @@ setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#setTimeout"><span class="nav-number">1.</span> <span class="nav-text">setTimeout()</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#setTimeout"><span class="nav-number">1.</span> <span class="nav-text">setTimeout()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setInterval"><span class="nav-number">2.</span> <span class="nav-text">setInterval()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#requestAnimationFrame"><span class="nav-number">3.</span> <span class="nav-text">requestAnimationFrame()</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

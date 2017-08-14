@@ -59,31 +59,16 @@
 
 
 
-<meta name="description" content="去重去重算法。
-
-设置两个循环，i和j，让初始j=i+1
-然后让i的元素去和j的元素做对比，如果arr[i]=arr[j]，则让i加1，是为了让i的当前元素被过滤掉。
-把当前的arr[i]添加至新数组中。
-循环完成返回新的数组123456789101112131415function delRepeat(arr)&amp;#123;  var newArray=new Array();  var len=">
+<meta name="description" content="算法的时间复杂度时间复杂度是总运算次数表达式中受n的变化影响最大的那一项（不含系数）。如一个算法循环了 (n + n-1 + n-2 + n-3 +…+ 1) 等于 n * (n + 1) / 2，约等于 (n ^ 2) / 2，因为时间复杂度是不考虑系数的，所以时间复杂度是 O(n^2)常见的时间复杂度（按复杂度递增排列）:常数阶O(1), 对数阶O(log2n), 线性阶O(n), 限行对数阶">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端常用算法汇总">
 <meta property="og:url" content="http://yoursite.com/2017/01/11/algorithm/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
-<meta property="og:description" content="去重去重算法。
-
-设置两个循环，i和j，让初始j=i+1
-然后让i的元素去和j的元素做对比，如果arr[i]=arr[j]，则让i加1，是为了让i的当前元素被过滤掉。
-把当前的arr[i]添加至新数组中。
-循环完成返回新的数组123456789101112131415function delRepeat(arr)&amp;#123;  var newArray=new Array();  var len=">
-<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta property="og:description" content="算法的时间复杂度时间复杂度是总运算次数表达式中受n的变化影响最大的那一项（不含系数）。如一个算法循环了 (n + n-1 + n-2 + n-3 +…+ 1) 等于 n * (n + 1) / 2，约等于 (n ^ 2) / 2，因为时间复杂度是不考虑系数的，所以时间复杂度是 O(n^2)常见的时间复杂度（按复杂度递增排列）:常数阶O(1), 对数阶O(log2n), 线性阶O(n), 限行对数阶">
+<meta property="og:updated_time" content="2017-08-12T10:01:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端常用算法汇总">
-<meta name="twitter:description" content="去重去重算法。
-
-设置两个循环，i和j，让初始j=i+1
-然后让i的元素去和j的元素做对比，如果arr[i]=arr[j]，则让i加1，是为了让i的当前元素被过滤掉。
-把当前的arr[i]添加至新数组中。
-循环完成返回新的数组123456789101112131415function delRepeat(arr)&amp;#123;  var newArray=new Array();  var len=">
+<meta name="twitter:description" content="算法的时间复杂度时间复杂度是总运算次数表达式中受n的变化影响最大的那一项（不含系数）。如一个算法循环了 (n + n-1 + n-2 + n-3 +…+ 1) 等于 n * (n + 1) / 2，约等于 (n ^ 2) / 2，因为时间复杂度是不考虑系数的，所以时间复杂度是 O(n^2)常见的时间复杂度（按复杂度递增排列）:常数阶O(1), 对数阶O(log2n), 线性阶O(n), 限行对数阶">
 
 
 
@@ -279,7 +264,9 @@
       
 
       
-        <h1 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h1><p>去重算法。</p>
+        <h1 id="算法的时间复杂度"><a href="#算法的时间复杂度" class="headerlink" title="算法的时间复杂度"></a>算法的时间复杂度</h1><p>时间复杂度是总运算次数表达式中受n的变化影响最大的那一项（不含系数）。<br>如一个算法循环了 (n + n-1 + n-2 + n-3 +…+ 1) 等于 n * (n + 1) / 2，约等于 (n ^ 2) / 2，因为时间复杂度是不考虑系数的，所以时间复杂度是 O(n^2)<br>常见的时间复杂度（按复杂度递增排列）:<br>常数阶O(1), 对数阶O(log2n), 线性阶O(n), 限行对数阶O(nlog2n), 平方阶O(n^2), 立方阶O(n^3),指数阶O(2^n)</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1. 循环了n*n次，时间复杂度是 O(n^2)</div><div class="line"><span class="keyword">for</span>(i = 1; i &lt;= n; i++) &#123;</div><div class="line">  <span class="keyword">for</span>(j = 1; j &lt;=n; j++) &#123;</div><div class="line">    s++;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h1><p>去重算法。</p>
 <ol>
 <li>设置两个循环，i和j，让初始j=i+1</li>
 <li>然后让i的元素去和j的元素做对比，如果arr[i]=arr[j]，则让i加1，是为了让i的当前元素被过滤掉。</li>
@@ -292,7 +279,7 @@
 <li>设定开始的startIndex为0， 结束的endIndex为length-1，中间值middleIndex为floor((startIndex-endIndex)/2)</li>
 <li>通过给定middleIndex对应的值是否相等，并且startIndex要小于endIndex来设置while循环。</li>
 <li>在while循环中，不停使用二分来重置startIndex，endIndex，middleIndex，知道while条件不符，while循环结束</li>
-<li>返回对应的arr[middleIndex]<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> binarySearch(arr, value)&#123; </div><div class="line">    var startIndex = 0, </div><div class="line">    stopIndex = arr.length - 1, </div><div class="line">    middle = Math.floor((stopIndex + startIndex)/2); </div><div class="line">    <span class="keyword">while</span>(arr[middle] != value &amp;&amp; startIndex &lt; stopIndex)&#123; </div><div class="line">        //adjust search area（调整查找范围） </div><div class="line">        <span class="keyword">if</span> (value &lt; arr[middle])&#123; </div><div class="line">            stopIndex = middle - 1; </div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value &gt; arr[middle])&#123; </div><div class="line">            startIndex = middle + 1; </div><div class="line">        &#125; </div><div class="line">        //recalculate middle（重新计算中项索引） </div><div class="line">        middle = Math.floor((stopIndex + startIndex)/2); </div><div class="line">    &#125; </div><div class="line">    //make sure it<span class="string">'s the right value（确保返回正确的值） </span></div><div class="line">    return (arr[middle] != value) ? -1 : middle; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>返回对应的arr[middleIndex]<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> binarySearch(arr, value)&#123;</div><div class="line">    var startIndex = 0,</div><div class="line">    stopIndex = arr.length - 1,</div><div class="line">    middle = Math.floor((stopIndex + startIndex)/2);</div><div class="line">    <span class="keyword">while</span>(arr[middle] != value &amp;&amp; startIndex &lt; stopIndex)&#123;</div><div class="line">        //adjust search area（调整查找范围）</div><div class="line">        <span class="keyword">if</span> (value &lt; arr[middle])&#123;</div><div class="line">            stopIndex = middle - 1;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value &gt; arr[middle])&#123;</div><div class="line">            startIndex = middle + 1;</div><div class="line">        &#125;</div><div class="line">        //recalculate middle（重新计算中项索引）</div><div class="line">        middle = Math.floor((stopIndex + startIndex)/2);</div><div class="line">    &#125;</div><div class="line">    //make sure it<span class="string">'s the right value（确保返回正确的值）</span></div><div class="line">    return (arr[middle] != value) ? -1 : middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>对数组进行排序。<br>升序排列：</p>
@@ -306,7 +293,14 @@
 </ol>
 <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>一个函数通过循环条件不断调用自身来实现。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> factorial(num) &#123;</div><div class="line">    <span class="keyword">if</span>(num &lt;= 1) &#123;</div><div class="line">        <span class="built_in">return</span> 1;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        arguments.callee(num - 1);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var anotherFactorial = factorial;</div><div class="line">factorial = null;</div><div class="line">anotherFactorial(4);</div></pre></td></tr></table></figure></p>
 <p>其中 factorial=null 并不会影响 anotherFactorial 的值，<br>因为 factorial 这个函数名也只是指向的是 function 这个函数，<br>factorial 本身的指向改变了，没有改变 anotherFactorial 的指向。</p>
-<h1 id="随机生成颜色值"><a href="#随机生成颜色值" class="headerlink" title="随机生成颜色值"></a>随机生成颜色值</h1><p>随机生成类似 #f0f0f0 之类的颜色值。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">randomColor</span></span>() &#123;</div><div class="line">    var arr = [<span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>];</div><div class="line">    var color = <span class="string">'#'</span>;</div><div class="line">    var index;</div><div class="line">    <span class="keyword">for</span>(var i = 0; i &lt; 6; i++) &#123;</div><div class="line">        index = Math.round(Math.random() * (arr.length - 1));</div><div class="line">        color += arr[index];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> color;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="随机生成颜色值"><a href="#随机生成颜色值" class="headerlink" title="随机生成颜色值"></a>随机生成颜色值</h1><p>随机生成类似 #f0f0f0 之类的颜色值。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">randomColor</span></span>() &#123;</div><div class="line">    var arr = [<span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>];</div><div class="line">    var color = <span class="string">'\#'</span>;</div><div class="line">    var index;</div><div class="line">    <span class="keyword">for</span>(var i = 0; i &lt; 6; i++) &#123;</div><div class="line">        index = Math.round(Math.random() * (arr.length - 1));</div><div class="line">        color += arr[index];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> color;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="数组中的查找两个元素，它们的和是指定的值"><a href="#数组中的查找两个元素，它们的和是指定的值" class="headerlink" title="数组中的查找两个元素，它们的和是指定的值"></a>数组中的查找两个元素，它们的和是指定的值</h1><ol>
+<li><p>常用js算法</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> hasSum(arr, target) &#123;</div><div class="line">  var result = <span class="literal">false</span>;</div><div class="line">  <span class="keyword">if</span>(!arr || arr.length &lt; 2) &#123;</div><div class="line">    <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    arr.sort();</div><div class="line">    var i = 0, j = arr.length - 1;</div><div class="line">    <span class="keyword">while</span>(i &lt; j) &#123;</div><div class="line">      <span class="keyword">if</span>(arr[i] + arr[j] == target) &#123;</div><div class="line">        result = <span class="literal">true</span>;</div><div class="line">        <span class="built_in">break</span>;</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span>(arr[i] + arr[j] &gt; target) &#123;</div><div class="line">        j--;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        i++;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> result;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>hash算法<br>由于javascript没有哈希表，因此无法实用常见的hash算法。</p>
+</li>
+</ol>
 <p><hr><br>待续。。。</p>
 
       
@@ -331,16 +325,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/11/nodejs-global/" rel="next" title="nodejs深入系列--全局变量global">
-                <i class="fa fa-chevron-left"></i> nodejs深入系列--全局变量global
+              <a href="/2017/01/11/nodejs-net/" rel="next" title="nodejs深入系列--net">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--net
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/11/nodejs-https/" rel="prev" title="nodejs深入系列--https">
-                nodejs深入系列--https <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/11/nodejs-global/" rel="prev" title="nodejs深入系列--全局变量global">
+                nodejs深入系列--全局变量global <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -426,7 +420,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">62</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -492,7 +486,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#去重"><span class="nav-number">1.</span> <span class="nav-text">去重</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二分法-折半查找"><span class="nav-number">2.</span> <span class="nav-text">二分法(折半查找)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#冒泡排序"><span class="nav-number">3.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#递归"><span class="nav-number">4.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随机生成颜色值"><span class="nav-number">5.</span> <span class="nav-text">随机生成颜色值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#算法的时间复杂度"><span class="nav-number">1.</span> <span class="nav-text">算法的时间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#去重"><span class="nav-number">2.</span> <span class="nav-text">去重</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二分法-折半查找"><span class="nav-number">3.</span> <span class="nav-text">二分法(折半查找)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#冒泡排序"><span class="nav-number">4.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#递归"><span class="nav-number">5.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随机生成颜色值"><span class="nav-number">6.</span> <span class="nav-text">随机生成颜色值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组中的查找两个元素，它们的和是指定的值"><span class="nav-number">7.</span> <span class="nav-text">数组中的查找两个元素，它们的和是指定的值</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
