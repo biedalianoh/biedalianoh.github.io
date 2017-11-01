@@ -276,10 +276,10 @@
       
         
           
-          Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。Vuex的应用状态分为state(数据源), view(视图), actions(状态变化)通常复杂的单页应用，需要父子，多层父子，兄弟组件之间传递状态，应用vuex简单的状态传递，无需使用vuex，可以使用一个空的vue实例作为中央事件总线：123456789var bus = new Vue();// 触发组件 A 中的事件bus.$emit(&apos;id-selected&apos;, 1)// 在组件 B 创建的钩子中监听事件bus.$on(&apos;id-selected&apos;, function (id) &#123;  // ...&#125;)
-Statevuex使用单一状态树，即一个对象包含了所有的应用层级状态。
-
-          
+          Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。Vuex的应用状态分为state(数据源), view(视图), actions(状态变化)通常复杂的单页应用，需要父子，多层父子，兄弟组件之间传递状态，应用vuex
+vue-bus简单的状态传递，无需使用vuex，可以使用一个空的vue实例作为中央事件总线：123456789var bus = new Vue();// 触发组件 A 中的事件bus.$emit(&apos;id-selected&apos;, 1)// 在组件 B 创建的钩子中监听事件bus.$on(&apos;id-selected&apos;, function (id) &#123;  // ...&#125;)
+vuexVuex 中 Store 的模板化定义如下：1234567891011imp
+          ...
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/03/15/vuex/#more" rel="contents">
