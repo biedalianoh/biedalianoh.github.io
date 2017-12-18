@@ -214,6 +214,132 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/16/vim/" itemprop="url">
+                  vim命令大全
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-16T10:41:08+08:00" content="2017-01-16">
+              2017-01-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/vim/" itemprop="url" rel="index">
+                    <span itemprop="name">vim</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          vim的几种模式正常模式按esc可回到正常模式
+插入模式可输入文本。按i, a, o都能进入插入模式
+可视模式按v进入可视模式。此时可选中文本
+替换模式正常模式下，按r进入。
+打开文件vim -r file恢复上次异常退出的文件；
+vim -R file以只读的方式打开文件，但可以强制保存；
+vim -M file以只读的方式打开文件，不可以强制保存；
+vim -y num file将编辑窗口的大小设为num行；
+vim + file从文件的末尾开始；
+vim +num file从第num行开始；
+vim +/string file打开file，并将光标停留在第一个找到的string上。
+vim –remote file用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim –remote file在已有的gvim中打开文件。
+文档操作:e file关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。
+:e! file放弃对当前文件
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/16/vim/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/16/shell/" itemprop="url">
                   shell命令行与脚本编程进阶
                 </a>
@@ -448,8 +574,8 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-https/" itemprop="url">
-                  nodejs深入系列--https
+                <a class="post-title-link" href="/2017/01/11/nodejs-path/" itemprop="url">
+                  nodejs深入系列--path
                 </a>
               
             
@@ -509,9 +635,9 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
 
       
         
-          nodejs深入系列之https
+          nodejs深入系列之path
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-https/">
+            <a class="btn" href="/2017/01/11/nodejs-path/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -558,8 +684,8 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/foundation-1/" itemprop="url">
-                  Javascript基础--函数和定义优先级
+                <a class="post-title-link" href="/2017/01/11/karma-jasmine/" itemprop="url">
+                  使用Karma+jasmine实现自动化单元测试
                 </a>
               
             
@@ -619,255 +745,9 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
 
       
         
-          
-          Javascript中的包括变量的定义，函数的定义；函数的静态方法，原型方法；变量的前置定义，后置定义；运算符的优先级；变量的提升，等等经常容易发生混淆。避免在前端开发过程中再踩这些类似的坑，在此总结。
-js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值， 字符串， 数值， 对象判断的基本方式是，他们属于原始的基本类型，而不是对象，不能使用 new 命令。ES6 新增了一种基本数据类型： Symbol
-静态方法和原型方法静态方法的优先级高于原型方法。12345678910function Demo() &#123;    this.getName = function() &#123;        console.log(1);    &#125;&#125;;Demo.prototype.getName = function() &#123;    console.log(2);&#125;Demo.getName();   //  1
-变量声明提升所有的声明变量或声明函数都会被提升到当前函数的顶部。123console.log(x);console.
-          ...
-
+          Jasmine用来做单元测试，可不依赖其他任何javascript组建，即指做单元测试可直接添加jasmine到html文件中，并可在浏览器环境中执行测试。Karma自动化完成单元测试，是基于nodejs的测试过程管理工具，有一个强大的特性，可监控(watch)文件的变化并自动执行，然后通过console.log()显示结果，并且网络中任何其他设备如手机均可连接测试。jasmine和karma结合，可实现一个自动化单元测试。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/foundation-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/karma-jasmine-angualr/" itemprop="url">
-                  Angular自动化单元测试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。angular-mock辅助Karma、Jasmine等JS测试工具来模拟angular方法，测试angular应用。除此之外，Angular-mock还扩展了ng的多个核心服务，使之可以被测试代码以同步的方式进行审查和控制。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/karma-jasmine-angualr/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/job/" itemprop="url">
-                  Javascript基础--前端基础知识总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          HTMLDoctypeDoctype 的作用？ 标准模式与兼容模式的区别告知浏览器用什么标准解析文档。 Doctype不存在或不正确会触发文档以兼容模式呈现。标准模式会以浏览器最高标准运行。兼容模式以宽松的向后兼容的方式显示。
-xhtml 和 html 的区别xhtml是xml向html过渡的语言。比html严谨性更高。设置doctype标志各种类型的xhtml(过渡型-transitional，严格型-strict，框架集-frameset)
-
-xhtml要求正确嵌套
-标签必须关闭
-区分大小写
-属性值要求双引号
-用id代替name属性
-
-行内元素，块级元素，空元素依据css的display属性区分块元素和行内元素。
-
-块元素： div, ul, ol, li, dl, dt, dd, p, h1, h2….
-行内元素： a, b, span, img, input, select, strong
-空元素： br, hr, img, input, link, meta
-
-link 和 import 的区别
-link除了加载css，还能定义rss；import只能用于加载css
-页面加载
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/job/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/karma-jasmine/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1031,8 +911,8 @@ link除了加载css，还能定义rss；import只能用于加载css
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/my first blog/" itemprop="url">
-                  新的记载，新的开端
+                <a class="post-title-link" href="/2017/01/11/foundation-1/" itemprop="url">
+                  Javascript基础--函数和定义优先级
                 </a>
               
             
@@ -1050,6 +930,25 @@ link除了加载css，还能定义rss；import只能用于加载css
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -1074,12 +973,14 @@ link除了加载css，还能定义rss；import只能用于加载css
       
         
           
-          花了三个小时时间，把github+hexo的博客建成功了。作为一个已经工作了六年的前端开发coder，现在开始系统的通过blog来开始记录Program，确实有点来的迟了点。近两年主要通过wiznote来记录一些前端开发的心得和总结，包括常用框架的翻译和填坑，还有一些前端知识的分享是通过个人网站来发布分享。此后会逐步把以前发布过的内容转移到此blog，并且有新的和好的内容也会在此发布。目前已经写过的内容包含：webpack，angular，velocity，git，lodash，gulp，ndenv，es6，pure。近几年前端的飞跃式发展，让我们FEs突然变得忙碌起来，这些所发布的知识也是其中的冰山一角，让我们所有人一起去揭开这些面纱，找到属于每个人成长中的喜悦。
-
-          
+          Javascript中的包括变量的定义，函数的定义；函数的静态方法，原型方法；变量的前置定义，后置定义；运算符的优先级；变量的提升，等等经常容易发生混淆。避免在前端开发过程中再踩这些类似的坑，在此总结。
+js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值， 字符串， 数值， 对象判断的基本方式是，他们属于原始的基本类型，而不是对象，不能使用 new 命令。ES6 新增了一种基本数据类型： Symbol
+静态方法和原型方法静态方法的优先级高于原型方法。12345678910function Demo() &#123;    this.getName = function() &#123;        console.log(1);    &#125;&#125;;Demo.prototype.getName = function() &#123;    console.log(2);&#125;Demo.getName();   //  1
+变量声明提升所有的声明变量或声明函数都会被提升到当前函数的顶部。123console.log(x);console.
+          ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/my first blog/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/foundation-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1241,8 +1142,103 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-db/" itemprop="url">
-                  nodejs深入系列--数据库
+                <a class="post-title-link" href="/2017/01/11/my first blog/" itemprop="url">
+                  新的记载，新的开端
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          花了三个小时时间，把github+hexo的博客建成功了。作为一个已经工作了六年的前端开发coder，现在开始系统的通过blog来开始记录Program，确实有点来的迟了点。近两年主要通过wiznote来记录一些前端开发的心得和总结，包括常用框架的翻译和填坑，还有一些前端知识的分享是通过个人网站来发布分享。此后会逐步把以前发布过的内容转移到此blog，并且有新的和好的内容也会在此发布。目前已经写过的内容包含：webpack，angular，velocity，git，lodash，gulp，ndenv，es6，pure。近几年前端的飞跃式发展，让我们FEs突然变得忙碌起来，这些所发布的知识也是其中的冰山一角，让我们所有人一起去揭开这些面纱，找到属于每个人成长中的喜悦。
+
+          
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/my first blog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/nodejs-console/" itemprop="url">
+                  nodejs深入系列--console
                 </a>
               
             
@@ -1302,9 +1298,9 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
 
       
         
-          nodejs深入系列之数据库操作
+          nodejs深入系列之console
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-db/">
+            <a class="btn" href="/2017/01/11/nodejs-console/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1376,7 +1372,7 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1384,7 +1380,7 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1393,7 +1389,7 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -1,0 +1,872 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,django," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="基础开发环境安装Django1pip3 install django==1.10.3
+创建项目通过Django来创建项目1django-amdin startproject guest   //创建了guest项目
+创建应用一个项目可以包含多个应用。就像可以一个项目里包含前后端集成的应用，和前后端分离的应用。1python3 manage.py startapp sign   //创建了sign应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Python Django的web接口开发">
+<meta property="og:url" content="http://yoursite.com/2017/11/22/python-django/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="基础开发环境安装Django1pip3 install django==1.10.3
+创建项目通过Django来创建项目1django-amdin startproject guest   //创建了guest项目
+创建应用一个项目可以包含多个应用。就像可以一个项目里包含前后端集成的应用，和前后端分离的应用。1python3 manage.py startapp sign   //创建了sign应">
+<meta property="og:updated_time" content="2017-12-18T10:53:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于Python Django的web接口开发">
+<meta name="twitter:description" content="基础开发环境安装Django1pip3 install django==1.10.3
+创建项目通过Django来创建项目1django-amdin startproject guest   //创建了guest项目
+创建应用一个项目可以包含多个应用。就像可以一个项目里包含前后端集成的应用，和前后端分离的应用。1python3 manage.py startapp sign   //创建了sign应">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 基于Python Django的web接口开发 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于Python Django的web接口开发
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-22T18:47:21+08:00" content="2017-11-22">
+              2017-11-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基础开发环境"><a href="#基础开发环境" class="headerlink" title="基础开发环境"></a>基础开发环境</h1><h2 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install django==1.10.3</div></pre></td></tr></table></figure>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>通过Django来创建项目<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-amdin startproject guest   //创建了guest项目</div></pre></td></tr></table></figure></p>
+<h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><p>一个项目可以包含多个应用。就像可以一个项目里包含前后端集成的应用，和前后端分离的应用。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python3 manage.py startapp sign   //创建了sign应用</div></pre></td></tr></table></figure></p>
+<p>然后将应用添加至项目中，<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">guest/settings.py</div><div class="line">INSTLLED_APPS = [</div><div class="line">  ...</div><div class="line">  <span class="string">'sign'</span>,</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python3 manage.py runserver</div><div class="line">python3 manage.py runserver 127.0.0.1:8001    //指定IP和端口</div></pre></td></tr></table></figure>
+<h1 id="应用开发"><a href="#应用开发" class="headerlink" title="应用开发"></a>应用开发</h1><h2 id="应用基础开发"><a href="#应用基础开发" class="headerlink" title="应用基础开发"></a>应用基础开发</h2><p>Django应用工作流分为四个部分：</p>
+<ol>
+<li>浏览器–url<br>如获取<a href="http://127.0.0.1:8000/index/" target="_blank" rel="external">http://127.0.0.1:8000/index/</a></li>
+<li><p>匹配url指向路由–urls.py<br>正则匹配url，并指定指向的路由。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">urlpatterns = [</div><div class="line">  url(r<span class="string">'^index/$'</span>, views.index)</div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+<li><p>路由定义访问数据–views.py<br>若为混合开发，则指向html文件，并赋予数据</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def index(request):</div><div class="line">    <span class="built_in">return</span> render(request, <span class="string">'index.html'</span>, &#123;<span class="string">'user'</span>: username&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>若为接口开发，则直接返回数据<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def index(request):</div><div class="line">  <span class="built_in">return</span> JsonResponse(&#123;<span class="string">'status'</span>: 200, <span class="string">'message'</span>: <span class="string">'success'</span>, <span class="string">'data'</span>: event&#125;)</div></pre></td></tr></table></figure></p>
+<ol>
+<li>解析html文件–非接口开发<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">html文件中，使用 &#123;&#123;&#125;&#125; 和 &#123;% %&#125; 两种方式来插入服务端数据</div><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">  &#123;% load bootstrap3 %&#125;</div><div class="line">  &#123;% bootstrap_css %&#125;</div><div class="line">  &#123;% bootstrap_javascript %&#125;</div><div class="line">  &lt;title&gt;Event Manage&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">  &#123;% <span class="keyword">for</span> event <span class="keyword">in</span> events %&#125;</div><div class="line">  &lt;tr&gt;</div><div class="line">    &lt;td&gt;&#123;&#123;event.id&#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;td&gt;&#123;&#123;event.name&#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;td&gt;&#123;&#123;event.status&#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;td&gt;&#123;&#123;event.address&#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;td&gt;&#123;&#123;event.start_time&#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;td&gt;&lt;a href=<span class="string">"/sign_index/&#123;&#123;event.id&#125;&#125;/"</span> target=<span class="string">"&#123;&#123;event.id&#125;&#125;_blank"</span>&gt;sign&lt;/a&gt;&lt;/td&gt;</div><div class="line">  &lt;/tr&gt;</div><div class="line">  &#123;% endfor %&#125;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p>Django用model来操作数据库。每个model对应一个数据库表。<br>Django默认用是SQLite3，不适用于大型项目。<br>Django还支持以下几种数据库：</p>
+<ol>
+<li>PostgreSQL</li>
+<li>MySQL</li>
+<li>Oracle</li>
+</ol>
+<h2 id="SQL命令"><a href="#SQL命令" class="headerlink" title="SQL命令"></a>SQL命令</h2><p>不管何种数据库，均为统一的操作方法，操作模型即可</p>
+<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Guest.objects.all()         //获取所有数据</div><div class="line">Guest.objects.get(args)     //获取特定数据    不存在会报DoesNotExist错误</div><div class="line">Guest.objects.filter(agrs)  //获取数据列表</div></pre></td></tr></table></figure>
+<h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">from datetime import datetime</div><div class="line">event = Event(id=2,name=<span class="string">'Nodejs-2.3发布会'</span>,<span class="built_in">limit</span>=2000,status=True,address=<span class="string">'北京'</span>,start_time=datetime(2017,12,10,14,0,0))</div><div class="line">event.save()</div></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Event.objects.create(id=2,name=<span class="string">'Nodejs-2.3发布会'</span>,<span class="built_in">limit</span>=2000,status=True,address=<span class="string">'北京'</span>,start_time=datetime(2017,12,10,14,0,0))</div></pre></td></tr></table></figure></p>
+<h3 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">g3 = Guest.objects.get(phone=<span class="string">'13511001101'</span>)</div><div class="line">g3.realname = <span class="string">'andy2'</span></div><div class="line">g3.save()</div></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Guest.objects.select_for_update().filter(phone=<span class="string">'13611001101'</span>).update(realname=<span class="string">'andy'</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">g2 = Guest.objects.get(phone=<span class="string">'13611001101'</span>)</div><div class="line">g2.delete()</div></pre></td></tr></table></figure>
+<h2 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h2><ol>
+<li>下载安装MySQL</li>
+<li><p>常用mysql命令</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p                            //启动mysql</div><div class="line">show databases;                             //查看当前数据库下面的所有库</div><div class="line">use <span class="built_in">test</span>;                                   //切换到<span class="built_in">test</span>库</div><div class="line">show tables;                                //查看<span class="built_in">test</span>库下面的表</div><div class="line">show global variables like <span class="string">'port'</span>           //查看mysql端口号</div><div class="line">CREATE DATABASE guest CHARACTER SET utf8;   //创建数据库</div></pre></td></tr></table></figure>
+</li>
+<li><p>python驱动mysql<br>python常用PyMySQL来驱动mysql</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install PyMySQL</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>python操作mysql常用命令：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">connect() -- 建立数据库连接</div><div class="line">cursor() -- 获取数据库操作游标</div><div class="line">execute() -- 执行SQL语句</div><div class="line">commit() -- 提交数据库执行</div><div class="line">close() -- 关闭数据库连接</div></pre></td></tr></table></figure></p>
+<p>示例：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">from pymysql importcursors, connect</div><div class="line"></div><div class="line">conn = connect(</div><div class="line">  host = <span class="string">'127.0.0.1'</span>,</div><div class="line">  user = <span class="string">'root'</span>,</div><div class="line">  password = <span class="string">'123456'</span>,</div><div class="line">  db = <span class="string">'guest'</span>,</div><div class="line">  charset = <span class="string">'utf8mb4'</span>,</div><div class="line">  cursorclass = cursors.DictCursor</div><div class="line">)</div><div class="line"></div><div class="line">try:</div><div class="line">  with conn.cursor() as cursor:     //创建嘉宾数据</div><div class="line">    sql = <span class="string">'INSERT INTO sign_guest (realname, phone, email, sign, event_id, create_time) VALUES ("tom", 18800110002, "tome@mail.com", 0, 1, NOW());'</span></div><div class="line">    cursor.execute(sql)</div><div class="line">  conn.commit()</div><div class="line"></div><div class="line">  with conn.cursor() as cursor:</div><div class="line">    sql = <span class="string">'SELECT realname,phone,email,sign FROM sign_guest WHERE phone=%s'</span></div><div class="line">    cursor.execute(sql, (<span class="string">'18800110002'</span>,))</div><div class="line">    result = cursor.fetchone()</div><div class="line">    <span class="built_in">print</span>(result)</div><div class="line">finally:</div><div class="line">  conn.close()</div></pre></td></tr></table></figure></p>
+<ol>
+<li>Django配置mysql<br>在…/guest/settings.py中修改数据库配置。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">  <span class="string">'default'</span>: &#123;</div><div class="line">    <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,       //驱动</div><div class="line">    <span class="string">'HOST'</span>: <span class="string">'127.0.0.1'</span>,    //主机地址</div><div class="line">    <span class="string">'PORT'</span>: <span class="string">'3306'</span>,   //端口号</div><div class="line">    <span class="string">'NAME'</span>: <span class="string">'guest'</span>,  //数据库</div><div class="line">    <span class="string">'USER'</span>: <span class="string">'root'</span>,   //用户名</div><div class="line">    <span class="string">'PASSWORD'</span>: <span class="string">'123456'</span>,   //密码</div><div class="line">    <span class="string">'OPTION'</span>: &#123;</div><div class="line">      <span class="string">'init_command'</span>: <span class="string">"SET sql_mode='STRICT_TRANS_TABLES'"</span>,   //sql_mode设置，可参考Django文档</div><div class="line">    &#125;,</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然后由于Django链接mysql默认使用MySQLdb来驱动，应该改为PyMySQL：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// .../guest/__init__.py</div><div class="line">import pymysql</div><div class="line">pymysql.install_as_MySQLdb()</div></pre></td></tr></table></figure></p>
+<p>再去执行数据库同步即可：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python3 manage.py migrate</div></pre></td></tr></table></figure></p>
+<p>换完数据库之后要重置管理员：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python3 manage.py createsuperuser</div></pre></td></tr></table></figure></p>
+<h1 id="Django调用第三方接口"><a href="#Django调用第三方接口" class="headerlink" title="Django调用第三方接口"></a>Django调用第三方接口</h1><p>实际和Django定义自己的路由类似，在响应对应路由时，向第三方接口发送请求<br>可使用requests库<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 在models中定义模型</div><div class="line">class Mingrenmingyan:</div><div class="line">    def __init__(self):</div><div class="line">        self.url = <span class="string">'https://test-hallelujah.ucredit.com/hallelujah/cms/listNew/getPushSourceIdsAndCusCount'</span></div><div class="line">        self.headers = &#123;<span class="string">"Authorization"</span>:<span class="string">"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJhZG1pbiIsImV4cCI6MTUxMjA0NDgxOSwibmJmIjoxNTEyMDM3NjE5fQ.1Beu-ofMHk-xQyPCBK_0q82rY88t9LtZUzoQxmScf6M"</span>&#125;</div><div class="line">    def get_mrmy(self):</div><div class="line">        wb_data = requests.get(self.url, headers=self.headers)</div><div class="line">        data = wb_data.json()</div><div class="line">        <span class="comment"># return json.dumps(data)</span></div><div class="line">        <span class="built_in">print</span>(data)</div><div class="line">        <span class="built_in">return</span> data</div><div class="line"></div><div class="line">// views中返回的数据指向模型</div><div class="line">def famous(request):</div><div class="line">    famous_word = Mingrenmingyan()</div><div class="line">    <span class="built_in">return</span> JsonResponse(famous_word.get_mrmy(), safe=False)</div><div class="line"></div><div class="line">// urls中响应链接指向views</div><div class="line">url(r<span class="string">'^get_famous'</span>, views_if.famous, name=<span class="string">'famous'</span>),</div></pre></td></tr></table></figure></p>
+<h1 id="Django包"><a href="#Django包" class="headerlink" title="Django包"></a>Django包</h1><h2 id="django-conf-urls"><a href="#django-conf-urls" class="headerlink" title="django.conf.urls"></a>django.conf.urls</h2><p>url模式的映射表<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">from django.conf.urls import patterns, include, url</div><div class="line">from django.contrib import admin</div><div class="line">from sign import views</div><div class="line"></div><div class="line">urlpatterns = patterns(<span class="string">''</span>, </div><div class="line">  url(r<span class="string">'^admin/'</span>, admin.site.urls),</div><div class="line">  url(r<span class="string">'^index/'</span>, views.index),</div><div class="line">  url(r<span class="string">'^api/'</span>, include(<span class="string">'sign.urls'</span>, namespace=<span class="string">'sign'</span>)),</div><div class="line">)</div><div class="line">// 或者不使用patterns，应该是django新版写法</div><div class="line">urlpatterns = [</div><div class="line">  url(r<span class="string">'^admin/'</span>, admin.site.urls),</div><div class="line">  url(r<span class="string">'^index/'</span>, views.index),</div><div class="line">  url(r<span class="string">'^api/'</span>, include(<span class="string">'sign.urls'</span>, namespace=<span class="string">'sign'</span>)),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h2 id="django-contrib-admin"><a href="#django-contrib-admin" class="headerlink" title="django.contrib.admin"></a>django.contrib.admin</h2><p>自动化站点管理工具</p>
+<h2 id="django-contrib-admindocs"><a href="#django-contrib-admindocs" class="headerlink" title="django.contrib.admindocs"></a>django.contrib.admindocs</h2><p>为管理站点提供自动文档</p>
+<h2 id="django-contrib-auth"><a href="#django-contrib-auth" class="headerlink" title="django.contrib.auth"></a>django.contrib.auth</h2><p>Django的用户验证框架</p>
+<h2 id="django-contrib-comments"><a href="#django-contrib-comments" class="headerlink" title="django.contrib.comments"></a>django.contrib.comments</h2><p>一个评论应用</p>
+<h2 id="django-contrib-csrf"><a href="#django-contrib-csrf" class="headerlink" title="django.contrib.csrf"></a>django.contrib.csrf</h2><p>这个模块用来防御跨站请求伪造</p>
+<h2 id="django-contrib-databrowse"><a href="#django-contrib-databrowse" class="headerlink" title="django.contrib.databrowse"></a>django.contrib.databrowse</h2><p>帮助浏览数据的Django应用</p>
+<h2 id="django-contrib-formtools"><a href="#django-contrib-formtools" class="headerlink" title="django.contrib.formtools"></a>django.contrib.formtools</h2><p>处理表单通用模式的高级库</p>
+<h2 id="django-contrib-gis"><a href="#django-contrib-gis" class="headerlink" title="django.contrib.gis"></a>django.contrib.gis</h2><p>为Django提供GIS支持的扩展。如保存地理学数据饼执行地理学查询。</p>
+<h2 id="django-contrib-humanize"><a href="#django-contrib-humanize" class="headerlink" title="django.contrib.humanize"></a>django.contrib.humanize</h2><p>一系列Django模块过滤器，用于增加数据的人性化</p>
+<h2 id="django-contrib-localflavor"><a href="#django-contrib-localflavor" class="headerlink" title="django.contrib.localflavor"></a>django.contrib.localflavor</h2><p>针对不同国家和文化的混杂代码段。例如，它包含了验证美国的邮编 以及爱尔兰的身份证号的方法。</p>
+<h2 id="django-contrib-redirects"><a href="#django-contrib-redirects" class="headerlink" title="django.contrib.redirects"></a>django.contrib.redirects</h2><p>用来管理重定向的框架</p>
+<h2 id="django-contrib-sessions"><a href="#django-contrib-sessions" class="headerlink" title="django.contrib.sessions"></a>django.contrib.sessions</h2><p>Django的会话框架</p>
+<h2 id="django-contrib-sites"><a href="#django-contrib-sites" class="headerlink" title="django.contrib.sites"></a>django.contrib.sites</h2><p>一个让你可以在同一个数据库与 Django 安装中管理多个网站的框架</p>
+<h1 id="Python标准包"><a href="#Python标准包" class="headerlink" title="Python标准包"></a>Python标准包</h1><h2 id="itertools"><a href="#itertools" class="headerlink" title="itertools"></a>itertools</h2><h3 id="itertools-count-start-0-step-1"><a href="#itertools-count-start-0-step-1" class="headerlink" title="itertools.count(start=0,step=1)"></a>itertools.count(start=0,step=1)</h3><p>创建一个迭代器，生成从start开始的间隔step的整数</p>
+<h3 id="itertools-cycle-iterable"><a href="#itertools-cycle-iterable" class="headerlink" title="itertools.cycle(iterable)"></a>itertools.cycle(iterable)</h3><p>创建一个迭代器，对可迭代元素凡俗执行循环</p>
+<h3 id="itertools-repeat-object-times"><a href="#itertools-repeat-object-times" class="headerlink" title="itertools.repeat(object,[,times])"></a>itertools.repeat(object,[,times])</h3><p>重复生成object</p>
+<h3 id="itertools-chain-arr1-arr2"><a href="#itertools-chain-arr1-arr2" class="headerlink" title="itertools.chain(arr1,arr2)"></a>itertools.chain(arr1,arr2)</h3><p>连接数组</p>
+<h3 id="itertools-compress-data-selectors"><a href="#itertools-compress-data-selectors" class="headerlink" title="itertools.compress(data,selectors)"></a>itertools.compress(data,selectors)</h3><p>通过selectors对data进行筛选<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.compress(<span class="string">'ABCDEF'</span>, [1,0,1,0,1,1])   //A C E F</div></pre></td></tr></table></figure></p>
+<h3 id="itertools-dropwhile-predicate-iterable"><a href="#itertools-dropwhile-predicate-iterable" class="headerlink" title="itertools.dropwhile(predicate, iterable)"></a>itertools.dropwhile(predicate, iterable)</h3><p>通过predicate函数对iterable中的项进行筛选<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">def should_drop(x):</div><div class="line">  <span class="built_in">return</span> (x &lt; 1)</div><div class="line">itertools.dropwhile(should_drop, [-1, 0, 1, 2, 3])</div></pre></td></tr></table></figure></p>
+<h3 id="itertools-takewhile-predicate-iterable"><a href="#itertools-takewhile-predicate-iterable" class="headerlink" title="itertools.takewhile(predicate, iterable)"></a>itertools.takewhile(predicate, iterable)</h3><p>和dropwhile相反</p>
+<h3 id="itertools-groupby-iterable-key"><a href="#itertools-groupby-iterable-key" class="headerlink" title="itertools.groupby(iterable[,key])"></a>itertools.groupby(iterable[,key])</h3><p>返回一个按照key进行分组的值集合的迭代器</p>
+<h3 id="itertools-ifilter-predicate-iterable"><a href="#itertools-ifilter-predicate-iterable" class="headerlink" title="itertools.ifilter(predicate, iterable)"></a>itertools.ifilter(predicate, iterable)</h3><p>创建一个迭代器，仅生成iterable中predicate(item)为True的项</p>
+<h3 id="itertools-ifilterfalse-predicate-iterable"><a href="#itertools-ifilterfalse-predicate-iterable" class="headerlink" title="itertools.ifilterfalse(predicate, iterable)"></a>itertools.ifilterfalse(predicate, iterable)</h3><p>和上面的相反</p>
+<h3 id="itertools-islice-iterable-start-stop-step"><a href="#itertools-islice-iterable-start-stop-step" class="headerlink" title="itertools.islice(iterable, start, stop[,step])"></a>itertools.islice(iterable, start, stop[,step])</h3><p>生成一个起始为start，结束为stop，间隔为step的迭代器<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> islice(count(), 0, 100, 10):</div><div class="line">  <span class="built_in">print</span> i</div></pre></td></tr></table></figure></p>
+<h3 id="itertools-imap-function-iterables"><a href="#itertools-imap-function-iterables" class="headerlink" title="itertools.imap(function, *iterables)"></a>itertools.imap(function, *iterables)</h3><p>返回一个每个iterables元素都经过function处理的迭代器<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> imap(lambda x,y:(x,y,x*y), xrange(5), xrange(5, 10))</div><div class="line">  <span class="built_in">print</span> <span class="string">'%d * %d = %d'</span> % i</div><div class="line">0 * 5 = 0</div><div class="line">1 * 6 = 6</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h3 id="itertools-starmap-function-iterable"><a href="#itertools-starmap-function-iterable" class="headerlink" title="itertools.starmap(function, iterable)"></a>itertools.starmap(function, iterable)</h3><p>和imap类似好像，只有一个iterable参数</p>
+<h3 id="itertools-izip-iterables"><a href="#itertools-izip-iterables" class="headerlink" title="itertools.izip(*iterables)"></a>itertools.izip(*iterables)</h3><p>此函数生成的值与内置的zip()函数相同<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> itertools.izip([1, 2, 3], [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]):</div><div class="line">  <span class="built_in">print</span> i</div><div class="line">(1, <span class="string">'a'</span>)</div><div class="line">(1, <span class="string">'b'</span>)</div><div class="line">(1, <span class="string">'c'</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="itertools-izip-longest-iterables-fillvalue"><a href="#itertools-izip-longest-iterables-fillvalue" class="headerlink" title="itertools.izip_longest(*iterables[, fillvalue])"></a>itertools.izip_longest(*iterables[, fillvalue])</h3><p>和izip()类似。区别为迭代变量停止用None来填充</p>
+<h3 id="itertools-product-iterables-repeat"><a href="#itertools-product-iterables-repeat" class="headerlink" title="itertools.product(*iterables[, repeat])"></a>itertools.product(*iterables[, repeat])</h3><p>笛卡儿积<br>repeat指定重复程序序列的次数<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a = (1, 2)</div><div class="line">b = (<span class="string">'A'</span>, <span class="string">'B'</span>)</div><div class="line">c = itertools.product(a, b)</div><div class="line"><span class="keyword">for</span> elem <span class="keyword">in</span> c:</div><div class="line">  <span class="built_in">print</span> elem</div><div class="line">(1, <span class="string">'A'</span>)</div><div class="line">(1, <span class="string">'B'</span>)</div><div class="line">(2, <span class="string">'A'</span>)</div><div class="line">(2, <span class="string">'B'</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="itertools-permutations-iterable-r"><a href="#itertools-permutations-iterable-r" class="headerlink" title="itertools.permutations(iterable[, r])"></a>itertools.permutations(iterable[, r])</h3><p>创建一个迭代器，返回iterable中所有长度为r的项目序列，若省略r，则序列的长度与iterable中项目数量相同</p>
+<h3 id="itertools-combinations-iterable-r"><a href="#itertools-combinations-iterable-r" class="headerlink" title="itertools.combinations(iterable, r)"></a>itertools.combinations(iterable, r)</h3><p>创建一个迭代器，返回iterable中所有长度为r的项目序列</p>
+<h2 id="functools"><a href="#functools" class="headerlink" title="functools"></a>functools</h2><h3 id="functools-partial"><a href="#functools-partial" class="headerlink" title="functools.partial"></a>functools.partial</h3><p>简化函数调用参数<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def add(a, b):</div><div class="line">  <span class="built_in">return</span> a + b</div><div class="line">plus3 = functools.partial(add, 3)</div><div class="line">plus3(4)</div><div class="line">7</div></pre></td></tr></table></figure></p>
+<h3 id="functool-wraps"><a href="#functool-wraps" class="headerlink" title="functool.wraps"></a>functool.wraps</h3><p>调用函数装饰器partial(update_wrapper, wrapped=wrapped, assigned=assigned, updated=updated)的简写</p>
+<h3 id="functools-reduce-function-iterable-initializer"><a href="#functools-reduce-function-iterable-initializer" class="headerlink" title="functools.reduce(function, iterable[, initializer])"></a>functools.reduce(function, iterable[, initializer])</h3><p>等同于内置函数reduce()。用这个的原因是使代码更兼容(python3)</p>
+<h3 id="functools-cmp-to-key-func"><a href="#functools-cmp-to-key-func" class="headerlink" title="functools.cmp_to_key(func)"></a>functools.cmp_to_key(func)</h3><p>将老式鼻尖函数转换成key函数，用在接受key函数的方法中(such as sorted(), min(), max(), heapq.nlargest(), heapq.nsmallest(), itertools.groupby())<br>一个比较函数，接收两个参数，小于，返回负数，等于，返回0，大于返回整数<br>key函数，接收一个参数，返回一个表明该参数在期望序列中的位置</p>
+<h3 id="functools-total-ordering-cls"><a href="#functools-total-ordering-cls" class="headerlink" title="functools.total_ordering(cls)"></a>functools.total_ordering(cls)</h3><p>这个装饰器是在python2.7的时候加上的，它是针对某个类如果定义了<strong>lt</strong>、le、gt、<strong>ge</strong>这些方法中的至少一个，使用该装饰器，则会自动的把其他几个比较函数也实现在该类中</p>
+<h2 id="re"><a href="#re" class="headerlink" title="re"></a>re</h2><h3 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h3><p>正则通常用 \ 表示转义，但是python本身也是通过 \ 来转义，因此就冲突了。<br>所以python的re中两个反斜杠才能表示正则中的一个，因此phython中要匹配一个反斜杠就要在re中写四个反斜杠，易出错<br>python因此提供了原始字符串raw，一个以r开头的字符串表示这个是原始字符串<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">r<span class="string">'^index/'</span></div></pre></td></tr></table></figure></p>
+<h3 id="compile-pattern-flags-0"><a href="#compile-pattern-flags-0" class="headerlink" title="compile(pattern, flags=0)"></a>compile(pattern, flags=0)</h3><p>pattern对象不能直接实例化，需要通过compile方法得到<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">flags模式：</div><div class="line">re.l --- 忽略大小写</div><div class="line">re.M --- 多行模式，改变^ 和 $的行为</div><div class="line">re.S --- 点任意匹配模式，改变 . 的行为</div><div class="line">re.L --- 使预订字符类 \w \W \b \B \s \S取决于当前区域设定 </div><div class="line">re.U --- 使预定字符类 \w \W \b \B \s \S \d \D 取决于unicode定义的字符属性</div><div class="line">re.X --- 详细模式。这个模式下正则表达式可以是多行，忽略空白字符，并可以加入注释</div></pre></td></tr></table></figure></p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">re.compile(r<span class="string">'re'</span>, <span class="string">'This is re module'</span>)</div><div class="line">pattern1 = re.compile(r<span class="string">""</span><span class="string">"\d + #整数部分"</span><span class="string">""</span>, re.X)</div></pre></td></tr></table></figure>
+<h3 id="match-pattern-string-flags-0"><a href="#match-pattern-string-flags-0" class="headerlink" title="match(pattern, string, flags=0)"></a>match(pattern, string, flags=0)</h3><p>对字符串的开头匹配,如匹配到返回一个Match对象，否则返回None。<br>flags为模式。<br>Match对象还有一个group方法，为返回的匹配组<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">match = re.match(r<span class="string">'This'</span>, <span class="string">'This is re module'</span>)</div><div class="line">match.group(0)</div></pre></td></tr></table></figure></p>
+<h3 id="search-pattern-string-flags-0"><a href="#search-pattern-string-flags-0" class="headerlink" title="search(pattern, string, flags=0)"></a>search(pattern, string, flags=0)</h3><p>对整个字符串进行查找,如匹配到返回一个Match对象，否则返回None。</p>
+<h3 id="split"><a href="#split" class="headerlink" title="split"></a>split</h3><h3 id="findall"><a href="#findall" class="headerlink" title="findall"></a>findall</h3><h3 id="finditer"><a href="#finditer" class="headerlink" title="finditer"></a>finditer</h3><h3 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h3><h3 id="subn"><a href="#subn" class="headerlink" title="subn"></a>subn</h3><h2 id="subprocess"><a href="#subprocess" class="headerlink" title="subprocess"></a>subprocess</h2><p>subprocess模块提供了一种一致的方法来创建和处理附加进程,与标准库中的其它模块相比，提供了一个更高级的接口。用于替换如下模块：<br>os.system() , os.spawnv() , os和popen2模块中的popen()函数，以及 commands().</p>
+<h3 id="subprocess-call"><a href="#subprocess-call" class="headerlink" title="subprocess.call()"></a>subprocess.call()</h3><p>父进程等待子进程完成。<br>返回退出信息</p>
+<h3 id="subprocess-check-call"><a href="#subprocess-check-call" class="headerlink" title="subprocess.check_call()"></a>subprocess.check_call()</h3><p>父进程等待子进程完成。<br>返回0。检查退出信息，如果returncode不为0，则举出错误subprocess.CalledProcessError</p>
+<h3 id="subprocess-check-output"><a href="#subprocess-check-output" class="headerlink" title="subprocess.check_output()"></a>subprocess.check_output()</h3><p>父进程等待子进程完成<br>返回子进程向标准输出的输出结果<br>检查退出信息，如果returncode不为0，则举出错误subprocess.CalledProcessError</p>
+<h3 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen()"></a>subprocess.Popen()</h3><p>实际上，上面的几个函数都是基于Popen()的封装(wrapper)。这些封装的目的在于让我们容易使用子进程。当我们想要更个性化我们的需求的时候，就要转向Popen类，该类生成的对象用来代表子进程。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import subprocess</div><div class="line">&gt;&gt;&gt; child = subprocess.Popen(<span class="string">'ping -c4 blog.linuxeye.com'</span>,shell=True)</div><div class="line">&gt;&gt;&gt; child.wait()</div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span> <span class="string">'parent process'</span></div><div class="line"></div><div class="line">child.poll() <span class="comment"># 检查子进程状态</span></div><div class="line">child.kill() <span class="comment"># 终止子进程</span></div><div class="line">child.send_signal() <span class="comment"># 向子进程发送信号</span></div><div class="line">child.terminate() <span class="comment"># 终止子进程</span></div></pre></td></tr></table></figure></p>
+<h2 id="pdb"><a href="#pdb" class="headerlink" title="pdb"></a>pdb</h2><p>调试debuger用</p>
+<h2 id="traceback"><a href="#traceback" class="headerlink" title="traceback"></a>traceback</h2><p>出现异常时，打印具体出错的位置<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import tractback</div><div class="line">try:</div><div class="line">  1/0</div><div class="line">except Exception,e:</div><div class="line">  tractback.print_exc()</div></pre></td></tr></table></figure></p>
+<h2 id="logging"><a href="#logging" class="headerlink" title="logging"></a>logging</h2><p>日志模块。<br>可打印日志信息到屏幕或输出到文件</p>
+<h2 id="threading"><a href="#threading" class="headerlink" title="threading"></a>threading</h2><p>多线程控制和处理。<br>threading通过对thread模块进行二次封装，提供了更方便的API来操作线程。</p>
+<h3 id="threading-Thread"><a href="#threading-Thread" class="headerlink" title="threading.Thread"></a>threading.Thread</h3><h3 id="Thread-getName"><a href="#Thread-getName" class="headerlink" title="Thread.getName()"></a>Thread.getName()</h3><h3 id="Thread-setName"><a href="#Thread-setName" class="headerlink" title="Thread.setName()"></a>Thread.setName()</h3><h3 id="Thread-name"><a href="#Thread-name" class="headerlink" title="Thread.name"></a>Thread.name</h3><h3 id="Thread-ident"><a href="#Thread-ident" class="headerlink" title="Thread.ident"></a>Thread.ident</h3><h3 id="Thread-is-alive"><a href="#Thread-is-alive" class="headerlink" title="Thread.is_alive()"></a>Thread.is_alive()</h3><h3 id="Thread-isAlive"><a href="#Thread-isAlive" class="headerlink" title="Thread.isAlive()"></a>Thread.isAlive()</h3><h3 id="Thread-join-timeout"><a href="#Thread-join-timeout" class="headerlink" title="Thread.join([timeout])"></a>Thread.join([timeout])</h3><h3 id="threading-Lock"><a href="#threading-Lock" class="headerlink" title="threading.Lock"></a>threading.Lock</h3><h3 id="threading-RLock"><a href="#threading-RLock" class="headerlink" title="threading.RLock"></a>threading.RLock</h3><h3 id="threading-Condition"><a href="#threading-Condition" class="headerlink" title="threading.Condition"></a>threading.Condition</h3><h3 id="Condition-wait-timeout"><a href="#Condition-wait-timeout" class="headerlink" title="Condition.wait([timeout])"></a>Condition.wait([timeout])</h3><h3 id="Condition-notify"><a href="#Condition-notify" class="headerlink" title="Condition.notify()"></a>Condition.notify()</h3><h3 id="Condition-notify-all"><a href="#Condition-notify-all" class="headerlink" title="Condition.notify_all()"></a>Condition.notify_all()</h3><h3 id="Condition-notifyAll"><a href="#Condition-notifyAll" class="headerlink" title="Condition.notifyAll()"></a>Condition.notifyAll()</h3><h3 id="threading-Event"><a href="#threading-Event" class="headerlink" title="threading.Event"></a>threading.Event</h3><h3 id="Event-wait-timeout"><a href="#Event-wait-timeout" class="headerlink" title="Event.wait([timeout])"></a>Event.wait([timeout])</h3><h3 id="Event-set"><a href="#Event-set" class="headerlink" title="Event.set()"></a>Event.set()</h3><h3 id="Event-clear"><a href="#Event-clear" class="headerlink" title="Event.clear()"></a>Event.clear()</h3><h3 id="Event-isSet"><a href="#Event-isSet" class="headerlink" title="Event.isSet()"></a>Event.isSet()</h3><h3 id="threading-Timer"><a href="#threading-Timer" class="headerlink" title="threading.Timer"></a>threading.Timer</h3><h3 id="threading-active-count"><a href="#threading-active-count" class="headerlink" title="threading.active_count()"></a>threading.active_count()</h3><h3 id="threading-activeCount"><a href="#threading-activeCount" class="headerlink" title="threading.activeCount()"></a>threading.activeCount()</h3><h3 id="threading-current-thread"><a href="#threading-current-thread" class="headerlink" title="threading.current_thread()"></a>threading.current_thread()</h3><h3 id="threading-currentThread"><a href="#threading-currentThread" class="headerlink" title="threading.currentThread()"></a>threading.currentThread()</h3><h3 id="threading-enumerate"><a href="#threading-enumerate" class="headerlink" title="threading.enumerate()"></a>threading.enumerate()</h3><h3 id="threading-settrace-func"><a href="#threading-settrace-func" class="headerlink" title="threading.settrace(func)"></a>threading.settrace(func)</h3><h3 id="threading-setprofile-func"><a href="#threading-setprofile-func" class="headerlink" title="threading.setprofile(func)"></a>threading.setprofile(func)</h3><h2 id="multiprocessing"><a href="#multiprocessing" class="headerlink" title="multiprocessing"></a>multiprocessing</h2><p>multiprocessing包是Python中的多进程管理包。与threading.Thread类似，它可以利用multiprocessing.Process对象来创建一个进程。该进程可以运行在Python程序内部编写的函数。该Process对象与Thread对象的用法相同，也有start(), run(), join()的方法。此外multiprocessing包中也有Lock/Event/Semaphore/Condition类 (这些对象可以像多线程那样，通过参数传递给各个进程)，用以同步进程，其用法与threading包中的同名类一致。所以，multiprocessing的很大一部份与threading使用同一套API，只不过换到了多进程的情境。</p>
+<h2 id="os"><a href="#os" class="headerlink" title="os"></a>os</h2><h3 id="os-name"><a href="#os-name" class="headerlink" title="os.name"></a>os.name</h3><h3 id="os-getcwd"><a href="#os-getcwd" class="headerlink" title="os.getcwd()"></a>os.getcwd()</h3><h3 id="os-listdir"><a href="#os-listdir" class="headerlink" title="os.listdir()"></a>os.listdir()</h3><h3 id="os-remove"><a href="#os-remove" class="headerlink" title="os.remove()"></a>os.remove()</h3><h3 id="os-rmdir"><a href="#os-rmdir" class="headerlink" title="os.rmdir()"></a>os.rmdir()</h3><h3 id="os-mkdir"><a href="#os-mkdir" class="headerlink" title="os.mkdir()"></a>os.mkdir()</h3><h3 id="os-path-isfile"><a href="#os-path-isfile" class="headerlink" title="os.path.isfile()"></a>os.path.isfile()</h3><h3 id="os-path-isdir"><a href="#os-path-isdir" class="headerlink" title="os.path.isdir()"></a>os.path.isdir()</h3><h3 id="os-path-split"><a href="#os-path-split" class="headerlink" title="os.path.split()"></a>os.path.split()</h3><h3 id="os-getcwd-1"><a href="#os-getcwd-1" class="headerlink" title="os.getcwd()"></a>os.getcwd()</h3><h3 id="os-system"><a href="#os-system" class="headerlink" title="os.system()"></a>os.system()</h3><h3 id="os-chdir"><a href="#os-chdir" class="headerlink" title="os.chdir()"></a>os.chdir()</h3><h3 id="os-path-getsize"><a href="#os-path-getsize" class="headerlink" title="os.path.getsize()"></a>os.path.getsize()</h3><h3 id="os-path-abspath"><a href="#os-path-abspath" class="headerlink" title="os.path.abspath()"></a>os.path.abspath()</h3><h3 id="os-path-join-path-name"><a href="#os-path-join-path-name" class="headerlink" title="os.path.join(path, name)"></a>os.path.join(path, name)</h3><h3 id="os-path-basename-path"><a href="#os-path-basename-path" class="headerlink" title="os.path.basename(path)"></a>os.path.basename(path)</h3><h3 id="os-path-dirname-path"><a href="#os-path-dirname-path" class="headerlink" title="os.path.dirname(path)"></a>os.path.dirname(path)</h3><h3 id="os-path-realpath-path"><a href="#os-path-realpath-path" class="headerlink" title="os.path.realpath(path)"></a>os.path.realpath(path)</h3><h2 id="sys"><a href="#sys" class="headerlink" title="sys"></a>sys</h2><p>sys模块提供了一系列有关Python运行环境的变量和函数。</p>
+<h3 id="sys-argv"><a href="#sys-argv" class="headerlink" title="sys.argv"></a>sys.argv</h3><p>获取当前正在执行的命令行参数的参数列表(list)。</p>
+<h3 id="sys-platform"><a href="#sys-platform" class="headerlink" title="sys.platform"></a>sys.platform</h3><h3 id="sys-path"><a href="#sys-path" class="headerlink" title="sys.path"></a>sys.path</h3><h3 id="sys-builtin-module-names"><a href="#sys-builtin-module-names" class="headerlink" title="sys.builtin_module_names"></a>sys.builtin_module_names</h3><h3 id="sys-exit-n"><a href="#sys-exit-n" class="headerlink" title="sys.exit(n)"></a>sys.exit(n)</h3><h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p>Python中，队列是线程间最常用的交换数据的形式。Queue模块是提供队列操作的模块</p>
+<h3 id="Queue-Queue-maxsize"><a href="#Queue-Queue-maxsize" class="headerlink" title="Queue.Queue(maxsize)"></a>Queue.Queue(maxsize)</h3><p>创建一个“队列”对象。FIFO队列先进先出<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">q = Queue.Queue(maxsize = 10)</div></pre></td></tr></table></figure></p>
+<h3 id="Queue-LifoQueue-maxsize"><a href="#Queue-LifoQueue-maxsize" class="headerlink" title="Queue.LifoQueue(maxsize)"></a>Queue.LifoQueue(maxsize)</h3><p>先进后出</p>
+<h3 id="Queue-PriorityQueue-maxsize"><a href="#Queue-PriorityQueue-maxsize" class="headerlink" title="Queue.PriorityQueue(maxsize)"></a>Queue.PriorityQueue(maxsize)</h3><p>优先级队列级别越低越先出来</p>
+<h3 id="q-put"><a href="#q-put" class="headerlink" title="q.put()"></a>q.put()</h3><p>将一个值放入队列中</p>
+<h3 id="q-get"><a href="#q-get" class="headerlink" title="q.get()"></a>q.get()</h3><p>将一个值从队列中取出</p>
+<h3 id="q-qsize"><a href="#q-qsize" class="headerlink" title="q.qsize()"></a>q.qsize()</h3><p>返回队列的大小</p>
+<h3 id="q-empty"><a href="#q-empty" class="headerlink" title="q.empty()"></a>q.empty()</h3><p>如果队列为空，返回True,反之False</p>
+<h3 id="q-full"><a href="#q-full" class="headerlink" title="q.full()"></a>q.full()</h3><p>如果队列满了，返回True,反之False<br>q.full 与 maxsize 大小对应</p>
+<h3 id="q-get-block-timeout"><a href="#q-get-block-timeout" class="headerlink" title="q.get([block[, timeout]])"></a>q.get([block[, timeout]])</h3><p>获取队列，timeout等待时间</p>
+<h3 id="q-get-nowait-相"><a href="#q-get-nowait-相" class="headerlink" title="q.get_nowait() 相"></a>q.get_nowait() 相</h3><p>当q.get(False)</p>
+<h3 id="q-put-nowait-item"><a href="#q-put-nowait-item" class="headerlink" title="q.put_nowait(item)"></a>q.put_nowait(item)</h3><p>相当q.put(item, False)</p>
+<h3 id="q-task-done"><a href="#q-task-done" class="headerlink" title="q.task_done()"></a>q.task_done()</h3><p>在完成一项工作之后，q.task_done() 函数向任务已经完成的队列发送一个信号</p>
+<h3 id="q-join"><a href="#q-join" class="headerlink" title="q.join()"></a>q.join()</h3><p>实际上意味着等到队列为空，再执行别的操作</p>
+<h2 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h2><p>在机器学习中，我们常常需要把训练好的模型存储起来，这样在进行决策时直接将模型读出，而不需要重新训练模型，这样就大大节约了时间。<br>Python提供的pickle模块就很好地解决了这个问题，它可以序列化对象并保存到磁盘中，并在需要的时候读取出来，任何对象都可以执行序列化操作。</p>
+<h3 id="pickle-dump-obj-file-protocol"><a href="#pickle-dump-obj-file-protocol" class="headerlink" title="pickle.dump(obj, file, [,protocol])"></a>pickle.dump(obj, file, [,protocol])</h3><p>将obj对象序列化存入已经打开的file中。</p>
+<h3 id="pickle-load-file"><a href="#pickle-load-file" class="headerlink" title="pickle.load(file)"></a>pickle.load(file)</h3><p>将file中的对象序列化读出。</p>
+<h3 id="pickle-dumps-obj-protocol"><a href="#pickle-dumps-obj-protocol" class="headerlink" title="pickle.dumps(obj[, protocol])"></a>pickle.dumps(obj[, protocol])</h3><p>将obj对象序列化为string形式，而不是存入文件中。</p>
+<h3 id="pickle-loads-string"><a href="#pickle-loads-string" class="headerlink" title="pickle.loads(string)"></a>pickle.loads(string)</h3><p>从string中读出序列化前的obj对象。</p>
+<h2 id="cPickle"><a href="#cPickle" class="headerlink" title="cPickle"></a>cPickle</h2><p>cPickle是用C编码的，在运行效率上比pickle要高，但是cPickle模块中定义的类型不能被继承（其实大多数时候，我们不需要从这些类型中继承，推荐使用cPickle）。cPickle和pickle的序列化/反序列化规则是一样的，使用pickle序列化一个对象，可以使用cPickle来反序列化。</p>
+<h2 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h2><p>hashlib是个专门提供hash算法的库，现在里面包括md5, sha1, sha224, sha256, sha384, sha512<br>md5经常用来做用户密码的存储。而sha1则经常用作数字签名<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import hashlib</div><div class="line"></div><div class="line">a = <span class="string">"a test string"</span></div><div class="line"><span class="built_in">print</span> hashlib.md5(a).hexdigest()</div><div class="line"><span class="built_in">print</span> hashlib.sha1(a).hexdigest()</div><div class="line"><span class="built_in">print</span> hashlib.sha224(a).hexdigest()</div><div class="line"><span class="built_in">print</span> hashlib.sha256(a).hexdigest()</div><div class="line"><span class="built_in">print</span> hashlib.sha384(a).hexdigest()</div><div class="line"><span class="built_in">print</span> hashlib.sha512(a).hexdigest()</div></pre></td></tr></table></figure></p>
+<h2 id="csv"><a href="#csv" class="headerlink" title="csv"></a>csv</h2><p>处理csv格式文本数据模块。常为表格数据</p>
+<h3 id="csv-reader-csvfile-dialect-’excel’-fmtparams"><a href="#csv-reader-csvfile-dialect-’excel’-fmtparams" class="headerlink" title="csv.reader(csvfile, dialect=’excel’, **fmtparams)"></a>csv.reader(csvfile, dialect=’excel’, **fmtparams)</h3><h3 id="csv-writer-csvfile-dialect-’excel’-fmtparam"><a href="#csv-writer-csvfile-dialect-’excel’-fmtparam" class="headerlink" title="csv.writer(csvfile[, dialect=’excel’][, fmtparam])"></a>csv.writer(csvfile[, dialect=’excel’][, fmtparam])</h3><h3 id="DictReader"><a href="#DictReader" class="headerlink" title="DictReader"></a>DictReader</h3><h3 id="DictWriter"><a href="#DictWriter" class="headerlink" title="DictWriter"></a>DictWriter</h3><h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>转换字符串至对象，或转换对象至字符串。<br>支持转换的对象有：None, bool, int, float, string, list, tuple, dict.</p>
+<h3 id="json-dumps"><a href="#json-dumps" class="headerlink" title="json.dumps()"></a>json.dumps()</h3><p>将数据转换为所有程序语言都认识的字符串<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line">data = [1, 2, 3]</div><div class="line">j_str = json.dumps(data)</div><div class="line">j_str</div><div class="line"><span class="string">'[1, 2, 3]'</span></div></pre></td></tr></table></figure></p>
+<h3 id="json-loads"><a href="#json-loads" class="headerlink" title="json.loads()"></a>json.loads()</h3><p>将json编码的字符串再转换为python的数据结构</p>
+<h3 id="json-dump"><a href="#json-dump" class="headerlink" title="json.dump()"></a>json.dump()</h3><p>将数据通过特殊的形式转换为所有程序语言都认识的字符串，并写入文件</p>
+<h3 id="json-load"><a href="#json-load" class="headerlink" title="json.load()"></a>json.load()</h3><p>从数据文件中读取数据,并将json编码的字符串转换为python的数据结构</p>
+<h2 id="simplejson"><a href="#simplejson" class="headerlink" title="simplejson"></a>simplejson</h2><p>功能同json</p>
+<h2 id="cProfile"><a href="#cProfile" class="headerlink" title="cProfile"></a>cProfile</h2><p>分析python程序性能</p>
+<h2 id="glob"><a href="#glob" class="headerlink" title="glob"></a>glob</h2><p>查找匹配文件和文件夹</p>
+<h2 id="atexit"><a href="#atexit" class="headerlink" title="atexit"></a>atexit</h2><p>主要的作用就是在程序即将结束之前执行的代码，atexit模块使用register函数用于注册程序退出时的回调函数，然后在回调函数中做一些资源清理的操作</p>
+<h2 id="dis"><a href="#dis" class="headerlink" title="dis"></a>dis</h2><p>dis模块主要是用来分析字节码的一个内置模块，经常会用到的方法是dis.dis([bytesource])，参数为一个代码块，可以得到这个代码块对应的字节码指令序列。</p>
+<h1 id="Python第三方包"><a href="#Python第三方包" class="headerlink" title="Python第三方包"></a>Python第三方包</h1><h2 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h2><p>发送请求</p>
+<h2 id="scrapy"><a href="#scrapy" class="headerlink" title="scrapy"></a>scrapy</h2><p>爬虫</p>
+<h2 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h2><p>图像处理</p>
+<h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p>是一个key-value数据库存储系统</p>
+<h2 id="ipdb"><a href="#ipdb" class="headerlink" title="ipdb"></a>ipdb</h2><p>python调试工具</p>
+<h1 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h1>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/django/" rel="tag">#django</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/vuex/" rel="next" title="vuex项目应用/开发实战">
+                <i class="fa fa-chevron-left"></i> vuex项目应用/开发实战
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础开发环境"><span class="nav-number">1.</span> <span class="nav-text">基础开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Django"><span class="nav-number">1.1.</span> <span class="nav-text">安装Django</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目"><span class="nav-number">1.2.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建应用"><span class="nav-number">1.3.</span> <span class="nav-text">创建应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行项目"><span class="nav-number">1.4.</span> <span class="nav-text">运行项目</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用开发"><span class="nav-number">2.</span> <span class="nav-text">应用开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用基础开发"><span class="nav-number">2.1.</span> <span class="nav-text">应用基础开发</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库"><span class="nav-number">3.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL命令"><span class="nav-number">3.1.</span> <span class="nav-text">SQL命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询数据"><span class="nav-number">3.1.1.</span> <span class="nav-text">查询数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入数据"><span class="nav-number">3.1.2.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新数据"><span class="nav-number">3.1.3.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据"><span class="nav-number">3.1.4.</span> <span class="nav-text">删除数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置MySQL"><span class="nav-number">3.2.</span> <span class="nav-text">配置MySQL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django调用第三方接口"><span class="nav-number">4.</span> <span class="nav-text">Django调用第三方接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django包"><span class="nav-number">5.</span> <span class="nav-text">Django包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#django-conf-urls"><span class="nav-number">5.1.</span> <span class="nav-text">django.conf.urls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-admin"><span class="nav-number">5.2.</span> <span class="nav-text">django.contrib.admin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-admindocs"><span class="nav-number">5.3.</span> <span class="nav-text">django.contrib.admindocs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-auth"><span class="nav-number">5.4.</span> <span class="nav-text">django.contrib.auth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-comments"><span class="nav-number">5.5.</span> <span class="nav-text">django.contrib.comments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-csrf"><span class="nav-number">5.6.</span> <span class="nav-text">django.contrib.csrf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-databrowse"><span class="nav-number">5.7.</span> <span class="nav-text">django.contrib.databrowse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-formtools"><span class="nav-number">5.8.</span> <span class="nav-text">django.contrib.formtools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-gis"><span class="nav-number">5.9.</span> <span class="nav-text">django.contrib.gis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-humanize"><span class="nav-number">5.10.</span> <span class="nav-text">django.contrib.humanize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-localflavor"><span class="nav-number">5.11.</span> <span class="nav-text">django.contrib.localflavor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-redirects"><span class="nav-number">5.12.</span> <span class="nav-text">django.contrib.redirects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-sessions"><span class="nav-number">5.13.</span> <span class="nav-text">django.contrib.sessions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-contrib-sites"><span class="nav-number">5.14.</span> <span class="nav-text">django.contrib.sites</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python标准包"><span class="nav-number">6.</span> <span class="nav-text">Python标准包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#itertools"><span class="nav-number">6.1.</span> <span class="nav-text">itertools</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-count-start-0-step-1"><span class="nav-number">6.1.1.</span> <span class="nav-text">itertools.count(start=0,step=1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-cycle-iterable"><span class="nav-number">6.1.2.</span> <span class="nav-text">itertools.cycle(iterable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-repeat-object-times"><span class="nav-number">6.1.3.</span> <span class="nav-text">itertools.repeat(object,[,times])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-chain-arr1-arr2"><span class="nav-number">6.1.4.</span> <span class="nav-text">itertools.chain(arr1,arr2)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-compress-data-selectors"><span class="nav-number">6.1.5.</span> <span class="nav-text">itertools.compress(data,selectors)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-dropwhile-predicate-iterable"><span class="nav-number">6.1.6.</span> <span class="nav-text">itertools.dropwhile(predicate, iterable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-takewhile-predicate-iterable"><span class="nav-number">6.1.7.</span> <span class="nav-text">itertools.takewhile(predicate, iterable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-groupby-iterable-key"><span class="nav-number">6.1.8.</span> <span class="nav-text">itertools.groupby(iterable[,key])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-ifilter-predicate-iterable"><span class="nav-number">6.1.9.</span> <span class="nav-text">itertools.ifilter(predicate, iterable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-ifilterfalse-predicate-iterable"><span class="nav-number">6.1.10.</span> <span class="nav-text">itertools.ifilterfalse(predicate, iterable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-islice-iterable-start-stop-step"><span class="nav-number">6.1.11.</span> <span class="nav-text">itertools.islice(iterable, start, stop[,step])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-imap-function-iterables"><span class="nav-number">6.1.12.</span> <span class="nav-text">itertools.imap(function, *iterables)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-starmap-function-iterable"><span class="nav-number">6.1.13.</span> <span class="nav-text">itertools.starmap(function, iterable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-izip-iterables"><span class="nav-number">6.1.14.</span> <span class="nav-text">itertools.izip(*iterables)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-izip-longest-iterables-fillvalue"><span class="nav-number">6.1.15.</span> <span class="nav-text">itertools.izip_longest(*iterables[, fillvalue])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-product-iterables-repeat"><span class="nav-number">6.1.16.</span> <span class="nav-text">itertools.product(*iterables[, repeat])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-permutations-iterable-r"><span class="nav-number">6.1.17.</span> <span class="nav-text">itertools.permutations(iterable[, r])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itertools-combinations-iterable-r"><span class="nav-number">6.1.18.</span> <span class="nav-text">itertools.combinations(iterable, r)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#functools"><span class="nav-number">6.2.</span> <span class="nav-text">functools</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#functools-partial"><span class="nav-number">6.2.1.</span> <span class="nav-text">functools.partial</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#functool-wraps"><span class="nav-number">6.2.2.</span> <span class="nav-text">functool.wraps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#functools-reduce-function-iterable-initializer"><span class="nav-number">6.2.3.</span> <span class="nav-text">functools.reduce(function, iterable[, initializer])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#functools-cmp-to-key-func"><span class="nav-number">6.2.4.</span> <span class="nav-text">functools.cmp_to_key(func)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#functools-total-ordering-cls"><span class="nav-number">6.2.5.</span> <span class="nav-text">functools.total_ordering(cls)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#re"><span class="nav-number">6.3.</span> <span class="nav-text">re</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#转义符"><span class="nav-number">6.3.1.</span> <span class="nav-text">转义符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compile-pattern-flags-0"><span class="nav-number">6.3.2.</span> <span class="nav-text">compile(pattern, flags=0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match-pattern-string-flags-0"><span class="nav-number">6.3.3.</span> <span class="nav-text">match(pattern, string, flags=0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#search-pattern-string-flags-0"><span class="nav-number">6.3.4.</span> <span class="nav-text">search(pattern, string, flags=0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#split"><span class="nav-number">6.3.5.</span> <span class="nav-text">split</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findall"><span class="nav-number">6.3.6.</span> <span class="nav-text">findall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finditer"><span class="nav-number">6.3.7.</span> <span class="nav-text">finditer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sub"><span class="nav-number">6.3.8.</span> <span class="nav-text">sub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subn"><span class="nav-number">6.3.9.</span> <span class="nav-text">subn</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subprocess"><span class="nav-number">6.4.</span> <span class="nav-text">subprocess</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#subprocess-call"><span class="nav-number">6.4.1.</span> <span class="nav-text">subprocess.call()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subprocess-check-call"><span class="nav-number">6.4.2.</span> <span class="nav-text">subprocess.check_call()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subprocess-check-output"><span class="nav-number">6.4.3.</span> <span class="nav-text">subprocess.check_output()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subprocess-Popen"><span class="nav-number">6.4.4.</span> <span class="nav-text">subprocess.Popen()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pdb"><span class="nav-number">6.5.</span> <span class="nav-text">pdb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#traceback"><span class="nav-number">6.6.</span> <span class="nav-text">traceback</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logging"><span class="nav-number">6.7.</span> <span class="nav-text">logging</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#threading"><span class="nav-number">6.8.</span> <span class="nav-text">threading</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-Thread"><span class="nav-number">6.8.1.</span> <span class="nav-text">threading.Thread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-getName"><span class="nav-number">6.8.2.</span> <span class="nav-text">Thread.getName()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-setName"><span class="nav-number">6.8.3.</span> <span class="nav-text">Thread.setName()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-name"><span class="nav-number">6.8.4.</span> <span class="nav-text">Thread.name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-ident"><span class="nav-number">6.8.5.</span> <span class="nav-text">Thread.ident</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-is-alive"><span class="nav-number">6.8.6.</span> <span class="nav-text">Thread.is_alive()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-isAlive"><span class="nav-number">6.8.7.</span> <span class="nav-text">Thread.isAlive()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-join-timeout"><span class="nav-number">6.8.8.</span> <span class="nav-text">Thread.join([timeout])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-Lock"><span class="nav-number">6.8.9.</span> <span class="nav-text">threading.Lock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-RLock"><span class="nav-number">6.8.10.</span> <span class="nav-text">threading.RLock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-Condition"><span class="nav-number">6.8.11.</span> <span class="nav-text">threading.Condition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Condition-wait-timeout"><span class="nav-number">6.8.12.</span> <span class="nav-text">Condition.wait([timeout])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Condition-notify"><span class="nav-number">6.8.13.</span> <span class="nav-text">Condition.notify()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Condition-notify-all"><span class="nav-number">6.8.14.</span> <span class="nav-text">Condition.notify_all()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Condition-notifyAll"><span class="nav-number">6.8.15.</span> <span class="nav-text">Condition.notifyAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-Event"><span class="nav-number">6.8.16.</span> <span class="nav-text">threading.Event</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event-wait-timeout"><span class="nav-number">6.8.17.</span> <span class="nav-text">Event.wait([timeout])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event-set"><span class="nav-number">6.8.18.</span> <span class="nav-text">Event.set()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event-clear"><span class="nav-number">6.8.19.</span> <span class="nav-text">Event.clear()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event-isSet"><span class="nav-number">6.8.20.</span> <span class="nav-text">Event.isSet()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-Timer"><span class="nav-number">6.8.21.</span> <span class="nav-text">threading.Timer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-active-count"><span class="nav-number">6.8.22.</span> <span class="nav-text">threading.active_count()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-activeCount"><span class="nav-number">6.8.23.</span> <span class="nav-text">threading.activeCount()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-current-thread"><span class="nav-number">6.8.24.</span> <span class="nav-text">threading.current_thread()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-currentThread"><span class="nav-number">6.8.25.</span> <span class="nav-text">threading.currentThread()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-enumerate"><span class="nav-number">6.8.26.</span> <span class="nav-text">threading.enumerate()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-settrace-func"><span class="nav-number">6.8.27.</span> <span class="nav-text">threading.settrace(func)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threading-setprofile-func"><span class="nav-number">6.8.28.</span> <span class="nav-text">threading.setprofile(func)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiprocessing"><span class="nav-number">6.9.</span> <span class="nav-text">multiprocessing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os"><span class="nav-number">6.10.</span> <span class="nav-text">os</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#os-name"><span class="nav-number">6.10.1.</span> <span class="nav-text">os.name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-getcwd"><span class="nav-number">6.10.2.</span> <span class="nav-text">os.getcwd()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-listdir"><span class="nav-number">6.10.3.</span> <span class="nav-text">os.listdir()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-remove"><span class="nav-number">6.10.4.</span> <span class="nav-text">os.remove()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-rmdir"><span class="nav-number">6.10.5.</span> <span class="nav-text">os.rmdir()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-mkdir"><span class="nav-number">6.10.6.</span> <span class="nav-text">os.mkdir()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-path-isfile"><span class="nav-number">6.10.7.</span> <span class="nav-text">os.path.isfile()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-path-isdir"><span class="nav-number">6.10.8.</span> <span class="nav-text">os.path.isdir()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-path-split"><span class="nav-number">6.10.9.</span> <span class="nav-text">os.path.split()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-getcwd-1"><span class="nav-number">6.10.10.</span> <span class="nav-text">os.getcwd()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-system"><span class="nav-number">6.10.11.</span> <span class="nav-text">os.system()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-chdir"><span class="nav-number">6.10.12.</span> <span class="nav-text">os.chdir()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-path-getsize"><span class="nav-number">6.10.13.</span> <span class="nav-text">os.path.getsize()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-path-abspath"><span class="nav-number">6.10.14.</span> <span class="nav-text">os.path.abspath()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-path-join-path-name"><span class="nav-number">6.10.15.</span> <span class="nav-text">os.path.join(path, name)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-path-basename-path"><span class="nav-number">6.10.16.</span> <span class="nav-text">os.path.basename(path)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-path-dirname-path"><span class="nav-number">6.10.17.</span> <span class="nav-text">os.path.dirname(path)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#os-path-realpath-path"><span class="nav-number">6.10.18.</span> <span class="nav-text">os.path.realpath(path)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sys"><span class="nav-number">6.11.</span> <span class="nav-text">sys</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sys-argv"><span class="nav-number">6.11.1.</span> <span class="nav-text">sys.argv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sys-platform"><span class="nav-number">6.11.2.</span> <span class="nav-text">sys.platform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sys-path"><span class="nav-number">6.11.3.</span> <span class="nav-text">sys.path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sys-builtin-module-names"><span class="nav-number">6.11.4.</span> <span class="nav-text">sys.builtin_module_names</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sys-exit-n"><span class="nav-number">6.11.5.</span> <span class="nav-text">sys.exit(n)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">6.12.</span> <span class="nav-text">Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue-Queue-maxsize"><span class="nav-number">6.12.1.</span> <span class="nav-text">Queue.Queue(maxsize)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue-LifoQueue-maxsize"><span class="nav-number">6.12.2.</span> <span class="nav-text">Queue.LifoQueue(maxsize)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue-PriorityQueue-maxsize"><span class="nav-number">6.12.3.</span> <span class="nav-text">Queue.PriorityQueue(maxsize)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-put"><span class="nav-number">6.12.4.</span> <span class="nav-text">q.put()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-get"><span class="nav-number">6.12.5.</span> <span class="nav-text">q.get()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-qsize"><span class="nav-number">6.12.6.</span> <span class="nav-text">q.qsize()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-empty"><span class="nav-number">6.12.7.</span> <span class="nav-text">q.empty()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-full"><span class="nav-number">6.12.8.</span> <span class="nav-text">q.full()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-get-block-timeout"><span class="nav-number">6.12.9.</span> <span class="nav-text">q.get([block[, timeout]])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-get-nowait-相"><span class="nav-number">6.12.10.</span> <span class="nav-text">q.get_nowait() 相</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-put-nowait-item"><span class="nav-number">6.12.11.</span> <span class="nav-text">q.put_nowait(item)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-task-done"><span class="nav-number">6.12.12.</span> <span class="nav-text">q.task_done()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-join"><span class="nav-number">6.12.13.</span> <span class="nav-text">q.join()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pickle"><span class="nav-number">6.13.</span> <span class="nav-text">pickle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pickle-dump-obj-file-protocol"><span class="nav-number">6.13.1.</span> <span class="nav-text">pickle.dump(obj, file, [,protocol])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pickle-load-file"><span class="nav-number">6.13.2.</span> <span class="nav-text">pickle.load(file)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pickle-dumps-obj-protocol"><span class="nav-number">6.13.3.</span> <span class="nav-text">pickle.dumps(obj[, protocol])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pickle-loads-string"><span class="nav-number">6.13.4.</span> <span class="nav-text">pickle.loads(string)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cPickle"><span class="nav-number">6.14.</span> <span class="nav-text">cPickle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashlib"><span class="nav-number">6.15.</span> <span class="nav-text">hashlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#csv"><span class="nav-number">6.16.</span> <span class="nav-text">csv</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#csv-reader-csvfile-dialect-’excel’-fmtparams"><span class="nav-number">6.16.1.</span> <span class="nav-text">csv.reader(csvfile, dialect=’excel’, **fmtparams)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#csv-writer-csvfile-dialect-’excel’-fmtparam"><span class="nav-number">6.16.2.</span> <span class="nav-text">csv.writer(csvfile[, dialect=’excel’][, fmtparam])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DictReader"><span class="nav-number">6.16.3.</span> <span class="nav-text">DictReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DictWriter"><span class="nav-number">6.16.4.</span> <span class="nav-text">DictWriter</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#json"><span class="nav-number">6.17.</span> <span class="nav-text">json</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#json-dumps"><span class="nav-number">6.17.1.</span> <span class="nav-text">json.dumps()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#json-loads"><span class="nav-number">6.17.2.</span> <span class="nav-text">json.loads()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#json-dump"><span class="nav-number">6.17.3.</span> <span class="nav-text">json.dump()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#json-load"><span class="nav-number">6.17.4.</span> <span class="nav-text">json.load()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simplejson"><span class="nav-number">6.18.</span> <span class="nav-text">simplejson</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cProfile"><span class="nav-number">6.19.</span> <span class="nav-text">cProfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glob"><span class="nav-number">6.20.</span> <span class="nav-text">glob</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atexit"><span class="nav-number">6.21.</span> <span class="nav-text">atexit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dis"><span class="nav-number">6.22.</span> <span class="nav-text">dis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python第三方包"><span class="nav-number">7.</span> <span class="nav-text">Python第三方包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#requests"><span class="nav-number">7.1.</span> <span class="nav-text">requests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrapy"><span class="nav-number">7.2.</span> <span class="nav-text">scrapy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PIL"><span class="nav-number">7.3.</span> <span class="nav-text">PIL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis"><span class="nav-number">7.4.</span> <span class="nav-text">redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ipdb"><span class="nav-number">7.5.</span> <span class="nav-text">ipdb</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目部署"><span class="nav-number">8.</span> <span class="nav-text">项目部署</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

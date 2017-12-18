@@ -214,6 +214,128 @@
             
               
                 
+                <a class="post-title-link" href="/2017/11/22/python-django/" itemprop="url">
+                  基于Python Django的web接口开发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-22T18:47:21+08:00" content="2017-11-22">
+              2017-11-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          基础开发环境安装Django1pip3 install django==1.10.3
+创建项目通过Django来创建项目1django-amdin startproject guest   //创建了guest项目
+创建应用一个项目可以包含多个应用。就像可以一个项目里包含前后端集成的应用，和前后端分离的应用。1python3 manage.py startapp sign   //创建了sign应用
+然后将应用添加至项目中，12345guest/settings.pyINSTLLED_APPS = [  ...  'sign',]
+运行项目12python3 manage.py runserverpython3 manage.py runserver 127.0.0.1:8001    //指定IP和端口
+应用开发应用基础开发Django应用工作流分为四个部分：
+
+浏览器–url如获取http://127.0.0.1:8000/index/
+匹配url指向路由–urls.py正则匹配url，并指定指向的路由。
+123urlpatterns = [  url(r'^index/$', v
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/11/22/python-django/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/15/vuex/" itemprop="url">
                   vuex项目应用/开发实战
                 </a>
@@ -1277,132 +1399,6 @@ Double, Float浮点数。Double表示64位浮点数，高精度Float表示32位�
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/16/vim/" itemprop="url">
-                  vim命令大全
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-16T10:41:08+08:00" content="2017-01-16">
-              2017-01-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/vim/" itemprop="url" rel="index">
-                    <span itemprop="name">vim</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          vim的几种模式正常模式按esc可回到正常模式
-插入模式可输入文本。按i, a, o都能进入插入模式
-可视模式按v进入可视模式。此时可选中文本
-替换模式正常模式下，按r进入。
-打开文件vim -r file恢复上次异常退出的文件；
-vim -R file以只读的方式打开文件，但可以强制保存；
-vim -M file以只读的方式打开文件，不可以强制保存；
-vim -y num file将编辑窗口的大小设为num行；
-vim + file从文件的末尾开始；
-vim +num file从第num行开始；
-vim +/string file打开file，并将光标停留在第一个找到的string上。
-vim –remote file用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim –remote file在已有的gvim中打开文件。
-文档操作:e file关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。
-:e! file放弃对当前文件
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/16/vim/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1449,7 +1445,7 @@ vim –remote file用已有的vim进程打开指定的文件。 如果你不想�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1457,7 +1453,7 @@ vim –remote file用已有的vim进程打开指定的文件。 如果你不想�
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1466,7 +1462,7 @@ vim –remote file用已有的vim进程打开指定的文件。 如果你不想�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

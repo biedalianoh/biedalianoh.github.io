@@ -214,8 +214,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/call-apply/" itemprop="url">
-                  call, apply, callee, caller应用
+                <a class="post-title-link" href="/2017/01/11/nodejs-events/" itemprop="url">
+                  nodejs深入系列--events
                 </a>
               
             
@@ -275,125 +275,9 @@
 
       
         
-          
-          call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
-即将一个函数的上下文从初始的上下文改变为指定的thisArg。
-不带参数arg1234567891011121314function base() &#123;    this.name = 'zhou';    this.getName = function() &#123;        console.log(this.name);    &#125;;&#125;;function extend() &#123;    base.call(this)     //让base代替执行this    console.log(this)       var c = &#123;&#125;    base.call(c);       //让base代替执行c    console.log(c);&#125;;
-extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend 中：调用 this 时，都是调用 base
-          ...
-
+          nodejs深入系列之events
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/call-apply/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-console/" itemprop="url">
-                  nodejs深入系列--console
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之console
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-console/">
+            <a class="btn" href="/2017/01/11/nodejs-events/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -550,8 +434,8 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-events/" itemprop="url">
-                  nodejs深入系列--events
+                <a class="post-title-link" href="/2017/01/11/call-apply/" itemprop="url">
+                  call, apply, callee, caller应用
                 </a>
               
             
@@ -611,124 +495,15 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
 
       
         
-          nodejs深入系列之events
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-events/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/contentEditble/" itemprop="url">
-                  让div标签可输入内容的几种方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Html-CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">Html, CSS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          可编辑这块本来还停留在div和input类相互转换的思路上，今天无意间看到几种新的实现方法。
-css方式: user-modifyuser-modify可以让普通元素可读写。目前可支持属性：1234user-modify: read-only;       // 只读user-modify: read-write;      // 可输入纯文本和富文本user-modify: write-only;      // 目前浏览器基本不支持user-modify: read-write-plaintext-only;   // 只能输入纯文本，只有webkit支持
-html方式: contenteditablecontenteditable可以让普通元素可读写。目前可支持属性：123456contenteditable=""contenteditable="events"            // 作用未知contenteditable="caret"             // 作用未知contenteditable="plaintext-only"    // 只能输入纯文本，只有
+          call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
+即将一个函数的上下文从初始的上下文改变为指定的thisArg。
+不带参数arg1234567891011121314function base() &#123;    this.name = 'zhou';    this.getName = function() &#123;        console.log(this.name);    &#125;;&#125;;function extend() &#123;    base.call(this)     //让base代替执行this    console.log(this)       var c = &#123;&#125;    base.call(c);       //让base代替执行c    console.log(c);&#125;;
+extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend 中：调用 this 时，都是调用 base
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/contentEditble/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/call-apply/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -885,8 +660,8 @@ html方式: contenteditablecontenteditable可以让普通元素可读写。目�
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/angular/" itemprop="url">
-                  Angular 使用笔记
+                <a class="post-title-link" href="/2017/01/11/compatibility/" itemprop="url">
+                  前端常用框架性能与兼容性
                 </a>
               
             
@@ -946,9 +721,239 @@ html方式: contenteditablecontenteditable可以让普通元素可读写。目�
 
       
         
-          Angular当然是现在流行的前端框架之一，和React，Ember一起并称前端开发的三神器。不过由于前公司因为业务需要，使一直使用的是另外一个轻量级的MVVM框架Rivets，使得对angular一直闻其声，未尽用。趁此机会便想把angular学习应用了一遍，并对比工作中使用的rivets，熟悉MV*的框架结构。
+          
+          持续更行。。。。
+框架类rivets不兼容ie9以下版本。
+兼容IE8，需要在使用rivets的代码之前添加解决方法。经测试，此方法无法生效。123456789101112131415&lt;script src="./assets/vendor/watch-shim.js"&gt;&lt;/script&gt;&lt;scirpt&gt;// Shimming up the model for IE8rivets.adapters['.'].subscribe = function(obj, keypath, callback) &#123;	var watching = createWatcher(obj);	watching.watch(keypath, callback);&#125;;rivets.adapters['.'].unsubscribe = function(obj, keypath, callback) &#123;	watching.unwatch(keypath, callback);&#125;;// SHIMSString.prototype.trim 
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/angular/">
+            <a class="btn" href="/2017/01/11/compatibility/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/nodejs-db/" itemprop="url">
+                  nodejs深入系列--数据库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          nodejs深入系列之数据库操作
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/nodejs-db/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/createElement_method/" itemprop="url">
+                  几种创建标签节点和属性的方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          在写一个纯净的es6代码时，涉及到创建dom元素的事情，我一度被jquery的字符串式append给惯坏了，因此也直接就上了document.body.appendChild(‘&lt;div&gt;&lt;/div&gt;‘)这种代码，出错一查之下，发现几个好玩的创建标签和属性的方法。
+createDocumentFragment()创建文档碎片节点。主要的特点为，创建多个节点时，不用每个节点都单独append到body中去进行渲染，而是把所有节点都apped到这个fragment里面，然后把fragment append到body中，因此能提升渲染性能。123456var fragment = document.createDocumentFragment();for(let i = 0; i &lt; 10; i++) &#123;  var p = document.createElement('p');  fragment.appendChild(p);&#125;document.body.appendChild(fragment);
+createAttribute(nam
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/createElement_method/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1105,8 +1110,8 @@ html方式: contenteditablecontenteditable可以让普通元素可读写。目�
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-net/" itemprop="url">
-                  nodejs深入系列--net
+                <a class="post-title-link" href="/2017/01/11/nodejs-https/" itemprop="url">
+                  nodejs深入系列--https
                 </a>
               
             
@@ -1166,9 +1171,9 @@ html方式: contenteditablecontenteditable可以让普通元素可读写。目�
 
       
         
-          nodejs深入系列之net
+          nodejs深入系列之https
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-net/">
+            <a class="btn" href="/2017/01/11/nodejs-https/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1350,7 +1355,7 @@ html方式: contenteditablecontenteditable可以让普通元素可读写。目�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1358,7 +1363,7 @@ html方式: contenteditablecontenteditable可以让普通元素可读写。目�
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1367,7 +1372,7 @@ html方式: contenteditablecontenteditable可以让普通元素可读写。目�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
