@@ -214,6 +214,128 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/18/swift/" itemprop="url">
+                  swift变量和方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-18T10:50:33+08:00" content="2017-01-18">
+              2017-01-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          定义常量常量和变量必须在使用前声明
+letlet用来声明常量，不能改变。
+变量varvar用来声明变量。声明变量和常量时，可指定类型：1234var msg: Stringmsg = "hello"let msg: Int = 32;
+print, println打印到console面板上，println换行
+字符串插值()在字符串中使用变量和常量时，用 \()12var msg = "hello"println("I want to say \(msg)")
+注释注释和js相同
+Intswift提供了8，16，32三种有符号和无符号整数类型：Int8/UInt8, Int16/UInt16, Int32/UInt32一般直接使用Int就可以。
+Double, Float浮点数。Double表示64位浮点数，高精度Float表示32位浮点数。
+类型转换显式转换。即需要SomeType(value)123let three = 3let pi = 3.14125921let plus = Double(three) + pi
+也有类似.toInt()之类的方法，类型转换有可能失败，所以需
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/18/swift/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/16/vim/" itemprop="url">
                   vim命令大全
                 </a>
@@ -684,8 +806,123 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/karma-jasmine/" itemprop="url">
-                  使用Karma+jasmine实现自动化单元测试
+                <a class="post-title-link" href="/2017/01/11/matrix/" itemprop="url">
+                  CSS3中的Matrix矩阵
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Css/" itemprop="url" rel="index">
+                    <span itemprop="name">Css</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          transform中的MatrixCSS3中的矩阵是指 matrix() 和 matrix3d()，前者是元素2D平面的移动变换，后者是3D变换。2D变换为 33， 3D变换则是 44 矩阵。1234transform: matrix(1, 0, 0, 1, 8, 9) ---1   0   80   1   90   0   1
+matrix实际上能设置的属性有：skew(拉伸)，scale(缩放)，rotate(旋转)，translate(位移)。即matrix是以下属性的集合：1234transform: skew(10deg, 10deg);transform: scale(2.2, 1.5);transform: rotate(10deg);transform: translate(10px, 20px);
+transform-origin在理解matrix之前，先了解一个属性：transform-origin。即矩阵所有相关变化的基准点。默认值为 0在单独使用skew，scale，rotate，translate时，若设置此值则变化的基准点响应改变。transform-or
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/matrix/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/es6/" itemprop="url">
+                  es6实用中文api
                 </a>
               
             
@@ -745,9 +982,129 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
 
       
         
-          Jasmine用来做单元测试，可不依赖其他任何javascript组建，即指做单元测试可直接添加jasmine到html文件中，并可在浏览器环境中执行测试。Karma自动化完成单元测试，是基于nodejs的测试过程管理工具，有一个强大的特性，可监控(watch)文件的变化并自动执行，然后通过console.log()显示结果，并且网络中任何其他设备如手机均可连接测试。jasmine和karma结合，可实现一个自动化单元测试。
+          
+          声明let, constlet和const不会有变量声明提升，作用域也会被限制。通过let，const，class声明的变量，不会成为 window 的属性。const需要在声明时赋值。const声明一个常量时，常量的值不能改变。const声明一个复合型变量时，变量不指向数据，而是指向数据所在的地址。因此变量可以添加属性。12345const a = 'hello';  // a 的值不可被重置const foo = &#123;&#125;;     // foo 可以添加属性foo.prop = 111;const arr = [];     // arr 可以添加元素arr.push('hello');
+如果想完全将对象冻结，不能更改，应该使用 Object.freeze 方法。1const foo = Object.freeze(&#123;&#125;);
+解构数组解构通过数组方式直接给对应数组中的对应变量赋值。12345var [a, b, c] = [1, 2, 3];let [a, [[b], c]] = [1, [[2], 3]];let [ , , third] =
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/karma-jasmine/">
+            <a class="btn" href="/2017/01/11/es6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/contentEditble/" itemprop="url">
+                  让div标签可输入内容的几种方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Html-CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">Html, CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          可编辑这块本来还停留在div和input类相互转换的思路上，今天无意间看到几种新的实现方法。
+css方式: user-modifyuser-modify可以让普通元素可读写。目前可支持属性：1234user-modify: read-only;       // 只读user-modify: read-write;      // 可输入纯文本和富文本user-modify: write-only;      // 目前浏览器基本不支持user-modify: read-write-plaintext-only;   // 只能输入纯文本，只有webkit支持
+html方式: contenteditablecontenteditable可以让普通元素可读写。目前可支持属性：123456contenteditable=""contenteditable="events"            // 作用未知contenteditable="caret"             // 作用未知contenteditable="plaintext-only"    // 只能输入纯文本，只有
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/contentEditble/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -911,8 +1268,8 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/foundation-1/" itemprop="url">
-                  Javascript基础--函数和定义优先级
+                <a class="post-title-link" href="/2017/01/11/nodejs-events/" itemprop="url">
+                  nodejs深入系列--events
                 </a>
               
             
@@ -972,335 +1329,9 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
 
       
         
-          
-          Javascript中的包括变量的定义，函数的定义；函数的静态方法，原型方法；变量的前置定义，后置定义；运算符的优先级；变量的提升，等等经常容易发生混淆。避免在前端开发过程中再踩这些类似的坑，在此总结。
-js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值， 字符串， 数值， 对象判断的基本方式是，他们属于原始的基本类型，而不是对象，不能使用 new 命令。ES6 新增了一种基本数据类型： Symbol
-静态方法和原型方法静态方法的优先级高于原型方法。12345678910function Demo() &#123;    this.getName = function() &#123;        console.log(1);    &#125;&#125;;Demo.prototype.getName = function() &#123;    console.log(2);&#125;Demo.getName();   //  1
-变量声明提升所有的声明变量或声明函数都会被提升到当前函数的顶部。123console.log(x);console.
-          ...
-
+          nodejs深入系列之events
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/foundation-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/matrix/" itemprop="url">
-                  CSS3中的Matrix矩阵
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Css/" itemprop="url" rel="index">
-                    <span itemprop="name">Css</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          transform中的MatrixCSS3中的矩阵是指 matrix() 和 matrix3d()，前者是元素2D平面的移动变换，后者是3D变换。2D变换为 33， 3D变换则是 44 矩阵。1234transform: matrix(1, 0, 0, 1, 8, 9) ---1   0   80   1   90   0   1
-matrix实际上能设置的属性有：skew(拉伸)，scale(缩放)，rotate(旋转)，translate(位移)。即matrix是以下属性的集合：1234transform: skew(10deg, 10deg);transform: scale(2.2, 1.5);transform: rotate(10deg);transform: translate(10px, 20px);
-transform-origin在理解matrix之前，先了解一个属性：transform-origin。即矩阵所有相关变化的基准点。默认值为 0在单独使用skew，scale，rotate，translate时，若设置此值则变化的基准点响应改变。transform-or
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/matrix/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/my first blog/" itemprop="url">
-                  新的记载，新的开端
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          花了三个小时时间，把github+hexo的博客建成功了。作为一个已经工作了六年的前端开发coder，现在开始系统的通过blog来开始记录Program，确实有点来的迟了点。近两年主要通过wiznote来记录一些前端开发的心得和总结，包括常用框架的翻译和填坑，还有一些前端知识的分享是通过个人网站来发布分享。此后会逐步把以前发布过的内容转移到此blog，并且有新的和好的内容也会在此发布。目前已经写过的内容包含：webpack，angular，velocity，git，lodash，gulp，ndenv，es6，pure。近几年前端的飞跃式发展，让我们FEs突然变得忙碌起来，这些所发布的知识也是其中的冰山一角，让我们所有人一起去揭开这些面纱，找到属于每个人成长中的喜悦。
-
-          
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/my first blog/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-console/" itemprop="url">
-                  nodejs深入系列--console
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之console
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-console/">
+            <a class="btn" href="/2017/01/11/nodejs-events/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1372,7 +1403,7 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">54</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

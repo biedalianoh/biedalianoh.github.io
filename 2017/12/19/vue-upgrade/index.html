@@ -1,0 +1,869 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,vue," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="vue list命令行展示vue-cli模式使用vue-cli初始化项目时，可使用几种不同的模式
+
+browserify：集成高级功能的Browserify+vueify用于正式开发
+browserify-simple：集成基础功能的Browserify+vueify用于快速原型开发
+simple：适用于单页应用开发的最小化配置
+webpack：集成高级功能的webpack+vue-loader用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue知识点查漏补缺">
+<meta property="og:url" content="http://yoursite.com/2017/12/19/vue-upgrade/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="vue list命令行展示vue-cli模式使用vue-cli初始化项目时，可使用几种不同的模式
+
+browserify：集成高级功能的Browserify+vueify用于正式开发
+browserify-simple：集成基础功能的Browserify+vueify用于快速原型开发
+simple：适用于单页应用开发的最小化配置
+webpack：集成高级功能的webpack+vue-loader用">
+<meta property="og:updated_time" content="2017-12-29T09:59:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue知识点查漏补缺">
+<meta name="twitter:description" content="vue list命令行展示vue-cli模式使用vue-cli初始化项目时，可使用几种不同的模式
+
+browserify：集成高级功能的Browserify+vueify用于正式开发
+browserify-simple：集成基础功能的Browserify+vueify用于快速原型开发
+simple：适用于单页应用开发的最小化配置
+webpack：集成高级功能的webpack+vue-loader用">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Vue知识点查漏补缺 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Vue知识点查漏补缺
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-19T10:31:39+08:00" content="2017-12-19">
+              2017-12-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="vue-list"><a href="#vue-list" class="headerlink" title="vue list"></a>vue list</h1><p>命令行展示vue-cli模式<br>使用vue-cli初始化项目时，可使用几种不同的模式</p>
+<ol>
+<li>browserify：集成高级功能的Browserify+vueify用于正式开发</li>
+<li>browserify-simple：集成基础功能的Browserify+vueify用于快速原型开发</li>
+<li>simple：适用于单页应用开发的最小化配置</li>
+<li>webpack：集成高级功能的webpack+vue-loader用于正式开发</li>
+<li>webpack-simple：集成基础功能的webpack+vue-loader用于快速原型开发<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vue init webpack-simple my-project</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="import"><a href="#import" class="headerlink" title="@import"></a>@import</h1><p>vue-cli项目可直接在style中导入less，或在script中导入less<br>不过为避免污染全局环境，style可加scoped<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style scoped&gt;</div><div class="line">@import <span class="string">'./assets/todos.less'</span></div><div class="line">&lt;/style&gt;</div><div class="line">&lt;script&gt;</div><div class="line">import <span class="string">'./assets/todos.less'</span></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="过滤器filter"><a href="#过滤器filter" class="headerlink" title="过滤器filter"></a>过滤器filter</h1><p>filter中没有this引用，过滤器内的this是undefined<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;time&gt;&#123;&#123;todo.created | date&#125;&#125;&lt;/time&gt;</div><div class="line"></div><div class="line">import moment from <span class="string">'moment'</span></div><div class="line">import <span class="string">'moment/locale/zh-cn'</span></div><div class="line">moment.locale(<span class="string">'zh-cn'</span>)</div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">  <span class="function"><span class="title">data</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">      todos: [</div><div class="line">        created: Date.now()</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  filters: &#123;</div><div class="line">    data(val) &#123;</div><div class="line">      <span class="built_in">return</span> moment(val).calendar()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="moment-js"><a href="#moment-js" class="headerlink" title="moment.js"></a>moment.js</h1><p>时间格式化的包，用于timestape转正常格式等<br>支持中文需设置区域为中国<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;time&gt;&#123;&#123;todo.created | date&#125;&#125;&lt;/time&gt;</div><div class="line"></div><div class="line">import moment from <span class="string">'moment'</span></div><div class="line">import <span class="string">'moment/locale/zh-cn'</span></div><div class="line">moment.locale(<span class="string">'zh-cn'</span>)</div><div class="line"></div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">  filters: &#123;</div><div class="line">    date(val) &#123;</div><div class="line">      <span class="built_in">return</span> moment(val).calendar()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="文件目录常见约定"><a href="#文件目录常见约定" class="headerlink" title="文件目录常见约定"></a>文件目录常见约定</h1><ol>
+<li>公共组件(components)、指令(directives)、过滤器(filters)目录存放于src中</li>
+<li>文件目录命名由全小写单词组成，多个单词以’-‘分隔</li>
+<li>vue文件统一以大驼峰命名(如LoginForm.vue)，仅入口文件index.vue采用小写</li>
+<li>测试文件一律以测试目标文件名.spec.js命名</li>
+<li>资源文件一律以小写命名，多个单词以’-‘分隔</li>
+</ol>
+<h1 id="require表达式"><a href="#require表达式" class="headerlink" title="require表达式"></a>require表达式</h1><p>webpack能处理几乎所有第三方库，甚至允许依赖里出现表达式：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">require(<span class="string">'./components/'</span> + name + <span class="string">'.vue'</span>)</div></pre></td></tr></table></figure></p>
+<h1 id="webpack配置别名"><a href="#webpack配置别名" class="headerlink" title="webpack配置别名"></a>webpack配置别名</h1><p>较长的路径import不方便引用，可在webpack的resolve的alias中加入别名定义</p>
+<h1 id="webpack配置多个入口"><a href="#webpack配置多个入口" class="headerlink" title="webpack配置多个入口"></a>webpack配置多个入口</h1><p>如项目有多个入口，比如前台和后台，需配置多个入口，则需要配置：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">entry: &#123;</div><div class="line">  app: <span class="string">'./src/main.js'</span>,</div><div class="line">  admin: <span class="string">'./src/admin-main.js'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>另外由于html页面是由HtmlWebpackPlugin插件生成，因此在plugins中需增加new HtmlWebpackPlugin配置，并且dev和prod配置中都需要增加。<br>还有如使用了vue-router，则需对connect-history-api-fallback的配置进行修改，不然所有的请求都会转发给index.html：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//dev-server.js</div><div class="line">app.use(require(<span class="string">'connect-history-api-fallback'</span>)())</div><div class="line">修改为</div><div class="line">var <span class="built_in">history</span> = require(<span class="string">'connect-history-api-fallback'</span>)</div><div class="line">app.use(<span class="built_in">history</span>(</div><div class="line">  rewrites: [</div><div class="line">    &#123;from: /^\/admin\/.*$/, to: <span class="string">'/admin.html'</span>&#125;</div><div class="line">  ]</div><div class="line">))</div></pre></td></tr></table></figure></p>
+<h1 id="接口细分化"><a href="#接口细分化" class="headerlink" title="接口细分化"></a>接口细分化</h1><p>可按功能区分调用不同接口的页面，以合理规划代码，以适应不断膨胀的项目<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---services</div><div class="line">	---index.js			配置接口的入口文件</div><div class="line">	---apis.js			api地址调用</div><div class="line">	---cart.js			购物车相关api</div><div class="line">	---product.js</div><div class="line">	---...</div></pre></td></tr></table></figure></p>
+<p>其中入口index.js:<br>···zsh<br>import _ from ‘lodash’<br>import Vue from ‘vue’<br>import VueResource from ‘vue-resource’<br>import product from ‘./product.js’<br>import cart from ‘./cart.js’</p>
+<p>Vue.use(VueResource)</p>
+<p>export default {<br>    product,<br>    cart<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">其中cart.js：</div></pre></td></tr></table></figure></p>
+<p>import Vue from ‘vue’<br>import * apis from ‘./apis’<br>export default {<br>    export default{<br>        getAllItems: id =&gt; Vue.http.get(apis.GET_CARTITEMS)<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">最后调用接口的地方：</div><div class="line">```zsh</div><div class="line">import services from &apos;../../services&apos;</div><div class="line">services.cart.getAllItems.then(res =&gt; &#123;</div><div class="line">	...</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h1 id="E2E测试"><a href="#E2E测试" class="headerlink" title="E2E测试"></a>E2E测试</h1><p>nightwatch</p>
+<h1 id="路由模式"><a href="#路由模式" class="headerlink" title="路由模式"></a>路由模式</h1><ol>
+<li>Hash<br><a href="http://localhost/#home" target="_blank" rel="external">http://localhost/#home</a><br>支持所有浏览器，包括不支持html5 history api的浏览器</li>
+<li>History<br><a href="http://localhost/home" target="_blank" rel="external">http://localhost/home</a><br>依赖html5 history api，需要浏览器支持h5</li>
+<li>Abstract<br>支持所有js环境，若无浏览器环境api，自动进入此模式</li>
+</ol>
+<h1 id="router-link-tag"><a href="#router-link-tag" class="headerlink" title="router-link tag"></a>router-link tag</h1><p>无须生成a，用其他标签都行，最终生成对用tag的dom元素<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;router-link :to=<span class="string">"&#123;name: 'HOME'&#125;"</span> tag=<span class="string">"li"</span>&gt;首页&lt;/router-link&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="自定义链接激活样式"><a href="#自定义链接激活样式" class="headerlink" title="自定义链接激活样式"></a>自定义链接激活样式</h1><p>设置激活样式<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;router-link :to=<span class="string">"&#123;name: 'Home'&#125;"</span> tag=<span class="string">"li"</span> active-class=<span class="string">"active"</span>&gt;</div><div class="line">也可在VueRouter上设置通用设置</div><div class="line">const router = new VueRouter(&#123;</div><div class="line">  linkActiveClass: <span class="string">"active"</span></div><div class="line">&#125;)</div><div class="line">为解决子路由激活状态下，父路由也会是激活状态，可使用exact精确匹配模式</div><div class="line">&lt;router-link :to=<span class="string">"&#123;name: 'Home'&#125;"</span> exact&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="History模式的控制"><a href="#History模式的控制" class="headerlink" title="History模式的控制"></a>History模式的控制</h1><p>history的控制分为三种：</p>
+<ol>
+<li>push 默认。<br>增加一层history</li>
+<li><p>append<br>在url后追加</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;router-link :to=<span class="string">"&#123;path: 'relative/path'&#125;"</span> append&gt;&lt;/router-link&gt;</div><div class="line">从/a导航到相对路径b，若配置了append，则为/a/b，若没配置则为/b</div></pre></td></tr></table></figure>
+</li>
+<li><p>replace 替换。<br>history不变</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;router-link :to=<span class="string">"&#123;name: 'Home'&#125;"</span> replace&gt;&lt;/router-link&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="404页面"><a href="#404页面" class="headerlink" title="404页面"></a>404页面</h1><p>在history模式下，直接输入路由页面地址，会出现404，需要在服务端配置出现404时重定位至index<br>然后在vueRouter里面增加一个覆盖所有页面的404页面<br>const router = new VueRouter({<br>  mode: ‘history’,<br>  routes: [<br>    {path: ‘*’, component: NotFoundComponent}<br>  ]<br>})</p>
+<h1 id="用ref选择dom元素"><a href="#用ref选择dom元素" class="headerlink" title="用ref选择dom元素"></a>用ref选择dom元素</h1><p>refs只能获取当前页面定义的ref<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;div class=<span class="string">"swiper-container"</span> ref=<span class="string">"slider"</span>&gt;&lt;/div&gt;</div><div class="line">this.<span class="variable">$refs</span>.slider</div></pre></td></tr></table></figure></p>
+<h1 id="自定义组件"><a href="#自定义组件" class="headerlink" title="自定义组件"></a>自定义组件</h1><p>用来减少重复，只有一些数据是不同的，其他部分相同，就可以做一个组件，通过参数来配置差异<br>组件中通过props来定义接收的数据，通过emit来触发父组件的方法<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">//父组件</div><div class="line">&lt;div class=<span class="string">"section"</span>&gt;</div><div class="line">  &lt;book-list :books=<span class="string">"lastestUpdated"</span> heading=<span class="string">"最新更新"</span>&gt;&lt;/book-list&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=<span class="string">"section"</span>&gt;</div><div class="line">  &lt;book-list :books=<span class="string">"recommended"</span> @onBookSelect=<span class="string">"preview(<span class="variable">$event</span>)"</span> heading=<span class="string">"编辑推荐"</span>&gt;&lt;/book-list&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"><span class="function"><span class="title">data</span></span>() &#123;</div><div class="line">  lastestUpdated: [],</div><div class="line">  recommended: []</div><div class="line">&#125;,</div><div class="line">components: &#123;</div><div class="line">  BookList</div><div class="line">&#125;,</div><div class="line">methods: &#123;</div><div class="line">  preview(book) &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//BookList</div><div class="line">&lt;div class=<span class="string">"heading"</span>&gt;&#123;&#123;heading&#125;&#125;&lt;/div&gt;</div><div class="line">&lt;div class=<span class="string">"book"</span> v-for=<span class="string">"book in books"</span> @click=<span class="string">"<span class="variable">$emit</span>('onBookSelect', book)"</span>&gt;&lt;/div&gt;</div><div class="line"><span class="built_in">export</span> default&#123;</div><div class="line">  props: [</div><div class="line">    <span class="string">'heading'</span>,</div><div class="line">    <span class="string">'books'</span></div><div class="line">  ],</div><div class="line">  filters: &#123;</div><div class="line">    join(args) &#123;</div><div class="line">      <span class="built_in">return</span> args.join(<span class="string">','</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="组件中的props"><a href="#组件中的props" class="headerlink" title="组件中的props"></a>组件中的props</h1><p>props用来做父组件向子组件传递数据</p>
+<ol>
+<li><p>父组件上传递数据时需为kebab-case格式，子组件的props中需为驼峰格式</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//父组件</div><div class="line">&lt;child my-message=<span class="string">"hello"</span>&gt;&lt;/child&gt;</div><div class="line">//子组件</div><div class="line">props: [<span class="string">'myMessage'</span>]</div></pre></td></tr></table></figure>
+</li>
+<li><p>props不止可传递一个字段，可传递任何数据</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//父组件</div><div class="line">&lt;child :my-message=<span class="string">"todo"</span>&gt;&lt;/child&gt;</div><div class="line">todo: &#123;</div><div class="line">  text: <span class="string">'Learn Vue</span></div><div class="line">&#125;</div><div class="line">//子组件</div><div class="line">props: ['myMessage<span class="string">']</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>props可指定验证规则<br>指定验证规则时，props需要定义为对象，而不是数组</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">props: &#123;</div><div class="line">  // 基础类型检测 (`null` 指允许任何类型)</div><div class="line">  propA: Number,</div><div class="line">  // 可能是多种类型</div><div class="line">  propB: [String, Number],</div><div class="line">  // 必传且是字符串</div><div class="line">  propC: &#123;</div><div class="line">    <span class="built_in">type</span>: String,</div><div class="line">    required: <span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">  // 数值且有默认值</div><div class="line">  propD: &#123;</div><div class="line">    <span class="built_in">type</span>: Number,</div><div class="line">    default: 100</div><div class="line">  &#125;,</div><div class="line">  // 数组/对象的默认值应当由一个工厂函数返回</div><div class="line">  propE: &#123;</div><div class="line">    <span class="built_in">type</span>: Object,</div><div class="line">    default: <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">      <span class="built_in">return</span> &#123; message: <span class="string">'hello'</span> &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  // 自定义验证函数</div><div class="line">  propF: &#123;</div><div class="line">    validator: <span class="keyword">function</span> (value) &#123;</div><div class="line">      <span class="built_in">return</span> value &gt; 10</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其中type可以是如下原生构造器：String, Number, Boolean, Function, Object, Array, Symbol<br>也可以是一个自定义构造器函数，通过instanceof来检测<br>在组件创建之前，进行prop校验，若验证失败，会抛出警告</p>
+<ol>
+<li>父组件传过来的props的值会覆盖子组件自己data中的属性值</li>
+<li>父组件传递数据给子组件，通过props是推荐方式，但子组件也完全也可以不用定义props<br>如<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//父组件</div><div class="line">&lt;child my-data=<span class="string">"sanyuanqiao"</span>&gt;&lt;/child&gt;</div><div class="line">//子组件</div><div class="line">&lt;div class=<span class="string">"dialog"</span>&gt;</div><div class="line">  ...</div><div class="line">&lt;/div&gt;</div><div class="line">最终会自动在根元素上添加属性:</div><div class="line">&lt;div class=<span class="string">"dialog"</span> my-data=<span class="string">"sanyuanqiao"</span>&gt;</div><div class="line">  ...</div><div class="line">&lt;/div&gt;</div><div class="line">若传递的为class或者style属性，则vue不会替代，会合并，赞~~~</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="event参数"><a href="#event参数" class="headerlink" title="$event参数"></a>$event参数</h1><p>$event是用来接收$emit方法中传出的参数，若没有参数，则为DOM对象实例<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$emit</span>(<span class="string">'onBookSelect'</span>, book)</div><div class="line">&lt;book-list @onBookSelect=<span class="string">"preview(<span class="variable">$event</span>)"</span>&gt;&lt;/book-list&gt;   //<span class="variable">$event</span>为book对象</div></pre></td></tr></table></figure></p>
+<h1 id="ajax请求库"><a href="#ajax请求库" class="headerlink" title="ajax请求库"></a>ajax请求库</h1><p>vue-resource<br>支持xhr或jsonp，和常见的promise</p>
+<h1 id="slot创建复合型组件"><a href="#slot创建复合型组件" class="headerlink" title="slot创建复合型组件"></a>slot创建复合型组件</h1><p>一个组件容器中可能包含其他dom元素或者组件，则通过占位符slot来允许父组件传递数据到组件中</p>
+<ol>
+<li>默认插槽<br>无需name</li>
+<li>具名插槽<br>需要name<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">子组件</div><div class="line">&lt;div class=<span class="string">"dialog"</span>&gt;</div><div class="line">  &lt;slot name=<span class="string">"head"</span>&gt;&lt;/slot&gt;</div><div class="line">  &lt;div&gt;</div><div class="line">    &lt;slot&gt;&lt;/slot&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;slot name=<span class="string">"body"</span>&gt;&lt;/slot&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">父组件</div><div class="line">&lt;modal-dialog&gt;</div><div class="line">  &lt;div slot=<span class="string">"head"</span>&gt;此处是head&lt;/div&gt;</div><div class="line">  &lt;my-list slot=<span class="string">"body"</span>&gt;&lt;/my-list&gt;</div><div class="line">  &lt;div&gt;此处为默认内容1&lt;/div&gt;</div><div class="line">  &lt;div&gt;此处为默认内容2&lt;/div&gt;</div><div class="line">&lt;/modal-dialog&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="检索文件"><a href="#检索文件" class="headerlink" title="检索文件"></a>检索文件</h1><p>在js中不使用诸如 ‘../assets/sliders/图片.png’ 这种相对路径的引用，因为webpack将程序编译后，这些图片真实路径并不指向~/src/assets目录，因此使用require.context将编译后的资源加载进来，然后通过名称获取正确的地址<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">require.context(directory, useSubdirectories = <span class="literal">false</span>, regExp=/^\.\//)</div><div class="line">        //在目录directory中查找对应正则regExp的文件，并可指定useSubdirectories是否查找子目录</div></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var cover_images = require.context(<span class="string">'./covers'</span>, <span class="literal">false</span>, /\.(png|jpg|gif|svg)$/)</div><div class="line"><span class="built_in">let</span> my_img = cover_images(<span class="string">'./my_img.jpg'</span>)</div></pre></td></tr></table></figure></p>
+<h1 id="组件继承–mixins"><a href="#组件继承–mixins" class="headerlink" title="组件继承–mixins"></a>组件继承–mixins</h1><p>vue2推荐使用es6，但在继承上并没有实用es6的extend，而选择了更好的方式：mixins(混合)<br>当组件1，和组件2，在export中有相同的任何属性，可提取出来为Base.js的组件，然后在组件中混合Base.js<br>实际为合并属性<br>// BaseListMixin.js<br>export default {<br>  props: {<br>    items: {<br>      type: Array,<br>      default: () =&gt; []<br>    }<br>  },<br>  data() {<br>    return {<br>      selectedItem: undefined<br>    }<br>  },<br>  computed: {<br>    …<br>  },<br>  methods: {<br>    …<br>  }<br>}</p>
+<p>// 组件<br>import BaseListMixin from ‘./BaseListMixin’<br>export default {<br>  mixins: [BaseListMixin],<br>  props: {<br>    showLine: {<br>      type: Boolean,<br>      default: false<br>    }<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 组件细分化</div><div class="line">组件代码行最好不要超过100</div><div class="line">1. 不带v-model的组件细分</div><div class="line">```zsh</div><div class="line">&lt;page-header header=&quot;图书&quot; sub-header=&quot;Vue CRUD示例&quot;&gt;&lt;/page-header&gt;</div><div class="line">PageHeader：</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;h1&gt;&#123;&#123;header&#125;&#125;</div><div class="line">    &lt;small v-if=&quot;subHeader&quot;&gt;&#123;&#123;subHeader&#125;&#125;&lt;/small&gt;</div><div class="line">  &lt;/h1&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">  props: [&apos;header&apos;, &apos;subHeader&apos;]</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>带v-model的组件细分<br>父组件是通过props传给子组件，子组件通过方法回传回去，形成双向绑定循环</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;search-box :terms=<span class="string">"terms"</span> placeholder=<span class="string">"请输入书名"</span> @search=<span class="string">"terms=<span class="variable">$event</span>"</span>&gt;&lt;/search-box&gt;</div><div class="line">SearchBox:</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"search"</span> :placeholder=<span class="string">"placeholder"</span> @keyup.enter=<span class="string">"<span class="variable">$emit</span>('search', <span class="variable">$event</span>.target.value)"</span> :value=<span class="string">"terms"</span> /&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&lt;script&gt;</div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">  name: <span class="string">'SearchBox'</span>,</div><div class="line">  props: [<span class="string">'terms'</span>, <span class="string">'placeholder'</span>]</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用slot来占位<br>在细分化的组件中，为了实现根据调用的父应用的需求，所以细分化的组件，需要写好占位符<slot name=""></slot>，然后调用的父应用上给定对应的slot的内容</p><p slot="">adsfasdf</p><br>若不指定名称，则把内容直接写进slot里<p></p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">父组件：</div><div class="line">&lt;my-component&gt;</div><div class="line">  &lt;p&gt;此处为父组件内容&lt;/p&gt;</div><div class="line">  &lt;p&gt;此处为父组件内容&lt;/p&gt;</div><div class="line">&lt;/my-component&gt;</div><div class="line">子组件：</div><div class="line">&lt;div&gt;</div><div class="line">  &lt;p&gt;子组件内容&lt;/p&gt;</div><div class="line">  &lt;slot&gt;&lt;/slot&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>可指定细分slot的内容，父组件根据情况是否覆盖</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">父组件：</div><div class="line">&lt;div slot=<span class="string">"header"</span>&gt;&lt;p&gt;这是来自父组件的header&lt;/p&gt;&lt;/div&gt;</div><div class="line">子组件：</div><div class="line">&lt;slot name=<span class="string">"header"</span>&gt;</div><div class="line">  &lt;p&gt;这是子组件默认的header&lt;/p&gt;</div><div class="line">&lt;/slot&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="computed属性"><a href="#computed属性" class="headerlink" title="computed属性"></a>computed属性</h1><p>在绑定属性时，需要计算，可不用@change来一步步计算，直接使用函数，也可直接使用computed中的属性来设置get和set<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  <span class="function"><span class="title">authors</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.current.authors += <span class="string">'end.'</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">或</div><div class="line">computed: &#123;</div><div class="line">  authors: &#123;</div><div class="line">    <span class="function"><span class="title">get</span></span>() &#123;</div><div class="line">      <span class="built_in">return</span> this.current.authors += <span class="string">'end.'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="built_in">set</span>(val) &#123;</div><div class="line">      this.current.authors = val.split(<span class="string">','</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="vue表单验证"><a href="#vue表单验证" class="headerlink" title="vue表单验证"></a>vue表单验证</h1><p>vue-validator是最流行的表单验证库，但暂时不完全支持vue2<br>除了vue-validator，另一个替代品为vee-validate，是不错的选择</p>
+<h1 id="vue-cli开发跨域代理"><a href="#vue-cli开发跨域代理" class="headerlink" title="vue-cli开发跨域代理"></a>vue-cli开发跨域代理</h1><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">config/index.js</div><div class="line">dev: &#123;</div><div class="line">  proxyTable: &#123;</div><div class="line">    <span class="string">'/hallelujah'</span>: &#123;    //本地开发地址</div><div class="line">      target: <span class="string">'https://test-hallelujah.ucredit.com'</span>,      //转发到的后端服务器地址</div><div class="line">      changeOrigin: <span class="literal">true</span>,</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>即所有以/api开始的请求都代理至<a href="http://api.demo.com/api" target="_blank" rel="external">http://api.demo.com/api</a> 下</p>
+<h1 id="devtools-extension"><a href="#devtools-extension" class="headerlink" title="devtools extension"></a>devtools extension</h1><p>官方调试工具</p>
+<h1 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h1><p>vuex为vue程序的状态管理模式。<br>vuex中为了实现状态管理，定义了：数据源(store),</p>
+<h2 id="store"><a href="#store" class="headerlink" title="store"></a>store</h2><p>store是vuex的全局配置，也是vue访问vuex获取状态<br>一个完整的store配置：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">	state: &#123;&#125;,</div><div class="line">	actions: &#123;&#125;,</div><div class="line">	getters: &#123;&#125;,</div><div class="line">	mutations: &#123;&#125;,</div><div class="line">	modules: &#123;&#125;,</div><div class="line">	strict: <span class="literal">true</span>,</div><div class="line">	plugin: []</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><p>定义状态变量，就像Vue实例中的data<br>且state的值只能由mutations里的操作来修改<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 组件中定义</div><div class="line"><span class="built_in">export</span> default&#123;</div><div class="line">	state: &#123;</div><div class="line">		list: []</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// home中调用</div><div class="line"><span class="built_in">export</span> default&#123;</div><div class="line">	computed: &#123;		//一般通过computed来调用</div><div class="line">		<span class="function"><span class="title">list</span></span>() &#123;</div><div class="line">			<span class="built_in">return</span> this.<span class="variable">$store</span>.state.list</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h3><p>获取变量，并且可在取值前做一些计算，就像computed<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">// 组件中定义</div><div class="line"><span class="built_in">export</span> default&#123;</div><div class="line">	state: &#123;</div><div class="line">		list: []</div><div class="line">	&#125;,</div><div class="line">	getters: &#123;</div><div class="line">		listLength: state =&gt; state.list.length</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// home中调用</div><div class="line"><span class="built_in">export</span> default&#123;</div><div class="line">	computed: &#123;</div><div class="line">		<span class="function"><span class="title">list</span></span>() &#123;</div><div class="line">			<span class="built_in">return</span> this.<span class="variable">$store</span>.state.list</div><div class="line">		&#125;,</div><div class="line">		<span class="function"><span class="title">listLength</span></span>() &#123;</div><div class="line">			<span class="built_in">return</span> this.<span class="variable">$store</span>.getters.listLength</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">为了简化代码，vuex提供了帮助方法mapState, mapGetters，最后可写成</div><div class="line">import &#123;mapState,mapGetters&#125; from <span class="string">'vuex'</span></div><div class="line"><span class="built_in">export</span> default&#123;</div><div class="line">	computed: &#123;</div><div class="line">		...mapState([</div><div class="line">			<span class="string">'list'</span></div><div class="line">		]),</div><div class="line">		...mapGetters([</div><div class="line">			<span class="string">'listLength'</span></div><div class="line">		])</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="mutations"><a href="#mutations" class="headerlink" title="mutations"></a>mutations</h3><p>修改器。只用于修改state中定义的变量<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">定义</div><div class="line">mutations: &#123;</div><div class="line">	startedDataReceived(state, &#123;started_data&#125;) &#123;</div><div class="line">		state.aaaa = started_data.aaaa</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">调用</div><div class="line">context.commit(<span class="string">'startedDataReceived'</span>, data)</div></pre></td></tr></table></figure></p>
+<p>由于大部分mutations都是由本组件的actions来触发，因此在页面中定义名起码会出现2倍以上，为避免重复性，可用es6的常量定义来简化：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">建立文件mutation-types.js</div><div class="line"><span class="built_in">export</span> const STARTED_DATA_RECEIVED = <span class="string">'startedDataReceived'</span></div><div class="line"></div><div class="line">src/modules/books.js</div><div class="line">import Vue from <span class="string">'vue'</span></div><div class="line">import &#123;STARTED_DATA_RECEIVED&#125; from <span class="string">'../mutation-types'</span></div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">	state: &#123;&#125;,</div><div class="line">	getters: &#123;&#125;,</div><div class="line">	actions: &#123;</div><div class="line">		getStarted(context) &#123;</div><div class="line">			Vue.http.get(<span class="string">'/api/get-start'</span>, res =&gt; &#123;</div><div class="line">				context.commit(STARTED_DATA_RECEIVED, res.body)</div><div class="line">			&#125;)</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	mutations: &#123;</div><div class="line">		[STARTED_DATA_RECEIVED] (state, &#123;started_data&#125;) &#123;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h3><p>执行操作，就像methods。一般目的为触发state的修改器mutations中的方法。<br>不能直接调用，只能通过dispatch方法来触发<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">定义</div><div class="line">actions: &#123;</div><div class="line">	getStarted(context) &#123;</div><div class="line">		Vue.http.get(<span class="string">'/api/get-start'</span>, res =&gt; &#123;</div><div class="line">			context.commit(<span class="string">'startedDataReceived'</span>, res.body)</div><div class="line">		&#125;)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">调用</div><div class="line">this.<span class="variable">$store</span>.dispatch(<span class="string">'getStarted'</span>)</div></pre></td></tr></table></figure></p>
+<p>通过调用当前store对象context的方法commit来触发mutations中的方法<br>其中context的结构为：</p>
+<ol>
+<li>state – 等同于store.state，若在模块中则只为模块的state</li>
+<li>rootState – 等同于store.state，只存在于模块中，根state</li>
+<li>getters – 等同于store.getters，获取store中的getters</li>
+<li>commit – 等同于store.commit，用于提交一个mutation</li>
+<li>dispatch – 等同于store.dispatch，用于调用其他action</li>
+</ol>
+<h3 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h3><p>模块。向store注入其他子模块。store可通过modules的注册形成树状的实例结构。</p>
+<h3 id="strict"><a href="#strict" class="headerlink" title="strict"></a>strict</h3><p>运行模式。true为调试模式，false为生产模式</p>
+<h3 id="plugin"><a href="#plugin" class="headerlink" title="plugin"></a>plugin</h3><p>向vuex加入运行期的插件。</p>
+<h3 id="vuex的最小例子"><a href="#vuex的最小例子" class="headerlink" title="vuex的最小例子"></a>vuex的最小例子</h3><p>假设我们的vue程序只有一个组件：购物车，则加入vuex的写法为：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">// cart.js</div><div class="line">import Vue from <span class="string">'vue'</span></div><div class="line">import * as types from <span class="string">'../mutation-types'</span></div><div class="line">import * as apis from <span class="string">'../apis'</span></div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line"> 	state: &#123;</div><div class="line"> 		all: []</div><div class="line"> 	&#125;,</div><div class="line"> 	getters: &#123;</div><div class="line"> 		<span class="function"><span class="title">cartItems</span></span>() &#123;</div><div class="line"> 			<span class="built_in">return</span> state.all</div><div class="line"> 		&#125;</div><div class="line"> 	&#125;,</div><div class="line"> 	actions: &#123;</div><div class="line"> 		addToCart(context, &#123;id&#125;) &#123;</div><div class="line"> 			Vue.http.post(apis.ADD_TO_CART, &#123;id&#125;)</div><div class="line"> 			.then(res =&gt; &#123;</div><div class="line"> 				context.commit(types.ADD_TO_CART, res.body)</div><div class="line"> 			&#125;)</div><div class="line"> 		&#125;</div><div class="line"> 		getCartItems(context) &#123;</div><div class="line"> 			Vue.http.get(apis.GET_CART_ITEMS)</div><div class="line">	 		.then(res =&gt; &#123;</div><div class="line"> 				context.commit(types.SET_CART_ITEMS, res.body.data)</div><div class="line"> 			&#125;)</div><div class="line">	 	&#125;,</div><div class="line"> 		clear(context) &#123;</div><div class="line"> 			Vue.http.post(apis.CLEAR_CART)</div><div class="line">	 		.then(res =&gt; &#123;</div><div class="line"> 				context.commit(type.SET_CART_ITEMS, [])</div><div class="line"> 			&#125;)</div><div class="line">		&#125;,</div><div class="line"> 	&#125;,</div><div class="line">	mutations: &#123;</div><div class="line">		[types.SET_CART_ITEMS] (state, &#123;items&#125;) &#123;</div><div class="line">			state.all = items</div><div class="line">		&#125;,</div><div class="line">		[types.ADD_TO_CART] (state, &#123;cartItem&#125;) &#123;</div><div class="line">			state.all.push(cartItem)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// home.vue</div><div class="line">import &#123;mapState, mapGetters, mapActions&#125; from <span class="string">'vuex'</span></div><div class="line">import _ from <span class="string">'lodash'</span></div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">	computed: &#123;</div><div class="line">		...mapState([</div><div class="line">			<span class="string">'all'</span></div><div class="line">		]),</div><div class="line">		...mapGetters([</div><div class="line">			<span class="string">'cartItems'</span></div><div class="line">		])</div><div class="line">	&#125;,</div><div class="line">	methods: &#123;</div><div class="line">		...mapActions([</div><div class="line">			<span class="string">'addToCart'</span>, <span class="string">'getCartItems'</span>, <span class="string">'clear'</span></div><div class="line">		])</div><div class="line">	&#125;,</div><div class="line">	<span class="function"><span class="title">created</span></span>() &#123;</div><div class="line">		this.getCartItems()</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="vuex状态树"><a href="#vuex状态树" class="headerlink" title="vuex状态树"></a>vuex状态树</h3><p>真正的项目要处理的模型远不止一个，每个组件中在定义store变量就需要考虑命名空间冲突的问题，因此引入了模块的定义来解决此问题。以模块名称作为命名空间来使用。<br>建立一个store.js文件集中管理各个模块，store.js作为一个文件入口，是所有业务的根<br>官方推荐文件结构和使用原则：</p>
+<ol>
+<li>应用级的状态集中在store中</li>
+<li>修改状态的唯一方式是通过mutation来实现，属于同步</li>
+<li>异步逻辑封装在action中，并且可以组合action，如调用接口等就放在action中</li>
+</ol>
+<p>若文件太大则可分割action、mutation和getter到多个文件<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">---index</div><div class="line">---App.vue</div><div class="line">---main.js</div><div class="line">---components</div><div class="line">	---...</div><div class="line">---store</div><div class="line">	---index.js					配置store的配置文件</div><div class="line">	---actions.js				公共根store的actions</div><div class="line">	---mutations.js				公共根store的mutations</div><div class="line">	---mutation-types.js		公共mustations名称定义</div><div class="line">	---modules					模块文件夹</div><div class="line">		---cart.js				模块定义</div><div class="line">		---products.js			...</div></pre></td></tr></table></figure></p>
+<p>入口文件store.js的定义将变成如下方式：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">import Vue from <span class="string">'vue'</span></div><div class="line">import Vuex from <span class="string">'vuex'</span></div><div class="line">import createLogger from <span class="string">'vuex/dist/logger'</span></div><div class="line">import * as actions from <span class="string">'./actions'</span></div><div class="line">import * as getters from <span class="string">'./getters'</span></div><div class="line">import cart from <span class="string">'./modules/cart'</span></div><div class="line">import products from <span class="string">'./modules/products'</span></div><div class="line"></div><div class="line">const debug = process.env.NODE_ENV !== <span class="string">'production'</span></div><div class="line"></div><div class="line">Vue.use(Vuex)</div><div class="line"></div><div class="line"><span class="built_in">export</span> default new Vuex.Store(&#123;</div><div class="line">	modules: &#123;</div><div class="line">		cart,</div><div class="line">		products</div><div class="line">	&#125;,</div><div class="line">	actions: actions,</div><div class="line">	getters: getters,</div><div class="line">	strict: debug,</div><div class="line">	plugin: debug ? [createLogger()] : []</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>cart.js就会变为：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">import Vue from <span class="string">'vue'</span></div><div class="line">import * as types from <span class="string">'../mutation-types'</span></div><div class="line">import * as apis from <span class="string">'../apis'</span></div><div class="line"></div><div class="line">const state = &#123;</div><div class="line">	all: []</div><div class="line">&#125;</div><div class="line">const mutations = &#123;</div><div class="line">	[types.SET_CART_ITEMS](state, cart) &#123;</div><div class="line">		state.all = cart.items</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">const actions = &#123;</div><div class="line">	getItems(context) &#123;</div><div class="line">		Vue.http.get(apis.GET_CART_ITEMS)</div><div class="line">		.then(res =&gt; &#123;</div><div class="line">			context.commit(<span class="string">'types.SET_CART_ITEMS, res.body.data)</span></div><div class="line">		&#125;)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">export default &#123;</div><div class="line">	state,</div><div class="line">	mutations,</div><div class="line">	actions</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>products.js类似cart.js<br>当文件结构重新组织整理后，对组件cart和product的引用方式也要稍加变化，需要在引用中加上命名空间</p>
+<ol>
+<li>引用子状态—this.$store.state.cart.all</li>
+<li>引用子读取器—this.$store.getters.cart.allItems</li>
+<li>引用子动作—this.$store.actions.cart.getAll</li>
+<li>引用子变更—this.$store.mutations.cart[types.SET_BOOK]<br>不过实际上只有1是可行的，2,3,4是无法引用的，会得到undefined值，属于vuex设计上的一大缺憾，因此Action,Getters,Mutations还是得使用命名前缀来进行区分。。。。。。-^-</li>
+</ol>
+<p>另外，除了在入口store.js中队模块进行注册，也可以使用registerModule方法来动态的向store实例注册新的模块<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">store.registerModule(<span class="string">'books'</span>, &#123;</div><div class="line">	...</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/vue/" rel="tag">#vue</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/22/python-django/" rel="next" title="基于Python Django的web接口开发">
+                <i class="fa fa-chevron-left"></i> 基于Python Django的web接口开发
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-list"><span class="nav-number">1.</span> <span class="nav-text">vue list</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#import"><span class="nav-number">2.</span> <span class="nav-text">@import</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤器filter"><span class="nav-number">3.</span> <span class="nav-text">过滤器filter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#moment-js"><span class="nav-number">4.</span> <span class="nav-text">moment.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件目录常见约定"><span class="nav-number">5.</span> <span class="nav-text">文件目录常见约定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#require表达式"><span class="nav-number">6.</span> <span class="nav-text">require表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack配置别名"><span class="nav-number">7.</span> <span class="nav-text">webpack配置别名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack配置多个入口"><span class="nav-number">8.</span> <span class="nav-text">webpack配置多个入口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口细分化"><span class="nav-number">9.</span> <span class="nav-text">接口细分化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#E2E测试"><span class="nav-number">10.</span> <span class="nav-text">E2E测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由模式"><span class="nav-number">11.</span> <span class="nav-text">路由模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#router-link-tag"><span class="nav-number">12.</span> <span class="nav-text">router-link tag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义链接激活样式"><span class="nav-number">13.</span> <span class="nav-text">自定义链接激活样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#History模式的控制"><span class="nav-number">14.</span> <span class="nav-text">History模式的控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#404页面"><span class="nav-number">15.</span> <span class="nav-text">404页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用ref选择dom元素"><span class="nav-number">16.</span> <span class="nav-text">用ref选择dom元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义组件"><span class="nav-number">17.</span> <span class="nav-text">自定义组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件中的props"><span class="nav-number">18.</span> <span class="nav-text">组件中的props</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#event参数"><span class="nav-number">19.</span> <span class="nav-text">$event参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ajax请求库"><span class="nav-number">20.</span> <span class="nav-text">ajax请求库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#slot创建复合型组件"><span class="nav-number">21.</span> <span class="nav-text">slot创建复合型组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检索文件"><span class="nav-number">22.</span> <span class="nav-text">检索文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件继承–mixins"><span class="nav-number">23.</span> <span class="nav-text">组件继承–mixins</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#computed属性"><span class="nav-number">24.</span> <span class="nav-text">computed属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue表单验证"><span class="nav-number">25.</span> <span class="nav-text">vue表单验证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-cli开发跨域代理"><span class="nav-number">26.</span> <span class="nav-text">vue-cli开发跨域代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#devtools-extension"><span class="nav-number">27.</span> <span class="nav-text">devtools extension</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vuex"><span class="nav-number">28.</span> <span class="nav-text">vuex</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#store"><span class="nav-number">28.1.</span> <span class="nav-text">store</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#state"><span class="nav-number">28.1.1.</span> <span class="nav-text">state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getters"><span class="nav-number">28.1.2.</span> <span class="nav-text">getters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mutations"><span class="nav-number">28.1.3.</span> <span class="nav-text">mutations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#actions"><span class="nav-number">28.1.4.</span> <span class="nav-text">actions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#modules"><span class="nav-number">28.1.5.</span> <span class="nav-text">modules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#strict"><span class="nav-number">28.1.6.</span> <span class="nav-text">strict</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#plugin"><span class="nav-number">28.1.7.</span> <span class="nav-text">plugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vuex的最小例子"><span class="nav-number">28.1.8.</span> <span class="nav-text">vuex的最小例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vuex状态树"><span class="nav-number">28.1.9.</span> <span class="nav-text">vuex状态树</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
