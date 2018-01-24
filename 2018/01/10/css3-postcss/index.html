@@ -1,0 +1,753 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="css,postcss," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="PostCSS本身只做两件事：提供方式能方便的用Js代码来处理CSS；把CSS代码解析成语法树结构，让插件来处理
+webpackwebpack中用post-loader来执行插件处理。1234567891011module: &amp;#123;    loaders: [        &amp;#123;            test: /\.css$/,            loader: &quot;style">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostCSS平台">
+<meta property="og:url" content="http://yoursite.com/2018/01/10/css3-postcss/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="PostCSS本身只做两件事：提供方式能方便的用Js代码来处理CSS；把CSS代码解析成语法树结构，让插件来处理
+webpackwebpack中用post-loader来执行插件处理。1234567891011module: &amp;#123;    loaders: [        &amp;#123;            test: /\.css$/,            loader: &quot;style">
+<meta property="og:updated_time" content="2018-01-11T07:56:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PostCSS平台">
+<meta name="twitter:description" content="PostCSS本身只做两件事：提供方式能方便的用Js代码来处理CSS；把CSS代码解析成语法树结构，让插件来处理
+webpackwebpack中用post-loader来执行插件处理。1234567891011module: &amp;#123;    loaders: [        &amp;#123;            test: /\.css$/,            loader: &quot;style">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> PostCSS平台 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PostCSS平台
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-10T15:49:48+08:00" content="2018-01-10">
+              2018-01-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>PostCSS本身只做两件事：提供方式能方便的用Js代码来处理CSS；把CSS代码解析成语法树结构，让插件来处理</p>
+<h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><p>webpack中用post-loader来执行插件处理。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    loaders: [</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">test</span>: /\.css$/,</div><div class="line">            loader: <span class="string">"style-loader!css-loader!postcss-loader"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;,</div><div class="line">postcss: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> [require(<span class="string">'autoprefixer'</span>)]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h1><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'css'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var postcss = require(<span class="string">'gulp-postcss'</span>)</div><div class="line">    <span class="built_in">return</span> gulp.src(<span class="string">'app/**/*.css'</span>)</div><div class="line">        .pipe(postcss([require(<span class="string">'autoprefixer'</span>)]))</div><div class="line">        .pipe(gulp.dest(<span class="string">'dist/'</span>))</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h1 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h1><h2 id="Autoprefixer"><a href="#Autoprefixer" class="headerlink" title="Autoprefixer"></a>Autoprefixer</h2><p>添加的不同浏览器的css前缀</p>
+<h2 id="cssnext"><a href="#cssnext" class="headerlink" title="cssnext"></a>cssnext</h2><p>通过把将来的css新特性转化，让浏览器支持将来的一些css新特性。<br>cssnext已经包含了Autoprefixer，因此有cssnext则无需Autoprefixer</p>
+<h3 id="cssnext功能–自定义属性和变量"><a href="#cssnext功能–自定义属性和变量" class="headerlink" title="cssnext功能–自定义属性和变量"></a>cssnext功能–自定义属性和变量</h3><p>自定义属性名称以’–’开头。当声明了自定义属性，可通过’var()’函数引用<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">:root&#123;</div><div class="line">    --text-color: black;</div><div class="line">&#125;</div><div class="line">body&#123;</div><div class="line">    color: var(--text-color);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="cssnext功能–自定义选择器"><a href="#cssnext功能–自定义选择器" class="headerlink" title="cssnext功能–自定义选择器"></a>cssnext功能–自定义选择器</h3><p>通过’@custom-selector’来自定义选择器。<br>如对所有的标题(h1到h6)创建一个自定义选择器，然后可以对他们应用样式<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@custom-selector: --heading h1, h2, h3, h4, h5, h6;</div><div class="line"></div><div class="line">:--heading &#123;</div><div class="line">    font-weight: bold;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="cssnext功能–嵌套样式"><a href="#cssnext功能–嵌套样式" class="headerlink" title="cssnext功能–嵌套样式"></a>cssnext功能–嵌套样式</h3><p>嵌套样式很实用。是SASS和LESS等css预处理器流行的重要原因。<br>css嵌套规范定义了两种嵌套方式：</p>
+<ol>
+<li><p>使用’&amp;’作为前缀来声明。 &amp;只能在起始位置</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.message &#123;</div><div class="line">    font-weight: normal;</div><div class="line">    &amp; .header &#123;</div><div class="line">        font-weight: bold</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">转化后生成</div><div class="line">.message &#123;</div><div class="line">    font-weight: normal;</div><div class="line">&#125;</div><div class="line">.message .header &#123;</div><div class="line">    font-weight: bold;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用’@nest’作为前缀。 &amp;可以出现在任意位置</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.message &#123;</div><div class="line">    font-weight: normal;</div><div class="line">    @nest .body &amp; &#123;</div><div class="line">        font-weight: bold;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">转化后生成</div><div class="line">.message &#123;</div><div class="line">    font-weight: normal;</div><div class="line">&#125;</div><div class="line">.body .message &#123;</div><div class="line">    font-weight: bold;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="cssnext功能–CSS-modules"><a href="#cssnext功能–CSS-modules" class="headerlink" title="cssnext功能–CSS modules"></a>cssnext功能–CSS modules</h3><p>之前在专门的文章中介绍过css-modules，是基于DOM组件化引用的。<br>此处介绍可应用在普通html上的用法<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">:global .title &#123;            //全局类名</div><div class="line">    font-size: 20px;</div><div class="line">&#125;</div><div class="line">.content &#123;                  //局部类名</div><div class="line">    font-weight: bold;</div><div class="line">&#125;</div><div class="line">转为：</div><div class="line">.title &#123;</div><div class="line">    font-size: 20px;</div><div class="line">&#125;</div><div class="line">._content_6xmce_5 &#123;</div><div class="line">    font-weight: bold;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由于类名变了，所以在html上需要处理。</p>
+<ol>
+<li>React可使用react-css-modules插件</li>
+<li>其他情况可使用PostHTML(PostHTML是对应PostCSS的html处理平台)对html进行处理。预先把postcss-modules插件把css类名的对应关系保存在一个js对象中，可以被PostHTML中的posthtml-css-modules插件使用。<br>具体操作是网上代码，并未验证(且好像只能通过引入gulp任务来进行)：<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">1. 生成css模块的对象，并以js文件保存到ccModules目录下</div><div class="line">require(<span class="string">'postcss-modules'</span>)(&#123;</div><div class="line">    getJSON: <span class="keyword">function</span>(cssFileName, json) &#123;</div><div class="line">        var cssName = path.basename(cssFileName, <span class="string">'.css'</span>)</div><div class="line">        var jsonFileName = path.resolve(dist, <span class="string">'cssModules'</span>, cssName + <span class="string">'.js'</span>)</div><div class="line">        mkdirp.sync(path.dirname(jsonFileName))</div><div class="line">        fs.writeFileSync(jsonFileName, <span class="string">'module.exports = '</span> + JSON.stringify(json) + <span class="string">';'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">2. 使用gulp的gulp-posthtml处理html。posthtml-css-modules来处理一个目录下多个css模块输出文件</div><div class="line">gulp.task(<span class="string">'posthtml'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var posthtml = require(<span class="string">'gulp-posthtml'</span>)</div><div class="line">    <span class="built_in">return</span> gulp.src(<span class="string">'app/**/*.html'</span>)</div><div class="line">        .pipe(posthtml([require(<span class="string">'posthtml-css-modules'</span>)(path.join(dist, <span class="string">'cssModules'</span>))]))</div><div class="line">        .pipe(gulp.dest(<span class="string">'dist/'</span>))</div><div class="line">&#125;)</div><div class="line"></div><div class="line">3. html中具体使用。通过识别css-module=<span class="string">""</span></div><div class="line">&lt;div css-module=<span class="string">"header.content"</span>&gt;Hello wrold&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag">#css</a>
+          
+            <a href="/tags/postcss/" rel="tag">#postcss</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/09/css3-modules/" rel="next" title="让css成为模块变量的方式：CSS Modules">
+                <i class="fa fa-chevron-left"></i> 让css成为模块变量的方式：CSS Modules
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/11/outerHTML/" rel="prev" title="outerHTML,outerText,innerHTML,innerText对比">
+                outerHTML,outerText,innerHTML,innerText对比 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack"><span class="nav-number">1.</span> <span class="nav-text">webpack</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gulp"><span class="nav-number">2.</span> <span class="nav-text">gulp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用插件"><span class="nav-number">3.</span> <span class="nav-text">常用插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Autoprefixer"><span class="nav-number">3.1.</span> <span class="nav-text">Autoprefixer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cssnext"><span class="nav-number">3.2.</span> <span class="nav-text">cssnext</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cssnext功能–自定义属性和变量"><span class="nav-number">3.2.1.</span> <span class="nav-text">cssnext功能–自定义属性和变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cssnext功能–自定义选择器"><span class="nav-number">3.2.2.</span> <span class="nav-text">cssnext功能–自定义选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cssnext功能–嵌套样式"><span class="nav-number">3.2.3.</span> <span class="nav-text">cssnext功能–嵌套样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cssnext功能–CSS-modules"><span class="nav-number">3.2.4.</span> <span class="nav-text">cssnext功能–CSS modules</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

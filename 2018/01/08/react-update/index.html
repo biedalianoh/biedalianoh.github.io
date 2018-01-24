@@ -1,0 +1,812 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,react," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="兼容react支持 &amp;gt;= ie8
+导入react虽然页面中没有用上React变量，但是也需要引入。因为只要有jsx的地方，就需要有React变量。1234import React, &amp;#123;Component&amp;#125; from &apos;react&apos;class ClickCounter extends Component &amp;#123;&amp;#125;
+React组件命名react判断一个元素是H">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React重新出发">
+<meta property="og:url" content="http://yoursite.com/2018/01/08/react-update/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="兼容react支持 &amp;gt;= ie8
+导入react虽然页面中没有用上React变量，但是也需要引入。因为只要有jsx的地方，就需要有React变量。1234import React, &amp;#123;Component&amp;#125; from &apos;react&apos;class ClickCounter extends Component &amp;#123;&amp;#125;
+React组件命名react判断一个元素是H">
+<meta property="og:updated_time" content="2018-01-22T03:18:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React重新出发">
+<meta name="twitter:description" content="兼容react支持 &amp;gt;= ie8
+导入react虽然页面中没有用上React变量，但是也需要引入。因为只要有jsx的地方，就需要有React变量。1234import React, &amp;#123;Component&amp;#125; from &apos;react&apos;class ClickCounter extends Component &amp;#123;&amp;#125;
+React组件命名react判断一个元素是H">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> React重新出发 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React重新出发
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-08T12:38:49+08:00" content="2018-01-08">
+              2018-01-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="兼容"><a href="#兼容" class="headerlink" title="兼容"></a>兼容</h1><p>react支持 &gt;= ie8</p>
+<h1 id="导入react"><a href="#导入react" class="headerlink" title="导入react"></a>导入react</h1><p>虽然页面中没有用上React变量，但是也需要引入。<br>因为只要有jsx的地方，就需要有React变量。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import React, &#123;Component&#125; from <span class="string">'react'</span></div><div class="line">class ClickCounter extends Component &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="React组件命名"><a href="#React组件命名" class="headerlink" title="React组件命名"></a>React组件命名</h1><p>react判断一个元素是HTML还是React组件的原则，是看第一个字母是否大写。</p>
+<h1 id="react构建工具"><a href="#react构建工具" class="headerlink" title="react构建工具"></a>react构建工具</h1><h2 id="create-react-app"><a href="#create-react-app" class="headerlink" title="create-react-app"></a>create-react-app</h2><p>facebook官方构建工具</p>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><p>有四个命令。具体命令的配置，都隐藏在node_modules中的<strong>react-scripts</strong>包中了。<br>其中<strong>eject</strong>命令表示不可逆的把隐藏的配置，都拿到外面来。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"start"</span>: <span class="string">"react-scripts start"</span></div><div class="line">    <span class="string">"build"</span>: <span class="string">"react-scripts build"</span>,</div><div class="line">    <span class="string">"test"</span>: <span class="string">"react-scripts test --env=jsdom"</span>,</div><div class="line">    <span class="string">"eject"</span>: <span class="string">"react-scripts eject"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="react-boilerplate"><a href="#react-boilerplate" class="headerlink" title="react-boilerplate"></a>react-boilerplate</h2><p>github: <a href="https://github.com/react-boilerplate/react-boilerplate" target="_blank" rel="external">https://github.com/react-boilerplate/react-boilerplate</a><br>官网：<a href="https://www.reactboilerplate.com" target="_blank" rel="external">https://www.reactboilerplate.com</a></p>
+<h2 id="react-redux-starter-kit"><a href="#react-redux-starter-kit" class="headerlink" title="react-redux-starter-kit"></a>react-redux-starter-kit</h2><h1 id="组件构建方式"><a href="#组件构建方式" class="headerlink" title="组件构建方式"></a>组件构建方式</h1><h2 id="React-createClass"><a href="#React-createClass" class="headerlink" title="React.createClass"></a>React.createClass</h2><p>react出现之初，实用React.createClass来创造组件类，这种方法已经被废弃了。</p>
+<h2 id="ES6-classes"><a href="#ES6-classes" class="headerlink" title="ES6 classes"></a>ES6 classes</h2><h2 id="无状态函数"><a href="#无状态函数" class="headerlink" title="无状态函数"></a>无状态函数</h2><h1 id="React数据流"><a href="#React数据流" class="headerlink" title="React数据流"></a>React数据流</h1><h2 id="state"><a href="#state" class="headerlink" title="state"></a>state</h2><p>state是组件内部状态。在内部定义<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class Counter extends Component &#123;</div><div class="line">    constructor(props) &#123;</div><div class="line">        super(props)</div><div class="line"></div><div class="line">        this.state = &#123;</div><div class="line">            count: 0</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="setState"><a href="#setState" class="headerlink" title="setState"></a>setState</h3><p>state只能通过方法setState来实现修改<br>setState是异步方法<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Counter extends Component &#123;</div><div class="line">    constructor(props) &#123;</div><div class="line">        super(props)</div><div class="line">        this.handleClick = this.handleClick.bind(this)</div><div class="line">        this.state = &#123;</div><div class="line">            count: 0</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    handleClick(e) &#123;</div><div class="line">        e.preventDefault()</div><div class="line">        this.setState(&#123;</div><div class="line">            count: count + 1</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="props"><a href="#props" class="headerlink" title="props"></a>props</h2><p>组件之间传递数据。<br>组件不能修改传入的props<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">父组件：</div><div class="line"><span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> (</div><div class="line">        &lt;div&gt;</div><div class="line">            &lt;Counter caption=<span class="string">"senond"</span> initValue=&#123;10&#125;&gt;&lt;/Counter&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    )</div><div class="line">&#125;</div><div class="line">子组件</div><div class="line">constructor(props) &#123;</div><div class="line">    super(props)</div><div class="line">    console.log(this.props)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="props数据规范"><a href="#props数据规范" class="headerlink" title="props数据规范"></a>props数据规范</h3><p>通过propTypes来实现。<br>React 15.5.0之前可使用 React.PropTypes来检测。<br>可以全都使用prop-types来检测<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">import PropsTypes from <span class="string">'prop-types'</span></div><div class="line"></div><div class="line">...</div><div class="line">1. 可以在外面定义</div><div class="line">Counter.propTypes = &#123;</div><div class="line">    caption: PropTypes.string.isRequired,           </div><div class="line">    initValue: PropTypes.number</div><div class="line">&#125;</div><div class="line">Counter.defaultProps = &#123;</div><div class="line">    initValue: 0</div><div class="line">&#125;</div><div class="line"></div><div class="line">2. 也可以在里面定义</div><div class="line">class Counter extends Components &#123;</div><div class="line">    static propTypes = &#123;&#125;</div><div class="line">    static defaultProps = &#123;&#125;</div><div class="line">    constructor(props) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="refs"><a href="#refs" class="headerlink" title="refs"></a>refs</h2><p>获取组件实例<br>两种方式：</p>
+<ol>
+<li><p>绑定到this上<br>绑定到this上之后，直接通过this调用</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">handleClick</span></span>() &#123;</div><div class="line">    <span class="keyword">if</span>(this.myTextInput !== null) &#123;</div><div class="line">        this.myTextInput.focus()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> (</div><div class="line">        &lt;div&gt;</div><div class="line">            &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> ref=&#123;ref =&gt; this.myTextInput = ref&#125; /&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>直接字符串<br>通过字符串定义，通过refs获取</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class App extends Component &#123;</div><div class="line">    <span class="function"><span class="title">componentDidMount</span></span>() &#123;</div><div class="line">        const myComp = this.refs.myComp</div><div class="line">        const dom = findDOMNode(myComp)</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> (</div><div class="line">            &lt;div&gt;</div><div class="line">                &lt;Comp ref=<span class="string">"myComp"</span> /&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="组件拆分"><a href="#组件拆分" class="headerlink" title="组件拆分"></a>组件拆分</h2><p>为了结构化组件的构成，一般会把一个组件分为两个部分：</p>
+<ol>
+<li>容器组件<br>和store打交道，初始化组件的状态，监听store的变化，驱动组件重新渲染，等等动态。然后把props传给傻瓜组件。</li>
+<li>傻瓜组件<br>纯粹渲染dom元素。只通过props渲染，无需state</li>
+</ol>
+<h3 id="原生组件拆分"><a href="#原生组件拆分" class="headerlink" title="原生组件拆分"></a>原生组件拆分</h3><p>一般这两个组件写在一个文件里面。如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class Counter extends Component &#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line">class CounterContainer extends Component &#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"><span class="built_in">export</span> default CounterContainer;</div></pre></td></tr></table></figure></p>
+<h3 id="react-redux组件拆分"><a href="#react-redux组件拆分" class="headerlink" title="react-redux组件拆分"></a>react-redux组件拆分</h3><p>react-redux提供了connect方法，通过connect方法无需调用this.context.store，而是直接从参数获取state了：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import * as Actions from <span class="string">'../Actions.js'</span></div><div class="line">import &#123;connect&#125; from <span class="string">'react-redux'</span></div><div class="line"><span class="keyword">function</span> Counter(&#123;caption, onIncrement, onDecrement, value&#125;) &#123;</div><div class="line">    <span class="built_in">return</span> (</div><div class="line">        &lt;div&gt;&lt;/div&gt;</div><div class="line">    )</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> mapStateToProps(state, ownProps) &#123;     //业内一般叫这个函数名</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">        value: state[ownProps.caption]</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> mapDispatchToProps(dispatch, ownProps) &#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">        onIncrement: () =&gt; &#123;</div><div class="line">            dispatch(Actions.increment(ownProps.caption))</div><div class="line">        &#125;,</div><div class="line">        onDecrement: () =&gt; &#123;</div><div class="line">            dispatch(Actions.decrement(ownProps.caption))</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">export</span> default connect(mapStateToProps, mapDispatchToProps)(Counter)</div></pre></td></tr></table></figure></p>
+<p>用此之后，无需再定义一个外层组件。</p>
+<h1 id="React生命周期"><a href="#React生命周期" class="headerlink" title="React生命周期"></a>React生命周期</h1><p>主要分为装载、更新、卸载这三个过程。<br>无状态组件是没有生命周期方法的。即无props和state</p>
+<h2 id="装载–第一次被渲染"><a href="#装载–第一次被渲染" class="headerlink" title="装载–第一次被渲染"></a>装载–第一次被渲染</h2><p>初次加载时依次执行下列方法：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class App extends Component&#123;</div><div class="line">    constructor(props) &#123;  //构造函数</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">getInitialState</span></span>() &#123;   //初始化this.state, 但是只有用React.createClass创造的才会起作用</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">getDefaultProps</span></span>() &#123;   //初始化this.props, 但是只有用React.createClass创造的才会起作用</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">componentWillMount</span></span>() &#123;  //render渲染之前。没啥作用，因为可做的都在constructor做了</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;  //渲染dom</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">componentDidMount</span></span>() &#123;   //所有dom渲染完成之后调用。</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>this.foo = ::foo<br>等同于<br>this.foo = this.foo.bind(this)<br>::为bind操作符，但是可能不会成为ES标准语法。</p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>更新时依次执行下列方法：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class App extends Component &#123;</div><div class="line">    componentWillReceiveProps(nextProps) &#123;</div><div class="line">        //父组件render函数触发时，此方法会执行</div><div class="line">        //准备更新props</div><div class="line">    &#125;</div><div class="line">    shouldComponentUpdate(nextProps, nextState) &#123;   </div><div class="line">        //待更新props和state，做组件更新判断，若返回<span class="literal">true</span>则更新，<span class="literal">false</span>则不再向下执行生命周期</div><div class="line">        //通过nextProps, nextState 和 this.props, this.state 来进行对比判断</div><div class="line">    &#125;</div><div class="line">    componentWillUpdate(nextProps, nextState) &#123;</div><div class="line">        //更新前</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;  //渲染dom</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    ComponentDidUpdate(prevProps, prevState) &#123;</div><div class="line">        //更新后</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>state数据更新后，为了让子组件或者其他依赖此state的地方同时更新，需要做数据更新渲染，如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class CounterContainer extends Component &#123;</div><div class="line">    <span class="function"><span class="title">constructor</span></span>() &#123;</div><div class="line">        super(...arguments)</div><div class="line">        </div><div class="line">        this.state = this.getOwnState()</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">getOwnState</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> &#123;</div><div class="line">            value: this.context.store.getState()[this.props.caption]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">onChange</span></span>() &#123;</div><div class="line">        this.setState(this.getOwnState())</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">componentDidMount</span></span>() &#123;</div><div class="line">        this.context.store.subscribe(this.onChange)</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">componentWillUnmount</span></span>() &#123;</div><div class="line">        this.context.store.unsubscribe(this.onChange)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><p>卸载只有一个函数：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class App extends Component &#123;</div><div class="line">    <span class="function"><span class="title">componentWillUnmount</span></span>() &#123;    </div><div class="line">        //卸载前</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="子组件通知父组件"><a href="#子组件通知父组件" class="headerlink" title="子组件通知父组件"></a>子组件通知父组件</h1><h2 id="react原生方式"><a href="#react原生方式" class="headerlink" title="react原生方式"></a>react原生方式</h2><p>主要是通过props中的函数来实现。<br>子组件中直接调用props中的方法，父组件就能响应<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// 父组件</div><div class="line">onCounterUpdate(newValue, previousValue) &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> (</div><div class="line">        &lt;div&gt;</div><div class="line">            &lt;Counter onUpdate=&#123;this.onCounterUpdate&#125;&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    )</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 子组件</div><div class="line">class Counter extends Component &#123;</div><div class="line">    constructor(props) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">updateCount</span></span>() &#123;</div><div class="line">        ...</div><div class="line">        this.props.onUpdate(newValue, previousValue)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Counter.protoTypes = &#123;</div><div class="line">    onUpdate: PropTypes.func</div><div class="line">&#125;</div><div class="line">Counter.defaultProps = &#123;</div><div class="line">    onUpate: f =&gt; f</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="React之外DOM操作"><a href="#React之外DOM操作" class="headerlink" title="React之外DOM操作"></a>React之外DOM操作</h1><p>大部分操作通过React的内置属性和方法能完成，但还有如Audio/Vide的play方法和input的focus方法，React就无能为力，这时需实用DOM操作<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hidePopup(e) &#123;</div><div class="line">    const node = ReactDOM.findDOMNode(this)</div><div class="line">    const target = e.target || e.srcElement</div><div class="line">    const isInside = node.contains(target)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="React的方法"><a href="#React的方法" class="headerlink" title="React的方法"></a>React的方法</h1><h2 id="forceUpdate"><a href="#forceUpdate" class="headerlink" title="forceUpdate"></a>forceUpdate</h2><p>强行引发一次重新绘制<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button onClick=&#123;() =&gt; this.forceUpdate()&#125;&gt;重新绘制&lt;/button&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="flux"><a href="#flux" class="headerlink" title="flux"></a>flux</h1><p>学习redux之前，先简单了解一下flux，会对redux理解更深</p>
+<h1 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h1><p>redux一般使用唯一的一个store对象，并不像flux定义多个。这个store包含了所有的操作。<br>redux不修改state，而是给出一个新的state对象<br>redux作用过程：</p>
+<ol>
+<li>通过dispatch发送action对象，2. Store收到action，通过reducer进行处理，返回一个新的state对象，来更新视图。</li>
+</ol>
+<h2 id="创建一个store"><a href="#创建一个store" class="headerlink" title="创建一个store"></a>创建一个store</h2><p>store包含了三个方法：getState(获取state), dispatch(发送状态请求), subscribe(监听state)<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import &#123;createStore&#125; from <span class="string">'redux'</span></div><div class="line"><span class="built_in">let</span> &#123;getState, dispatch, subscribe&#125; = createStore(reducer)</div></pre></td></tr></table></figure></p>
+<p>createStore还可接收第二个参数，表示state的初始状态。通常由服务器给出。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> store = createStore(reducer, window.STATE_FROM_SERVER)      //若提供这个参数，会覆盖reducer默认初始值</div></pre></td></tr></table></figure></p>
+<h2 id="原生获取store"><a href="#原生获取store" class="headerlink" title="原生获取store"></a>原生获取store</h2><p>一般为每个组件引入store.js文件，这样不利于工程化。<br>为了能在所有子组件中能实用store，可在总的子组件上层再加上一个provider层，这个层上赋上store，使得所有子组件能调用store</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">1. 建立provider.js</div><div class="line">import &#123;PropTypes, Component&#125; from <span class="string">'react'</span></div><div class="line">class Provider extends Component &#123;</div><div class="line">    <span class="function"><span class="title">getChildContext</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> &#123;</div><div class="line">            store: this.props.store</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> this.props.children</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Provider.propTypes = &#123;</div><div class="line">    store: PropTypes.object.isRequired</div><div class="line">&#125;</div><div class="line">Provider.childContextTypes = &#123;</div><div class="line">    store: PropTypes.object</div><div class="line">&#125;</div><div class="line"><span class="built_in">export</span> default Provider</div><div class="line"></div><div class="line">2. 在index.js中把Provider设置为顶部组件</div><div class="line">import ControlPanel from <span class="string">'./views/controlPanel'</span></div><div class="line">import store from <span class="string">'./Store.js'</span></div><div class="line">import Provider from <span class="string">'./Provider.js'</span></div><div class="line">ReactDOM.render(</div><div class="line">    &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">        &lt;ControlPanel /&gt;</div><div class="line">    &lt;/Provider&gt;,</div><div class="line">    document.getElementById(<span class="string">'root'</span>)</div><div class="line">)</div><div class="line"></div><div class="line">3. 子组件中调用store</div><div class="line">class CounterContainer extends Component &#123;</div><div class="line">    constructor(props, context) &#123;</div><div class="line">        super(props, context)</div><div class="line">    &#125;</div><div class="line">    或者：</div><div class="line">    <span class="function"><span class="title">constructor</span></span>() &#123;</div><div class="line">        super(...arguments)</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">onIncrement</span></span>() &#123;</div><div class="line">        this.context.store.dispatch(Actions.increment(this.props.cation))</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="react-redux-获取store"><a href="#react-redux-获取store" class="headerlink" title="react-redux 获取store"></a>react-redux 获取store</h2><p>react-redux提供了provider功能。<br>如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import &#123;Provider&#125; from <span class="string">'react-redux'</span></div><div class="line">import ControlPanel from <span class="string">'./views/ControlPanel'</span></div><div class="line">import store from <span class="string">'./Store.js'</span></div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">    &lt;Provider store=&#123;store&#125;&gt;      //其中store必须包含三个函数：subscribe,dispatch,getState</div><div class="line">        &lt;ControlPanel /&gt;</div><div class="line">    &lt;/Provider&gt;,</div><div class="line">    document.getElementById(<span class="string">'root'</span>)</div><div class="line">)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">## getState</span></div><div class="line">获取state</div><div class="line">```zsh</div><div class="line">store.getState()</div></pre></td></tr></table></figure></p>
+<h2 id="action"><a href="#action" class="headerlink" title="action"></a>action</h2><p>用户的一个行为就是一个action，用户有多少种行为，就有多少个action。<br>很多action的时候，可以定义一个函数来生成action。<br>一般action的格式为：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const action = &#123;</div><div class="line">    <span class="built_in">type</span>: <span class="string">'ADD_TODO'</span>,           //<span class="built_in">type</span>为必须的</div><div class="line">    payload: <span class="string">'Learn Redux'</span>      //所要传递的数据</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="dispatch"><a href="#dispatch" class="headerlink" title="dispatch"></a>dispatch</h2><p>用户的行为action，只能通过dispatch来发送。dispatch的参数为action<br>如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">store.dispatch(&#123;</div><div class="line">    <span class="built_in">type</span>: <span class="string">'ADD_TODO'</span>,</div><div class="line">    payload: <span class="string">'Learn Redux'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>reducer是一个函数，接受action和当前state做参数，然后返回一个新的state<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const reducer = <span class="keyword">function</span>(state, action) &#123;</div><div class="line">    ...</div><div class="line">    <span class="built_in">return</span> new_state</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>reducer是一个纯函数，即同样的输入，会得到同样的输出。<br>纯函数是函数式变成的改练，需要遵守约束：</p>
+<ol>
+<li>不得改写参数，参数只能调用</li>
+<li>不能调用系统 I/O 的api</li>
+<li>不能调用Date.now()或者Math.random()等不纯的方法，避免每次得到不一样的结果</li>
+</ol>
+<h3 id="应用方法"><a href="#应用方法" class="headerlink" title="应用方法"></a>应用方法</h3><p>store.dispatch方法会触发reducer自动执行。<br>在生成Store的时候，要将reducer传入createStore方法中<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import &#123;createStore&#125; from <span class="string">'redux'</span></div><div class="line">const store = createStore(reducer)</div></pre></td></tr></table></figure></p>
+<p>因为reducer是纯函数，因此reducer不能改变state，而是返回一个全新的对象，因此经常这样写：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// state为对象</div><div class="line"><span class="keyword">function</span> reducer(state, action) &#123;</div><div class="line">    <span class="built_in">return</span> Object.assign(&#123;&#125;, state, &#123;thingToChange&#125;)</div><div class="line">    或者</div><div class="line">    <span class="built_in">return</span> &#123;...state, ...newState&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line">// state为数组</div><div class="line"><span class="keyword">function</span> reducer(state, action) &#123;</div><div class="line">    <span class="built_in">return</span> [...state, newItem]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>取名reducer是因为经常会有对action进行批量操作的行为，批量操作时，经常用到es5的reduce方法：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">const actions = [</div><div class="line">    &#123;<span class="built_in">type</span>: <span class="string">'ADD'</span>, payload: 0&#125;,</div><div class="line">    &#123;<span class="built_in">type</span>: <span class="string">'ADD'</span>, payload: 1&#125;,</div><div class="line">    &#123;<span class="built_in">type</span>: <span class="string">'ADD'</span>, payload: 2&#125;</div><div class="line">]</div><div class="line">const total = actions.reduce(reducer, 0)      // 3</div></pre></td></tr></table></figure></p>
+<h3 id="拆分"><a href="#拆分" class="headerlink" title="拆分"></a>拆分</h3><p>由于只有一个state，因此state会很大。若不同的action所需要改变的state没有联系，则在reducer里面可以进行拆分<br>如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">const chatReducer = (state = defaultState, action = &#123;&#125;) =&gt; &#123;</div><div class="line">    const &#123;<span class="built_in">type</span>, payload&#125; = action</div><div class="line">    switch(<span class="built_in">type</span>) &#123;</div><div class="line">        <span class="keyword">case</span>: ADD_CHAT:</div><div class="line">            <span class="built_in">return</span> Object.assign(&#123;&#125;, state, &#123;</div><div class="line">                chatLog: state.chatLog.concat(payload)</div><div class="line">            &#125;)</div><div class="line">        <span class="keyword">case</span> CHANGE_STATUS:</div><div class="line">            <span class="built_in">return</span> Object.assign(&#123;&#125;, state, &#123;</div><div class="line">                statusMessage: payload</div><div class="line">            &#125;);</div><div class="line">        <span class="keyword">case</span> CHANGE_USERNAME:</div><div class="line">            <span class="built_in">return</span> Object.assign(&#123;&#125;, state, &#123;</div><div class="line">                userName: payload</div><div class="line">            &#125;);</div><div class="line">        default: <span class="built_in">return</span> state;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">上面三中action没有联系，因此可拆分</div><div class="line">```zsh</div><div class="line">const chatReducer = (state = defaultState, action = &#123;&#125;) =&gt; &#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">        chatLog: ChatLogReducer(state.chatLog, action),</div><div class="line">        statusMessage: StatusMessageReducer(state.statusMessage, action),</div><div class="line">        userName: UserNameReducer(state.userName, action)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>redux为了方便进行拆分，还提供了一个combineReducers方法，用来方便把拆分的合成一个reducer<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import &#123;combineReducers&#125; from <span class="string">'redux'</span></div><div class="line">const chatReducer = combineReducers(&#123;</div><div class="line">    chatLog: ChatLogReducer,</div><div class="line">    statusMessage: StatusMessageReducer,</div><div class="line">    userName: UserNameReducer</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="subscribe"><a href="#subscribe" class="headerlink" title="subscribe"></a>subscribe</h2><p>Store可以实用store.subscribe方法设置监听函数，一旦state发生变化，就自动执行这个函数<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import &#123;createStore&#125; from <span class="string">'redux'</span></div><div class="line">const store = createStore(reducer)</div><div class="line"></div><div class="line">store.subscribe(listener)</div></pre></td></tr></table></figure></p>
+<h2 id="unsubscribe"><a href="#unsubscribe" class="headerlink" title="unsubscribe"></a>unsubscribe</h2><p>redux没有unsubscribe这个方法。可通过直接调用store.subscribe方法，来解除监听<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> unsubscribe = store.subscribe(() =&gt; &#123;</div><div class="line">    console.log(<span class="string">'..'</span>)</div><div class="line">&#125;)</div><div class="line">unsubscribe()       //解除监听</div></pre></td></tr></table></figure></p>
+<h2 id="redux总结"><a href="#redux总结" class="headerlink" title="redux总结"></a>redux总结</h2><p>redux的流程总结为：</p>
+<ol>
+<li><p>用户发出action</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">store.dispatch(action)</div></pre></td></tr></table></figure>
+</li>
+<li><p>store自动调用reducer，并传入2个参数：当前state和收到的action。reducer返回新的state</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> nextState = todoApp(previousState, action)</div></pre></td></tr></table></figure>
+</li>
+<li><p>state一旦有变化，store就会调用监听函数</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">store.subscribe(listener)</div></pre></td></tr></table></figure>
+</li>
+<li><p>listener通过store.getState()方法获取当前state，然后可以触发setState重新渲染</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">listener</span></span>() &#123;</div><div class="line">    <span class="built_in">let</span> newState = store.getState()</div><div class="line">    component.setState(newState)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>一个完整的例子：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">const Counter = (&#123;value, onIncrement, onDecrement&#125;) =&gt; &#123;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;h1&gt;&#123;value&#125;&lt;/h1&gt;</div><div class="line">        &lt;button onClick=&#123;onIncrement&#125;&gt;+&lt;/button&gt;</div><div class="line">        &lt;button onClick=&#123;deIncrement&#125;&gt;-&lt;/button&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&#125;</div><div class="line">const reducer = (state = 0, action) =&gt; &#123;</div><div class="line">    switch(action.type) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'INCREMENT'</span>: <span class="built_in">return</span> state + 1</div><div class="line">        <span class="keyword">case</span> <span class="string">'DECREMENT'</span>: <span class="built_in">return</span> state - 1</div><div class="line">        default: <span class="built_in">return</span> state</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">const store = createStore(reducer)</div><div class="line">const render = () =&gt; &#123;</div><div class="line">    ReactDOM.render(</div><div class="line">        &lt;Counter</div><div class="line">            value = &#123;store.getState()&#125;</div><div class="line">            onIncrement = &#123;() =&gt; store.dispatch(&#123;<span class="built_in">type</span>: <span class="string">'INCREMENT'</span>&#125;)&#125;</div><div class="line">            onDecrement = &#123;() =&gt; store.dispatch(&#123;<span class="built_in">type</span>: <span class="string">'DECREMENT'</span>&#125;)&#125;</div><div class="line">        /&gt;,</div><div class="line">        document.getElementById(<span class="string">'root'</span>)</div><div class="line">    )</div><div class="line">&#125;</div><div class="line">render()</div><div class="line">store.subscribe(render)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/react/" rel="tag">#react</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/19/vue-upgrade/" rel="next" title="Vue知识点查漏补缺">
+                <i class="fa fa-chevron-left"></i> Vue知识点查漏补缺
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/08/css3-flex/" rel="prev" title="flex布局">
+                flex布局 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#兼容"><span class="nav-number">1.</span> <span class="nav-text">兼容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导入react"><span class="nav-number">2.</span> <span class="nav-text">导入react</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React组件命名"><span class="nav-number">3.</span> <span class="nav-text">React组件命名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react构建工具"><span class="nav-number">4.</span> <span class="nav-text">react构建工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#create-react-app"><span class="nav-number">4.1.</span> <span class="nav-text">create-react-app</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令"><span class="nav-number">4.1.1.</span> <span class="nav-text">命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-boilerplate"><span class="nav-number">4.2.</span> <span class="nav-text">react-boilerplate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-redux-starter-kit"><span class="nav-number">4.3.</span> <span class="nav-text">react-redux-starter-kit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件构建方式"><span class="nav-number">5.</span> <span class="nav-text">组件构建方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#React-createClass"><span class="nav-number">5.1.</span> <span class="nav-text">React.createClass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6-classes"><span class="nav-number">5.2.</span> <span class="nav-text">ES6 classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无状态函数"><span class="nav-number">5.3.</span> <span class="nav-text">无状态函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React数据流"><span class="nav-number">6.</span> <span class="nav-text">React数据流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#state"><span class="nav-number">6.1.</span> <span class="nav-text">state</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setState"><span class="nav-number">6.1.1.</span> <span class="nav-text">setState</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#props"><span class="nav-number">6.2.</span> <span class="nav-text">props</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#props数据规范"><span class="nav-number">6.2.1.</span> <span class="nav-text">props数据规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#refs"><span class="nav-number">6.3.</span> <span class="nav-text">refs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件拆分"><span class="nav-number">6.4.</span> <span class="nav-text">组件拆分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原生组件拆分"><span class="nav-number">6.4.1.</span> <span class="nav-text">原生组件拆分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-redux组件拆分"><span class="nav-number">6.4.2.</span> <span class="nav-text">react-redux组件拆分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React生命周期"><span class="nav-number">7.</span> <span class="nav-text">React生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#装载–第一次被渲染"><span class="nav-number">7.1.</span> <span class="nav-text">装载–第一次被渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新"><span class="nav-number">7.2.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载"><span class="nav-number">7.3.</span> <span class="nav-text">卸载</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子组件通知父组件"><span class="nav-number">8.</span> <span class="nav-text">子组件通知父组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#react原生方式"><span class="nav-number">8.1.</span> <span class="nav-text">react原生方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React之外DOM操作"><span class="nav-number">9.</span> <span class="nav-text">React之外DOM操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React的方法"><span class="nav-number">10.</span> <span class="nav-text">React的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#forceUpdate"><span class="nav-number">10.1.</span> <span class="nav-text">forceUpdate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flux"><span class="nav-number">11.</span> <span class="nav-text">flux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redux"><span class="nav-number">12.</span> <span class="nav-text">redux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个store"><span class="nav-number">12.1.</span> <span class="nav-text">创建一个store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原生获取store"><span class="nav-number">12.2.</span> <span class="nav-text">原生获取store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-redux-获取store"><span class="nav-number">12.3.</span> <span class="nav-text">react-redux 获取store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#action"><span class="nav-number">12.4.</span> <span class="nav-text">action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dispatch"><span class="nav-number">12.5.</span> <span class="nav-text">dispatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reducer"><span class="nav-number">12.6.</span> <span class="nav-text">reducer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">12.6.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用方法"><span class="nav-number">12.6.2.</span> <span class="nav-text">应用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆分"><span class="nav-number">12.6.3.</span> <span class="nav-text">拆分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subscribe"><span class="nav-number">12.7.</span> <span class="nav-text">subscribe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unsubscribe"><span class="nav-number">12.8.</span> <span class="nav-text">unsubscribe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux总结"><span class="nav-number">12.9.</span> <span class="nav-text">redux总结</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
