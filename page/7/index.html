@@ -214,8 +214,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs/" itemprop="url">
-                  Nodejs 极速上手
+                <a class="post-title-link" href="/2017/01/11/vue/" itemprop="url">
+                  Vue1.0用法详解
                 </a>
               
             
@@ -276,15 +276,14 @@
       
         
           
-          前前后后使用nodejs，在nodejs环境开发已经有快一年时间了，但是突然发现一直以来对nodejs其实并不是那么理解，刚好借着最近时间充裕，系统的从基础开始过一遍nodejs，也许能有更多收获。主要参考了阿里的七天学会NodeJS。
-nodejs 基础什么是NodeJSJS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。_
-每一种解析器都是一个运行环境，不但允许JS定义各种数据结构，进行各种计算，还允许JS使用运行环境提供的内置对象和方法做一些事情。例如运行在浏览器中的JS的用途是操作DOM，浏览器就提供了document之类的内置对象。而运行在NodeJS中的JS的用途是操作磁盘文件或搭建HTTP服务器，NodeJS就相应提供了fs、http等内置对象。
-有啥用处尽管存在一听说可以直接运行JS文件就觉得很酷的同学，但大多数同学在接触新东西时首先关心的是有啥用处，以及能带来啥价值。
-NodeJS的作者说，他创造NodeJS的目的是为了实现高性能Web服务器，他首先看重的是事件
+          兼容性Vue.js 不支持 IE8 及其以下版本，因为 Vue.js 使用了 IE8 不能实现的 ECMAScript 5 特性。
+开发环境部署可参考使用 vue+webpack。
+基本用法1234567891011&lt;div id="app"&gt;  &#123;&#123;message&#125;&#125;  &lt;input v-model="message"&gt;&lt;/div&gt;new Vue(&#123;  ele: '#app',  data: &#123;    message: 'hello'  &#125;&#125;)
+列表1234567891011121314&lt;div id="app"&gt;  &lt;li v-for="todo in todos"&gt;&#123;&#123;todo.text&#125;&#125;&lt;/li&gt;&lt;/div&gt;new Vue(&#123;  ele: '#app',  data: &#123;    todos: [&#123;      text: '111'    &#12
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/vue/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

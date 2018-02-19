@@ -79,7 +79,7 @@
 
 安装React Native安装官方cli工具，来生成react native项目
 1npm install -g react-">
-<meta property="og:updated_time" content="2018-02-19T03:14:10.000Z">
+<meta property="og:updated_time" content="2018-02-19T03:29:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="不停歇的 React Native">
 <meta name="twitter:description" content="搭建环境以苹果操作系统为例。
@@ -294,10 +294,12 @@
 <li><p>安装React Native<br>安装官方cli工具，来生成react native项目</p>
 <figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g react-native-cli</div></pre></td></tr></table></figure>
 </li>
-<li><p>然后需要安装ios和android依赖</p>
+<li><p>然后需要安装ios和android依赖   </p>
+</li>
+</ol>
 <h2 id="安装ios依赖"><a href="#安装ios依赖" class="headerlink" title="安装ios依赖"></a>安装ios依赖</h2><p>安装或更新xcode即可</p>
 <h2 id="安装android依赖"><a href="#安装android依赖" class="headerlink" title="安装android依赖"></a>安装android依赖</h2><p>安卓依赖需要较多步骤，可参考<a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="external">官方文档</a>。<br>主要分为三步：</p>
-</li>
+<ol>
 <li>安装SDK</li>
 </ol>
 <ul>
@@ -330,9 +332,9 @@
 <h1 id="部署App到设备"><a href="#部署App到设备" class="headerlink" title="部署App到设备"></a>部署App到设备</h1><h2 id="部署到ios设备"><a href="#部署到ios设备" class="headerlink" title="部署到ios设备"></a>部署到ios设备</h2><ol>
 <li>需要一个Apple开发者帐号，在xcode登录</li>
 <li>为帐号生成证书。打开通用面板(General)，点击Fix Issue来一步步获取证书。</li>
-<li>登录到Apple开发者中心(<a href="http://developer.apple.com)，注册设备。" target="_blank" rel="external">http://developer.apple.com)，注册设备。</a><br>其中uuid，可将设备连接到电脑，打开iTunes，选择设备，点击序列号，可看到。<br>另外，部署前，需要在AppDelegate.m文件中奖localhost改成Mac的IP，然后就可以在xcode中点项目然后部署到设备了。<h2 id="部署到android设备"><a href="#部署到android设备" class="headerlink" title="部署到android设备"></a>部署到android设备</h2></li>
+<li>登录到Apple开发者中心(<a href="http://developer.apple.com)，注册设备。" target="_blank" rel="external">http://developer.apple.com)，注册设备。</a><br>其中uuid，可将设备连接到电脑，打开iTunes，选择设备，点击序列号，可看到。<br>另外，部署前，需要在AppDelegate.m文件中奖localhost改成Mac的IP，然后就可以在xcode中点项目然后部署到设备了。   </li>
 </ol>
-<p># 基本组件<br>react native中，不能使用html中的如div, p, img等标签了，只能使用native自己定义的标签。</p>
+<h2 id="部署到android设备"><a href="#部署到android设备" class="headerlink" title="部署到android设备"></a>部署到android设备</h2><p># 基本组件<br>react native中，不能使用html中的如div, p, img等标签了，只能使用native自己定义的标签。</p>
 <h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>容器组件。相当于html中的div</p>
 <h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><p>文本组件。只能通过<code>Text</code>来包含文本。其他标签不能直接包含文本。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Text&gt;文字&lt;/Text&gt;</div></pre></td></tr></table></figure></p>
 <h2 id="TextInput"><a href="#TextInput" class="headerlink" title="TextInput"></a>TextInput</h2><p>文本输入组件。</p>
@@ -344,9 +346,9 @@
 <h3 id="resizeMode"><a href="#resizeMode" class="headerlink" title="resizeMode"></a>resizeMode</h3><ol>
 <li>contain</li>
 <li>cover</li>
-<li>stretch<br>拉伸来铺满<h2 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h2>用于显示垂直的滚动列表。ListView并不立即渲染所有元素，会优先渲染屏幕可见元素。<br>ListView必须的两个属性是<code>dataSource</code>和<code>renderRow</code>。<br>其中<code>dataSource</code>为数据源，<code>renderRow</code>为单个组件。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class ListViewBasics extends Component &#123;</div><div class="line">    constructor(props) &#123;</div><div class="line">        super(props)</div><div class="line">        const ds = new ListView.DataSource(&#123;rowHasChanged: (r1, r2) =&gt; r1 !== r2&#125;)</div><div class="line">        this.state = &#123;</div><div class="line">            dataSource: ds.cloneWithRows([<span class="string">'John'</span>, <span class="string">'Joel'</span>, James])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> (</div><div class="line">            &lt;View&gt;</div><div class="line">                &lt;ListView dataSource=&#123;this.state.dataSource&#125; renderRow=&#123;rowData =&gt; &lt;Text&gt;&#123;rowData&#125;&lt;/Text&gt;&#125;</div><div class="line">            &lt;/View&gt;</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>stretch<br>拉伸来铺满   </li>
 </ol>
+<h2 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h2><p>用于显示垂直的滚动列表。ListView并不立即渲染所有元素，会优先渲染屏幕可见元素。<br>ListView必须的两个属性是<code>dataSource</code>和<code>renderRow</code>。<br>其中<code>dataSource</code>为数据源，<code>renderRow</code>为单个组件。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class ListViewBasics extends Component &#123;</div><div class="line">    constructor(props) &#123;</div><div class="line">        super(props)</div><div class="line">        const ds = new ListView.DataSource(&#123;rowHasChanged: (r1, r2) =&gt; r1 !== r2&#125;)</div><div class="line">        this.state = &#123;</div><div class="line">            dataSource: ds.cloneWithRows([<span class="string">'John'</span>, <span class="string">'Joel'</span>, James])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> (</div><div class="line">            &lt;View&gt;</div><div class="line">                &lt;ListView dataSource=&#123;this.state.dataSource&#125; renderRow=&#123;rowData =&gt; &lt;Text&gt;&#123;rowData&#125;&lt;/Text&gt;&#125;</div><div class="line">            &lt;/View&gt;</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><p>起到路由器作用。</p>
 <h1 id="平台特定组件"><a href="#平台特定组件" class="headerlink" title="平台特定组件"></a>平台特定组件</h1><p>不是所有组件都能在平台通用。可编写两个文件。并用平台名区分组件，调用时直接调用组件部分名字，react native会自动区分进行调用。<br>如：<br>编写好两个文件：<br>Switch.ios.js<br>Switch.android.js<br>调用时：<br>import Switch from ‘./Switch</p>
 <h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>一般应用可直接在页面中写样式，复杂点的应用可抽取出来管理，通过引用来添加样式。</p>
