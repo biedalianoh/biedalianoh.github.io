@@ -214,6 +214,139 @@
             
               
                 
+                <a class="post-title-link" href="/2018/02/18/react-native/" itemprop="url">
+                  不停歇的 React Native
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-02-18T18:43:27+08:00" content="2018-02-18">
+              2018-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          搭建环境以苹果操作系统为例。
+
+安装Homebrew
+安装基本操作库
+123brew install node       //nodejs brew install watchman   //观察文件变动brew install flow       //类型检查库
+
+安装React Native安装官方cli工具，来生成react native项目
+1npm install -g react-native-cli
+
+然后需要安装ios和android依赖
+安装ios依赖安装或更新xcode即可
+安装android依赖安卓依赖需要较多步骤，可参考官方文档。主要分为三步：
+
+安装SDK
+
+
+安装最新版本JDK(java开发工具包)：JDK。
+安装Android SDK：通过brew install android-sdk 安装。
+在shell配置文件中(~/.bashrc、~/.zshrc、或其他shell)正确导出ANDROID_HOME环境变量: export ANDROID_HOME=/usr/local/opt/android-skd
+执行source命令使得配置可以立即生效
+
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/02/18/react-native/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/01/30/forEach/" itemprop="url">
                   for, forEach, $.each, _.forEach中的跳出循环
                 </a>
@@ -1259,127 +1392,12 @@ vuexVuex 中 Store 的模板化定义如下：1234567891011imp
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/06/loop/" itemprop="url">
-                  多重循环嵌套退出方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-06T18:07:15+08:00" content="2017-03-06">
-              2017-03-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          循环中嵌套循环，多重循环想退出某一特定循环，可指定循环名称，并可直接退出特定循环。123456789101112outerloop:for(var i = 0; i &lt; 5; i++) &#123;  if(somethingTrue) &#123;    break outerloop;  &#125;  innterloop:  for(var j = 0; j &lt; 3; j++) &#123;    if(somethingElseTrue) &#123;      break innerloop;    &#125;  &#125;&#125;
-循环名称可自己指定。
-
-          
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/06/loop/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1420,7 +1438,7 @@ vuexVuex 中 Store 的模板化定义如下：1234567891011imp
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1437,7 +1455,7 @@ vuexVuex 中 Store 的模板化定义如下：1234567891011imp
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

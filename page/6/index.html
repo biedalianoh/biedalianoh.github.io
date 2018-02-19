@@ -214,8 +214,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/foundation-1/" itemprop="url">
-                  Javascript基础--函数和定义优先级
+                <a class="post-title-link" href="/2017/01/11/es6/" itemprop="url">
+                  es6实用中文api
                 </a>
               
             
@@ -276,14 +276,13 @@
       
         
           
-          Javascript中的包括变量的定义，函数的定义；函数的静态方法，原型方法；变量的前置定义，后置定义；运算符的优先级；变量的提升，等等经常容易发生混淆。避免在前端开发过程中再踩这些类似的坑，在此总结。
-js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值， 字符串， 数值， 对象判断的基本方式是，他们属于原始的基本类型，而不是对象，不能使用 new 命令。ES6 新增了一种基本数据类型： Symbol
-静态方法和原型方法静态方法的优先级高于原型方法。12345678910function Demo() &#123;    this.getName = function() &#123;        console.log(1);    &#125;&#125;;Demo.prototype.getName = function() &#123;    console.log(2);&#125;Demo.getName();   //  1
-变量声明提升所有的声明变量或声明函数都会被提升到当前函数的顶部。123console.log(x);console.
+          声明let, constlet和const不会有变量声明提升，作用域也会被限制。通过let，const，class声明的变量，不会成为 window 的属性。const需要在声明时赋值。const声明一个常量时，常量的值不能改变。const声明一个复合型变量时，变量不指向数据，而是指向数据所在的地址。因此变量可以添加属性。12345const a = 'hello';  // a 的值不可被重置const foo = &#123;&#125;;     // foo 可以添加属性foo.prop = 111;const arr = [];     // arr 可以添加元素arr.push('hello');
+如果想完全将对象冻结，不能更改，应该使用 Object.freeze 方法。1const foo = Object.freeze(&#123;&#125;);
+解构数组解构通过数组方式直接给对应数组中的对应变量赋值。12345var [a, b, c] = [1, 2, 3];let [a, [[b], c]] = [1, [[2], 3]];let [ , , third] =
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/foundation-1/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/es6/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -440,8 +439,8 @@ js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值�
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/job/" itemprop="url">
-                  Javascript基础--前端基础知识总结
+                <a class="post-title-link" href="/2017/01/11/form/" itemprop="url">
+                  form表单元素以及提交方式
                 </a>
               
             
@@ -501,29 +500,119 @@ js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值�
 
       
         
-          
-          HTMLDoctypeDoctype 的作用？ 标准模式与兼容模式的区别告知浏览器用什么标准解析文档。 Doctype不存在或不正确会触发文档以兼容模式呈现。标准模式会以浏览器最高标准运行。兼容模式以宽松的向后兼容的方式显示。
-xhtml 和 html 的区别xhtml是xml向html过渡的语言。比html严谨性更高。设置doctype标志各种类型的xhtml(过渡型-transitional，严格型-strict，框架集-frameset)
-
-xhtml要求正确嵌套
-标签必须关闭
-区分大小写
-属性值要求双引号
-用id代替name属性
-
-行内元素，块级元素，空元素依据css的display属性区分块元素和行内元素。
-
-块元素： div, ul, ol, li, dl, dt, dd, p, h1, h2….
-行内元素： a, b, span, img, input, select, strong
-空元素： br, hr, img, input, link, meta
-
-link 和 import 的区别
-link除了加载css，还能定义rss；import只能用于加载css
-页面加载
-          ...
-
+          H5表单项标签，ajax，formaction提交方式，表单包含文件提交方式，多风格展示数据。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/job/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/form/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/timeline-error/" itemprop="url">
+                  时间乱了
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/杂项/" itemprop="url" rel="index">
+                    <span itemprop="name">杂项</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          换了新电脑，重新发布一遍之后，之前发的post，发布顺序变成倒序了。。。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/timeline-error/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -744,6 +833,121 @@ link除了加载css，还能定义rss；import只能用于加载css
           在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。angular-mock辅助Karma、Jasmine等JS测试工具来模拟angular方法，测试angular应用。除此之外，Angular-mock还扩展了ng的多个核心服务，使之可以被测试代码以同步的方式进行审查和控制。
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/01/11/karma-jasmine-angualr/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/matrix/" itemprop="url">
+                  CSS3中的Matrix矩阵
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Css/" itemprop="url" rel="index">
+                    <span itemprop="name">Css</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          transform中的MatrixCSS3中的矩阵是指 matrix() 和 matrix3d()，前者是元素2D平面的移动变换，后者是3D变换。2D变换为 33， 3D变换则是 44 矩阵。1234transform: matrix(1, 0, 0, 1, 8, 9) ---1   0   80   1   90   0   1
+matrix实际上能设置的属性有：skew(拉伸)，scale(缩放)，rotate(旋转)，translate(位移)。即matrix是以下属性的集合：1234transform: skew(10deg, 10deg);transform: scale(2.2, 1.5);transform: rotate(10deg);transform: translate(10px, 20px);
+transform-origin在理解matrix之前，先了解一个属性：transform-origin。即矩阵所有相关变化的基准点。默认值为 0在单独使用skew，scale，rotate，translate时，若设置此值则变化的基准点响应改变。transform-or
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/matrix/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1020,123 +1224,6 @@ link除了加载css，还能定义rss；import只能用于加载css
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nbsp/" itemprop="url">
-                  类&amp;nbsp多种空格方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          html提供了5种实体空格(&amp;ensp; &amp;emsp; &amp;thinsp; &amp;zwnj; &amp;zwj;)和1种非断行空格(&amp;nbsp;)。关于空格大家常用的是 &amp;nbsp; ，但是在不同的浏览器，&amp;nbsp; 显示的宽度不一样，可能会导致无法对齐。可使用其他空格方式替代。
-&amp;nbsp;不换行空格。是按下space键产生的空格。在HTML中，如果你用空格键产生此空格，空格是不会累加的（只算1个）。要使用html实体表示才可累加，该空格占据宽度受字体影响明显而强烈。
-&amp;ensp;半角空格。全称是En Space，en是字体排印学的计量单位，为em宽度的一半。此空格有个相当稳健的特性，就是其占据的宽度正好是1/2个中文宽度，而且基本上不受字体影响。
-&amp;emsp;全角空格。全称是Em Space，em是字体排印学的计量单位，相当于当前指定的点数。此空格也有个相当稳健的特性，就是其占据的宽度正好是1个中文宽度，而且基本上不受字体影响。
-&amp;thinsp;窄空格。全称是Thin Space。占据的宽度比较小。
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nbsp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2017/01/11/vue/" itemprop="url">
                   Vue1.0用法详解
                 </a>
@@ -1232,129 +1319,12 @@ link除了加载css，还能定义rss；import只能用于加载css
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs/" itemprop="url">
-                  Nodejs 极速上手
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          前前后后使用nodejs，在nodejs环境开发已经有快一年时间了，但是突然发现一直以来对nodejs其实并不是那么理解，刚好借着最近时间充裕，系统的从基础开始过一遍nodejs，也许能有更多收获。主要参考了阿里的七天学会NodeJS。
-nodejs 基础什么是NodeJSJS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。_
-每一种解析器都是一个运行环境，不但允许JS定义各种数据结构，进行各种计算，还允许JS使用运行环境提供的内置对象和方法做一些事情。例如运行在浏览器中的JS的用途是操作DOM，浏览器就提供了document之类的内置对象。而运行在NodeJS中的JS的用途是操作磁盘文件或搭建HTTP服务器，NodeJS就相应提供了fs、http等内置对象。
-有啥用处尽管存在一听说可以直接运行JS文件就觉得很酷的同学，但大多数同学在接触新东西时首先关心的是有啥用处，以及能带来啥价值。
-NodeJS的作者说，他创造NodeJS的目的是为了实现高性能Web服务器，他首先看重的是事件
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1395,7 +1365,7 @@ NodeJS的作者说，他创造NodeJS的目的是为了实现高性能Web服务�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1412,7 +1382,7 @@ NodeJS的作者说，他创造NodeJS的目的是为了实现高性能Web服务�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-count">76</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

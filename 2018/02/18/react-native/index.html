@@ -1,0 +1,842 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,react,react native," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="搭建环境以苹果操作系统为例。
+
+安装Homebrew
+安装基本操作库
+123brew install node       //nodejs brew install watchman   //观察文件变动brew install flow       //类型检查库
+
+安装React Native安装官方cli工具，来生成react native项目
+1npm install -g react-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不停歇的 React Native">
+<meta property="og:url" content="http://yoursite.com/2018/02/18/react-native/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="搭建环境以苹果操作系统为例。
+
+安装Homebrew
+安装基本操作库
+123brew install node       //nodejs brew install watchman   //观察文件变动brew install flow       //类型检查库
+
+安装React Native安装官方cli工具，来生成react native项目
+1npm install -g react-">
+<meta property="og:updated_time" content="2018-02-19T03:14:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不停歇的 React Native">
+<meta name="twitter:description" content="搭建环境以苹果操作系统为例。
+
+安装Homebrew
+安装基本操作库
+123brew install node       //nodejs brew install watchman   //观察文件变动brew install flow       //类型检查库
+
+安装React Native安装官方cli工具，来生成react native项目
+1npm install -g react-">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 不停歇的 React Native | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                不停歇的 React Native
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-02-18T18:43:27+08:00" content="2018-02-18">
+              2018-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h1><p>以苹果操作系统为例。</p>
+<ol>
+<li>安装Homebrew</li>
+<li><p>安装基本操作库</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">brew install node       //nodejs </div><div class="line">brew install watchman   //观察文件变动</div><div class="line">brew install flow       //类型检查库</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装React Native<br>安装官方cli工具，来生成react native项目</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g react-native-cli</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后需要安装ios和android依赖</p>
+<h2 id="安装ios依赖"><a href="#安装ios依赖" class="headerlink" title="安装ios依赖"></a>安装ios依赖</h2><p>安装或更新xcode即可</p>
+<h2 id="安装android依赖"><a href="#安装android依赖" class="headerlink" title="安装android依赖"></a>安装android依赖</h2><p>安卓依赖需要较多步骤，可参考<a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="external">官方文档</a>。<br>主要分为三步：</p>
+</li>
+<li>安装SDK</li>
+</ol>
+<ul>
+<li>安装最新版本JDK(java开发工具包)：<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">JDK</a>。</li>
+<li>安装Android SDK：通过<code>brew install android-sdk</code> 安装。</li>
+<li>在shell配置文件中(~/.bashrc、~/.zshrc、或其他shell)正确导出ANDROID_HOME环境变量: <code>export ANDROID_HOME=/usr/local/opt/android-skd</code></li>
+<li>执行<code>source</code>命令使得配置可以立即生效</li>
+<li>命令行执行<code>android</code>命令，打开<code>Android SDK</code>管理器。除默认选中之外，确保选中<code>Android SDK Build-tools version 23.0.1</code>、<code>Android 6.0(API 23)</code>、<code>Android Support Repository</code>，进行安装</li>
+</ul>
+<ol>
+<li>安装模拟器工具<br>运行<code>android</code>命令启动<code>Android SDK</code>管理器。安装</li>
+</ol>
+<ul>
+<li>Intel x86 Atom System Image(for Android 5.1.1-API 22)</li>
+<li>Intel X86 Emulator Accelerator(HAXM installer)</li>
+</ul>
+<ol>
+<li>创建模拟器<br>运行<code>android avd</code>命令启动AVD管理器创建管理器，记得勾选<code>Use Host GPU</code>选项</li>
+</ol>
+<h1 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h1><p>运行<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native init FirstProject</div></pre></td></tr></table></figure></p>
+<p>创建的应用会包含ios和android文件夹，分别代表两种app的代码<br>## ios应用<br>ios目录为整个ios应用的代码。可使用xcode打开ios/目录下的FirstProject.xcodeproj文件。点运行之后可模拟运行。</p>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><ol>
+<li>cmd+r<br>刷新</li>
+<li>cmd+d<h2 id="andoird应用"><a href="#andoird应用" class="headerlink" title="andoird应用"></a>andoird应用</h2>andoird目录为整个andoid应用的代码。<br>有两种方式启动应用：</li>
+<li>视图方式。运行命令<code>android avd</code>启动AVD管理器，点击模拟器版本，然后<code>start</code></li>
+<li>命令行方式。通过命令<code>emulator -list-avds</code>来显示可用模拟器类型，然后通过<code>emulator @设备名</code>来启动模拟器。<br>通过任何一种方式启动成功后，在工程根目录运行如下命令，来加载我们的项目：<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native run-android</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>调试菜单</p>
+<h1 id="部署App到设备"><a href="#部署App到设备" class="headerlink" title="部署App到设备"></a>部署App到设备</h1><h2 id="部署到ios设备"><a href="#部署到ios设备" class="headerlink" title="部署到ios设备"></a>部署到ios设备</h2><ol>
+<li>需要一个Apple开发者帐号，在xcode登录</li>
+<li>为帐号生成证书。打开通用面板(General)，点击Fix Issue来一步步获取证书。</li>
+<li>登录到Apple开发者中心(<a href="http://developer.apple.com)，注册设备。" target="_blank" rel="external">http://developer.apple.com)，注册设备。</a><br>其中uuid，可将设备连接到电脑，打开iTunes，选择设备，点击序列号，可看到。<br>另外，部署前，需要在AppDelegate.m文件中奖localhost改成Mac的IP，然后就可以在xcode中点项目然后部署到设备了。<h2 id="部署到android设备"><a href="#部署到android设备" class="headerlink" title="部署到android设备"></a>部署到android设备</h2></li>
+</ol>
+<p># 基本组件<br>react native中，不能使用html中的如div, p, img等标签了，只能使用native自己定义的标签。</p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>容器组件。相当于html中的div</p>
+<h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><p>文本组件。只能通过<code>Text</code>来包含文本。其他标签不能直接包含文本。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Text&gt;文字&lt;/Text&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="TextInput"><a href="#TextInput" class="headerlink" title="TextInput"></a>TextInput</h2><p>文本输入组件。</p>
+<h3 id="onSubmitEditing"><a href="#onSubmitEditing" class="headerlink" title="onSubmitEditing"></a>onSubmitEditing</h3><p>输入框内容更新。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;TextInput</div><div class="line">    onSubmitEditing=&#123;this._handleTextChange&#125;</div><div class="line">    underlineColorAndroid=<span class="string">"transparent"</span></div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><p>图片组件。</p>
+<h3 id="区分分辨率图片组件"><a href="#区分分辨率图片组件" class="headerlink" title="区分分辨率图片组件"></a>区分分辨率图片组件</h3><p>比如通过xcode导入几倍图，然后用这个方式导入，可自动区分使用几倍图。这种图片需要通过xcode导入。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Image <span class="built_in">source</span>=&#123;require(<span class="string">'image!icon1'</span>)&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="普通图片组件"><a href="#普通图片组件" class="headerlink" title="普通图片组件"></a>普通图片组件</h3><p>普通web图片资源。这种，就不是App的本地图片了，属于每次都要请求图片资源。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Image <span class="built_in">source</span>=&#123;require(<span class="string">'./my-icon.png'</span>)&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="ImageBackground"><a href="#ImageBackground" class="headerlink" title="ImageBackground"></a>ImageBackground</h2><p>背景图片。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;ImageBackground <span class="built_in">source</span>=&#123;require(<span class="string">"image!icon1"</span>)&#125;&gt;</div><div class="line">    ....</div><div class="line">&lt;/ImageBackground&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="resizeMode"><a href="#resizeMode" class="headerlink" title="resizeMode"></a>resizeMode</h3><ol>
+<li>contain</li>
+<li>cover</li>
+<li>stretch<br>拉伸来铺满<h2 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h2>用于显示垂直的滚动列表。ListView并不立即渲染所有元素，会优先渲染屏幕可见元素。<br>ListView必须的两个属性是<code>dataSource</code>和<code>renderRow</code>。<br>其中<code>dataSource</code>为数据源，<code>renderRow</code>为单个组件。<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class ListViewBasics extends Component &#123;</div><div class="line">    constructor(props) &#123;</div><div class="line">        super(props)</div><div class="line">        const ds = new ListView.DataSource(&#123;rowHasChanged: (r1, r2) =&gt; r1 !== r2&#125;)</div><div class="line">        this.state = &#123;</div><div class="line">            dataSource: ds.cloneWithRows([<span class="string">'John'</span>, <span class="string">'Joel'</span>, James])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> (</div><div class="line">            &lt;View&gt;</div><div class="line">                &lt;ListView dataSource=&#123;this.state.dataSource&#125; renderRow=&#123;rowData =&gt; &lt;Text&gt;&#123;rowData&#125;&lt;/Text&gt;&#125;</div><div class="line">            &lt;/View&gt;</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><p>起到路由器作用。</p>
+<h1 id="平台特定组件"><a href="#平台特定组件" class="headerlink" title="平台特定组件"></a>平台特定组件</h1><p>不是所有组件都能在平台通用。可编写两个文件。并用平台名区分组件，调用时直接调用组件部分名字，react native会自动区分进行调用。<br>如：<br>编写好两个文件：<br>Switch.ios.js<br>Switch.android.js<br>调用时：<br>import Switch from ‘./Switch</p>
+<h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>一般应用可直接在页面中写样式，复杂点的应用可抽取出来管理，通过引用来添加样式。</p>
+<h2 id="行间样式"><a href="#行间样式" class="headerlink" title="行间样式"></a>行间样式</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;Text style=&#123;&#123;fontStyle: <span class="string">'italic'</span>&#125;&#125;&gt;&lt;/Text&gt;</div><div class="line">&lt;Text style=&#123;&#123;fontWeight: <span class="string">'bold'</span>&#125;&#125;&gt;&lt;/Text&gt;</div></pre></td></tr></table></figure>
+<h2 id="对象样式"><a href="#对象样式" class="headerlink" title="对象样式"></a>对象样式</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var bold = &#123;</div><div class="line">    fontWeight: <span class="string">'bold'</span></div><div class="line">&#125;</div><div class="line">&lt;Text style=&#123;bold&#125;&gt;&lt;/Text&gt;</div></pre></td></tr></table></figure>
+<h2 id="多个对象样式"><a href="#多个对象样式" class="headerlink" title="多个对象样式"></a>多个对象样式</h2><p>style属性可接收一个对象数组<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var styles = Stylesheet.create(&#123;</div><div class="line">    button: &#123;</div><div class="line">        borderRadius: <span class="string">'8px'</span></div><div class="line">    &#125;,</div><div class="line">    accentText: &#123;</div><div class="line">        fontSize: 18</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">&lt;Text style=&#123;[styles.button, styles.accentText]&#125;&gt;&lt;/Text&gt;</div></pre></td></tr></table></figure></p>
+<p>并且数组最右边样式有最高优先权，并且不存在的数组元素会被忽略，因此可使用这种逻辑：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;View style=&#123;[styles.button, this.state.touching &amp;&amp; styles.highlight]&#125;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="使用Stylesheet-Create"><a href="#使用Stylesheet-Create" class="headerlink" title="使用Stylesheet.Create"></a>使用Stylesheet.Create</h2><p>Stylesheet.Creat是可选的，但一般都会用它。<br>保证了值不可变；转成指向内部表的纯数字，保持了代码不透明性；将它放在文件末尾，可保证在应用中只会创建一次</p>
+<h2 id="定位和布局"><a href="#定位和布局" class="headerlink" title="定位和布局"></a>定位和布局</h2><p>react native支持flex布局，和绝对定位布局</p>
+<h1 id="基本事件"><a href="#基本事件" class="headerlink" title="基本事件"></a>基本事件</h1><h2 id="触摸"><a href="#触摸" class="headerlink" title="触摸"></a>触摸</h2><p>触摸可通过<code>&lt;TouchableHighlight&gt;</code>把把界面元素包起来。会产生一个叠层，给用户视觉反馈。并且提供了一些钩子函数。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;TouchableHighlight</div><div class="line">    onPressIn=&#123;this._onPressIn&#125;</div><div class="line">    onPressOut=&#123;this._onPressOut&#125;</div><div class="line">    onPress=&#123;this._onPress&#125;</div><div class="line">    onLongPress=&#123;this._onLongPress&#125;</div><div class="line">    &gt;</div><div class="line">    &lt;View&gt;</div><div class="line">        &lt;Text&gt;摸我&lt;/Text&gt;</div><div class="line">    &lt;/View&gt;</div><div class="line">&lt;/TouchableHighlight&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="高级触摸"><a href="#高级触摸" class="headerlink" title="高级触摸"></a>高级触摸</h2><p>想处理更多交互，而不仅是轻触。rn提供了两个api来处理。</p>
+<h3 id="GestureResponder"><a href="#GestureResponder" class="headerlink" title="GestureResponder"></a>GestureResponder</h3><p>低层接口</p>
+<h3 id="PanResponder"><a href="#PanResponder" class="headerlink" title="PanResponder"></a>PanResponder</h3><p>实用抽象</p>
+<h2 id="地理位置"><a href="#地理位置" class="headerlink" title="地理位置"></a>地理位置</h2><p>调用navigator.geolocation获取用户位置<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">navigator.geolocation.getCurrentPosition(</div><div class="line">    position =&gt; &#123;   //成功回调函数</div><div class="line"></div><div class="line">    &#125;,</div><div class="line">    error =&gt; &#123;      //失败回调函数</div><div class="line"></div><div class="line">    &#125;,</div><div class="line">    &#123;   //可选参数</div><div class="line">        <span class="built_in">enable</span>HighAccuracy: <span class="literal">true</span>,   //是否启动高精度模式</div><div class="line">        timeout: 20000,             //超时时间</div><div class="line">        maximumAge: 1000            //重新获取位置信息时间间隔</div><div class="line">    &#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>也可以实时监听用户位置，每当位置变化就会触发方法。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">this.watchID = navigator.geolocation.watchPosition(position =&gt; &#123;</div><div class="line">    this.setState(&#123;position: position&#125;)</div><div class="line">&#125;)</div><div class="line">//在卸载时清除监听器</div><div class="line"><span class="function"><span class="title">componentWillUnmount</span></span>() &#123;</div><div class="line">    navigator.geolocation.clearWatch(this.watchID)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h2><p>官方使用<code>CameraRoll</code>模块。但是好像不太好用。推荐使用第三方模块。<br>比如使用<a href="https://github.com/timmh/react-native-camera" target="_blank" rel="external">react-native-camera</a></p>
+<h2 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h2><p>通过xhr上传图片</p>
+<h2 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h2><p>使用AsyncStorage进行存储。和localstorage类似<br>不过这个的key的格式不一样，为<code>@Appname:key</code><br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var STORAGE_KEY = <span class="string">'@WeatherProject:zip'</span></div><div class="line">// 存储数据</div><div class="line">AsyncStorage.setItem(STORAGE_KEY, zip)</div><div class="line">    .then(() =&gt; &#123;</div><div class="line"></div><div class="line">    &#125;)</div><div class="line">    .catch(error =&gt; &#123;</div><div class="line"></div><div class="line">    &#125;)</div><div class="line">    .done()</div><div class="line">//获取数据</div><div class="line">AsyncStorage.getItem(STORAGE_KEY)</div><div class="line">    .then(value =&gt; &#123;</div><div class="line"></div><div class="line">    &#125;)</div><div class="line">    .catch(error =&gt; &#123;</div><div class="line"></div><div class="line">    &#125;)</div><div class="line">    .done()</div></pre></td></tr></table></figure></p>
+<h1 id="外部组件"><a href="#外部组件" class="headerlink" title="外部组件"></a>外部组件</h1><p>安装第三方组件。如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install react-native-video --save</div></pre></td></tr></table></figure></p>
+<p>安装完成之后，需要在不同的平台做导入。</p>
+<h2 id="ios平台导入"><a href="#ios平台导入" class="headerlink" title="ios平台导入"></a>ios平台导入</h2><p>在ios中导入：<br>xcode - Libraries右键 - Add Files to Depends - 添加RCTVideo.xcodeproj(node_modules中)<br>然后，需要添加到build process：<br>xcode - build process - 展开Link Binary With Libraries - 点击+ - 添加libRCTVideo.a<br>这样就完成了，可以import组件了。</p>
+<h2 id="android平台导入"><a href="#android平台导入" class="headerlink" title="android平台导入"></a>android平台导入</h2><p>安装第三方组件。如：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install react-native-linear-gradient --save</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>更新android/settings.gradle，将模块加入到Android构建过程中。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 原始settings.gradle为</div><div class="line">rootProject.name = <span class="string">'WeatherProject'</span></div><div class="line">include <span class="string">':app'</span></div><div class="line">// 需要修改为</div><div class="line">rootProject.name = <span class="string">'WeatherProject'</span></div><div class="line">include <span class="string">':app'</span>, <span class="string">':react-native-linear-gradient'</span></div><div class="line">project(<span class="string">':react-native-linear-gradient'</span>).projectDir = new File(rootProject.projectDir, <span class="string">'../node_modules/react-native-linear-gradient/android'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>将模块作为依赖列在android/app/build.gradle文件<br>更新到文件中dependencies的末尾</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    compile fileTree(dir: <span class="string">"libs"</span>, include: [<span class="string">"*.jar"</span>])</div><div class="line">    compile <span class="string">"com.android.support:appcompat-v7:23.0.1"</span></div><div class="line">    compile <span class="string">"com.facebook.react:react-native:+"</span>  </div><div class="line">    compile project(<span class="string">':react-native-linear-gradient'</span>)    //此处添加</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在MainActivity.java里导入包，引入并设置成为一个React Native可用的包</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package com.weatherproject;</div><div class="line">import com.facebook.react.ReactActivity;</div><div class="line">import com.BV.LinearGradient.LinearGradientPackage; //添加包</div><div class="line"></div><div class="line">public class MainActivity extends ReactActivity &#123;</div><div class="line">    @Override</div><div class="line">    protected String <span class="function"><span class="title">getMainComponentName</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> <span class="string">"WeatherProject"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//此处原本有mReactInstanceManager，需要添加一行.addPackage(new LinearGradientPackage*())，但是最新版本好像没有了</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样就完成了，可以import组件了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/react/" rel="tag">#react</a>
+          
+            <a href="/tags/react-native/" rel="tag">#react native</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/30/forEach/" rel="next" title="for, forEach, $.each, _.forEach中的跳出循环">
+                <i class="fa fa-chevron-left"></i> for, forEach, $.each, _.forEach中的跳出循环
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建环境"><span class="nav-number">1.</span> <span class="nav-text">搭建环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装ios依赖"><span class="nav-number">1.1.</span> <span class="nav-text">安装ios依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装android依赖"><span class="nav-number">1.2.</span> <span class="nav-text">安装android依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建应用"><span class="nav-number">2.</span> <span class="nav-text">创建应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快捷键"><span class="nav-number">2.0.1.</span> <span class="nav-text">快捷键</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#andoird应用"><span class="nav-number">2.1.</span> <span class="nav-text">andoird应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署App到设备"><span class="nav-number">3.</span> <span class="nav-text">部署App到设备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#部署到ios设备"><span class="nav-number">3.1.</span> <span class="nav-text">部署到ios设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署到android设备"><span class="nav-number">3.2.</span> <span class="nav-text">部署到android设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">3.3.</span> <span class="nav-text">View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text"><span class="nav-number">3.4.</span> <span class="nav-text">Text</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TextInput"><span class="nav-number">3.5.</span> <span class="nav-text">TextInput</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#onSubmitEditing"><span class="nav-number">3.5.1.</span> <span class="nav-text">onSubmitEditing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image"><span class="nav-number">3.6.</span> <span class="nav-text">Image</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#区分分辨率图片组件"><span class="nav-number">3.6.1.</span> <span class="nav-text">区分分辨率图片组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通图片组件"><span class="nav-number">3.6.2.</span> <span class="nav-text">普通图片组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ImageBackground"><span class="nav-number">3.7.</span> <span class="nav-text">ImageBackground</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#resizeMode"><span class="nav-number">3.7.1.</span> <span class="nav-text">resizeMode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ListView"><span class="nav-number">3.8.</span> <span class="nav-text">ListView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigator"><span class="nav-number">3.9.</span> <span class="nav-text">Navigator</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#平台特定组件"><span class="nav-number">4.</span> <span class="nav-text">平台特定组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#样式"><span class="nav-number">5.</span> <span class="nav-text">样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#行间样式"><span class="nav-number">5.1.</span> <span class="nav-text">行间样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象样式"><span class="nav-number">5.2.</span> <span class="nav-text">对象样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个对象样式"><span class="nav-number">5.3.</span> <span class="nav-text">多个对象样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Stylesheet-Create"><span class="nav-number">5.4.</span> <span class="nav-text">使用Stylesheet.Create</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位和布局"><span class="nav-number">5.5.</span> <span class="nav-text">定位和布局</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本事件"><span class="nav-number">6.</span> <span class="nav-text">基本事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#触摸"><span class="nav-number">6.1.</span> <span class="nav-text">触摸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级触摸"><span class="nav-number">6.2.</span> <span class="nav-text">高级触摸</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GestureResponder"><span class="nav-number">6.2.1.</span> <span class="nav-text">GestureResponder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PanResponder"><span class="nav-number">6.2.2.</span> <span class="nav-text">PanResponder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地理位置"><span class="nav-number">6.3.</span> <span class="nav-text">地理位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相机"><span class="nav-number">6.4.</span> <span class="nav-text">相机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传图片"><span class="nav-number">6.5.</span> <span class="nav-text">上传图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地存储"><span class="nav-number">6.6.</span> <span class="nav-text">本地存储</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外部组件"><span class="nav-number">7.</span> <span class="nav-text">外部组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ios平台导入"><span class="nav-number">7.1.</span> <span class="nav-text">ios平台导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#android平台导入"><span class="nav-number">7.2.</span> <span class="nav-text">android平台导入</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
