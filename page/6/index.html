@@ -214,8 +214,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/stapes/" itemprop="url">
-                  Stapes.js 用法详解
+                <a class="post-title-link" href="/2017/01/11/foundation-1/" itemprop="url">
+                  Javascript基础--函数和定义优先级
                 </a>
               
             
@@ -275,9 +275,15 @@
 
       
         
-          Stapes.js是一个灵活，简单，轻量级的Javascript框架。因为框架的易用性以及所能提供的丰富的功能，在之前的项目中已经用到stapes.js，近期由于想查询一些问题，发现当时项目中没有相关的注释，加上官网api排列很乱，查阅起来很麻烦，便由此想到写一篇stapes.js入门，以增强记忆并以备之后查阅。
+          
+          Javascript中的包括变量的定义，函数的定义；函数的静态方法，原型方法；变量的前置定义，后置定义；运算符的优先级；变量的提升，等等经常容易发生混淆。避免在前端开发过程中再踩这些类似的坑，在此总结。
+js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值， 字符串， 数值， 对象判断的基本方式是，他们属于原始的基本类型，而不是对象，不能使用 new 命令。ES6 新增了一种基本数据类型： Symbol
+静态方法和原型方法静态方法的优先级高于原型方法。12345678910function Demo() &#123;    this.getName = function() &#123;        console.log(1);    &#125;&#125;;Demo.prototype.getName = function() &#123;    console.log(2);&#125;Demo.getName();   //  1
+变量声明提升所有的声明变量或声明函数都会被提升到当前函数的顶部。123console.log(x);console.
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/stapes/">
+            <a class="btn" href="/2017/01/11/foundation-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -454,8 +460,8 @@ link除了加载css，还能定义rss；import只能用于加载css
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/karma-jasmine-angualr/" itemprop="url">
-                  Angular自动化单元测试
+                <a class="post-title-link" href="/2017/01/11/stapes/" itemprop="url">
+                  Stapes.js 用法详解
                 </a>
               
             
@@ -515,9 +521,9 @@ link除了加载css，还能定义rss；import只能用于加载css
 
       
         
-          在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。angular-mock辅助Karma、Jasmine等JS测试工具来模拟angular方法，测试angular应用。除此之外，Angular-mock还扩展了ng的多个核心服务，使之可以被测试代码以同步的方式进行审查和控制。
+          Stapes.js是一个灵活，简单，轻量级的Javascript框架。因为框架的易用性以及所能提供的丰富的功能，在之前的项目中已经用到stapes.js，近期由于想查询一些问题，发现当时项目中没有相关的注释，加上官网api排列很乱，查阅起来很麻烦，便由此想到写一篇stapes.js入门，以增强记忆并以备之后查阅。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/karma-jasmine-angualr/">
+            <a class="btn" href="/2017/01/11/stapes/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -674,8 +680,8 @@ link除了加载css，还能定义rss；import只能用于加载css
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/es6/" itemprop="url">
-                  es6实用中文api
+                <a class="post-title-link" href="/2017/01/11/karma-jasmine-angualr/" itemprop="url">
+                  Angular自动化单元测试
                 </a>
               
             
@@ -735,14 +741,9 @@ link除了加载css，还能定义rss；import只能用于加载css
 
       
         
-          
-          声明let, constlet和const不会有变量声明提升，作用域也会被限制。通过let，const，class声明的变量，不会成为 window 的属性。const需要在声明时赋值。const声明一个常量时，常量的值不能改变。const声明一个复合型变量时，变量不指向数据，而是指向数据所在的地址。因此变量可以添加属性。12345const a = 'hello';  // a 的值不可被重置const foo = &#123;&#125;;     // foo 可以添加属性foo.prop = 111;const arr = [];     // arr 可以添加元素arr.push('hello');
-如果想完全将对象冻结，不能更改，应该使用 Object.freeze 方法。1const foo = Object.freeze(&#123;&#125;);
-解构数组解构通过数组方式直接给对应数组中的对应变量赋值。12345var [a, b, c] = [1, 2, 3];let [a, [[b], c]] = [1, [[2], 3]];let [ , , third] =
-          ...
-
+          在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。angular-mock辅助Karma、Jasmine等JS测试工具来模拟angular方法，测试angular应用。除此之外，Angular-mock还扩展了ng的多个核心服务，使之可以被测试代码以同步的方式进行审查和控制。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/es6/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/karma-jasmine-angualr/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1019,116 +1020,6 @@ link除了加载css，还能定义rss；import只能用于加载css
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/webpack/" itemprop="url">
-                  webpack 项目配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          webpack 是一个更出色的前端自动化构建工具、模块化工具、资源管理工具。相比来说，传统的AMD RequireJs的各种参数设置繁琐，不易学习，很难完全掌握；个人认为和较为流行的Browserify各有优缺点，不相上下；当然还有Duo这样优秀的工具。webpack的优点简单来说是一个配置文件解决所有缓存依赖转换功能。纯从webpack的角度来说，更适合于SPA应用构建。Webpack 做的, 总体是从 entry 引入文件, 通过 loaders 编译, 从 output 输出。然后其他功能由 plugins 写的其他的方法引入, 进行分包, Hashing 等等
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/webpack/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2017/01/11/matrix/" itemprop="url">
                   CSS3中的Matrix矩阵
                 </a>
@@ -1198,6 +1089,116 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/01/11/matrix/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/webpack/" itemprop="url">
+                  webpack 项目配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          webpack 是一个更出色的前端自动化构建工具、模块化工具、资源管理工具。相比来说，传统的AMD RequireJs的各种参数设置繁琐，不易学习，很难完全掌握；个人认为和较为流行的Browserify各有优缺点，不相上下；当然还有Duo这样优秀的工具。webpack的优点简单来说是一个配置文件解决所有缓存依赖转换功能。纯从webpack的角度来说，更适合于SPA应用构建。Webpack 做的, 总体是从 entry 引入文件, 通过 loaders 编译, 从 output 输出。然后其他功能由 plugins 写的其他的方法引入, 进行分包, Hashing 等等
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/webpack/">
               阅读全文 &raquo;
             </a>
           </div>
