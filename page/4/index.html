@@ -214,8 +214,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/call-apply/" itemprop="url">
-                  call, apply, callee, caller应用
+                <a class="post-title-link" href="/2017/01/11/nodejs-http/" itemprop="url">
+                  nodejs深入系列--http
                 </a>
               
             
@@ -275,15 +275,339 @@
 
       
         
-          
-          call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
-即将一个函数的上下文从初始的上下文改变为指定的thisArg。
-不带参数arg1234567891011121314function base() &#123;    this.name = 'zhou';    this.getName = function() &#123;        console.log(this.name);    &#125;;&#125;;function extend() &#123;    base.call(this)     //让base代替执行this    console.log(this)       var c = &#123;&#125;    base.call(c);       //让base代替执行c    console.log(c);&#125;;
-extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend 中：调用 this 时，都是调用 base
-          ...
-
+          nodejs深入系列之http
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/call-apply/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/nodejs-http/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/lodash/" itemprop="url">
+                  Lodash实用中文api
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          Lodash.js是一个现代模块化性能良好的Javascript工具库。和Underscore功能类似，并提供了更为丰富的API。 近期会持续更新一份实用的lodash(v4.6)使用参考，数组部分参考了cnblogs的shikelong(v3.8)，这拼音和我一个同事kelong的还挺像的，难道是他？
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/lodash/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/angular/" itemprop="url">
+                  Angular 使用笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          Angular当然是现在流行的前端框架之一，和React，Ember一起并称前端开发的三神器。不过由于前公司因为业务需要，使一直使用的是另外一个轻量级的MVVM框架Rivets，使得对angular一直闻其声，未尽用。趁此机会便想把angular学习应用了一遍，并对比工作中使用的rivets，熟悉MV*的框架结构。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/angular/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/nodejs-net/" itemprop="url">
+                  nodejs深入系列--net
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          nodejs深入系列之net
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/nodejs-net/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -440,8 +764,8 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-net/" itemprop="url">
-                  nodejs深入系列--net
+                <a class="post-title-link" href="/2017/01/11/contentEditble/" itemprop="url">
+                  让div标签可输入内容的几种方式
                 </a>
               
             
@@ -468,8 +792,8 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
+                  <a href="/categories/Html-CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">Html, CSS</span>
                   </a>
                 </span>
 
@@ -501,9 +825,14 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
 
       
         
-          nodejs深入系列之net
+          
+          可编辑这块本来还停留在div和input类相互转换的思路上，今天无意间看到几种新的实现方法。
+css方式: user-modifyuser-modify可以让普通元素可读写。目前可支持属性：1234user-modify: read-only;       // 只读user-modify: read-write;      // 可输入纯文本和富文本user-modify: write-only;      // 目前浏览器基本不支持user-modify: read-write-plaintext-only;   // 只能输入纯文本，只有webkit支持
+html方式: contenteditablecontenteditable可以让普通元素可读写。目前可支持属性：123456contenteditable=""contenteditable="events"            // 作用未知contenteditable="caret"             // 作用未知contenteditable="plaintext-only"    // 只能输入纯文本，只有
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-net/">
+            <a class="btn" href="/2017/01/11/contentEditble/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -969,336 +1298,6 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-stream/" itemprop="url">
-                  nodejs深入系列--stream
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之stream
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-stream/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-server/" itemprop="url">
-                  nodejs深入系列--服务器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之建立服务器
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-server/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-url/" itemprop="url">
-                  nodejs深入系列--url
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之url
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-url/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1345,7 +1344,7 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1362,7 +1361,7 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

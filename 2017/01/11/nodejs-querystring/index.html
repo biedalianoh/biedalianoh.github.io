@@ -65,7 +65,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/11/nodejs-querystring/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
 <meta property="og:description" content="nodejs深入系列之querystring">
-<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta property="og:updated_time" content="2018-02-21T13:50:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs深入系列--querystring">
 <meta name="twitter:description" content="nodejs深入系列之querystring">
@@ -265,7 +265,8 @@
 
       
         <p>querystring模块提供了解析和格式化url字符串的功能。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const querystring = require(<span class="string">'querystring'</span>);</div></pre></td></tr></table></figure></p>
-<h2 id="querystring-escape-str"><a href="#querystring-escape-str" class="headerlink" title="querystring.escape(str)"></a>querystring.escape(str)</h2><h2 id="querystring-parse-str-sep-eq-options"><a href="#querystring-parse-str-sep-eq-options" class="headerlink" title="querystring.parse(str[, sep[, eq[, options]]])"></a>querystring.parse(str[, sep[, eq[, options]]])</h2><h2 id="querystring-stringify-obj-sep-eq-options"><a href="#querystring-stringify-obj-sep-eq-options" class="headerlink" title="querystring.stringify(obj[, sep[, eq[, options]]])"></a>querystring.stringify(obj[, sep[, eq[, options]]])</h2><h2 id="querystring-unescape-str"><a href="#querystring-unescape-str" class="headerlink" title="querystring.unescape(str)"></a>querystring.unescape(str)</h2>
+<h2 id="querystring-escape-str"><a href="#querystring-escape-str" class="headerlink" title="querystring.escape(str)"></a>querystring.escape(str)</h2><h2 id="querystring-parse-str-sep-eq-options"><a href="#querystring-parse-str-sep-eq-options" class="headerlink" title="querystring.parse(str[, sep[, eq[, options]]])"></a>querystring.parse(str[, sep[, eq[, options]]])</h2><h2 id="querystring-stringify-obj-sep-eq-options"><a href="#querystring-stringify-obj-sep-eq-options" class="headerlink" title="querystring.stringify(obj[, sep[, eq[, options]]])"></a>querystring.stringify(obj[, sep[, eq[, options]]])</h2><p>把json对象转为<code>&amp;</code>连接的字符串<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var params = &#123;</div><div class="line">    lat: <span class="string">'1001'</span>,</div><div class="line">    lon: <span class="string">'2002'</span>,</div><div class="line">    APPID: <span class="string">'public key'</span></div><div class="line">&#125;</div><div class="line">qs.stringify(params)   //生成：lat=1001&amp;lon=2002&amp;APPID=public%20key</div></pre></td></tr></table></figure></p>
+<h2 id="querystring-unescape-str"><a href="#querystring-unescape-str" class="headerlink" title="querystring.unescape(str)"></a>querystring.unescape(str)</h2>
       
     </div>
 
@@ -292,8 +293,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/11/nodejs-stream/" rel="next" title="nodejs深入系列--stream">
-                <i class="fa fa-chevron-left"></i> nodejs深入系列--stream
+              <a href="/2017/01/11/nodejs-server/" rel="next" title="nodejs深入系列--服务器">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--服务器
               </a>
             
           </div>
@@ -370,7 +371,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -387,7 +388,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

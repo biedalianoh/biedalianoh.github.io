@@ -65,7 +65,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/11/nodejs-path/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
 <meta property="og:description" content="nodejs深入系列之path">
-<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta property="og:updated_time" content="2018-02-21T10:34:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs深入系列--path">
 <meta name="twitter:description" content="nodejs深入系列之path">
@@ -268,7 +268,13 @@
 <p>为解决这种问题，可以在path路径后带上操作系统名称：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">POSIX and Windows:</div><div class="line">path.win32.basename(<span class="string">'C:\\temp\\myfile.html'</span>);     //Returns: <span class="string">'myfile.html'</span></div></pre></td></tr></table></figure></p>
 <p>path拥有以下方法：</p>
 <h2 id="path-basename-path-ext"><a href="#path-basename-path-ext" class="headerlink" title="path.basename(path[, ext])"></a>path.basename(path[, ext])</h2><h2 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a>path.delimiter</h2><p>分隔符。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">; <span class="keyword">for</span> Windows</div><div class="line">: <span class="keyword">for</span> POSIX</div></pre></td></tr></table></figure></p>
-<h2 id="path-dirname-path"><a href="#path-dirname-path" class="headerlink" title="path.dirname(path)"></a>path.dirname(path)</h2><h2 id="path-extname-path"><a href="#path-extname-path" class="headerlink" title="path.extname(path)"></a>path.extname(path)</h2><h2 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a>path.format(pathObject)</h2><h2 id="path-isAbsolute-path"><a href="#path-isAbsolute-path" class="headerlink" title="path.isAbsolute(path)"></a>path.isAbsolute(path)</h2><h2 id="path-join-…paths"><a href="#path-join-…paths" class="headerlink" title="path.join([…paths])"></a>path.join([…paths])</h2><h2 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a>path.normalize(path)</h2><h2 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a>path.parse(path)</h2><h2 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a>path.posix</h2><h2 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a>path.relative(from, to)</h2><h2 id="path-resolve-…paths"><a href="#path-resolve-…paths" class="headerlink" title="path.resolve([…paths])"></a>path.resolve([…paths])</h2><h2 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a>path.sep</h2><h2 id="path-win32"><a href="#path-win32" class="headerlink" title="path.win32"></a>path.win32</h2>
+<h2 id="path-dirname-path"><a href="#path-dirname-path" class="headerlink" title="path.dirname(path)"></a>path.dirname(path)</h2><h2 id="path-extname-path"><a href="#path-extname-path" class="headerlink" title="path.extname(path)"></a>path.extname(path)</h2><p>返回路径参数的拓展名，无拓展名返回空字符串</p>
+<h2 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a>path.format(pathObject)</h2><p>接受一个路径对象为参数，返回一个完整的路径地址。</p>
+<h2 id="path-isAbsolute-path"><a href="#path-isAbsolute-path" class="headerlink" title="path.isAbsolute(path)"></a>path.isAbsolute(path)</h2><h2 id="path-join-…paths"><a href="#path-join-…paths" class="headerlink" title="path.join([…paths])"></a>path.join([…paths])</h2><p>将参数连接起来，返回一个路径<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> outputPath = path.join(__dirname, <span class="string">'node'</span>, <span class="string">'node.js'</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a>path.normalize(path)</h2><p>规范化路径字符串。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path.normalize(<span class="string">'/foo/bar//baz/asdf/..'</span>)</div><div class="line">//获得 <span class="string">'/foo/bar/baz/asdf'</span></div></pre></td></tr></table></figure></p>
+<h2 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a>path.parse(path)</h2><p>将路径解析为一个路径对象</p>
+<h2 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a>path.posix</h2><h2 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a>path.relative(from, to)</h2><p>判断从一个绝对路径到另一个绝对路径的关系，即怎么走<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path.relative(<span class="string">'/User/liuht/itbilu/demo'</span>, <span class="string">'/User/liuht/zszsgc/lib'</span>)</div><div class="line">//获得 <span class="string">'../../zszsgc/lib'</span></div></pre></td></tr></table></figure></p>
+<h2 id="path-resolve-…paths"><a href="#path-resolve-…paths" class="headerlink" title="path.resolve([…paths])"></a>path.resolve([…paths])</h2><h2 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a>path.sep</h2><h2 id="path-win32"><a href="#path-win32" class="headerlink" title="path.win32"></a>path.win32</h2>
       
     </div>
 
@@ -373,7 +379,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -390,7 +396,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

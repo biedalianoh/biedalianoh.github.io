@@ -65,7 +65,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/11/nodejs-http/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
 <meta property="og:description" content="nodejs深入系列之http">
-<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta property="og:updated_time" content="2018-02-21T14:41:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs深入系列--http">
 <meta name="twitter:description" content="nodejs深入系列之http">
@@ -270,11 +270,22 @@
 <li>keepAlive<br>保持链接池。默认为false</li>
 <li>keepAliveMsecs<br>发送TCP保持连接包的频率。当keepAlive为true时使用。默认为1000</li>
 <li>maxSockets<br>每个host能连接的最大sockets数量。默认为Infinity</li>
-<li>maxFreeSockets<br>空闲状态能打开的最大sockets数。当keepAlive为true时使用。默认为256<h2 id="globalAgent"><a href="#globalAgent" class="headerlink" title="globalAgent"></a>globalAgent</h2>Agent有一个全局实例globalAgent被用在所有的HTTP客户端请求。<h2 id="agent-createConnection-option-callback"><a href="#agent-createConnection-option-callback" class="headerlink" title="agent.createConnection(option[, callback])"></a>agent.createConnection(option[, callback])</h2>和net.createConnection()用法相同。<h2 id="agent-destroy"><a href="#agent-destroy" class="headerlink" title="agent.destroy()"></a>agent.destroy()</h2>摧毁所有正在使用的sockets<h2 id="agent-freeSockets"><a href="#agent-freeSockets" class="headerlink" title="agent.freeSockets"></a>agent.freeSockets</h2>当处于keepAlive状态时，显示所有空闲状态的sockets。不要修改。<h2 id="agent-getName-options"><a href="#agent-getName-options" class="headerlink" title="agent.getName(options)"></a>agent.getName(options)</h2>options可选择：</li>
+<li>maxFreeSockets<br>空闲状态能打开的最大sockets数。当keepAlive为true时使用。默认为256   </li>
+</ol>
+<h2 id="globalAgent"><a href="#globalAgent" class="headerlink" title="globalAgent"></a>globalAgent</h2><p>Agent有一个全局实例globalAgent被用在所有的HTTP客户端请求。</p>
+<h2 id="agent-createConnection-option-callback"><a href="#agent-createConnection-option-callback" class="headerlink" title="agent.createConnection(option[, callback])"></a>agent.createConnection(option[, callback])</h2><p>和net.createConnection()用法相同。</p>
+<h2 id="agent-destroy"><a href="#agent-destroy" class="headerlink" title="agent.destroy()"></a>agent.destroy()</h2><p>摧毁所有正在使用的sockets</p>
+<h2 id="agent-freeSockets"><a href="#agent-freeSockets" class="headerlink" title="agent.freeSockets"></a>agent.freeSockets</h2><p>当处于keepAlive状态时，显示所有空闲状态的sockets。不要修改。</p>
+<h2 id="agent-getName-options"><a href="#agent-getName-options" class="headerlink" title="agent.getName(options)"></a>agent.getName(options)</h2><p>options可选择：</p>
+<ol>
 <li>host<string></string></li>
 <li>port<number></number></li>
-<li>localAddress<string><h2 id="agent-maxFreeSockets"><a href="#agent-maxFreeSockets" class="headerlink" title="agent.maxFreeSockets"></a>agent.maxFreeSockets</h2>获取空闲状态能打开的最大sockets数。<h2 id="agent-maxSockets"><a href="#agent-maxSockets" class="headerlink" title="agent.maxSockets"></a>agent.maxSockets</h2>获取每个host能连接的最大sockets数量。<h2 id="agent-requests"><a href="#agent-requests" class="headerlink" title="agent.requests"></a>agent.requests</h2>显示尚未分配给sokects的的请求队列。不要修改。<h2 id="agent-sockets"><a href="#agent-sockets" class="headerlink" title="agent.sockets"></a>agent.sockets</h2>显示正在被使用中的sockets列表。不要修改。</string></li>
+<li>localAddress<string>   </string></li>
 </ol>
+<h2 id="agent-maxFreeSockets"><a href="#agent-maxFreeSockets" class="headerlink" title="agent.maxFreeSockets"></a>agent.maxFreeSockets</h2><p>获取空闲状态能打开的最大sockets数。</p>
+<h2 id="agent-maxSockets"><a href="#agent-maxSockets" class="headerlink" title="agent.maxSockets"></a>agent.maxSockets</h2><p>获取每个host能连接的最大sockets数量。</p>
+<h2 id="agent-requests"><a href="#agent-requests" class="headerlink" title="agent.requests"></a>agent.requests</h2><p>显示尚未分配给sokects的的请求队列。不要修改。</p>
+<h2 id="agent-sockets"><a href="#agent-sockets" class="headerlink" title="agent.sockets"></a>agent.sockets</h2><p>显示正在被使用中的sockets列表。不要修改。</p>
 <h1 id="http-ClientRequest"><a href="#http-ClientRequest" class="headerlink" title="http.ClientRequest"></a>http.ClientRequest</h1><p>使用http.request()时返回的实例。代表一个正在进行的请求。<br>http.ClientRequest实例有两个参数：<br>http.request(options, function(res) {})</p>
 <ol>
 <li><p>options<br>设置host，port等</p>
@@ -284,7 +295,7 @@
 <figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http.request(options,<span class="keyword">function</span>(res)&#123;</div><div class="line">  res.setEncoding(<span class="string">'utf8'</span>)  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>http.ClientRequest能响应以下方法：</p>
+<p>http.ClientRequest能响应以下方法：   </p>
 <h2 id="abort"><a href="#abort" class="headerlink" title="abort"></a>abort</h2><p>当客户端被abort时，会emit触发http.ClientRequest实例的abort方法。只有第一次的时候会触发。</p>
 <h2 id="aborted"><a href="#aborted" class="headerlink" title="aborted"></a>aborted</h2><p>当服务端abort时，会emit触发。</p>
 <h2 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h2><p>服务端响应请求时每次都会触发此方法。如果没有去监听此方法，则客户端会关闭连接。<br>拥有response，socket，head参数。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var options = &#123;</div><div class="line">  port: 1337,</div><div class="line">  hostname: <span class="string">'127.0.0.1'</span>,</div><div class="line">  method: <span class="string">'CONNECT'</span>,</div><div class="line">  path: <span class="string">'www.baidu.com:80'</span></div><div class="line">&#125;</div><div class="line">var req = http.request(options);</div><div class="line">req.end();</div><div class="line">req.on(<span class="string">'connect'</span>, (res, socket, head) =&gt; &#123;</div><div class="line">  console.log(<span class="string">'got connected!'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
@@ -344,16 +355,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/11/my first blog/" rel="next" title="新的记载，新的开端">
-                <i class="fa fa-chevron-left"></i> 新的记载，新的开端
+              <a href="/2017/01/11/lodash/" rel="next" title="Lodash实用中文api">
+                <i class="fa fa-chevron-left"></i> Lodash实用中文api
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/12/nodejs-express/" rel="prev" title="nodejs深入系列--express">
-                nodejs深入系列--express <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/11/css3-sizes/" rel="prev" title="Css3中各类尺寸应用详解">
+                Css3中各类尺寸应用详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -422,7 +433,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -439,7 +450,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
