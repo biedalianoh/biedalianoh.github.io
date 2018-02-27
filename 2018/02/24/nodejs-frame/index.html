@@ -1,0 +1,737 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs,frame," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="nodejs深入系列之框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs深入系列--框架">
+<meta property="og:url" content="http://yoursite.com/2018/02/24/nodejs-frame/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="nodejs深入系列之框架">
+<meta property="og:updated_time" content="2018-02-26T10:38:17.692Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs深入系列--框架">
+<meta name="twitter:description" content="nodejs深入系列之框架">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> nodejs深入系列--框架 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nodejs深入系列--框架
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-02-24T18:57:37+08:00" content="2018-02-24">
+              2018-02-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="MVC框架"><a href="#MVC框架" class="headerlink" title="MVC框架"></a>MVC框架</h1><p>一种软件架构思想。很多nodejs框架都是基于MVC思想开发出来。比如EXPRESS，另有很多框架又是基于EXPRESS封装出来。</p>
+<h2 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h2><h2 id="Koa-js"><a href="#Koa-js" class="headerlink" title="Koa.js"></a>Koa.js</h2><h2 id="Hapi"><a href="#Hapi" class="headerlink" title="Hapi"></a>Hapi</h2><h2 id="flaliron"><a href="#flaliron" class="headerlink" title="flaliron"></a>flaliron</h2><h2 id="total-js"><a href="#total-js" class="headerlink" title="total.js"></a>total.js</h2><h2 id="locomotive"><a href="#locomotive" class="headerlink" title="locomotive"></a>locomotive</h2><h1 id="全栈框架"><a href="#全栈框架" class="headerlink" title="全栈框架"></a>全栈框架</h1><p>拥有脚手架、模板引擎、稳定持续的开发资源库，能在短时间内迅速构建一个实时的可扩展应用。<br>轻松构建一个大型web应用，而不用在诸多细节上浪费大量时间。</p>
+<h2 id="Meteor"><a href="#Meteor" class="headerlink" title="Meteor"></a>Meteor</h2><p>Node.js上最出色的全栈框架。</p>
+<h2 id="MEAN-js"><a href="#MEAN-js" class="headerlink" title="MEAN.js"></a>MEAN.js</h2><h2 id="MEAN-io"><a href="#MEAN-io" class="headerlink" title="MEAN.io"></a>MEAN.io</h2><h2 id="AllcountJS"><a href="#AllcountJS" class="headerlink" title="AllcountJS"></a>AllcountJS</h2><h2 id="Derby"><a href="#Derby" class="headerlink" title="Derby"></a>Derby</h2><h2 id="Feathers"><a href="#Feathers" class="headerlink" title="Feathers"></a>Feathers</h2><h2 id="SocketStream"><a href="#SocketStream" class="headerlink" title="SocketStream"></a>SocketStream</h2><h2 id="Meatier"><a href="#Meatier" class="headerlink" title="Meatier"></a>Meatier</h2><h2 id="TWEE-IO"><a href="#TWEE-IO" class="headerlink" title="TWEE.IO"></a>TWEE.IO</h2><h2 id="Mojito"><a href="#Mojito" class="headerlink" title="Mojito"></a>Mojito</h2><h2 id="Seeds-js"><a href="#Seeds-js" class="headerlink" title="Seeds.js"></a>Seeds.js</h2><h2 id="SANE"><a href="#SANE" class="headerlink" title="SANE"></a>SANE</h2><h1 id="REST-API框架"><a href="#REST-API框架" class="headerlink" title="REST API框架"></a>REST API框架</h1><p>对应通过增删改查来改变状态的api请求。</p>
+<h2 id="actionHero-js"><a href="#actionHero-js" class="headerlink" title="actionHero.js"></a>actionHero.js</h2><h2 id="Frisby"><a href="#Frisby" class="headerlink" title="Frisby"></a>Frisby</h2><h2 id="restling"><a href="#restling" class="headerlink" title="restling"></a>restling</h2><h2 id="restify"><a href="#restify" class="headerlink" title="restify"></a>restify</h2><h2 id="restmvc"><a href="#restmvc" class="headerlink" title="restmvc"></a>restmvc</h2><h2 id="percolator"><a href="#percolator" class="headerlink" title="percolator"></a>percolator</h2><h2 id="LoopBack"><a href="#LoopBack" class="headerlink" title="LoopBack"></a>LoopBack</h2><h2 id="facet"><a href="#facet" class="headerlink" title="facet"></a>facet</h2><h2 id="Raddish"><a href="#Raddish" class="headerlink" title="Raddish"></a>Raddish</h2><h1 id="其他框架"><a href="#其他框架" class="headerlink" title="其他框架"></a>其他框架</h1><p>包含中间件、开发库、静态网站生成器等。</p>
+<h2 id="Connect"><a href="#Connect" class="headerlink" title="Connect"></a>Connect</h2><h2 id="Kraken"><a href="#Kraken" class="headerlink" title="Kraken"></a>Kraken</h2><h2 id="ewdGateway2"><a href="#ewdGateway2" class="headerlink" title="ewdGateway2"></a>ewdGateway2</h2><h2 id="Wintersmith"><a href="#Wintersmith" class="headerlink" title="Wintersmith"></a>Wintersmith</h2><h2 id="docpad"><a href="#docpad" class="headerlink" title="docpad"></a>docpad</h2><h2 id="Blacksmith"><a href="#Blacksmith" class="headerlink" title="Blacksmith"></a>Blacksmith</h2><h1 id="选择框架建议"><a href="#选择框架建议" class="headerlink" title="选择框架建议"></a>选择框架建议</h1><h2 id="简单web开发"><a href="#简单web开发" class="headerlink" title="简单web开发"></a>简单web开发</h2><p>Express + EJS + Mongoose/MySQL</p>
+<h2 id="聊天室"><a href="#聊天室" class="headerlink" title="聊天室"></a>聊天室</h2><p>Express + socket.io</p>
+<h2 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h2><p>Cheerio + Request</p>
+<h2 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h2><p>Hexo</p>
+<h2 id="论坛"><a href="#论坛" class="headerlink" title="论坛"></a>论坛</h2><p>Node Club</p>
+<h2 id="控制台工具"><a href="#控制台工具" class="headerlink" title="控制台工具"></a>控制台工具</h2><p>tty.js</p>
+<h2 id="在线游戏"><a href="#在线游戏" class="headerlink" title="在线游戏"></a>在线游戏</h2><p>Pomelo</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/frame/" rel="tag">#frame</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/21/nodejs-fs/" rel="next" title="nodejs深入系列--fs">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--fs
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC框架"><span class="nav-number">1.</span> <span class="nav-text">MVC框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Express"><span class="nav-number">1.1.</span> <span class="nav-text">Express</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Koa-js"><span class="nav-number">1.2.</span> <span class="nav-text">Koa.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hapi"><span class="nav-number">1.3.</span> <span class="nav-text">Hapi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flaliron"><span class="nav-number">1.4.</span> <span class="nav-text">flaliron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#total-js"><span class="nav-number">1.5.</span> <span class="nav-text">total.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#locomotive"><span class="nav-number">1.6.</span> <span class="nav-text">locomotive</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全栈框架"><span class="nav-number">2.</span> <span class="nav-text">全栈框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Meteor"><span class="nav-number">2.1.</span> <span class="nav-text">Meteor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MEAN-js"><span class="nav-number">2.2.</span> <span class="nav-text">MEAN.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MEAN-io"><span class="nav-number">2.3.</span> <span class="nav-text">MEAN.io</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AllcountJS"><span class="nav-number">2.4.</span> <span class="nav-text">AllcountJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Derby"><span class="nav-number">2.5.</span> <span class="nav-text">Derby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feathers"><span class="nav-number">2.6.</span> <span class="nav-text">Feathers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SocketStream"><span class="nav-number">2.7.</span> <span class="nav-text">SocketStream</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Meatier"><span class="nav-number">2.8.</span> <span class="nav-text">Meatier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TWEE-IO"><span class="nav-number">2.9.</span> <span class="nav-text">TWEE.IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mojito"><span class="nav-number">2.10.</span> <span class="nav-text">Mojito</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Seeds-js"><span class="nav-number">2.11.</span> <span class="nav-text">Seeds.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SANE"><span class="nav-number">2.12.</span> <span class="nav-text">SANE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#REST-API框架"><span class="nav-number">3.</span> <span class="nav-text">REST API框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#actionHero-js"><span class="nav-number">3.1.</span> <span class="nav-text">actionHero.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frisby"><span class="nav-number">3.2.</span> <span class="nav-text">Frisby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#restling"><span class="nav-number">3.3.</span> <span class="nav-text">restling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#restify"><span class="nav-number">3.4.</span> <span class="nav-text">restify</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#restmvc"><span class="nav-number">3.5.</span> <span class="nav-text">restmvc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#percolator"><span class="nav-number">3.6.</span> <span class="nav-text">percolator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LoopBack"><span class="nav-number">3.7.</span> <span class="nav-text">LoopBack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#facet"><span class="nav-number">3.8.</span> <span class="nav-text">facet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Raddish"><span class="nav-number">3.9.</span> <span class="nav-text">Raddish</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他框架"><span class="nav-number">4.</span> <span class="nav-text">其他框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Connect"><span class="nav-number">4.1.</span> <span class="nav-text">Connect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kraken"><span class="nav-number">4.2.</span> <span class="nav-text">Kraken</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ewdGateway2"><span class="nav-number">4.3.</span> <span class="nav-text">ewdGateway2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wintersmith"><span class="nav-number">4.4.</span> <span class="nav-text">Wintersmith</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docpad"><span class="nav-number">4.5.</span> <span class="nav-text">docpad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blacksmith"><span class="nav-number">4.6.</span> <span class="nav-text">Blacksmith</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择框架建议"><span class="nav-number">5.</span> <span class="nav-text">选择框架建议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单web开发"><span class="nav-number">5.1.</span> <span class="nav-text">简单web开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聊天室"><span class="nav-number">5.2.</span> <span class="nav-text">聊天室</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#爬虫"><span class="nav-number">5.3.</span> <span class="nav-text">爬虫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#博客"><span class="nav-number">5.4.</span> <span class="nav-text">博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论坛"><span class="nav-number">5.5.</span> <span class="nav-text">论坛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制台工具"><span class="nav-number">5.6.</span> <span class="nav-text">控制台工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在线游戏"><span class="nav-number">5.7.</span> <span class="nav-text">在线游戏</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

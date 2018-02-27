@@ -65,7 +65,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/02/21/nodejs-module/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
 <meta property="og:description" content="nodejs深入系列之module">
-<meta property="og:updated_time" content="2018-02-21T11:04:28.000Z">
+<meta property="og:updated_time" content="2018-02-21T17:08:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs深入系列--常用第三方模块">
 <meta name="twitter:description" content="nodejs深入系列之module">
@@ -267,9 +267,12 @@
         <h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>可用来做爬虫。<br>请求网页地址，得到整个网页的DOM结构字符串。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">request(<span class="string">'http://www.bootcdn.cn/'</span>, (err, res, body) =&gt; &#123;</div><div class="line">  // res 为整个资源字符串；body为dom对象字符串</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <p>也可请求具体某个uri，获得文件流:<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">request(<span class="string">'http://www.bootcdn.cn/assets/img/bootcdn.png'</span>).pipe(fs.createWriteStream(path.join(config.imgDir,<span class="string">'save.png'</span>), &#123;</div><div class="line">  <span class="string">'encoding'</span>: <span class="string">'utf8'</span></div><div class="line">&#125;))</div></pre></td></tr></table></figure></p>
 <h2 id="cheerio"><a href="#cheerio" class="headerlink" title="cheerio"></a>cheerio</h2><p>将字符串转换为dom结构对象。并且可用jQuery的方式获取元素。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var cheerio = require(<span class="string">'cheerio)</span></div><div class="line">$ = cheerio.load('&lt;h2 class=<span class="string">"title"</span>&gt;Hello world&lt;/h2&gt;<span class="string">')</span></div><div class="line">$('h2.title<span class="string">').text('</span>Hello<span class="string">')</span></div></pre></td></tr></table></figure></p>
-<h2 id="node-CSV"><a href="#node-CSV" class="headerlink" title="node-CSV"></a>node-CSV</h2><p>csv(字符分隔值)，文件以纯文本形式存储表格数据(数字和文本)。最广泛的应用是在程序之间转移表格数据。<br>node-CSV一共包含4个包</p>
+<h2 id="node-CSV"><a href="#node-CSV" class="headerlink" title="node-CSV"></a>node-CSV</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install csv</div></pre></td></tr></table></figure>
+<p>csv(字符分隔值)，文件以纯文本形式存储表格数据(数字和文本)。最广泛的应用是在程序之间转移表格数据。<br>node-CSV一共包含4个包</p>
 <h3 id="CSV-generate"><a href="#CSV-generate" class="headerlink" title="CSV-generate"></a>CSV-generate</h3><p>生成标准的CSV文件</p>
 <h3 id="CSV-parse"><a href="#CSV-parse" class="headerlink" title="CSV-parse"></a>CSV-parse</h3><p>将CSV文件解析为数组变量</p>
+<h3 id="stream-transform"><a href="#stream-transform" class="headerlink" title="stream-transform"></a>stream-transform</h3><p>一个转换框架</p>
+<h3 id="CSV-stringify"><a href="#CSV-stringify" class="headerlink" title="CSV-stringify"></a>CSV-stringify</h3><p>将记录转换为CSV的文本</p>
 
       
     </div>
@@ -375,7 +378,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-count">66</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -392,7 +395,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">80</span>
+                <span class="site-state-item-count">81</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -458,7 +461,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#request"><span class="nav-number">1.</span> <span class="nav-text">request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cheerio"><span class="nav-number">2.</span> <span class="nav-text">cheerio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-CSV"><span class="nav-number">3.</span> <span class="nav-text">node-CSV</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSV-generate"><span class="nav-number">3.1.</span> <span class="nav-text">CSV-generate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSV-parse"><span class="nav-number">3.2.</span> <span class="nav-text">CSV-parse</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#request"><span class="nav-number">1.</span> <span class="nav-text">request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cheerio"><span class="nav-number">2.</span> <span class="nav-text">cheerio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-CSV"><span class="nav-number">3.</span> <span class="nav-text">node-CSV</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSV-generate"><span class="nav-number">3.1.</span> <span class="nav-text">CSV-generate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSV-parse"><span class="nav-number">3.2.</span> <span class="nav-text">CSV-parse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stream-transform"><span class="nav-number">3.3.</span> <span class="nav-text">stream-transform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSV-stringify"><span class="nav-number">3.4.</span> <span class="nav-text">CSV-stringify</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

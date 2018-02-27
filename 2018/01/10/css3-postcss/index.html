@@ -60,18 +60,18 @@
 
 
 <meta name="description" content="PostCSS本身只做两件事：提供方式能方便的用Js代码来处理CSS；把CSS代码解析成语法树结构，让插件来处理
-webpackwebpack中用post-loader来执行插件处理。1234567891011module: &amp;#123;    loaders: [        &amp;#123;            test: /\.css$/,            loader: &quot;style">
+webpackwebpack中用postcss-loader来执行插件处理。1234567891011module: &amp;#123;    loaders: [        &amp;#123;            test: /\.css$/,            loader: &quot;st">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PostCSS平台">
 <meta property="og:url" content="http://yoursite.com/2018/01/10/css3-postcss/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
 <meta property="og:description" content="PostCSS本身只做两件事：提供方式能方便的用Js代码来处理CSS；把CSS代码解析成语法树结构，让插件来处理
-webpackwebpack中用post-loader来执行插件处理。1234567891011module: &amp;#123;    loaders: [        &amp;#123;            test: /\.css$/,            loader: &quot;style">
-<meta property="og:updated_time" content="2018-01-11T07:56:41.000Z">
+webpackwebpack中用postcss-loader来执行插件处理。1234567891011module: &amp;#123;    loaders: [        &amp;#123;            test: /\.css$/,            loader: &quot;st">
+<meta property="og:updated_time" content="2018-02-27T09:10:28.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PostCSS平台">
 <meta name="twitter:description" content="PostCSS本身只做两件事：提供方式能方便的用Js代码来处理CSS；把CSS代码解析成语法树结构，让插件来处理
-webpackwebpack中用post-loader来执行插件处理。1234567891011module: &amp;#123;    loaders: [        &amp;#123;            test: /\.css$/,            loader: &quot;style">
+webpackwebpack中用postcss-loader来执行插件处理。1234567891011module: &amp;#123;    loaders: [        &amp;#123;            test: /\.css$/,            loader: &quot;st">
 
 
 
@@ -268,7 +268,7 @@ webpackwebpack中用post-loader来执行插件处理。1234567891011module: &amp
 
       
         <p>PostCSS本身只做两件事：提供方式能方便的用Js代码来处理CSS；把CSS代码解析成语法树结构，让插件来处理</p>
-<h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><p>webpack中用post-loader来执行插件处理。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    loaders: [</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">test</span>: /\.css$/,</div><div class="line">            loader: <span class="string">"style-loader!css-loader!postcss-loader"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;,</div><div class="line">postcss: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> [require(<span class="string">'autoprefixer'</span>)]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><p>webpack中用postcss-loader来执行插件处理。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    loaders: [</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">test</span>: /\.css$/,</div><div class="line">            loader: <span class="string">"style-loader!css-loader!postcss-loader"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;,</div><div class="line">postcss: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> [require(<span class="string">'autoprefixer'</span>)]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h1 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h1><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'css'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var postcss = require(<span class="string">'gulp-postcss'</span>)</div><div class="line">    <span class="built_in">return</span> gulp.src(<span class="string">'app/**/*.css'</span>)</div><div class="line">        .pipe(postcss([require(<span class="string">'autoprefixer'</span>)]))</div><div class="line">        .pipe(gulp.dest(<span class="string">'dist/'</span>))</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h1 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h1><h2 id="Autoprefixer"><a href="#Autoprefixer" class="headerlink" title="Autoprefixer"></a>Autoprefixer</h2><p>添加的不同浏览器的css前缀</p>
 <h2 id="cssnext"><a href="#cssnext" class="headerlink" title="cssnext"></a>cssnext</h2><p>通过把将来的css新特性转化，让浏览器支持将来的一些css新特性。<br>cssnext已经包含了Autoprefixer，因此有cssnext则无需Autoprefixer</p>
@@ -393,7 +393,7 @@ webpackwebpack中用post-loader来执行插件处理。1234567891011module: &amp
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-count">66</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -410,7 +410,7 @@ webpackwebpack中用post-loader来执行插件处理。1234567891011module: &amp
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">80</span>
+                <span class="site-state-item-count">81</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
