@@ -214,6 +214,116 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/11/nodejs-stream/" itemprop="url">
+                  nodejs深入系列--stream
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          nodejs深入系列之stream
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/nodejs-stream/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/11/nodejs-server/" itemprop="url">
                   nodejs深入系列--服务器
                 </a>
@@ -324,8 +434,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-querystring/" itemprop="url">
-                  nodejs深入系列--querystring
+                <a class="post-title-link" href="/2017/01/11/nodejs-process/" itemprop="url">
+                  nodejs深入系列--process
                 </a>
               
             
@@ -385,234 +495,9 @@
 
       
         
-          nodejs深入系列之querystring
+          nodejs深入系列之process
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-querystring/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/createElement_method/" itemprop="url">
-                  几种创建标签节点和属性的方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          在写一个纯净的es6代码时，涉及到创建dom元素的事情，我一度被jquery的字符串式append给惯坏了，因此也直接就上了document.body.appendChild(‘&lt;div&gt;&lt;/div&gt;‘)这种代码，出错一查之下，发现几个好玩的创建标签和属性的方法。
-createDocumentFragment()创建文档碎片节点。主要的特点为，创建多个节点时，不用每个节点都单独append到body中去进行渲染，而是把所有节点都apped到这个fragment里面，然后把fragment append到body中，因此能提升渲染性能。123456var fragment = document.createDocumentFragment();for(let i = 0; i &lt; 10; i++) &#123;  var p = document.createElement('p');  fragment.appendChild(p);&#125;document.body.appendChild(fragment);
-createAttribute(nam
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/createElement_method/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-stream/" itemprop="url">
-                  nodejs深入系列--stream
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之stream
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-stream/">
+            <a class="btn" href="/2017/01/11/nodejs-process/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -884,6 +769,232 @@ createAttribute(nam
             
               
                 
+                <a class="post-title-link" href="/2017/01/11/nodejs-querystring/" itemprop="url">
+                  nodejs深入系列--querystring
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          nodejs深入系列之querystring
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/nodejs-querystring/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/foundation-1/" itemprop="url">
+                  Javascript基础--函数和定义优先级
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Javascript中的包括变量的定义，函数的定义；函数的静态方法，原型方法；变量的前置定义，后置定义；运算符的优先级；变量的提升，等等经常容易发生混淆。避免在前端开发过程中再踩这些类似的坑，在此总结。
+js基本数据类型js基本数据类型有六种：Undefined, Null, 布尔值， 字符串， 数值， 对象判断的基本方式是，他们属于原始的基本类型，而不是对象，不能使用 new 命令。ES6 新增了一种基本数据类型： Symbol
+静态方法和原型方法静态方法的优先级高于原型方法。12345678910function Demo() &#123;    this.getName = function() &#123;        console.log(1);    &#125;&#125;;Demo.prototype.getName = function() &#123;    console.log(2);&#125;Demo.getName();   //  1
+变量声明提升所有的声明变量或声明函数都会被提升到当前函数的顶部。123console.log(x);console.
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/foundation-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/11/css3-sizes/" itemprop="url">
                   Css3中各类尺寸应用详解
                 </a>
@@ -994,118 +1105,8 @@ createAttribute(nam
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/pure.css/" itemprop="url">
-                  Pure.css栅格化Grids应用提取
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          雅虎响应式css前端框架，建立在Normalize.css基础上。由于每家公司在定制网站UI时，会有多种框架或自定义样式组合，全部应用特定css框架的情况比较少见，栅格化系统是现代网站中比较常用的功能，pure.css提供了5格和24格网格功能，可单独提取其中的Grids作为常备插件使用。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/pure.css/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/form/" itemprop="url">
-                  form表单元素以及提交方式
+                <a class="post-title-link" href="/2017/01/11/angular/" itemprop="url">
+                  Angular 使用笔记
                 </a>
               
             
@@ -1165,9 +1166,9 @@ createAttribute(nam
 
       
         
-          H5表单项标签，ajax，formaction提交方式，表单包含文件提交方式，多风格展示数据。
+          Angular当然是现在流行的前端框架之一，和React，Ember一起并称前端开发的三神器。不过由于前公司因为业务需要，使一直使用的是另外一个轻量级的MVVM框架Rivets，使得对angular一直闻其声，未尽用。趁此机会便想把angular学习应用了一遍，并对比工作中使用的rivets，熟悉MV*的框架结构。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/form/">
+            <a class="btn" href="/2017/01/11/angular/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1214,8 +1215,8 @@ createAttribute(nam
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/karma-jasmine-angualr/" itemprop="url">
-                  Angular自动化单元测试
+                <a class="post-title-link" href="/2017/01/11/contentEditble/" itemprop="url">
+                  让div标签可输入内容的几种方式
                 </a>
               
             
@@ -1242,8 +1243,8 @@ createAttribute(nam
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
+                  <a href="/categories/Html-CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">Html, CSS</span>
                   </a>
                 </span>
 
@@ -1275,9 +1276,14 @@ createAttribute(nam
 
       
         
-          在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。angular-mock辅助Karma、Jasmine等JS测试工具来模拟angular方法，测试angular应用。除此之外，Angular-mock还扩展了ng的多个核心服务，使之可以被测试代码以同步的方式进行审查和控制。
+          
+          可编辑这块本来还停留在div和input类相互转换的思路上，今天无意间看到几种新的实现方法。
+css方式: user-modifyuser-modify可以让普通元素可读写。目前可支持属性：1234user-modify: read-only;       // 只读user-modify: read-write;      // 可输入纯文本和富文本user-modify: write-only;      // 目前浏览器基本不支持user-modify: read-write-plaintext-only;   // 只能输入纯文本，只有webkit支持
+html方式: contenteditablecontenteditable可以让普通元素可读写。目前可支持属性：123456contenteditable=""contenteditable="events"            // 作用未知contenteditable="caret"             // 作用未知contenteditable="plaintext-only"    // 只能输入纯文本，只有
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/karma-jasmine-angualr/">
+            <a class="btn" href="/2017/01/11/contentEditble/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

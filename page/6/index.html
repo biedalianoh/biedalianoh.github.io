@@ -324,228 +324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/angular/" itemprop="url">
-                  Angular 使用笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Angular当然是现在流行的前端框架之一，和React，Ember一起并称前端开发的三神器。不过由于前公司因为业务需要，使一直使用的是另外一个轻量级的MVVM框架Rivets，使得对angular一直闻其声，未尽用。趁此机会便想把angular学习应用了一遍，并对比工作中使用的rivets，熟悉MV*的框架结构。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/angular/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/selector/" itemprop="url">
-                  js选择器之id，name，tag
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          js选择器之id，name，tag
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/selector/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/call-apply/" itemprop="url">
-                  call, apply, callee, caller, bind应用
+                <a class="post-title-link" href="/2017/01/11/runorder/" itemprop="url">
+                  关于Js中运算与赋值的执行顺序
                 </a>
               
             
@@ -606,14 +386,15 @@
       
         
           
-          call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
-即将一个函数的上下文从初始的上下文改变为指定的thisArg。
-不带参数arg1234567891011121314function base() &#123;    this.name = 'zhou';    this.getName = function() &#123;        console.log(this.name);    &#125;;&#125;;function extend() &#123;    base.call(this)     //让base代替执行this    console.log(this)       var c = &#123;&#125;    base.call(c);       //让base代替执行c    console.log(c);&#125;;
-extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend 中：调用 this 时，都是调用 base
+          Js中涉及到赋值，调用，函数的执行，赋值，参数赋值等计算，赋值的机制并不是按照统一的顺序，在此对于常用的执行顺序进行总结。
+参数的赋值参数的解析顺序是： 从左到右Es6提到TDZ(暂存死区)，指这样的程序区域：初始化前的变量或参数不能被访问。函数的参数既是这样的典型区域。123456// 下面的代码出错// 参数中 x = x，会让x被解释为参数级作用于中的x，全局的x会被屏蔽，而且x位于TDZ，因此初始化前不能被访问，因此出错var x = 1;function foo(x = x) &#123;     ...&#125;
+12345// 下面代码正确// 因为参数解析从左到右，因此 y=x 时，x已经可用function foo(x, y = x) &#123;  ...&#125;
+赋值表达式赋值赋值顺序为：从右到左1a = b = 5;    // 1. b = 5;  2. a = b
+运算符优先级其中 () 优先级高于 . 高于 new此处的 () 为把表达式括起来的括号，而不是 new 操作符后面跟随的 ()123new Foo.getName();      //实际
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/call-apply/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/runorder/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -790,8 +571,8 @@ link除了加载css，还能定义rss；import只能用于加载css
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/runorder/" itemprop="url">
-                  关于Js中运算与赋值的执行顺序
+                <a class="post-title-link" href="/2017/01/11/selector/" itemprop="url">
+                  js选择器之id，name，tag
                 </a>
               
             
@@ -851,241 +632,9 @@ link除了加载css，还能定义rss；import只能用于加载css
 
       
         
-          
-          Js中涉及到赋值，调用，函数的执行，赋值，参数赋值等计算，赋值的机制并不是按照统一的顺序，在此对于常用的执行顺序进行总结。
-参数的赋值参数的解析顺序是： 从左到右Es6提到TDZ(暂存死区)，指这样的程序区域：初始化前的变量或参数不能被访问。函数的参数既是这样的典型区域。123456// 下面的代码出错// 参数中 x = x，会让x被解释为参数级作用于中的x，全局的x会被屏蔽，而且x位于TDZ，因此初始化前不能被访问，因此出错var x = 1;function foo(x = x) &#123;     ...&#125;
-12345// 下面代码正确// 因为参数解析从左到右，因此 y=x 时，x已经可用function foo(x, y = x) &#123;  ...&#125;
-赋值表达式赋值赋值顺序为：从右到左1a = b = 5;    // 1. b = 5;  2. a = b
-运算符优先级其中 () 优先级高于 . 高于 new此处的 () 为把表达式括起来的括号，而不是 new 操作符后面跟随的 ()123new Foo.getName();      //实际
-          ...
-
+          js选择器之id，name，tag
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/runorder/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/stapes/" itemprop="url">
-                  Stapes.js 用法详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Stapes.js是一个灵活，简单，轻量级的Javascript框架。因为框架的易用性以及所能提供的丰富的功能，在之前的项目中已经用到stapes.js，近期由于想查询一些问题，发现当时项目中没有相关的注释，加上官网api排列很乱，查阅起来很麻烦，便由此想到写一篇stapes.js入门，以增强记忆并以备之后查阅。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/stapes/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/matrix/" itemprop="url">
-                  CSS3中的Matrix矩阵
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Css/" itemprop="url" rel="index">
-                    <span itemprop="name">Css</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          transform中的MatrixCSS3中的矩阵是指 matrix() 和 matrix3d()，前者是元素2D平面的移动变换，后者是3D变换。2D变换为 33， 3D变换则是 44 矩阵。1234transform: matrix(1, 0, 0, 1, 8, 9) ---1   0   80   1   90   0   1
-matrix实际上能设置的属性有：skew(拉伸)，scale(缩放)，rotate(旋转)，translate(位移)。即matrix是以下属性的集合：1234transform: skew(10deg, 10deg);transform: scale(2.2, 1.5);transform: rotate(10deg);transform: translate(10px, 20px);
-transform-origin在理解matrix之前，先了解一个属性：transform-origin。即矩阵所有相关变化的基准点。默认值为 0在单独使用skew，scale，rotate，translate时，若设置此值则变化的基准点响应改变。transform-or
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/matrix/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/selector/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1242,6 +791,341 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
             
               
                 
+                <a class="post-title-link" href="/2017/01/11/stapes/" itemprop="url">
+                  Stapes.js 用法详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          Stapes.js是一个灵活，简单，轻量级的Javascript框架。因为框架的易用性以及所能提供的丰富的功能，在之前的项目中已经用到stapes.js，近期由于想查询一些问题，发现当时项目中没有相关的注释，加上官网api排列很乱，查阅起来很麻烦，便由此想到写一篇stapes.js入门，以增强记忆并以备之后查阅。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/stapes/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/karma-jasmine-angualr/" itemprop="url">
+                  Angular自动化单元测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。angular-mock辅助Karma、Jasmine等JS测试工具来模拟angular方法，测试angular应用。除此之外，Angular-mock还扩展了ng的多个核心服务，使之可以被测试代码以同步的方式进行审查和控制。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/karma-jasmine-angualr/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/compatibility/" itemprop="url">
+                  前端常用框架性能与兼容性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          持续更行。。。。
+框架类rivets不兼容ie9以下版本。
+兼容IE8，需要在使用rivets的代码之前添加解决方法。经测试，此方法无法生效。123456789101112131415&lt;script src="./assets/vendor/watch-shim.js"&gt;&lt;/script&gt;&lt;scirpt&gt;// Shimming up the model for IE8rivets.adapters['.'].subscribe = function(obj, keypath, callback) &#123;	var watching = createWatcher(obj);	watching.watch(keypath, callback);&#125;;rivets.adapters['.'].unsubscribe = function(obj, keypath, callback) &#123;	watching.unwatch(keypath, callback);&#125;;// SHIMSString.prototype.trim 
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/compatibility/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/11/timeline-error/" itemprop="url">
                   时间乱了
                 </a>
@@ -1306,6 +1190,121 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
           换了新电脑，重新发布一遍之后，之前发的post，发布顺序变成倒序了。。。
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/01/11/timeline-error/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/matrix/" itemprop="url">
+                  CSS3中的Matrix矩阵
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Css/" itemprop="url" rel="index">
+                    <span itemprop="name">Css</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          transform中的MatrixCSS3中的矩阵是指 matrix() 和 matrix3d()，前者是元素2D平面的移动变换，后者是3D变换。2D变换为 33， 3D变换则是 44 矩阵。1234transform: matrix(1, 0, 0, 1, 8, 9) ---1   0   80   1   90   0   1
+matrix实际上能设置的属性有：skew(拉伸)，scale(缩放)，rotate(旋转)，translate(位移)。即matrix是以下属性的集合：1234transform: skew(10deg, 10deg);transform: scale(2.2, 1.5);transform: rotate(10deg);transform: translate(10px, 20px);
+transform-origin在理解matrix之前，先了解一个属性：transform-origin。即矩阵所有相关变化的基准点。默认值为 0在单独使用skew，scale，rotate，translate时，若设置此值则变化的基准点响应改变。transform-or
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/matrix/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
