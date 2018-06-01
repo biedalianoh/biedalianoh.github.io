@@ -65,7 +65,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/11/es6/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
 <meta property="og:description" content="声明let, constlet和const不会有变量声明提升，作用域也会被限制。通过let，const，class声明的变量，不会成为 window 的属性。const需要在声明时赋值。const声明一个常量时，常量的值不能改变。const声明一个复合型变量时，变量不指向数据，而是指向数据所在的地址。因此变量可以添加属性。12345const a = &apos;hello&apos;;  // a 的值不可被重置c">
-<meta property="og:updated_time" content="2017-01-11T10:31:41.000Z">
+<meta property="og:updated_time" content="2018-03-30T07:08:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6实用中文api">
 <meta name="twitter:description" content="声明let, constlet和const不会有变量声明提升，作用域也会被限制。通过let，const，class声明的变量，不会成为 window 的属性。const需要在声明时赋值。const声明一个常量时，常量的值不能改变。const声明一个复合型变量时，变量不指向数据，而是指向数据所在的地址。因此变量可以添加属性。12345const a = &apos;hello&apos;;  // a 的值不可被重置c">
@@ -533,7 +533,7 @@
 </ol>
 <p>但是，有一种特殊情况，整个JSON就是一个数组，且每个数组成员本身，又是一个有两个成员的数组。这时，它可以一一对应地转为Map。这往往是数组转为JSON的逆操作。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> jsonToMap(jsonStr) &#123;</div><div class="line">  <span class="built_in">return</span> new Map(JSON.parse(jsonStr));</div><div class="line">&#125;</div><div class="line"></div><div class="line">jsonToMap(<span class="string">'[[true,7],[&#123;"foo":3&#125;,["abc"]]]'</span>)</div><div class="line">// Map &#123;<span class="literal">true</span> =&gt; 7, Object &#123;foo: 3&#125; =&gt; [<span class="string">'abc'</span>]&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h2><p>WeakMap结构与Map结构基本类似，唯一的区别是它只接受对象作为键名（null除外），不接受其他类型的值作为键名，而且键名所指向的对象，不计入垃圾回收机制。</p>
-<h2 id="Generator-函数"><a href="#Generator-函数" class="headerlink" title="Generator 函数"></a>Generator 函数</h2><p>Generator函数是ES6提供的一种异步编程解决方案。<br>Generator函数是一个普通函数，但是有两个特征。一是，function关键字与函数名之间有一个星号；二是，函数体内部使用yield语句，定义不同的内部状态（yield语句在英语里的意思就是“产出”）<br>Generator函数的调用方法与普通函数一样，也是在函数名后面加上一对圆括号。不同的是，调用Generator函数后，该函数并不执行。<br>下一步，必须调用遍历器对象的next方法，使得指针移向下一个状态。也就是说，每次调用next方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个yield语句（或return语句）为止。换言之，Generator函数是分段执行的，yield语句是暂停执行的标记，而next方法可以恢复执行。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span>* <span class="function"><span class="title">helloWorld</span></span>() &#123;</div><div class="line">  yield: <span class="string">'hello'</span>;</div><div class="line">  yield: <span class="string">'world'</span>;</div><div class="line">  <span class="built_in">return</span> <span class="string">'ending'</span>;</div><div class="line">&#125;</div><div class="line">var hw = helloWorld();    //此时函数并不执行</div><div class="line">hw.next();                //&#123;value: <span class="string">'hello'</span>, <span class="keyword">done</span>: <span class="literal">false</span>&#125;</div><div class="line">hw.next();                //&#123;value: <span class="string">'world'</span>, <span class="keyword">done</span>: <span class="literal">false</span>&#125;</div><div class="line">hw.next();                //&#123;value: <span class="string">'ending'</span>, <span class="keyword">done</span>: <span class="literal">true</span>&#125;</div><div class="line">hw.next();                //&#123;value: undefined, <span class="keyword">done</span>: <span class="literal">true</span>&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Generator-函数"><a href="#Generator-函数" class="headerlink" title="Generator 函数"></a>Generator 函数</h2><p>Generator函数是ES6提供的一种异步编程解决方案。<br>Generator函数是一个普通函数，但是有两个特征。一是，function关键字与函数名之间有一个星号；二是，函数体内部使用yield语句，定义不同的内部状态（yield语句在英语里的意思就是“产出”）<br>Generator函数的调用方法与普通函数一样，也是在函数名后面加上一对圆括号。不同的是，调用Generator函数后，该函数并不执行。<br>下一步，必须调用遍历器对象的next方法，使得指针移向下一个状态。也就是说，每次调用next方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个yield语句（或return语句）为止。换言之，Generator函数是分段执行的，yield语句是暂停执行的标记，而next方法可以恢复执行。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span>* <span class="function"><span class="title">helloWorld</span></span>() &#123;</div><div class="line">  yield <span class="string">'hello'</span>;</div><div class="line">  yield <span class="string">'world'</span>;</div><div class="line">  <span class="built_in">return</span> <span class="string">'ending'</span>;</div><div class="line">&#125;</div><div class="line">var hw = helloWorld();    //此时函数并不执行</div><div class="line">hw.next();                //&#123;value: <span class="string">'hello'</span>, <span class="keyword">done</span>: <span class="literal">false</span>&#125;</div><div class="line">hw.next();                //&#123;value: <span class="string">'world'</span>, <span class="keyword">done</span>: <span class="literal">false</span>&#125;</div><div class="line">hw.next();                //&#123;value: <span class="string">'ending'</span>, <span class="keyword">done</span>: <span class="literal">true</span>&#125;</div><div class="line">hw.next();                //&#123;value: undefined, <span class="keyword">done</span>: <span class="literal">true</span>&#125;</div></pre></td></tr></table></figure></p>
 <p>ES6没有规定，function关键字与函数名之间的星号，写在哪个位置。这导致下面的写法都能通过。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> * foo(x, y) &#123; ··· &#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> *foo(x, y) &#123; ··· &#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span>* foo(x, y) &#123; ··· &#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span>*foo(x, y) &#123; ··· &#125;</div></pre></td></tr></table></figure></p>
 <h3 id="yield"><a href="#yield" class="headerlink" title="yield"></a>yield</h3><p>Generator函数可以不用yield语句，这时就变成了一个单纯的暂缓执行函数。<br>另外需要注意，yield语句不能用在普通函数中，否则会报错。</p>
 <h3 id="next"><a href="#next" class="headerlink" title="next"></a>next</h3><p>next方法可以带一个参数，该参数就会被当作上一个yield语句的返回值。</p>
@@ -626,7 +626,8 @@
 <li>不能使用fn.caller和fn.arguments获取函数调用的堆栈</li>
 <li>增加了保留字（比如protected、static和interface）</li>
 </ul>
-<h3 id="export"><a href="#export" class="headerlink" title="export"></a>export</h3><p>该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> var firstName = <span class="string">'Michael'</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="export"><a href="#export" class="headerlink" title="export"></a>export</h3><p>使用import和export时，主要对应的一点是：如果export是变量，则获取时，需要通过大括号来获取对应的变量；如果export的是default，则可以直接用任意变量来获取整个输出。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">1. 通过变量输出</div><div class="line">// a.js</div><div class="line">var hello = <span class="string">'111'</span></div><div class="line">var world = <span class="function"><span class="title">function</span></span>()&#123;&#125;</div><div class="line"><span class="built_in">export</span> &#123;hello, world&#125;</div><div class="line">// 或者a.js这么写</div><div class="line"><span class="built_in">export</span> var hello = <span class="string">'111'</span></div><div class="line"><span class="built_in">export</span> var world = <span class="function"><span class="title">function</span></span>()&#123;&#125;</div><div class="line"></div><div class="line">//b.js</div><div class="line">import &#123;hello, world&#125; from <span class="string">'a.js'</span></div><div class="line"></div><div class="line">2. 通过default输出</div><div class="line">// a.js</div><div class="line">var hello = <span class="string">'111'</span></div><div class="line">var world = <span class="function"><span class="title">function</span></span>()&#123;&#125;</div><div class="line"><span class="built_in">export</span> default &#123;hello, world&#125;</div><div class="line"></div><div class="line">// b.js</div><div class="line">import hw from <span class="string">'a.js'</span></div><div class="line">hw.hello; hw.world</div></pre></td></tr></table></figure></p>
+<p>该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> var firstName = <span class="string">'Michael'</span>;</div></pre></td></tr></table></figure></p>
 <figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var firstName = <span class="string">'Michael'</span>;</div><div class="line">var lastName = <span class="string">'Jackson'</span>;</div><div class="line">var year = 1958;</div><div class="line"></div><div class="line"><span class="built_in">export</span> &#123;firstName, lastName, year&#125;;</div></pre></td></tr></table></figure>
 <figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> <span class="keyword">function</span> multiply(x, y) &#123;</div><div class="line">  <span class="built_in">return</span> x * y;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>通常情况下，export输出的变量就是本来的名字，但是可以使用as关键字重命名。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">v1</span></span>() &#123; ... &#125;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">v2</span></span>() &#123; ... &#125;</div><div class="line"></div><div class="line"><span class="built_in">export</span> &#123;</div><div class="line">  v1 as streamV1,</div><div class="line">  v2 as streamV2,</div><div class="line">  v2 as streamLatestVersion</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
@@ -665,16 +666,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/11/css3-sizes/" rel="next" title="Css3中各类尺寸应用详解">
-                <i class="fa fa-chevron-left"></i> Css3中各类尺寸应用详解
+              <a href="/2017/01/11/nodejs-url/" rel="next" title="nodejs深入系列--url">
+                <i class="fa fa-chevron-left"></i> nodejs深入系列--url
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/11/runorder/" rel="prev" title="关于Js中运算与赋值的执行顺序">
-                关于Js中运算与赋值的执行顺序 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/11/nodejs-stream/" rel="prev" title="nodejs深入系列--stream">
+                nodejs深入系列--stream <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -743,7 +744,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">72</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -751,7 +752,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -760,7 +761,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

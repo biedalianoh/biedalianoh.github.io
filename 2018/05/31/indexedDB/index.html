@@ -1,0 +1,743 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="indexedDB," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="indexedDB的使用比较简单，直接通过实例说明indexedBD如何使用，以及注明所需要注意的地方。
+使用实例12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用indexedDB存储前端数据">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/indexedDB/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="indexedDB的使用比较简单，直接通过实例说明indexedBD如何使用，以及注明所需要注意的地方。
+使用实例12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576">
+<meta property="og:updated_time" content="2018-06-01T03:58:37.901Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用indexedDB存储前端数据">
+<meta name="twitter:description" content="indexedDB的使用比较简单，直接通过实例说明indexedBD如何使用，以及注明所需要注意的地方。
+使用实例12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 使用indexedDB存储前端数据 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用indexedDB存储前端数据
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-31T16:08:01+08:00" content="2018-05-31">
+              2018-05-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>indexedDB的使用比较简单，直接通过实例说明indexedBD如何使用，以及注明所需要注意的地方。</p>
+<h1 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h1><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div></pre></td><td class="code"><pre><div class="line">const customerData = [    //要储存的数据</div><div class="line">  &#123;ssn: <span class="string">'444-44-4444'</span>, name: <span class="string">'Bill'</span>, age: 35, email: <span class="string">'bill@company.com'</span>&#125;,</div><div class="line">  &#123;ssn: <span class="string">'555-55-5555'</span>, name: <span class="string">'Donna'</span>, age: 32, email: <span class="string">'donna@home.org'</span>&#125;,</div><div class="line">]</div><div class="line"></div><div class="line">var request = window.indexedDB.open(<span class="string">'MyTestDatabase'</span>, 1);   //打开一个数据库</div><div class="line">                                                            //第二个参数为版本号，不要带小数</div><div class="line"></div><div class="line">request.onerror = <span class="keyword">function</span>(event) &#123;&#125;</div><div class="line">request.onsuccess = <span class="keyword">function</span>(event) &#123;</div><div class="line">  var db = request.result;</div><div class="line"></div><div class="line">  useDatabase(db);    //监控是否有新版本的数据库</div><div class="line"></div><div class="line">  /*</div><div class="line">  定义一个事务，对数据库的任何操作，均由事务发起</div><div class="line">  */</div><div class="line">  var transaction = db.transaction([<span class="string">'customers'</span>], <span class="string">'readwrite'</span>);</div><div class="line">  transaction.oncomplete = <span class="keyword">function</span>(event2) &#123;</div><div class="line">    console.log(<span class="string">'all done'</span>)</div><div class="line">  &#125;</div><div class="line">  transaction.onerror = <span class="keyword">function</span>(event2) &#123;&#125;</div><div class="line"></div><div class="line">  /*</div><div class="line">  添加数据</div><div class="line">  */</div><div class="line">  var objectStore = transaction.objectStore(<span class="string">'customers'</span>);</div><div class="line">  <span class="keyword">for</span>(var i <span class="keyword">in</span> customerData) &#123;</div><div class="line">    var request2 = objectStore.add(customerData[i])</div><div class="line">    request2.onsuccess = <span class="keyword">function</span>(event) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  /*</div><div class="line">  删除操作</div><div class="line">  */</div><div class="line">  var request3 = transaction</div><div class="line">                  .objectStore(<span class="string">'customers'</span>)</div><div class="line">                  .delete(<span class="string">'444-44-444'</span>);</div><div class="line">  request3.onsuccess = <span class="keyword">function</span>(event) &#123;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line"></div><div class="line">  /*</div><div class="line">  获取数据</div><div class="line">  */</div><div class="line">  var request4 = transaction</div><div class="line">                  .objectStore(<span class="string">'customers'</span>)</div><div class="line">                  .get(<span class="string">'444-44-4444'</span>)</div><div class="line">  request4.onerror = <span class="keyword">function</span>(event) &#123;&#125;</div><div class="line">  request4.onsuccess = <span class="keyword">function</span>(event) &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  /*</div><div class="line">  游标--遍历所有值</div><div class="line">  */</div><div class="line">  var customers = [];</div><div class="line">  var objectStore = db.transaction(<span class="string">'customers'</span>).objectStore(<span class="string">'customers'</span>);</div><div class="line">  objectStore.openCursor().onsuccess = <span class="keyword">function</span>(event) &#123;</div><div class="line">    var cursor = event.target.result;</div><div class="line">    <span class="keyword">if</span>(cursor) &#123;</div><div class="line">      customers.push(cursor.value)</div><div class="line">      cursor.continue()</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      console.log(<span class="string">'已获得所有数据：'</span> + customers)</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  /*</div><div class="line">  使用索引查找--加快查找速度</div><div class="line">  */</div><div class="line">  var index = objectStore.index(<span class="string">'name'</span>);</div><div class="line">  index.get(<span class="string">'Donna'</span>).onsuccess = <span class="keyword">function</span>(event) &#123;    //如有多条记录，只会得到键值最小的那个</div><div class="line">    console.log(<span class="string">'Donna 的数据为'</span> + event.target.result)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  /*</div><div class="line">  限定索引的游标</div><div class="line">  */</div><div class="line">  var index = objectStore.index(<span class="string">'name'</span>);</div><div class="line">  index.openCursor().onsuccess = <span class="keyword">function</span>(event) &#123;</div><div class="line">    var cursor = event.target.result;</div><div class="line">    <span class="keyword">if</span>(cursor) &#123;</div><div class="line">      // cursor.key 是name，cursor.value是整个对象</div><div class="line">      cursor.continue()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  index.openKeyCursor().onsuccess = <span class="keyword">function</span>(event) &#123;</div><div class="line">    var cursor = event.target.result;</div><div class="line">    <span class="keyword">if</span>(cursor) &#123;</div><div class="line">      // cursor.key 是name，cursor.value是键值</div><div class="line">      cursor.continue()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  /*</div><div class="line">  限定范围和方向的游标</div><div class="line">  */</div><div class="line">  var singleKeyRange = IDBKeyRange.only(<span class="string">'Donna'</span>);</div><div class="line">  var lowerBoundKeyRange = IDBKeyRange.lowerBound(<span class="string">'Bill'</span>);</div><div class="line">  var lowerBoundOpenKeyRange = IDBKeyRange.lowerBound(<span class="string">'Bill'</span>, <span class="literal">true</span>);</div><div class="line">  var upperBoundOpenKeyRange = IDBKeyRange.upperBound(<span class="string">'Donna'</span>, <span class="literal">true</span>);</div><div class="line">  var boundKeyRange = IDBKeyRange.bound(<span class="string">'Bill'</span>, <span class="string">'Donna'</span>, <span class="literal">false</span>, <span class="literal">true</span>);</div><div class="line"></div><div class="line">  index.openCursor(boundKeyRange).onsuccess = <span class="keyword">function</span>(event) &#123;</div><div class="line">    var cursor = event.target.result;</div><div class="line">    <span class="keyword">if</span>(cursor) &#123;</div><div class="line">      cursor.continue()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  objectStore.openCurosr(null, IDBCursor.prev).onsuccess = <span class="keyword">function</span>(event) &#123;  //倒序查询</div><div class="line">    var cursor = event.target.result;</div><div class="line">    <span class="keyword">if</span>(cursor) &#123;</div><div class="line">      cursor.continue()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">request.onblocked = <span class="keyword">function</span>(event) &#123;</div><div class="line">  //如果其他标签页已经加载了这个数据库，并且数据库版本号发生变更，那么继续处理前需要其他被关闭</div><div class="line">  //并且需要在onupgradeneeded和onsuccess函数中，关闭数据库，并提示重载页面</div><div class="line">  alert(<span class="string">'请关闭其他本网站标签页'</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">request.onupgradeneeded = <span class="keyword">function</span>(event) &#123;</div><div class="line">  //当数据库第一次创建，或者指定版本号高于当前版本号时，会被调用</div><div class="line">  //唯一可以修改数据库结构的地方，因此可以在这给数据库创建和删除对象存储控件，以及构建和删除索引</div><div class="line"></div><div class="line">  var db = event.target.result;</div><div class="line">  var objectStore = db.createObjectStore(<span class="string">'customers'</span>, &#123;keyPath: <span class="string">'ssn'</span>&#125;);    //使用唯一值ssn作为key path</div><div class="line"></div><div class="line">  useDatabase(db);    //监控是否有新版本的数据库</div><div class="line"></div><div class="line">  objectStore.createIndex(<span class="string">'name'</span>, <span class="string">'name'</span>, &#123;unique: <span class="literal">false</span>&#125;);   //创建一个索引值为name的索引，之后就可以使用这个索引来查找数据</div><div class="line">                                                              //unique为表示是否有重复值</div><div class="line">  objectStore.createIndex(<span class="string">'email'</span>, <span class="string">'email'</span>, &#123;unique: <span class="literal">true</span>&#125;);  //创建一个索引值为email的索引，之后就可以使用这个索引来查找数据</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(var i <span class="keyword">in</span> customerData) &#123;    //把数据库的值保存在创建的对象存储空间中</div><div class="line">    objectStore.add(customerData[i]);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> useDatabase(db) &#123;</div><div class="line">  db.onversionchange = <span class="keyword">function</span>(event) &#123;</div><div class="line">    db.close();</div><div class="line">    alert(<span class="string">'有了新的版本，请重新加载页面'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h1><h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><ol>
+<li><p>IE<br>从IE10，IE11开始，部分支持。<br>Edge不支持 inside blob web workers</p>
+</li>
+<li><p>Firefox<br>从4开始部分支持要加moz。从10开始全部支持不过要加moz。从16开始无需加moz</p>
+</li>
+<li><p>Chrome<br>从11开始部分支持要加webkit。从24开始全部支持，无需加webkit</p>
+</li>
+<li><p>Safari<br>从7.1开始部分支持。从10开始全部支持</p>
+</li>
+</ol>
+<h2 id="浏览器前缀"><a href="#浏览器前缀" class="headerlink" title="浏览器前缀"></a>浏览器前缀</h2><p>规范统一之前，目前仍需要使用浏览器前缀。<br>不过目前IE10，Firefox16，Chrome24已经可以不用前缀。因此这之后的版本可不用前缀<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">window.indexedDB = window.indexDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;</div><div class="line">window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;</div><div class="line">window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;</div></pre></td></tr></table></figure></p>
+<p>对于不支持的浏览器，应不使用此功能，或明确告知不支持。</p>
+<h1 id="存储大小限制"><a href="#存储大小限制" class="headerlink" title="存储大小限制"></a>存储大小限制</h1><p>整体的数据库大小没有限制。然而可能会限制单个对象存储空间的大小。各个浏览器限制的不同。</p>
+<ol>
+<li>Firefox。<br>会针对超过50MB大小的BLOB(二进制大对象)请求授权。这个限额可以通过<code>dom.indexedDB.warningQuota</code>进行自定义。</li>
+<li>Chrome<br>不同于localstorage，indexed会有一个计算公式：<br>用户当前磁盘空间，比如为60G，共享池的空间则为 60G / 3 = 20G<br>则这个应用可以使用的最大空间是：20G / 5 = 4GB<br>当然，也可请求更大存储空间。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/indexedDB/" rel="tag">#indexedDB</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/30/npm/" rel="next" title="使用npm发布自建包">
+                <i class="fa fa-chevron-left"></i> 使用npm发布自建包
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用实例"><span class="nav-number">1.</span> <span class="nav-text">使用实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#兼容性"><span class="nav-number">2.</span> <span class="nav-text">兼容性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器兼容性"><span class="nav-number">2.1.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器前缀"><span class="nav-number">2.2.</span> <span class="nav-text">浏览器前缀</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储大小限制"><span class="nav-number">3.</span> <span class="nav-text">存储大小限制</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

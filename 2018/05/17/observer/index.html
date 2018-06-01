@@ -1,0 +1,776 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="observer," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="IntersectionObserver用于观察两个DOM元素之间的交集。可用来检测DOM进入或离开可见视窗。
+
+用来延迟加载图像或其他资源
+识别广告可见性并计算广告收入
+实现网站无限滚动
+元素在视窗中时，加载和自动播放视频或动画
+
+使用1234567891011121314151617181920212223241. 创建观察者const options = &amp;#123;    root: do">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器中四种不同类型的观察者">
+<meta property="og:url" content="http://yoursite.com/2018/05/17/observer/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="IntersectionObserver用于观察两个DOM元素之间的交集。可用来检测DOM进入或离开可见视窗。
+
+用来延迟加载图像或其他资源
+识别广告可见性并计算广告收入
+实现网站无限滚动
+元素在视窗中时，加载和自动播放视频或动画
+
+使用1234567891011121314151617181920212223241. 创建观察者const options = &amp;#123;    root: do">
+<meta property="og:updated_time" content="2018-05-18T03:13:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器中四种不同类型的观察者">
+<meta name="twitter:description" content="IntersectionObserver用于观察两个DOM元素之间的交集。可用来检测DOM进入或离开可见视窗。
+
+用来延迟加载图像或其他资源
+识别广告可见性并计算广告收入
+实现网站无限滚动
+元素在视窗中时，加载和自动播放视频或动画
+
+使用1234567891011121314151617181920212223241. 创建观察者const options = &amp;#123;    root: do">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 浏览器中四种不同类型的观察者 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                浏览器中四种不同类型的观察者
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-17T10:18:16+08:00" content="2018-05-17">
+              2018-05-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="IntersectionObserver"><a href="#IntersectionObserver" class="headerlink" title="IntersectionObserver"></a>IntersectionObserver</h1><p>用于观察两个DOM元素之间的交集。可用来检测DOM进入或离开可见视窗。</p>
+<ol>
+<li>用来延迟加载图像或其他资源</li>
+<li>识别广告可见性并计算广告收入</li>
+<li>实现网站无限滚动</li>
+<li>元素在视窗中时，加载和自动播放视频或动画</li>
+</ol>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">1. 创建观察者</div><div class="line">const options = &#123;</div><div class="line">    root: document.querySelector(<span class="string">'.scrollContainer'</span>),</div><div class="line">    rootMargin: <span class="string">'0px'</span>,</div><div class="line">    threshold: [0.3, 0.5, 0.8, 1]   //代表可见的百分比时，调用回调函数</div><div class="line">&#125;</div><div class="line">const observer = new IntersectionObserver(handler, options)</div><div class="line"></div><div class="line">2. 定义要观察的目标对象</div><div class="line">const target = document.querySelector(<span class="string">'.targetBox'</span>);</div><div class="line">observer.observe(target);</div><div class="line"></div><div class="line">3. 定义回调事件</div><div class="line"><span class="keyword">function</span> handler(entries, observer) &#123;</div><div class="line">    entries.forEach(entry =&gt; &#123;  //entries代表每个target中的dom元素的交集变化</div><div class="line">        // entry.boundingClientRect</div><div class="line">        // entry.intersectionRatio</div><div class="line">        // entry.intersectionRect</div><div class="line">        // entry.isIntersecting</div><div class="line">        // entry.rootBounds</div><div class="line">        // entry.target</div><div class="line">        // entry.time</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><p>firefox和chrome支持。不支持的浏览器可使用对应的polyfill。</p>
+<h1 id="MutationObserver"><a href="#MutationObserver" class="headerlink" title="MutationObserver"></a>MutationObserver</h1><p>用于观察DOM元素的变化。可用来检测添加或删除子节点、属性值变化、内容变化等。<br>MutationObserver被DOM3中的Mutation所替代。</p>
+<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">1. 创建观察者</div><div class="line">const config = &#123;</div><div class="line">    childList: <span class="literal">true</span>,        //是否观察子节点相关变化</div><div class="line">    attributes: <span class="literal">true</span>,       //是否观察属性更改</div><div class="line">    characterData: <span class="literal">true</span>     //是否观察数据内容变化</div><div class="line">&#125;</div><div class="line">const observer = new MutationObserver(handler);</div><div class="line"></div><div class="line">2. 定义要观察的目标对象</div><div class="line">const parent = document.querySelector(<span class="string">'.parent'</span>);</div><div class="line">observer.observe(parent, config);</div><div class="line"></div><div class="line">3. 定义回调事件</div><div class="line"><span class="keyword">function</span> handler(mutationRecords, observer) &#123;</div><div class="line">    mutationRecords.forEach(mutationRecord =&gt; &#123;</div><div class="line">        switch(mutationRecord.type) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">'childList'</span>:       //子节点添加或删除</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'attributes'</span>:      //属性更改</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            default:</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="兼容性-1"><a href="#兼容性-1" class="headerlink" title="兼容性"></a>兼容性</h2><p>兼容性良好<br>ie11, edge16, firefox58, chrome64, safari11支持</p>
+<h1 id="ResizeObserver"><a href="#ResizeObserver" class="headerlink" title="ResizeObserver"></a>ResizeObserver</h1><p>用于观察DOM元素内容宽高的变化。可用来检测元素大小变化。</p>
+<ol>
+<li>元素被插入或删除，会触发</li>
+<li>display值为none时，会触发</li>
+<li>元素显示时，且大小不是0，0，会触发</li>
+<li>内联元素替换时，会触发</li>
+<li>内联元素大小变化时，不会触发</li>
+<li>css的transform，不会触发</li>
+</ol>
+<h2 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">1. 创建观察者</div><div class="line">const observer = new ResizeObserver(handler);</div><div class="line"></div><div class="line">2. 定义要观察的目标对象</div><div class="line">const child = document.querySelector(<span class="string">'.child'</span>);</div><div class="line">observer.observe(child)</div><div class="line"></div><div class="line">3. 定义回调事件</div><div class="line"><span class="keyword">function</span> handler(entries) &#123;</div><div class="line">    entries.forEach(entry =&gt; &#123;</div><div class="line">        const size = entry.target.contentRect;</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="兼容性-2"><a href="#兼容性-2" class="headerlink" title="兼容性"></a>兼容性</h2><p>目前仅有chrome64+支持。大多数不支持</p>
+<h1 id="PerformanceObserver"><a href="#PerformanceObserver" class="headerlink" title="PerformanceObserver"></a>PerformanceObserver</h1><p>用于观察性能时间轴。用来度量浏览器和Node.js某些性能指标。<br>浏览器：window.PerformanceObserver<br>Nodejs: const {performance} = require(‘perf_hooks’)</p>
+<ol>
+<li>浏览器，发送请求和响应之间的处理时间。</li>
+<li>Nodejs，从数据库中检索数据计算持续时间。</li>
+<li>抽象精确的时间信息，使用Paint Timing API，比如First Paint或First Contentful Paint时间</li>
+<li>使用’User Timing API’、’Navigation Timing API’、’Network Information API’、’Resource Timing API’、’Paint Timing API’，访问性能指标。</li>
+</ol>
+<h2 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">1. 创建观察者</div><div class="line">const observer = new PerformanceObserver(logger);</div><div class="line"></div><div class="line">2. 定义要观察的目标对象</div><div class="line">可观察的目标对象有：</div><div class="line">mark--代表[USER-TIMING]</div><div class="line">measure--代表[USER_TIMING]</div><div class="line">navigation--代表[NAVIGATION-TIMING-2]</div><div class="line">resource--代表[RESOURCE-TIMING]</div><div class="line"></div><div class="line">const config = &#123;</div><div class="line">    entryTypes: [<span class="string">'mark'</span>, <span class="string">'measure'</span>]</div><div class="line">&#125;</div><div class="line">observer.observe(config)</div><div class="line"></div><div class="line">3. 定义回调函数事件</div><div class="line">document.querySelector(<span class="string">'button'</span>).addEventListener(<span class="string">'click'</span>, () =&gt; &#123;</div><div class="line">    console.log(<span class="string">'开始测量'</span>)</div><div class="line">    getDataFormServer()</div><div class="line">&#125;)</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">getDataFormServer</span></span>() &#123;</div><div class="line">    performance.mark(<span class="string">'startWork'</span>)</div><div class="line">    <span class="keyword">do</span>Work()        //此处为要统计的具体的前端操作过程</div><div class="line">    performance.mark(<span class="string">'endWork'</span>)</div><div class="line">    performance.measure(<span class="string">'start to end'</span>, <span class="string">'startWork'</span>, <span class="string">'endWork'</span>)</div><div class="line">    const measure = performance.getEntriesByName(<span class="string">'start to end'</span>)[0]</div><div class="line">    performance.clearMeasures([<span class="string">'start to end'</span>])</div><div class="line">    performance.clearMarks([<span class="string">'start'</span>, <span class="string">'end'</span>])</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> logger(list, observer) &#123;</div><div class="line">    const entries = list.getEntries</div><div class="line">    entries.forEach(entry =&gt; &#123;</div><div class="line">        console.log(<span class="string">'Name:'</span> + entry.name + <span class="string">',Type:'</span> + entry.entryType + <span class="string">',Start:'</span> + entry.startTime + <span class="string">',Duration:'</span> + entry.)</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/observer/" rel="tag">#observer</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/06/this/" rel="next" title="彻底理解this指向">
+                <i class="fa fa-chevron-left"></i> 彻底理解this指向
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/18/debounce-throttle-raf/" rel="prev" title="防抖动和节流阀及raf的应用">
+                防抖动和节流阀及raf的应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IntersectionObserver"><span class="nav-number">1.</span> <span class="nav-text">IntersectionObserver</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容性"><span class="nav-number">1.2.</span> <span class="nav-text">兼容性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MutationObserver"><span class="nav-number">2.</span> <span class="nav-text">MutationObserver</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-1"><span class="nav-number">2.1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容性-1"><span class="nav-number">2.2.</span> <span class="nav-text">兼容性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ResizeObserver"><span class="nav-number">3.</span> <span class="nav-text">ResizeObserver</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-2"><span class="nav-number">3.1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容性-2"><span class="nav-number">3.2.</span> <span class="nav-text">兼容性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PerformanceObserver"><span class="nav-number">4.</span> <span class="nav-text">PerformanceObserver</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-3"><span class="nav-number">4.1.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

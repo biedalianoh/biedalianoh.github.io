@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javascript,call,apply,callee,caller," />
+  <meta name="keywords" content="javascript,call,apply,callee,caller,bind," />
 
 
 
@@ -63,15 +63,15 @@
 即将一个函数的上下文从初始的上下文改变为指定的thisArg。
 不带参数arg1234567891011121314function base() &amp;#123;    this.name = &apos;zhou&apos;;    this.getName = function()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="call, apply, callee, caller应用">
+<meta property="og:title" content="call, apply, callee, caller, bind应用">
 <meta property="og:url" content="http://yoursite.com/2017/01/11/call-apply/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
 <meta property="og:description" content="call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
 即将一个函数的上下文从初始的上下文改变为指定的thisArg。
 不带参数arg1234567891011121314function base() &amp;#123;    this.name = &apos;zhou&apos;;    this.getName = function()">
-<meta property="og:updated_time" content="2017-02-08T03:20:28.000Z">
+<meta property="og:updated_time" content="2018-03-06T09:56:40.686Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="call, apply, callee, caller应用">
+<meta name="twitter:title" content="call, apply, callee, caller, bind应用">
 <meta name="twitter:description" content="call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
 即将一个函数的上下文从初始的上下文改变为指定的thisArg。
 不带参数arg1234567891011121314function base() &amp;#123;    this.name = &apos;zhou&apos;;    this.getName = function()">
@@ -92,7 +92,7 @@
   };
 </script>
 
-  <title> call, apply, callee, caller应用 | Chavin's Blog </title>
+  <title> call, apply, callee, caller, bind应用 | Chavin's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -212,7 +212,7 @@
             
             
               
-                call, apply, callee, caller应用
+                call, apply, callee, caller, bind应用
               
             
           </h1>
@@ -282,6 +282,7 @@
 <h1 id="callee"><a href="#callee" class="headerlink" title="callee"></a>callee</h1><p>返回函数自身。是arguments的一个属性。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">calleeDemo</span></span>() &#123;</div><div class="line">     console.log(arguments.callee);     //将把函数 calleeDemo 整个打印出来</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>可通过arguments.callee.length获取形参<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> calleeDemo(arg1, arg2) &#123;</div><div class="line">    <span class="keyword">if</span>(arguments.length == arguments.callee.length) &#123;</div><div class="line">        console.log(<span class="string">'形参和实参个数相等'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>也可用在递归算法中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> demo(num) &#123;</div><div class="line">    <span class="keyword">if</span>(num &lt;= 1)    </div><div class="line">        <span class="built_in">return</span> 1;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">return</span> num * arguments.callee(num - 1);</div><div class="line">&#125;</div><div class="line">var anotherDemo = demo;</div><div class="line">demo = null;</div><div class="line"></div><div class="line">anotherDemo(8);</div></pre></td></tr></table></figure></p>
+<h1 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h1><p>bind也是改变this的指向，但是不像call和apply一样立即执行一遍。bind只是改变。</p>
 
       
     </div>
@@ -306,6 +307,8 @@
           
             <a href="/tags/caller/" rel="tag">#caller</a>
           
+            <a href="/tags/bind/" rel="tag">#bind</a>
+          
         </div>
       
 
@@ -313,16 +316,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/11/createElement_method/" rel="next" title="几种创建标签节点和属性的方法">
-                <i class="fa fa-chevron-left"></i> 几种创建标签节点和属性的方法
+              <a href="/2017/01/11/job/" rel="next" title="Javascript基础--前端基础知识总结">
+                <i class="fa fa-chevron-left"></i> Javascript基础--前端基础知识总结
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/11/nodejs-net/" rel="prev" title="nodejs深入系列--net">
-                nodejs深入系列--net <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/11/selector/" rel="prev" title="js选择器之id，name，tag">
+                js选择器之id，name，tag <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -391,7 +394,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">72</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -399,7 +402,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -408,7 +411,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -474,7 +477,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#call"><span class="nav-number">1.</span> <span class="nav-text">call</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不带参数arg"><span class="nav-number">1.1.</span> <span class="nav-text">不带参数arg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带参数arg"><span class="nav-number">1.2.</span> <span class="nav-text">带参数arg</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#apply"><span class="nav-number">2.</span> <span class="nav-text">apply</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#caller"><span class="nav-number">3.</span> <span class="nav-text">caller</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#callee"><span class="nav-number">4.</span> <span class="nav-text">callee</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#call"><span class="nav-number">1.</span> <span class="nav-text">call</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不带参数arg"><span class="nav-number">1.1.</span> <span class="nav-text">不带参数arg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带参数arg"><span class="nav-number">1.2.</span> <span class="nav-text">带参数arg</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#apply"><span class="nav-number">2.</span> <span class="nav-text">apply</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#caller"><span class="nav-number">3.</span> <span class="nav-text">caller</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#callee"><span class="nav-number">4.</span> <span class="nav-text">callee</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bind"><span class="nav-number">5.</span> <span class="nav-text">bind</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
