@@ -214,8 +214,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/react-study/" itemprop="url">
-                  React 学习笔记
+                <a class="post-title-link" href="/2017/01/11/algorithm/" itemprop="url">
+                  前端常用算法汇总
                 </a>
               
             
@@ -275,9 +275,129 @@
 
       
         
-          React study。此篇属《React精髓》书本的学习笔记，记载一些常规的用法，书中对React的理解，以及自己在看书过程中的理解。
+          
+          算法的时间复杂度时间复杂度是总运算次数表达式中受n的变化影响最大的那一项（不含系数）。如一个算法循环了 (n + n-1 + n-2 + n-3 +…+ 1) 等于 n * (n + 1) / 2，约等于 (n ^ 2) / 2，因为时间复杂度是不考虑系数的，所以时间复杂度是 O(n^2)常见的时间复杂度（按复杂度递增排列）:常数阶O(1), 对数阶O(log2n), 线性阶O(n), 限行对数阶O(nlog2n), 平方阶O(n^2), 立方阶O(n^3),指数阶O(2^n)
+1234561. 循环了n*n次，时间复杂度是 O(n^2)for(i = 1; i &lt;= n; i++) &#123;  for(j = 1; j &lt;=n; j++) &#123;    s++;  &#125;&#125;
+去重去重算法。
+
+设置两个循环，i和j，让初始j=i+1
+然后让i的元素去和j的元素做对比，如果arr[i]=arr[j]，则让i加1，是为了让i的当前元素被过滤掉。
+把当前的arr[i]添加至新数组中。
+循环完成返回新的数组123456789101112131415func
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/react-study/">
+            <a class="btn" href="/2017/01/11/algorithm/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/karma-jasmine-angualr/" itemprop="url">
+                  Angular自动化单元测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。angular-mock辅助Karma、Jasmine等JS测试工具来模拟angular方法，测试angular应用。除此之外，Angular-mock还扩展了ng的多个核心服务，使之可以被测试代码以同步的方式进行审查和控制。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/karma-jasmine-angualr/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -441,8 +561,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/job/" itemprop="url">
-                  Javascript基础--前端基础知识总结
+                <a class="post-title-link" href="/2017/01/11/karma-jasmine/" itemprop="url">
+                  使用Karma+jasmine实现自动化单元测试
                 </a>
               
             
@@ -502,29 +622,9 @@
 
       
         
-          
-          HTMLDoctypeDoctype 的作用？ 标准模式与兼容模式的区别告知浏览器用什么标准解析文档。 Doctype不存在或不正确会触发文档以兼容模式呈现。标准模式会以浏览器最高标准运行。兼容模式以宽松的向后兼容的方式显示。
-xhtml 和 html 的区别xhtml是xml向html过渡的语言。比html严谨性更高。设置doctype标志各种类型的xhtml(过渡型-transitional，严格型-strict，框架集-frameset)
-
-xhtml要求正确嵌套
-标签必须关闭
-区分大小写
-属性值要求双引号
-用id代替name属性
-
-行内元素，块级元素，空元素依据css的display属性区分块元素和行内元素。
-
-块元素： div, ul, ol, li, dl, dt, dd, p, h1, h2….
-行内元素： a, b, span, img, input, select, strong
-空元素： br, hr, img, input, link, meta
-
-link 和 import 的区别
-link除了加载css，还能定义rss；import只能用于加载css
-页面加载
-          ...
-
+          Jasmine用来做单元测试，可不依赖其他任何javascript组建，即指做单元测试可直接添加jasmine到html文件中，并可在浏览器环境中执行测试。Karma自动化完成单元测试，是基于nodejs的测试过程管理工具，有一个强大的特性，可监控(watch)文件的变化并自动执行，然后通过console.log()显示结果，并且网络中任何其他设备如手机均可连接测试。jasmine和karma结合，可实现一个自动化单元测试。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/job/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/karma-jasmine/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -681,8 +781,103 @@ link除了加载css，还能定义rss；import只能用于加载css
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/karma-jasmine/" itemprop="url">
-                  使用Karma+jasmine实现自动化单元测试
+                <a class="post-title-link" href="/2017/01/11/my first blog/" itemprop="url">
+                  新的记载，新的开端
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          花了三个小时时间，把github+hexo的博客建成功了。作为一个已经工作了六年的前端开发coder，现在开始系统的通过blog来开始记录Program，确实有点来的迟了点。近两年主要通过wiznote来记录一些前端开发的心得和总结，包括常用框架的翻译和填坑，还有一些前端知识的分享是通过个人网站来发布分享。此后会逐步把以前发布过的内容转移到此blog，并且有新的和好的内容也会在此发布。目前已经写过的内容包含：webpack，angular，velocity，git，lodash，gulp，ndenv，es6，pure。近几年前端的飞跃式发展，让我们FEs突然变得忙碌起来，这些所发布的知识也是其中的冰山一角，让我们所有人一起去揭开这些面纱，找到属于每个人成长中的喜悦。
+
+          
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/my first blog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/react-study/" itemprop="url">
+                  React 学习笔记
                 </a>
               
             
@@ -742,9 +937,9 @@ link除了加载css，还能定义rss；import只能用于加载css
 
       
         
-          Jasmine用来做单元测试，可不依赖其他任何javascript组建，即指做单元测试可直接添加jasmine到html文件中，并可在浏览器环境中执行测试。Karma自动化完成单元测试，是基于nodejs的测试过程管理工具，有一个强大的特性，可监控(watch)文件的变化并自动执行，然后通过console.log()显示结果，并且网络中任何其他设备如手机均可连接测试。jasmine和karma结合，可实现一个自动化单元测试。
+          React study。此篇属《React精髓》书本的学习笔记，记载一些常规的用法，书中对React的理解，以及自己在看书过程中的理解。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/karma-jasmine/">
+            <a class="btn" href="/2017/01/11/react-study/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -791,8 +986,8 @@ link除了加载css，还能定义rss；import只能用于加载css
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/stapes/" itemprop="url">
-                  Stapes.js 用法详解
+                <a class="post-title-link" href="/2017/01/11/lodash/" itemprop="url">
+                  Lodash实用中文api
                 </a>
               
             
@@ -852,344 +1047,9 @@ link除了加载css，还能定义rss；import只能用于加载css
 
       
         
-          Stapes.js是一个灵活，简单，轻量级的Javascript框架。因为框架的易用性以及所能提供的丰富的功能，在之前的项目中已经用到stapes.js，近期由于想查询一些问题，发现当时项目中没有相关的注释，加上官网api排列很乱，查阅起来很麻烦，便由此想到写一篇stapes.js入门，以增强记忆并以备之后查阅。
+          Lodash.js是一个现代模块化性能良好的Javascript工具库。和Underscore功能类似，并提供了更为丰富的API。 近期会持续更新一份实用的lodash(v4.6)使用参考，数组部分参考了cnblogs的shikelong(v3.8)，这拼音和我一个同事kelong的还挺像的，难道是他？
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/stapes/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/karma-jasmine-angualr/" itemprop="url">
-                  Angular自动化单元测试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          在上一篇文章中介绍了karma+jasmine执行单元测试的流程，在这篇文章中应用karmma+jasmine配合angular中的angualr-mock.js来实现对angualrjs的单元测试。因为ng本身框架的原因,模块都是通过di来加载以及实例化的,所以为了方便配合jasmine来编写测试脚本,所以官方提供了angular-mock.js的一个测试工具类来提供模块定义,加载,注入等。angular-mock辅助Karma、Jasmine等JS测试工具来模拟angular方法，测试angular应用。除此之外，Angular-mock还扩展了ng的多个核心服务，使之可以被测试代码以同步的方式进行审查和控制。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/karma-jasmine-angualr/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/compatibility/" itemprop="url">
-                  前端常用框架性能与兼容性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          持续更行。。。。
-框架类rivets不兼容ie9以下版本。
-兼容IE8，需要在使用rivets的代码之前添加解决方法。经测试，此方法无法生效。123456789101112131415&lt;script src="./assets/vendor/watch-shim.js"&gt;&lt;/script&gt;&lt;scirpt&gt;// Shimming up the model for IE8rivets.adapters['.'].subscribe = function(obj, keypath, callback) &#123;	var watching = createWatcher(obj);	watching.watch(keypath, callback);&#125;;rivets.adapters['.'].unsubscribe = function(obj, keypath, callback) &#123;	watching.unwatch(keypath, callback);&#125;;// SHIMSString.prototype.trim 
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/compatibility/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/timeline-error/" itemprop="url">
-                  时间乱了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/杂项/" itemprop="url" rel="index">
-                    <span itemprop="name">杂项</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          换了新电脑，重新发布一遍之后，之前发的post，发布顺序变成倒序了。。。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/timeline-error/">
+            <a class="btn" href="/2017/01/11/lodash/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1305,6 +1165,121 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/01/11/matrix/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/contentEditble/" itemprop="url">
+                  让div标签可输入内容的几种方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Html-CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">Html, CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          可编辑这块本来还停留在div和input类相互转换的思路上，今天无意间看到几种新的实现方法。
+css方式: user-modifyuser-modify可以让普通元素可读写。目前可支持属性：1234user-modify: read-only;       // 只读user-modify: read-write;      // 可输入纯文本和富文本user-modify: write-only;      // 目前浏览器基本不支持user-modify: read-write-plaintext-only;   // 只能输入纯文本，只有webkit支持
+html方式: contenteditablecontenteditable可以让普通元素可读写。目前可支持属性：123456contenteditable=""contenteditable="events"            // 作用未知contenteditable="caret"             // 作用未知contenteditable="plaintext-only"    // 只能输入纯文本，只有
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/contentEditble/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
