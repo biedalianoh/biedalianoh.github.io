@@ -1,0 +1,770 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="defineProperty," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="js中每个对象的属性都有自己的一套描述，这个描述有三个基本属性：
+
+writable: 是否可写
+enumerable: 是否可枚举
+configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="获取和设置对象属性的描述及对象可扩展性">
+<meta property="og:url" content="http://yoursite.com/2018/07/10/defineProperty/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="js中每个对象的属性都有自己的一套描述，这个描述有三个基本属性：
+
+writable: 是否可写
+enumerable: 是否可枚举
+configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable,">
+<meta property="og:updated_time" content="2018-07-10T06:33:43.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="获取和设置对象属性的描述及对象可扩展性">
+<meta name="twitter:description" content="js中每个对象的属性都有自己的一套描述，这个描述有三个基本属性：
+
+writable: 是否可写
+enumerable: 是否可枚举
+configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable,">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 获取和设置对象属性的描述及对象可扩展性 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                获取和设置对象属性的描述及对象可扩展性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-10T11:55:12+08:00" content="2018-07-10">
+              2018-07-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>js中每个对象的属性都有自己的一套描述，这个描述有三个基本属性：</p>
+<ol>
+<li>writable: 是否可写</li>
+<li>enumerable: 是否可枚举</li>
+<li>configurable: 是否可修改或删除<br>ECMA3中:<br>– 这三个值均为true且不可改。<br>ECMA5中:<br>– 可通过decriptor来进行修改。<br>– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable, configurable<br>– 通过getter和setter方法来定义的，有四个属性：get, set, enumerable, configurable</li>
+</ol>
+<h1 id="获取对象属性的描述"><a href="#获取对象属性的描述" class="headerlink" title="获取对象属性的描述"></a>获取对象属性的描述</h1><p>ECMA5中，可通过<code>Object.getOwnPropertyDescriptor()</code>来获取对象自身属性的描述。<br>继承的属性，无法获取<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;x: 1&#125;</div><div class="line">Object.getOwnPropertyDescriptor(obj, <span class="string">'x'</span>);    //Object &#123;configurable=<span class="literal">true</span>, enumerable=<span class="literal">true</span>, writable=<span class="literal">true</span>, value=1&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="设置对象属性的描述"><a href="#设置对象属性的描述" class="headerlink" title="设置对象属性的描述"></a>设置对象属性的描述</h1><p>ECMA5中，可通过<code>Object.defineProperty()</code>来设置对象自身属性的描述。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;x: 1&#125;</div><div class="line">Object.defineProperty(obj, <span class="string">'x'</span>, &#123;</div><div class="line">  value: 3,</div><div class="line">  writable: <span class="literal">true</span>,</div><div class="line">  enumerable: <span class="literal">false</span>,</div><div class="line">  configuration: <span class="literal">true</span></div><div class="line">&#125;);</div><div class="line">obj.propertyIsEnumerable(<span class="string">'x'</span>);    // <span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<p>若设置的属性，是从原型对象中继承而来的，则在自身创建一个同名的属性。</p>
+<h2 id="批量设置对象的属性"><a href="#批量设置对象的属性" class="headerlink" title="批量设置对象的属性"></a>批量设置对象的属性</h2><p>想批量设置，可使用<code>Object.defineProperties()</code>。设置完返回修改后的对象。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Object.defineProperties(obj, &#123;</div><div class="line">  <span class="string">'y'</span>: &#123;value: 79, writable: <span class="literal">true</span>, enumerable: <span class="literal">true</span>, configurable: <span class="literal">true</span>&#125;,</div><div class="line">  <span class="string">'z'</span>: &#123;value: 99, writable: <span class="literal">true</span>, enumerable: <span class="literal">true</span>, configurable: <span class="literal">true</span>&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="设置为getter和setter方式访问"><a href="#设置为getter和setter方式访问" class="headerlink" title="设置为getter和setter方式访问"></a>设置为getter和setter方式访问</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Object.defineProperty(obj, <span class="string">'x'</span>, &#123;</div><div class="line">  get: <span class="function"><span class="title">function</span></span>()&#123;<span class="built_in">return</span> 42&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="设置对象描述规则"><a href="#设置对象描述规则" class="headerlink" title="设置对象描述规则"></a>设置对象描述规则</h2><ol>
+<li>如果对象不是extensible的，则只能修改已有property的属性，无法添加新的property。</li>
+<li>如果property的configurable属性为false，则无法修改configurable和enumerable属性的值，对于writable属性，可以将其从true改为false，但无法将其从false改为true。如果property由getter和setter定义，则getter和setter方法无法被修改。</li>
+<li>如果property的configurable属性和writable属性均为false，则property值不可改。如果property的writable属性为false，但其configurable属性为true，则property值依然可以修改。</li>
+</ol>
+<h1 id="关于对象可扩展性extensible"><a href="#关于对象可扩展性extensible" class="headerlink" title="关于对象可扩展性extensible"></a>关于对象可扩展性extensible</h1><p>除了<code>对象扩展</code>，相关概念还包括<code>对象密封</code>，<code>对象冻结</code>。</p>
+<h2 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h2><p>可扩展性表现为是否可添加新的属性。</p>
+<h3 id="Object-isExtensible"><a href="#Object-isExtensible" class="headerlink" title="Object.isExtensible"></a>Object.isExtensible</h3><p>通过此方法来判断是否可扩展。<br>对象是否可扩展和是否可配置(configurable)无关。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var empty = Object.create(&#123;&#125;, &#123;</div><div class="line">  <span class="string">'a'</span>: &#123;</div><div class="line">    value: 1,</div><div class="line">    configurable: <span class="literal">false</span>,    //不可配置</div><div class="line">    enumerable: <span class="literal">true</span>,</div><div class="line">    writable: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line">Object.isExtensible(empty)  // <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<h3 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions"></a>Object.preventExtensions</h3><p>通过此方法让对象变成不可扩展。<br>即不能添加新的属性，但是原属性可以修改或删除。并且只是阻止对象自身，不阻止对象的原型。</p>
+<h2 id="密封"><a href="#密封" class="headerlink" title="密封"></a>密封</h2><p>是指对象不可扩展，并且所有自身属性都不可配置。<br>密封对象只能修改已有属性值。</p>
+<h3 id="Object-isSealed"><a href="#Object-isSealed" class="headerlink" title="Object.isSealed"></a>Object.isSealed</h3><p>判断是否密封。</p>
+<h3 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal"></a>Object.seal</h3><p>此方法让对象密封。即只能修改已有属性。不能修改描述。<br>不会影响从原型链上继承的属性。但<code>__proto__</code>属性的值也会不能修改。</p>
+<h2 id="冻结"><a href="#冻结" class="headerlink" title="冻结"></a>冻结</h2><p>对象的所有属性和描述，都不能改动。<br>除了有getter和setter属性的对象，此对象可以通过setter来修改属性。</p>
+<h3 id="Object-isFrozen"><a href="#Object-isFrozen" class="headerlink" title="Object.isFrozen"></a>Object.isFrozen</h3><p>判断是否冻结对象。</p>
+<h3 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze"></a>Object.freeze</h3><p>冻结对象。<br>冻结分为浅冻结，和深冻结。</p>
+<ol>
+<li><p>浅冻结<br>对象冻结，但是如果对象的属性是一个对象，则这个属性对象是可修改的，除非它也是冻结对象。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;x: 1&#125;;</div><div class="line">Object.freeze(obj);</div></pre></td></tr></table></figure>
+</li>
+<li><p>深冻结<br>可自定义一个方法，让对象中所有数据全部冻结。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;x: &#123;a: 1&#125;&#125;;</div><div class="line">deepFreeze(obj);</div><div class="line"></div><div class="line"><span class="keyword">function</span> deepFreeze(o) &#123;</div><div class="line">  var prop, propKey;</div><div class="line">  Object.freeze(o);</div><div class="line">  <span class="keyword">for</span>(propKey <span class="keyword">in</span> o) &#123;</div><div class="line">    prop = o[propKey];</div><div class="line">    <span class="keyword">if</span>(!o.hasOwnProperty(propKey) || !(typeof prop === <span class="string">'object'</span>) || Object.isFrozen(prop)) &#123;</div><div class="line">      <span class="built_in">continue</span>;</div><div class="line">    &#125;</div><div class="line">    deepFreeze(prop);   //递归</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/defineProperty/" rel="tag">#defineProperty</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/09/decorator/" rel="next" title="修饰器函数@修改类和类的方法">
+                <i class="fa fa-chevron-left"></i> 修饰器函数@修改类和类的方法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/11/async/" rel="prev" title="async解决方案及和generator、promise对比">
+                async解决方案及和generator、promise对比 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">77</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">93</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取对象属性的描述"><span class="nav-number">1.</span> <span class="nav-text">获取对象属性的描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置对象属性的描述"><span class="nav-number">2.</span> <span class="nav-text">设置对象属性的描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#批量设置对象的属性"><span class="nav-number">2.1.</span> <span class="nav-text">批量设置对象的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置为getter和setter方式访问"><span class="nav-number">2.2.</span> <span class="nav-text">设置为getter和setter方式访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置对象描述规则"><span class="nav-number">2.3.</span> <span class="nav-text">设置对象描述规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于对象可扩展性extensible"><span class="nav-number">3.</span> <span class="nav-text">关于对象可扩展性extensible</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可扩展性"><span class="nav-number">3.1.</span> <span class="nav-text">可扩展性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-isExtensible"><span class="nav-number">3.1.1.</span> <span class="nav-text">Object.isExtensible</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-preventExtensions"><span class="nav-number">3.1.2.</span> <span class="nav-text">Object.preventExtensions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密封"><span class="nav-number">3.2.</span> <span class="nav-text">密封</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-isSealed"><span class="nav-number">3.2.1.</span> <span class="nav-text">Object.isSealed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-seal"><span class="nav-number">3.2.2.</span> <span class="nav-text">Object.seal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冻结"><span class="nav-number">3.3.</span> <span class="nav-text">冻结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-isFrozen"><span class="nav-number">3.3.1.</span> <span class="nav-text">Object.isFrozen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-freeze"><span class="nav-number">3.3.2.</span> <span class="nav-text">Object.freeze</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

@@ -73,7 +73,7 @@ HOSTNAME计算机主机名
 PWD当前工作目录路径
 env查看当前所有系统变量和自定义变量。
 变量赋值可直接用”=”赋值，但中间不能有空格。默认赋值是字符串相加，若要进行数字运算，需要用”let”变量赋值后，可通过”$”来进行变量引用。变量只能以字母下划线开头。并且大小写敏感。">
-<meta property="og:updated_time" content="2017-02-24T08:59:42.000Z">
+<meta property="og:updated_time" content="2018-07-11T05:16:40.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell命令行与脚本编程进阶">
 <meta name="twitter:description" content="变量系统变量可添加变量到帐号的home目录的初始化文件中，比如：~/.bash_profile，则每次登录后都可使用。
@@ -308,7 +308,7 @@ env查看当前所有系统变量和自定义变量。
 <h3 id=""><a href="#" class="headerlink" title="~"></a>~</h3><p>波浪号用来指代主目录。</p>
 <ol>
 <li><p>~单词<br>表示某用户的主目录。</p>
-<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~ucredit</div></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~chavin</div></pre></td></tr></table></figure>
 </li>
 <li><p>~+  – PWD</p>
 </li>
@@ -769,7 +769,7 @@ env查看当前所有系统变量和自定义变量。
 <h1 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="向进程发送信号"><a href="#向进程发送信号" class="headerlink" title="向进程发送信号"></a>向进程发送信号</h3><ol>
 <li>ctrl+c<br>中断信号。发送SIGINT信号到运行在前台的进程</li>
 <li>ctrl+y<br>延时挂起信号。</li>
-<li>ctrl+z<br>挂起信号。<h3 id="终结进程"><a href="#终结进程" class="headerlink" title="终结进程"></a>终结进程</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">killall firefox                 //杀掉所有firefox进程</div><div class="line">pkill firefox                   //杀掉所有firefox进程</div><div class="line">pkill -KILL -u ucredit firefox  //强制杀掉用户ucredit的forefox进程</div></pre></td></tr></table></figure>
+<li>ctrl+z<br>挂起信号。<h3 id="终结进程"><a href="#终结进程" class="headerlink" title="终结进程"></a>终结进程</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">killall firefox                 //杀掉所有firefox进程</div><div class="line">pkill firefox                   //杀掉所有firefox进程</div><div class="line">pkill -KILL -u chavin firefox  //强制杀掉用户chavin的forefox进程</div></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -873,7 +873,7 @@ env查看当前所有系统变量和自定义变量。
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-count">77</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -890,7 +890,7 @@ env查看当前所有系统变量和自定义变量。
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">93</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

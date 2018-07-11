@@ -214,6 +214,487 @@
             
               
                 
+                <a class="post-title-link" href="/2018/07/11/async/" itemprop="url">
+                  async解决方案及和generator、promise对比
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-11T12:00:47+08:00" content="2018-07-11">
+              2018-07-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          async是es2017引入的异步函数，是通过generator和执行器组合生成的异步方案。相比generator，async有更多优点：
+
+内置执行器即async只需要执行async函数即可，无需像generator需要执行next。
+返回值是Promise可直接使用then方法执行下一步动作。比generator的返回值是Iterator方便。
+更广的适用性await命令后面，可以是各种类型的值，会被包装为异步操作。而yield命令后面只能是Thunk函数(通过参数传入函数体的包装函数)或Promise对象。
+更好的语意async和await的语意更清楚了。
+
+基本用法函数执行时，一旦遇到await，就会先返回。等到异步操作完成，再接着执行函数体后面的语句。async函数内部的return命令返回的值，会被then方法回调函数作为参数接到。12345678async function getFileSize(url) &#123;    const file = await nodeGetFile(url);        const size = await nodeGetSiz
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/07/11/async/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/07/10/defineProperty/" itemprop="url">
+                  获取和设置对象属性的描述及对象可扩展性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-10T11:55:12+08:00" content="2018-07-10">
+              2018-07-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          js中每个对象的属性都有自己的一套描述，这个描述有三个基本属性：
+
+writable: 是否可写
+enumerable: 是否可枚举
+configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable, configurable– 通过getter和setter方法来定义的，有四个属性：get, set, enumerable, configurable
+
+获取对象属性的描述ECMA5中，可通过Object.getOwnPropertyDescriptor()来获取对象自身属性的描述。继承的属性，无法获取12var obj = &#123;x: 1&#125;Object.getOwnPropertyDescriptor(obj, 'x');    //Object &#123;configurable=true, enumerable=true, writable=true, value=1
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/07/10/defineProperty/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/07/09/decorator/" itemprop="url">
+                  修饰器函数@修改类和类的方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-09T16:30:22+08:00" content="2018-07-09">
+              2018-07-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          修饰器(Decorator)函数用来改变类的行为。用来给类添加方法和属性，给类的方法修改描述。
+基础使用修饰器的使用，只能用于类和类的方法。不能用于函数，因为存在函数提升。12345678// 修饰器的基本行为@decoratorclass A &#123;&#125;// 等同于class A &#123;&#125;A = decorator(A) || A;
+一个简单实例为：12345678@testableclass MyTestableClass &#123;    //...&#125;function testable(target) &#123;    target.isTestable = true;&#125;MyTestableClass.isTestable   //true
+完整参数修饰器函数一共可以接受三个参数，第一个是所要修饰的目标对象，第二个是所要修饰的属性名，第三个是该属性的描述对象(即对象的描述如writeable之类的)。如果修饰类，一般只需要一个参数target，如果是修饰类的属性，则使用三个参数。
+123456789101112readonly
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/07/09/decorator/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/05/typeof/" itemprop="url">
+                  通过typeof和instanceof理解数据类型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-06-05T10:19:09+08:00" content="2018-06-05">
+              2018-06-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          typeof常规，能通过typeof判断number、string、object、boolean、function、undefined、symbol这些类型，但是不能区分哪种具体的object类型。如：[1,2]，null，arguments返回值均为object。先看看typeof实现的原理：js在底层存储变量的时候，会在变量的机器码的低位1-3位存储类型信息：
+
+000：对象
+010：浮点数
+100：字符串
+110：布尔
+1：整数对于undefined和null来说，存储有点特殊：
+null：所有码均为0
+undefined：-2^30整数表示因此，typeof在判断null的时候就出现问题了，由于null的所有机器码均为0，因此被当做对象来看待。但是用instanceof来判断的话，null又会被判断不是object。这是js历史遗留bug。1null instanceof Object      //false
+
+
+因此最好是用typeof来判断基本数据类型，避免复杂类型判断。
+instanceofinstanceof实现的原理如下：12345678910111213funct
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/06/05/typeof/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/06/01/eventloop/" itemprop="url">
                   Event Loop执行机制及宏任务、微任务
                 </a>
@@ -623,9 +1104,14 @@ package.json配置package.json代表着包信息和具体使用和依赖的配�
       
         
           
-          挂载点vue1.0可使用body，vue2.0不能用body和html
-简单子组件中使用this一般简单的子组件，会在父组件中直接注册，直接注册的子组件中的this，属于子组件1234567891011components: &#123;    'child-item': &#123;        props: ['inputMessage'],        template: '&lt;span&gt;&#123;&#123;upperCase&#125;&#125;&lt;/span&gt;',        computed: &#123;            upperCase() &#123;                return this.inputMessage.toUpperCase()  //此处的子组件是child-item的            &#125;        &#125;    &#125;&#125;
-绑定原生事件给组件绑定原生事件，或者给router-link绑定事件，需要用到.native12&lt;my-component v-
+          列表track-by添加track-by追踪数组变动渲染。当使用全新对象替换数组时，可能导致重新渲染整个列表。用track-by给vue一个提示，尽可能复用已有实例。123456789&lt;div v-for="item in items" track-by="_uid"&gt;&lt;/div&gt;&#123;    items: [        &#123;_uid: '88f869d', ...&#125;,        &#123;_uid: '7496c10', ...&#125;    ]&#125;
+数组变化
+Vue不能检测到下面数组变化：1231. vm.items[1] = &#123;&#125;2. vm.items.length = 03. Object.freeze()
+
+
+对于问题一，可使用this.$set(this.arr, 1, 100000)对于问题二，可使用this.arr = []对于问题三，若是引用时是已经冻结的对象，则无法自动追踪对象的变化；若是绑定后再冻结对象，则无影响
+
+数组变化方法123456789101112131415161
           ...
 
           <div class="post-more-link text-center">
@@ -894,449 +1380,6 @@ requestAnimationFrame跟_.throttle(dosomething, 16)等价。不过追求更好�
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/06/this/" itemprop="url">
-                  彻底理解this指向
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-03-06T18:55:23+08:00" content="2018-03-06">
-              2018-03-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          开篇明义：this指向的永远是当前调用的方法的字面的上一级。三个例子：1234567891011121314151617181920212223242526272829303132331. 字面调用的fn，fn的上一级是obj，所以fn里面的this指向的是objvar obj = &#123;  user: 'a',  fn: function() &#123;    console.log(this.user)  &#125;&#125;obj.fn()    // a2. 字面调用的fn，fn的上一级是getUser，所以fn里面的this指向的是getUservar obj = &#123;  user: 'a',  getUser: &#123;    user: 'b',    fn: function() &#123;      console.log(this.user)    &#125;  &#125;&#125;obj.getUser.fn()    // b3. 字面调用的myFn，myFn的上一级是window，所以fn里面的this指向的是windowvar
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/03/06/this/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/24/nodejs-frame/" itemprop="url">
-                  nodejs深入系列--框架
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-02-24T18:57:37+08:00" content="2018-02-24">
-              2018-02-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之框架
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/24/nodejs-frame/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/21/nodejs-fs/" itemprop="url">
-                  nodejs深入系列--fs
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-02-21T18:22:15+08:00" content="2018-02-21">
-              2018-02-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之fs
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/21/nodejs-fs/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/21/nodejs-module/" itemprop="url">
-                  nodejs深入系列--常用第三方模块
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-02-21T18:08:11+08:00" content="2018-02-21">
-              2018-02-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之module
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/21/nodejs-module/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1383,7 +1426,7 @@ requestAnimationFrame跟_.throttle(dosomething, 16)等价。不过追求更好�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-count">77</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1400,7 +1443,7 @@ requestAnimationFrame跟_.throttle(dosomething, 16)等价。不过追求更好�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">93</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -214,6 +214,523 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/24/promise/" itemprop="url">
+                  Promise等异步控制流程综述
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-24T10:24:55+08:00" content="2017-02-24">
+              2017-02-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          曾经管理异步的主要机制是使用函数回调。ES6中添加了一种新特性：Promise，来更好的实现异步。也可通过Bluebird, Q等工具，来实现异步控制。
+兼容性PromiseIE 11, firfox 49, chrome 49, ios 9.3, android 4.4
+Bluebird支持情况良好，暂时确定IE8支持。IE6，7待查。
+PromisePromise不是回调的替代品。可作为一种事件监听器，是一个仅会被触发一次的事件。一个Promise只可能拥有两种解析结果：完成或拒绝，并带有一个可选的信号值。
+创建Promise实例：1234567891011121314151617181920var getUserInfo = new Promise(function(resolve, reject) &#123;  $.ajax(&#123;    url: 'index.aspx',    success: function(data) &#123;      if(data.code == 1) &#123;        resolve(data.data);      &
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/24/promise/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/17/android/" itemprop="url">
+                  Anroid开发入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-17T16:57:46+08:00" content="2017-02-17">
+              2017-02-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          相比在学习ios开发时的举步维艰，android开发学习则顺畅很多，在粗略看完Android官方培训课程中文版(v0.9.7)之后，开始看Android第一行代码，并做笔记。
+Activity活动。是可以包含用户界面的组件。用户界面需要通过活动来展现。
+创建活动
+右键java包–New–Activity–Empty ActivityGenerate Layout File: 创建一个对应的布局文件Launcher Activity: 设置为主活动
+在新建活动java文件中重写onCreate方法AS自动帮忙实现了@Override
+创建对应Layout布局文件右键Layout目录–Layout resource file
+在.xml布局文件中添加元素添加Button, text等元素
+加载布局在活动java文件中添加布局：setContentView(R.layout.myAddLayout)
+在menifest中注册活动AS自动帮忙注册了
+
+销毁活动
+按Back键
+finish()方法如：123456button1.setOnClickListener(new View.OnClic
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/17/android/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/09/vue-cli/" itemprop="url">
+                  vue项目搭建/开发实战
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-09T16:11:56+08:00" content="2017-02-09">
+              2017-02-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          使用vue搭建项目框架，实现vue-router路由，引入element ui框架，开发component组件，到最终上线。使用了官方的vue-cli脚手架来进行开发。
+安装
+首先安装脚手架
+1npm i -g vue-cli
+
+生成vue项目
+1vue init webpack my-project
+
+安装依赖
+1npm i
+
+生成不同环境
+
+
+
+开发环境：1npm run dev
+
+
+运行一个本地环境：localhost:8080
+
+线上环境：1npm run build
+
+
+生成线上代码 dist，可修改config中index.js 11行 的static路径来让项目以dist路径运行。
+
+运行单元测试：
+1npm run unit
+
+运行e2e测试：
+1npm run e2e
+
+运行所有测试：
+1npm test
+
+
+目录结构buildbuild目录为运行不同环境时所使用的webpack命令
+configconfig目录为运行不同环境时的配置文件
+dist为运行线上环境所生成的代码，线上访问时访问的文件。
+src项目开发的主目录。
+assets存放图片，音视频等资源文件
+co
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/09/vue-cli/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/18/swift/" itemprop="url">
+                  swift变量和方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-18T10:50:33+08:00" content="2017-01-18">
+              2017-01-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          定义常量常量和变量必须在使用前声明
+letlet用来声明常量，不能改变。
+变量varvar用来声明变量。声明变量和常量时，可指定类型：1234var msg: Stringmsg = "hello"let msg: Int = 32;
+print, println打印到console面板上，println换行
+字符串插值()在字符串中使用变量和常量时，用 \()12var msg = "hello"println("I want to say \(msg)")
+注释注释和js相同
+Intswift提供了8，16，32三种有符号和无符号整数类型：Int8/UInt8, Int16/UInt16, Int32/UInt32一般直接使用Int就可以。
+Double, Float浮点数。Double表示64位浮点数，高精度Float表示32位浮点数。
+类型转换显式转换。即需要SomeType(value)123let three = 3let pi = 3.14125921let plus = Double(three) + pi
+也有类似.toInt()之类的方法，类型转换有可能失败，所以需
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/18/swift/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/16/vim/" itemprop="url">
                   vim命令大全
                 </a>
@@ -574,8 +1091,8 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-net/" itemprop="url">
-                  nodejs深入系列--net
+                <a class="post-title-link" href="/2017/01/11/nodejs-global/" itemprop="url">
+                  nodejs深入系列--全局变量global
                 </a>
               
             
@@ -635,9 +1152,9 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
 
       
         
-          nodejs深入系列之net
+          nodejs深入系列之全局变量global
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-net/">
+            <a class="btn" href="/2017/01/11/nodejs-global/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -684,8 +1201,8 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/call-apply/" itemprop="url">
-                  call, apply, callee, caller, bind应用
+                <a class="post-title-link" href="/2017/01/11/compatibility/" itemprop="url">
+                  前端常用框架性能与兼容性
                 </a>
               
             
@@ -746,14 +1263,13 @@ printf格式： printf  如：1printf "FirstName: %s\nLastName: %s" "$FIRSTNAME"
       
         
           
-          call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
-即将一个函数的上下文从初始的上下文改变为指定的thisArg。
-不带参数arg1234567891011121314function base() &#123;    this.name = 'zhou';    this.getName = function() &#123;        console.log(this.name);    &#125;;&#125;;function extend() &#123;    base.call(this)     //让base代替执行this    console.log(this)       var c = &#123;&#125;    base.call(c);       //让base代替执行c    console.log(c);&#125;;
-extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend 中：调用 this 时，都是调用 base
+          持续更行。。。。
+框架类rivets不兼容ie9以下版本。
+兼容IE8，需要在使用rivets的代码之前添加解决方法。经测试，此方法无法生效。123456789101112131415&lt;script src="./assets/vendor/watch-shim.js"&gt;&lt;/script&gt;&lt;scirpt&gt;// Shimming up the model for IE8rivets.adapters['.'].subscribe = function(obj, keypath, callback) &#123;	var watching = createWatcher(obj);	watching.watch(keypath, callback);&#125;;rivets.adapters['.'].unsubscribe = function(obj, keypath, callback) &#123;	watching.unwatch(keypath, callback);&#125;;// SHIMSString.prototype.trim 
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/call-apply/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/compatibility/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -800,8 +1316,8 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nodejs-http/" itemprop="url">
-                  nodejs深入系列--http
+                <a class="post-title-link" href="/2017/01/11/nodejs-https/" itemprop="url">
+                  nodejs深入系列--https
                 </a>
               
             
@@ -861,459 +1377,9 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
 
       
         
-          nodejs深入系列之http
+          nodejs深入系列之https
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-http/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/algorithm/" itemprop="url">
-                  前端常用算法汇总
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          算法的时间复杂度时间复杂度是总运算次数表达式中受n的变化影响最大的那一项（不含系数）。如一个算法循环了 (n + n-1 + n-2 + n-3 +…+ 1) 等于 n * (n + 1) / 2，约等于 (n ^ 2) / 2，因为时间复杂度是不考虑系数的，所以时间复杂度是 O(n^2)常见的时间复杂度（按复杂度递增排列）:常数阶O(1), 对数阶O(log2n), 线性阶O(n), 限行对数阶O(nlog2n), 平方阶O(n^2), 立方阶O(n^3),指数阶O(2^n)
-1234561. 循环了n*n次，时间复杂度是 O(n^2)for(i = 1; i &lt;= n; i++) &#123;  for(j = 1; j &lt;=n; j++) &#123;    s++;  &#125;&#125;
-去重去重算法。
-
-设置两个循环，i和j，让初始j=i+1
-然后让i的元素去和j的元素做对比，如果arr[i]=arr[j]，则让i加1，是为了让i的当前元素被过滤掉。
-把当前的arr[i]添加至新数组中。
-循环完成返回新的数组123456789101112131415func
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/algorithm/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-os/" itemprop="url">
-                  nodejs深入系列--os
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之os
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-os/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-path/" itemprop="url">
-                  nodejs深入系列--path
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之path
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-path/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-process/" itemprop="url">
-                  nodejs深入系列--process
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          nodejs深入系列之process
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-process/">
+            <a class="btn" href="/2017/01/11/nodejs-https/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1385,7 +1451,7 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-count">77</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1402,7 +1468,7 @@ extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend �
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">93</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

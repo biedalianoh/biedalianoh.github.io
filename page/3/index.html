@@ -214,6 +214,488 @@
             
               
                 
+                <a class="post-title-link" href="/2018/01/09/css3-modules/" itemprop="url">
+                  让css成为模块变量的方式：CSS Modules
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-09T11:28:29+08:00" content="2018-01-09">
+              2018-01-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          CSS Modules的功能很单纯，并没有做像postcss之类的事情，将css改造成编程语言。而是只加入了作用域和模块依赖的概念。
+缺点先讲缺点。先看适不适用css modules适用于组件化的方式，因为除开jsx这种语法，常规方式需要使用js添加样式123456789101112131415// react --- 比较方便import style from './App.css'export default () =&gt; &#123;    return (        &lt;h1 className=&#123;style.title&#125;&gt;            Hello world        &lt;/h1&gt;    )&#125;// 常规方式 --- 比较繁琐&lt;h2 id="example_title"&gt;a title&lt;/h2&gt;import style from './App.css'var el = document.getElementById("example_title");el.outerHTML = '&
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/01/09/css3-modules/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/08/css3-flex/" itemprop="url">
+                  flex布局
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-08T19:03:52+08:00" content="2018-01-08">
+              2018-01-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          传统布局–盒状模型，依赖display + position + float属性。弹性布局–flex，能更简便、完整响应各种页面布局
+兼容性IE10部分支持，需要-ms-前缀chrome部分支持，需要-webkit-前缀safari部分支持，需要-webkit-前缀
+外部容器方向flex-direction设置内部内容的排列方向123.box&#123;    flex-direction: row | row-reverse | column | column-reverse&#125;
+
+row(默认值)水平方向，起点为左
+row-reverse水平方向，起点为右
+column垂直方向，起点为上
+column-reverse垂直方向，起点为下
+
+换行flex-wrap设置内部内容一行排不下，如何换行123.box&#123;    flex-wrap: nowrap | wrap | wrap-reverse&#125;
+
+nowrap(默认值)不换行
+wrap换行。往下换行
+wrap-reverse换行。往上换行
+
+对齐justify-content设置内容横轴对齐方式123.b
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/01/08/css3-flex/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/08/react-update/" itemprop="url">
+                  React重新出发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-08T12:38:49+08:00" content="2018-01-08">
+              2018-01-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          兼容react支持 &gt;= ie8
+导入react虽然页面中没有用上React变量，但是也需要引入。因为只要有jsx的地方，就需要有React变量。1234import React, &#123;Component&#125; from 'react'class ClickCounter extends Component &#123;&#125;
+react构建工具create-react-appfacebook官方构建工具
+命令有四个命令。具体命令的配置，都隐藏在node_modules中的react-scripts包中了。其中eject命令表示不可逆的把隐藏的配置，都拿到外面来。123456"scripts": &#123;    "start": "react-scripts start"    "build": "react-scripts build",    "test": "react-scripts test --env=jsdom",    "eject": "react-scripts eject"&#125;
+react-boilerplategithub:
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/01/08/react-update/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/19/vue-upgrade/" itemprop="url">
+                  Vue知识点查漏补缺
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-19T10:31:39+08:00" content="2017-12-19">
+              2017-12-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          vue list命令行展示vue-cli模式使用vue-cli初始化项目时，可使用几种不同的模式
+
+browserify：集成高级功能的Browserify+vueify用于正式开发
+browserify-simple：集成基础功能的Browserify+vueify用于快速原型开发
+simple：适用于单页应用开发的最小化配置
+webpack：集成高级功能的webpack+vue-loader用于正式开发
+webpack-simple：集成基础功能的webpack+vue-loader用于快速原型开发1vue init webpack-simple my-project
+
+
+@importvue-cli项目可直接在style中导入less，或在script中导入less不过为避免污染全局环境，style可加scoped123456&lt;style scoped&gt;@import './assets/todos.less'&lt;/style&gt;&lt;script&gt;import './assets/todos.less'&lt;/script&gt;
+过滤器filte
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/12/19/vue-upgrade/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/11/22/python-django/" itemprop="url">
                   基于Python Django的web接口开发
                 </a>
@@ -882,523 +1364,6 @@ setTimeout()setTimeout()可以有两个或者三个参数。第一个参数为�
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/24/promise/" itemprop="url">
-                  Promise等异步控制流程综述
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-24T10:24:55+08:00" content="2017-02-24">
-              2017-02-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          曾经管理异步的主要机制是使用函数回调。ES6中添加了一种新特性：Promise，来更好的实现异步。也可通过Bluebird, Q等工具，来实现异步控制。
-兼容性PromiseIE 11, firfox 49, chrome 49, ios 9.3, android 4.4
-Bluebird支持情况良好，暂时确定IE8支持。IE6，7待查。
-PromisePromise不是回调的替代品。可作为一种事件监听器，是一个仅会被触发一次的事件。一个Promise只可能拥有两种解析结果：完成或拒绝，并带有一个可选的信号值。
-创建Promise实例：1234567891011121314151617181920var getUserInfo = new Promise(function(resolve, reject) &#123;  $.ajax(&#123;    url: 'index.aspx',    success: function(data) &#123;      if(data.code == 1) &#123;        resolve(data.data);      &
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/24/promise/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/17/android/" itemprop="url">
-                  Anroid开发入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-17T16:57:46+08:00" content="2017-02-17">
-              2017-02-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          相比在学习ios开发时的举步维艰，android开发学习则顺畅很多，在粗略看完Android官方培训课程中文版(v0.9.7)之后，开始看Android第一行代码，并做笔记。
-Activity活动。是可以包含用户界面的组件。用户界面需要通过活动来展现。
-创建活动
-右键java包–New–Activity–Empty ActivityGenerate Layout File: 创建一个对应的布局文件Launcher Activity: 设置为主活动
-在新建活动java文件中重写onCreate方法AS自动帮忙实现了@Override
-创建对应Layout布局文件右键Layout目录–Layout resource file
-在.xml布局文件中添加元素添加Button, text等元素
-加载布局在活动java文件中添加布局：setContentView(R.layout.myAddLayout)
-在menifest中注册活动AS自动帮忙注册了
-
-销毁活动
-按Back键
-finish()方法如：123456button1.setOnClickListener(new View.OnClic
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/17/android/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/09/vue-cli/" itemprop="url">
-                  vue项目搭建/开发实战
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-09T16:11:56+08:00" content="2017-02-09">
-              2017-02-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          使用vue搭建项目框架，实现vue-router路由，引入element ui框架，开发component组件，到最终上线。使用了官方的vue-cli脚手架来进行开发。
-安装
-首先安装脚手架
-1npm i -g vue-cli
-
-生成vue项目
-1vue init webpack my-project
-
-安装依赖
-1npm i
-
-生成不同环境
-
-
-
-开发环境：1npm run dev
-
-
-运行一个本地环境：localhost:8080
-
-线上环境：1npm run build
-
-
-生成线上代码 dist，可修改config中index.js 11行 的static路径来让项目以dist路径运行。
-
-运行单元测试：
-1npm run unit
-
-运行e2e测试：
-1npm run e2e
-
-运行所有测试：
-1npm test
-
-
-目录结构buildbuild目录为运行不同环境时所使用的webpack命令
-configconfig目录为运行不同环境时的配置文件
-dist为运行线上环境所生成的代码，线上访问时访问的文件。
-src项目开发的主目录。
-assets存放图片，音视频等资源文件
-co
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/09/vue-cli/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/18/swift/" itemprop="url">
-                  swift变量和方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-18T10:50:33+08:00" content="2017-01-18">
-              2017-01-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          定义常量常量和变量必须在使用前声明
-letlet用来声明常量，不能改变。
-变量varvar用来声明变量。声明变量和常量时，可指定类型：1234var msg: Stringmsg = "hello"let msg: Int = 32;
-print, println打印到console面板上，println换行
-字符串插值()在字符串中使用变量和常量时，用 \()12var msg = "hello"println("I want to say \(msg)")
-注释注释和js相同
-Intswift提供了8，16，32三种有符号和无符号整数类型：Int8/UInt8, Int16/UInt16, Int32/UInt32一般直接使用Int就可以。
-Double, Float浮点数。Double表示64位浮点数，高精度Float表示32位浮点数。
-类型转换显式转换。即需要SomeType(value)123let three = 3let pi = 3.14125921let plus = Double(three) + pi
-也有类似.toInt()之类的方法，类型转换有可能失败，所以需
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/18/swift/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1445,7 +1410,7 @@ Double, Float浮点数。Double表示64位浮点数，高精度Float表示32位�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-count">77</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1462,7 +1427,7 @@ Double, Float浮点数。Double表示64位浮点数，高精度Float表示32位�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">93</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

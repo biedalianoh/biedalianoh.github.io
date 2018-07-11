@@ -65,7 +65,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/11/nodejs-db/index.html">
 <meta property="og:site_name" content="Chavin's Blog">
 <meta property="og:description" content="nodejs深入系列之数据库操作">
-<meta property="og:updated_time" content="2018-02-24T04:16:28.000Z">
+<meta property="og:updated_time" content="2018-07-11T05:16:08.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs深入系列--数据库">
 <meta name="twitter:description" content="nodejs深入系列之数据库操作">
@@ -264,7 +264,7 @@
       
 
       
-        <h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h1><h2 id="安装运行"><a href="#安装运行" class="headerlink" title="安装运行"></a>安装运行</h2><p>以mac安装为示例。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// brew安装</div><div class="line">$ brew update</div><div class="line">$ brew install mongodb</div><div class="line">// 运行</div><div class="line">$ mongod</div><div class="line">$ mongo       //新开个shell窗口</div><div class="line"></div><div class="line">// 手动安装</div><div class="line">1. 到(https://www.mongodb.com/)[https://www.mongodb.com/]下载tgz文件</div><div class="line">2. <span class="built_in">cd</span> 找到tgz文件</div><div class="line">3. 输入 tar -zxvf mongodb-osx-x86_64-2.4.6 解压。对应自己下载的版本</div><div class="line">4. 解压到想要的位置 mv -n ~/Downloads/mongodb-osx-x86_64-2.4.6 ~/Applications/mongodb/</div><div class="line">5. 在根目录 / 下创建 data/db 目录，用于放置mongodb数据，并且给该目录设置权限</div><div class="line">    sudo mkdir -p /data/db</div><div class="line">    sudo chown -R  ucredit /data</div><div class="line">6. 启动mongodb服务。</div><div class="line">   定位到mongdb目录，然后输入 ./mongod</div><div class="line">   打开另外一个终端，定位到mongdb目录，输入 ./mongo</div></pre></td></tr></table></figure></p>
+        <h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h1><h2 id="安装运行"><a href="#安装运行" class="headerlink" title="安装运行"></a>安装运行</h2><p>以mac安装为示例。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// brew安装</div><div class="line">$ brew update</div><div class="line">$ brew install mongodb</div><div class="line">// 运行</div><div class="line">$ mongod</div><div class="line">$ mongo       //新开个shell窗口</div><div class="line"></div><div class="line">// 手动安装</div><div class="line">1. 到(https://www.mongodb.com/)[https://www.mongodb.com/]下载tgz文件</div><div class="line">2. <span class="built_in">cd</span> 找到tgz文件</div><div class="line">3. 输入 tar -zxvf mongodb-osx-x86_64-2.4.6 解压。对应自己下载的版本</div><div class="line">4. 解压到想要的位置 mv -n ~/Downloads/mongodb-osx-x86_64-2.4.6 ~/Applications/mongodb/</div><div class="line">5. 在根目录 / 下创建 data/db 目录，用于放置mongodb数据，并且给该目录设置权限</div><div class="line">    sudo mkdir -p /data/db</div><div class="line">    sudo chown -R  ud /data</div><div class="line">6. 启动mongodb服务。</div><div class="line">   定位到mongdb目录，然后输入 ./mongod</div><div class="line">   打开另外一个终端，定位到mongdb目录，输入 ./mongo</div></pre></td></tr></table></figure></p>
 <h2 id="mongodb命令"><a href="#mongodb命令" class="headerlink" title="mongodb命令"></a>mongodb命令</h2><p>在命令行的mongo中可直接进行数据库的操作。</p>
 <h3 id="库操作"><a href="#库操作" class="headerlink" title="库操作"></a>库操作</h3><ul>
 <li>新建数据库：<ul>
@@ -428,16 +428,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/11/contentEditble/" rel="next" title="让div标签可输入内容的几种方式">
-                <i class="fa fa-chevron-left"></i> 让div标签可输入内容的几种方式
+              <a href="/2017/01/11/createElement_method/" rel="next" title="几种创建标签节点和属性的方法">
+                <i class="fa fa-chevron-left"></i> 几种创建标签节点和属性的方法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/11/nodejs-console/" rel="prev" title="nodejs深入系列--console">
-                nodejs深入系列--console <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/11/timeline-error/" rel="prev" title="时间乱了">
+                时间乱了 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -506,7 +506,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-count">77</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -523,7 +523,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">93</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

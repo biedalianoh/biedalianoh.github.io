@@ -1,0 +1,764 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="async,generator,promise," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="async是es2017引入的异步函数，是通过generator和执行器组合生成的异步方案。相比generator，async有更多优点：
+
+内置执行器即async只需要执行async函数即可，无需像generator需要执行next。
+返回值是Promise可直接使用then方法执行下一步动作。比generator的返回值是Iterator方便。
+更广的适用性await命令后面，可以是各种类型的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="async解决方案及和generator、promise对比">
+<meta property="og:url" content="http://yoursite.com/2018/07/11/async/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="async是es2017引入的异步函数，是通过generator和执行器组合生成的异步方案。相比generator，async有更多优点：
+
+内置执行器即async只需要执行async函数即可，无需像generator需要执行next。
+返回值是Promise可直接使用then方法执行下一步动作。比generator的返回值是Iterator方便。
+更广的适用性await命令后面，可以是各种类型的">
+<meta property="og:updated_time" content="2018-07-11T05:15:01.986Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="async解决方案及和generator、promise对比">
+<meta name="twitter:description" content="async是es2017引入的异步函数，是通过generator和执行器组合生成的异步方案。相比generator，async有更多优点：
+
+内置执行器即async只需要执行async函数即可，无需像generator需要执行next。
+返回值是Promise可直接使用then方法执行下一步动作。比generator的返回值是Iterator方便。
+更广的适用性await命令后面，可以是各种类型的">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> async解决方案及和generator、promise对比 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                async解决方案及和generator、promise对比
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-11T12:00:47+08:00" content="2018-07-11">
+              2018-07-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>async是es2017引入的异步函数，是通过generator和执行器组合生成的异步方案。<br>相比generator，async有更多优点：</p>
+<ol>
+<li>内置执行器<br>即async只需要执行async函数即可，无需像generator需要执行next。</li>
+<li>返回值是Promise<br>可直接使用then方法执行下一步动作。比generator的返回值是Iterator方便。</li>
+<li>更广的适用性<br>await命令后面，可以是各种类型的值，会被包装为异步操作。而yield命令后面只能是Thunk函数(通过参数传入函数体的包装函数)或Promise对象。</li>
+<li>更好的语意<br>async和await的语意更清楚了。</li>
+</ol>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><p>函数执行时，一旦遇到await，就会先返回。等到异步操作完成，再接着执行函数体后面的语句。<br>async函数内部的return命令返回的值，会被then方法回调函数作为参数接到。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">async <span class="keyword">function</span> getFileSize(url) &#123;</div><div class="line">    const file = await nodeGetFile(url);    </div><div class="line">    const size = await nodeGetSize(file);   //等待上面获取到file后传到这</div><div class="line">    <span class="built_in">return</span> size;</div><div class="line">&#125;</div><div class="line">getFileSize(<span class="string">'./file.js'</span>).then(<span class="keyword">function</span>(size) &#123;</div><div class="line">    console.log(size)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="async使用形式"><a href="#async使用形式" class="headerlink" title="async使用形式"></a>async使用形式</h2><p>多种使用形式<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">// 函数声明</div><div class="line">async <span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>() &#123;&#125;</div><div class="line"></div><div class="line">// 函数表达式</div><div class="line">const foo = async <span class="function"><span class="title">function</span></span>() &#123;&#125;</div><div class="line"></div><div class="line">// 对象的方法</div><div class="line"><span class="built_in">let</span> obj = &#123;async <span class="function"><span class="title">foo</span></span>() &#123;&#125;&#125;</div><div class="line">obj.foo().then()</div><div class="line"></div><div class="line">// class的方法</div><div class="line">class Storage &#123;</div><div class="line">    <span class="function"><span class="title">constructor</span></span>() &#123;</div><div class="line">        this.cachePromise = caches.open(<span class="string">'avatars'</span>)</div><div class="line">    &#125;</div><div class="line">    async getAvatar(name) &#123;</div><div class="line">        const cache = await this.cachePromise;</div><div class="line">        <span class="built_in">return</span> cache.match(`/avatars/<span class="variable">$&#123;name&#125;</span>.jpg`);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 箭头函数</div><div class="line">const foo = async () =&gt; &#123;&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>当async函数内部抛出错误，或者遇到Promise.reject，会直接跳出执行，并将返回的Promise对象变为reject状态。抛出的错误对象会被catch方法接收到。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">async <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>() &#123;</div><div class="line">    throw new Error(<span class="string">'出错了'</span>);</div><div class="line">    //或</div><div class="line">    await Promise.reject(<span class="string">'出错了'</span>);</div><div class="line">    await Promise.resolve(<span class="string">'hello world'</span>);   //不会执行</div><div class="line">&#125;</div><div class="line">f().then(</div><div class="line">    v =&gt; console.log(v),</div><div class="line">    e =&gt; console.log(e)</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>但是，有时我们希望即使某个异步操作失败了，也不要中断后面的操作，可通过try…catch来实现。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">async <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>() &#123;</div><div class="line">    try &#123;                                   //多个异步操作时可这么写</div><div class="line">        await Promise.reject(<span class="string">'出错了'</span>);</div><div class="line">    &#125; catch(e) &#123;&#125;</div><div class="line">    <span class="built_in">return</span> await Promise.resolve(<span class="string">'hello world'</span>);</div><div class="line"></div><div class="line">    // 或                                   //单个操作时可这么写更方便</div><div class="line">    await Promise.reject(<span class="string">'出错了'</span>).catch(e =&gt; &#123;&#125;);</div><div class="line">    <span class="built_in">return</span> await Promise.resolve(<span class="string">'hello world'</span>);</div><div class="line">&#125;</div><div class="line">f().then(v =&gt; console.log(v));      //hello world</div></pre></td></tr></table></figure></p>
+<h1 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h1><h2 id="同时触发多个await"><a href="#同时触发多个await" class="headerlink" title="同时触发多个await"></a>同时触发多个await</h2><p>如果不存在继发关系，最好是让异步操作同时触发。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">async <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>() &#123;</div><div class="line">    <span class="built_in">let</span> foo = await getFoo();       //二者不存在继发关系，最好让他们同时触发</div><div class="line">    <span class="built_in">let</span> bar = await getBar();</div><div class="line"></div><div class="line">    //修改为</div><div class="line">    //写法一</div><div class="line">    <span class="built_in">let</span> [foo, bar] = await Promise.all([getFoo(), getBar()]);</div><div class="line">    //或写法二</div><div class="line">    <span class="built_in">let</span> fooPromise = getFoo();</div><div class="line">    <span class="built_in">let</span> barPromise = getBar();</div><div class="line">    <span class="built_in">let</span> foo = await fooPromise;</div><div class="line">    <span class="built_in">let</span> bar = await barPromise;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>另一个例子，比如想同时触发多个异步请求，<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">async <span class="keyword">function</span> dbFunc(db) &#123;</div><div class="line">    <span class="built_in">let</span> docs = [&#123;&#125;, &#123;&#125;, &#123;&#125;];    //放每个请求的请求参数</div><div class="line">    <span class="built_in">let</span> promises = docs.map(doc =&gt; db.post(doc));</div><div class="line"></div><div class="line">    <span class="built_in">let</span> results = await Promise.all(promises);</div><div class="line">&#125;</div><div class="line">或者</div><div class="line">async <span class="keyword">function</span> dbFunc(db) &#123;</div><div class="line">    <span class="built_in">let</span> docs = [&#123;&#125;, &#123;&#125;, &#123;&#125;];    //放每个请求的请求参数</div><div class="line">    <span class="built_in">let</span> promises = docs.map(doc =&gt; db.post(doc));</div><div class="line"></div><div class="line">    <span class="built_in">let</span> results = [];</div><div class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> promise of promises) &#123;</div><div class="line">        results.push(await promise);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="ES2018中新增模式"><a href="#ES2018中新增模式" class="headerlink" title="ES2018中新增模式"></a>ES2018中新增模式</h1><h2 id="异步遍历器"><a href="#异步遍历器" class="headerlink" title="异步遍历器"></a>异步遍历器</h2><p>应该是针对Generator，generator调用next返回的是{value, done}，修改为：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">const asyncIterable = createAsyncIterable([<span class="string">'a'</span>, <span class="string">'b'</span>]);</div><div class="line">const asyncIterator = asyncIterable[Symbol.asyncIterator]();</div><div class="line"></div><div class="line">asyncIterator</div><div class="line">.next()</div><div class="line">.then(iterResult1 =&gt; &#123;</div><div class="line">  console.log(iterResult1); // &#123; value: <span class="string">'a'</span>, <span class="keyword">done</span>: <span class="literal">false</span> &#125;</div><div class="line">  <span class="built_in">return</span> asyncIterator.next();</div><div class="line">&#125;)</div><div class="line">.then(iterResult2 =&gt; &#123;</div><div class="line">  console.log(iterResult2); // &#123; value: <span class="string">'b'</span>, <span class="keyword">done</span>: <span class="literal">false</span> &#125;</div><div class="line">  <span class="built_in">return</span> asyncIterator.next();</div><div class="line">&#125;)</div><div class="line">.then(iterResult3 =&gt; &#123;</div><div class="line">  console.log(iterResult3); // &#123; value: undefined, <span class="keyword">done</span>: <span class="literal">true</span> &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="for-await…of"><a href="#for-await…of" class="headerlink" title="for await…of"></a>for await…of</h2><p>在for循环中使用await的方式<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">async <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>() &#123;</div><div class="line">  <span class="keyword">for</span> await (const x of createAsyncIterable([<span class="string">'a'</span>, <span class="string">'b'</span>])) &#123;</div><div class="line">    console.log(x);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="yield"><a href="#yield" class="headerlink" title="yield*"></a>yield*</h2><p>即yield后面也可以跟一个异步操作<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">async <span class="keyword">function</span>* <span class="function"><span class="title">gen1</span></span>() &#123;</div><div class="line">  yield <span class="string">'a'</span>;</div><div class="line">  yield <span class="string">'b'</span>;</div><div class="line">  <span class="built_in">return</span> 2;</div><div class="line">&#125;</div><div class="line"></div><div class="line">async <span class="keyword">function</span>* <span class="function"><span class="title">gen2</span></span>() &#123;</div><div class="line">  // result 最终会等于 2</div><div class="line">  const result = yield* gen1();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="babel编译"><a href="#babel编译" class="headerlink" title="babel编译"></a>babel编译</h1><p>为了让ES2017中的async跑起来，可通过配置babel来编译。</p>
+<ol>
+<li><p>regenerator<br>此方式，适合开发一个库，不会污染全局。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// .babelrc</div><div class="line">&#123;</div><div class="line">  <span class="string">"plugins"</span>: [</div><div class="line">      <span class="string">"transform-runtime"</span>, </div><div class="line">      <span class="string">"babel-plugin-transform-regenerator"</span>, </div><div class="line">      <span class="string">"babel-plugin-transform-es2015-modules-commonjs"</span>  //可将import转为require。若支持import，则无需</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>generator<br>此方式，最适合nodejs环境。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// .babelrc</div><div class="line">&#123;</div><div class="line">  <span class="string">"plugins"</span>: [</div><div class="line">        <span class="string">"babel-plugin-transform-async-to-generator"</span>,</div><div class="line">        <span class="string">"babel-plugin-external-helpers"</span>,</div><div class="line">        <span class="string">"transform-runtime"</span>,</div><div class="line">        <span class="string">"babel-plugin-transform-es2015-modules-commonjs"</span></div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>babel-polyfill<br>此方式，适合应用级别的开发，大而全，支持所有的es2015+特性。</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// .babelrc</div><div class="line">&#123;</div><div class="line">  <span class="string">"plugins"</span>: [<span class="string">"babel-plugin-transform-regenerator"</span>]</div><div class="line">&#125;</div><div class="line"></div><div class="line">编译结束后，需要手动在结果文件的第一行加入：</div><div class="line">require(<span class="string">'babel-polyfill'</span>)</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/async/" rel="tag">#async</a>
+          
+            <a href="/tags/generator/" rel="tag">#generator</a>
+          
+            <a href="/tags/promise/" rel="tag">#promise</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/10/defineProperty/" rel="next" title="获取和设置对象属性的描述及对象可扩展性">
+                <i class="fa fa-chevron-left"></i> 获取和设置对象属性的描述及对象可扩展性
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">77</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">93</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本用法"><span class="nav-number">1.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#async使用形式"><span class="nav-number">1.1.</span> <span class="nav-text">async使用形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误处理"><span class="nav-number">1.2.</span> <span class="nav-text">错误处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用技巧"><span class="nav-number">2.</span> <span class="nav-text">使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#同时触发多个await"><span class="nav-number">2.1.</span> <span class="nav-text">同时触发多个await</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES2018中新增模式"><span class="nav-number">3.</span> <span class="nav-text">ES2018中新增模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异步遍历器"><span class="nav-number">3.1.</span> <span class="nav-text">异步遍历器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-await…of"><span class="nav-number">3.2.</span> <span class="nav-text">for await…of</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yield"><span class="nav-number">3.3.</span> <span class="nav-text">yield*</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#babel编译"><span class="nav-number">4.</span> <span class="nav-text">babel编译</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
