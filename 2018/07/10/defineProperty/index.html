@@ -63,7 +63,9 @@
 
 writable: 是否可写
 enumerable: 是否可枚举
-configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable,">
+configurable: 是否可修改或删除     
+
+ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enume">
 <meta property="og:type" content="article">
 <meta property="og:title" content="获取和设置对象属性的描述及对象可扩展性">
 <meta property="og:url" content="http://yoursite.com/2018/07/10/defineProperty/index.html">
@@ -72,15 +74,19 @@ configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不�
 
 writable: 是否可写
 enumerable: 是否可枚举
-configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable,">
-<meta property="og:updated_time" content="2018-07-10T06:33:43.912Z">
+configurable: 是否可修改或删除     
+
+ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enume">
+<meta property="og:updated_time" content="2018-07-11T05:22:33.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="获取和设置对象属性的描述及对象可扩展性">
 <meta name="twitter:description" content="js中每个对象的属性都有自己的一套描述，这个描述有三个基本属性：
 
 writable: 是否可写
 enumerable: 是否可枚举
-configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable,">
+configurable: 是否可修改或删除     
+
+ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enume">
 
 
 
@@ -280,8 +286,9 @@ configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不�
 <ol>
 <li>writable: 是否可写</li>
 <li>enumerable: 是否可枚举</li>
-<li>configurable: 是否可修改或删除<br>ECMA3中:<br>– 这三个值均为true且不可改。<br>ECMA5中:<br>– 可通过decriptor来进行修改。<br>– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable, configurable<br>– 通过getter和setter方法来定义的，有四个属性：get, set, enumerable, configurable</li>
+<li>configurable: 是否可修改或删除     </li>
 </ol>
+<p>ECMA3中:<br>– 这三个值均为true且不可改。<br>ECMA5中:<br>– 可通过decriptor来进行修改。<br>– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable, configurable<br>– 通过getter和setter方法来定义的，有四个属性：get, set, enumerable, configurable</p>
 <h1 id="获取对象属性的描述"><a href="#获取对象属性的描述" class="headerlink" title="获取对象属性的描述"></a>获取对象属性的描述</h1><p>ECMA5中，可通过<code>Object.getOwnPropertyDescriptor()</code>来获取对象自身属性的描述。<br>继承的属性，无法获取<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;x: 1&#125;</div><div class="line">Object.getOwnPropertyDescriptor(obj, <span class="string">'x'</span>);    //Object &#123;configurable=<span class="literal">true</span>, enumerable=<span class="literal">true</span>, writable=<span class="literal">true</span>, value=1&#125;</div></pre></td></tr></table></figure></p>
 <h1 id="设置对象属性的描述"><a href="#设置对象属性的描述" class="headerlink" title="设置对象属性的描述"></a>设置对象属性的描述</h1><p>ECMA5中，可通过<code>Object.defineProperty()</code>来设置对象自身属性的描述。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;x: 1&#125;</div><div class="line">Object.defineProperty(obj, <span class="string">'x'</span>, &#123;</div><div class="line">  value: 3,</div><div class="line">  writable: <span class="literal">true</span>,</div><div class="line">  enumerable: <span class="literal">false</span>,</div><div class="line">  configuration: <span class="literal">true</span></div><div class="line">&#125;);</div><div class="line">obj.propertyIsEnumerable(<span class="string">'x'</span>);    // <span class="literal">false</span></div></pre></td></tr></table></figure></p>
 <p>若设置的属性，是从原型对象中继承而来的，则在自身创建一个同名的属性。</p>
@@ -410,7 +417,7 @@ configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">77</span>
+              <span class="site-state-item-count">81</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -427,7 +434,7 @@ configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">93</span>
+                <span class="site-state-item-count">103</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

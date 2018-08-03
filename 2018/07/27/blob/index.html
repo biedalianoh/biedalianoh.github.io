@@ -1,0 +1,781 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Blob,FileReader,File,URL,clipboardData," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="在计算机中，Blob通常是数据库中用来存储二进制文件的字段类型。在HTML5中，Blob是一种js的对象类型，可用来存储二进制数据。一个Blob对象是一个包含只读原始数据的类文件对象。js中的File对象，就是继承自Blob对象。
+基本信息创建好的Blob对象，是只读的。
+创建第一个参数为一个数据序列，可以是任意格式的值第二个参数为一个包含两个属性的对象:{    type: MIME类型,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blob对象应用，获取二进制对象及使用实例">
+<meta property="og:url" content="http://yoursite.com/2018/07/27/blob/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="在计算机中，Blob通常是数据库中用来存储二进制文件的字段类型。在HTML5中，Blob是一种js的对象类型，可用来存储二进制数据。一个Blob对象是一个包含只读原始数据的类文件对象。js中的File对象，就是继承自Blob对象。
+基本信息创建好的Blob对象，是只读的。
+创建第一个参数为一个数据序列，可以是任意格式的值第二个参数为一个包含两个属性的对象:{    type: MIME类型,">
+<meta property="og:updated_time" content="2018-07-30T05:44:08.940Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blob对象应用，获取二进制对象及使用实例">
+<meta name="twitter:description" content="在计算机中，Blob通常是数据库中用来存储二进制文件的字段类型。在HTML5中，Blob是一种js的对象类型，可用来存储二进制数据。一个Blob对象是一个包含只读原始数据的类文件对象。js中的File对象，就是继承自Blob对象。
+基本信息创建好的Blob对象，是只读的。
+创建第一个参数为一个数据序列，可以是任意格式的值第二个参数为一个包含两个属性的对象:{    type: MIME类型,">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Blob对象应用，获取二进制对象及使用实例 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Blob对象应用，获取二进制对象及使用实例
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-27T15:55:59+08:00" content="2018-07-27">
+              2018-07-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在计算机中，Blob通常是数据库中用来存储二进制文件的字段类型。<br>在HTML5中，Blob是一种js的对象类型，可用来存储二进制数据。一个Blob对象是一个包含只读原始数据的类文件对象。<br>js中的File对象，就是继承自Blob对象。</p>
+<h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>创建好的Blob对象，是只读的。</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><p>第一个参数为一个数据序列，可以是任意格式的值<br>第二个参数为一个包含两个属性的对象:<br>{<br>    type: MIME类型,<br>    endings: 决定第一个参数的数据格式   //可取值transparent(默认), native(按操作系统转换)<br>}<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var blob = new Blob([<span class="string">'Blob数据内容'</span>], &#123;<span class="built_in">type</span>: <span class="string">'application/json'</span>&#125;);</div><div class="line">blob;</div><div class="line">//显示：</div><div class="line">Blob(16)</div><div class="line">    size: 16,</div><div class="line">    <span class="built_in">type</span>: <span class="string">'application/json'</span></div></pre></td></tr></table></figure></p>
+<h3 id="MIME"><a href="#MIME" class="headerlink" title="MIME"></a>MIME</h3><p>设定某种扩展名的文件用哪种应用程序来打开的类型。多用于指定一些客户端自定义的文件名，以及一些媒体文件打开方式。<br>常见MIME类型：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">text/html: .html</div><div class="line">text/xml: .xml</div><div class="line">application/xhtml+xml: .xhtml</div><div class="line">text/plain: .txt</div><div class="line">application/rtf: .rtf</div><div class="line">application/pdf: .pdf</div><div class="line">application/msword: .word</div><div class="line">image/png: .png</div><div class="line">image/gif: .gif</div><div class="line">image/jpeg: .jpeg, .jpg</div><div class="line">audio/basic: .au</div><div class="line">audio/midi, audio/x-midi: .mid, .midi</div><div class="line">audio/x-pn-realaudio: .ra, .ram</div><div class="line">video/mpeg: .mpg, .mpeg</div><div class="line">video/x-msvideo: .avi</div><div class="line">application/x-gzip: .gz</div><div class="line">application/x-tar: .tar</div><div class="line">application/octet-stream: 任意二进制数据</div></pre></td></tr></table></figure></p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ol>
+<li>Blob.isClosed<br>表明blob对象是否已经销毁。若已销毁则不可读。</li>
+<li>Blob.size<br>所包含数据大小。</li>
+<li>Blob.type<br>返回MIME类型。若未知，则返回空字符串</li>
+</ol>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ol>
+<li>Blob.close()<br>销毁Blob对象，释放底层资源。</li>
+<li>Blob.slice([start[,end[,contentType]]])<br>对这个blob对象的数据进行切割，返回一个新的Blob对象，包含源Blob对象中指定范围的数据。<br>对文件分片上传的时候使用。    </li>
+</ol>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="导出csv表格文件"><a href="#导出csv表格文件" class="headerlink" title="导出csv表格文件"></a>导出csv表格文件</h2><p>csv文件用excel打开。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 常规方法</div><div class="line"><span class="keyword">function</span> clickDownload(aLink) &#123;</div><div class="line">    var str = <span class="string">'col1,col2,col3\nvalue1,value2,value3'</span>;</div><div class="line">    str = encodeURIComponent(str);</div><div class="line">    aLink.href = <span class="string">'data:text/csv;charset=utf-8,\ufeff'</span> + str;</div><div class="line">    aLink.click();</div><div class="line">&#125;</div><div class="line">&lt;a id=<span class="string">"mylink"</span> onclick=<span class="string">"clickDownload(this)"</span> download=<span class="string">"download.csv"</span> href=<span class="string">"javascript:;"</span>&gt;download&lt;/a&gt;</div></pre></td></tr></table></figure></p>
+<p>其中，href后面加上的<code>\ufeff</code>是一个BOM头，不加会出现乱码。<br>另外，页面的charset需设置成UTF-8。<br>最后，使用a标签的download属性，可以指定下载文件的文件名及后缀。但是好像chrome不支持这个，为了解决这个问题，可使用更加好用的方法：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var blob = new Blob([<span class="string">'\ufeff'</span> + str], &#123;<span class="built_in">type</span>: <span class="string">'text/csv,charset=UTF-8'</span>&#125;);</div><div class="line">var csvUrl = URL.createObjectURL(blob);</div><div class="line">document.getElementById(<span class="string">'mylink'</span>).href = csvUrl;</div></pre></td></tr></table></figure></p>
+<h2 id="获取剪切板内容"><a href="#获取剪切板内容" class="headerlink" title="获取剪切板内容"></a>获取剪切板内容</h2><h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
+<li>监听粘贴动作<br>通过监听paste操作。</li>
+<li>获取剪切板数据<br>通过<code>clipboardData</code>对象获取内容</li>
+<li>将获取到的数据渲染到网页中    </li>
+</ol>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">document.addEventListener(<span class="string">'paste'</span>, <span class="keyword">function</span>(e) &#123;</div><div class="line">    var cbd = e.clipboardData;</div><div class="line">    <span class="keyword">for</span>(var i = 0; i &lt; cbd.items.length; i++) &#123;</div><div class="line">        var item = cbd.items[i];</div><div class="line">        <span class="keyword">if</span>(item.kind == <span class="string">'file'</span>) &#123;</div><div class="line">            var file = item.getAsFile();    //获得继承自Blob的File对象</div><div class="line">            var objectUrl = URL.createObjectURL(file);</div><div class="line">            var img = new Image();</div><div class="line">            img.src = objectUrl;</div><div class="line">            document.body.appendChild(img);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><p>读取文件，主要是用到继承自Blob的File对象。<br>File对象本身只包含文件名，文件类型等只读属性。唯一能读取File对象文件内容的途径是使用FileReader构造函数。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> handleFiles(files) &#123;</div><div class="line">    var file = files[0];</div><div class="line">    var reader = new FileReader();</div><div class="line">    reader.readAsText(file, <span class="string">'UTF-8'</span>);</div><div class="line">    reader.onload = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        console.log(this)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"file"</span> onchange=<span class="string">"handleFiles(this.files)"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="clipboardData"><a href="#clipboardData" class="headerlink" title="clipboardData"></a>clipboardData</h1><p>继承自DataTransfer对象。</p>
+<h2 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h2><ol>
+<li>dropEffect  默认为none</li>
+<li>effectAllowed    默认为uninitialized</li>
+<li>files    粘贴操作为空List</li>
+<li>items    剪切板中的各项数据</li>
+<li>types    剪切板中的数据类型，该属性在safari中比较混乱</li>
+</ol>
+<h3 id="items"><a href="#items" class="headerlink" title="items"></a>items</h3><p>items为一个DataTransferItemList实例。<br>items的每一项item有两个属性kind和type。</p>
+<ol>
+<li>kind<br>一般为’string’或’file’</li>
+<li>type<br>具体数据类型。哪种类型字符串(MIME-Type)或哪种文件类型。<br>type值有:<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">text/plain  普通字符串</div><div class="line">text/html   带有样式的html</div><div class="line">Files       文件</div><div class="line">```     </div><div class="line"></div><div class="line">items的每一项item有两个常用方法getAsFile和getAsString。</div><div class="line">1. getAsFile</div><div class="line">如果kind为file，则可用该方法获取到文件的二进制数据。</div><div class="line">2. getAsString</div><div class="line">如果kind为string，则可用该方法获取到字符串</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># URL.createObjectURL(file | blob)</span></div><div class="line">此方法是创建一个路径指向一个File对象或Blob对象</div><div class="line">如：获取到一个二进制数据的图片，想把它展示出来</div><div class="line">```zsh</div><div class="line">var objectUrl = URL.createObjectURL(res);</div><div class="line">var img = document.createElement(<span class="string">'img'</span>);</div><div class="line">img.src = objectUrl;</div><div class="line">img.onload = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    URL.revokeObjectURL(objectUrl);     //为了性能展示后释放objectUrl</div><div class="line">&#125;</div><div class="line">document.body.append(img);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h1><p>用来读取文件file或blob，获取文件内容。</p>
+<h2 id="属性-2"><a href="#属性-2" class="headerlink" title="属性"></a>属性</h2><h3 id="readyState"><a href="#readyState" class="headerlink" title="readyState"></a>readyState</h3><p>表示FileReader状态。<br>0–还没加载任何数据<br>1–数据正在被加载<br>3–已完成全部读取请求</p>
+<h3 id="result"><a href="#result" class="headerlink" title="result"></a>result</h3><p>通过对应读取方式获取到的结果</p>
+<h3 id="error"><a href="#error" class="headerlink" title="error"></a>error</h3><p>触发onerror事件时，错误信息会保存在error属性的对象中。这个对象只有一个属性code：<br>1–表示未找到文件<br>2–表示安全性错误<br>3–表示读取中断<br>4–表示文件不可读<br>5–表示编码错误</p>
+<h2 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h2><p>以图片和txt文件为例，查看各类方法输出的result结果。</p>
+<h3 id="readAsArrayBuffer-file"><a href="#readAsArrayBuffer-file" class="headerlink" title="readAsArrayBuffer(file)"></a>readAsArrayBuffer(file)</h3><p>将文件读取为ArrayBuffer对象<br>按字节byte读取文件二进制内容，并转换为ArrayBuffer对象。读取后不会进行编码与源文件大小一样，这是和readAsBinaryString的主要区别。<br>（ArrayBuffer是存放了一段二进制数据的内存空间）<br>（展现出来的数据，使用了类型化数组，数组中的每一个元素是当前字节的十进制数值）<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">// 图片</div><div class="line">result: ArrayBuffer(2241)</div><div class="line">  [[Int8Array]]: Int8Array(2241) [-119, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, ....]</div><div class="line">  [[Uint8Array]]: Uint8Array(2241) [137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, ....]</div><div class="line">  byteLength: 2241</div><div class="line">// txt</div><div class="line">result: ArrayBuffer(4932878)</div><div class="line">  [[Int8Array]]: Int8Array(4932878) [13, 10, 45, 45, 45, 45, 45, 45, 45, 45, ....]</div><div class="line">  [[Int16Array]]: Int16Array(4932878) [2573, 11565, 11565, 11565, 11565, ....]</div><div class="line">  [[Uint8Array]]: Uint8Array(4932878) [13, 10, 45, 45, 45, 45, 45, 45, 45, 45, ....]</div><div class="line">  byteLength: 4932878</div><div class="line">```    </div><div class="line"><span class="comment">### readAsBinaryString(file)</span></div><div class="line">将文件读取为二进制编码字符串</div><div class="line">此方法是按字节byte进行读取文件二进制内容，并且编码之后输出字符。由于有编码因此输出后有大小变化，也不适合直接传输。</div><div class="line">（通常情况下一个字节byte由八位二进制表示。）</div><div class="line">（UTF-8中，一个英文字符等于一个字节，一个中文字符等于三个字节）</div><div class="line">```zsh</div><div class="line">// 图片</div><div class="line">PNG↵↵IHDR``âw8IDATx^íkPUÇáå&#125;¹<span class="variable">$WI</span>@.ÞkxÍffMMÍ4ÕHx41q´QÇ2±J&#125;èSWS....</div><div class="line">// txt</div><div class="line">↵------------↵↵ç« èç®å½↵↵↵------------↵↵1ãå¤©ç½ç³»ç»↵↵    âå¤§å®¶ä¸....</div><div class="line">```    </div><div class="line"><span class="comment">### readAsText(file, [encoding])</span></div><div class="line">将文件读取为文本字符串</div><div class="line">读取文件的单位是字符，因此按规定的编码进行读取即可。</div><div class="line">但是对于媒体文件，内部不是按字符排列，因此出来的是乱码。</div><div class="line">```zsh</div><div class="line">// 图片</div><div class="line">�PNG↵↵IHDR``�w8�IDATx^�kPU���&#125;��<span class="variable">$WI</span>@.��....</div><div class="line">// txt</div><div class="line">↵------------↵↵章节目录↵↵↵------------↵↵1、天罚系统↵↵    “大家不要小看中考，考....</div><div class="line">```   </div><div class="line"><span class="comment">### readAsDataURL(file)</span></div><div class="line">将文件读取为DataURL</div><div class="line">会将文件内容进行base64编码后输出。</div><div class="line">```zsh</div><div class="line">// 图片</div><div class="line">data:image/png;base64,data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4A....</div><div class="line">// txt</div><div class="line">data:text/plain;base64,DQotLS0tLS0tLS0tLS0NCg0K56ug6IqC55uu5b2VDQoNCg0KLS....</div><div class="line">```   </div><div class="line"><span class="comment">### abort()</span></div><div class="line">中断读取操作  </div><div class="line"><span class="comment">## 响应式方法</span></div><div class="line"><span class="comment">### onabort</span></div><div class="line">响应中断</div><div class="line"><span class="comment">### onerror</span></div><div class="line">响应出错</div><div class="line"><span class="comment">### onloadstart</span></div><div class="line">响应开始</div><div class="line"><span class="comment">### onprogress</span></div><div class="line">响应正在读取</div><div class="line"><span class="comment">### onload</span></div><div class="line">响应成功读取</div><div class="line"><span class="comment">### onloadend</span></div><div class="line">读取完成，无论成功失败</div><div class="line"><span class="comment">## FileReader应用</span></div><div class="line"><span class="comment">### 上传图片之后直接本地预览</span></div><div class="line">此类场景，还是使用`URL.createObjectURL()`性能更好。</div><div class="line">并且某些奇葩手机上可能在进行<span class="built_in">read</span>AsDataURL的时候base64编码出现缺少<span class="built_in">type</span>值的bug。</div><div class="line">```zsh</div><div class="line">var file = this.files[0];</div><div class="line">var reader = new FileReader();</div><div class="line">reader.readAsDataURL(file);</div><div class="line">reader.onload = <span class="keyword">function</span>(e) &#123;</div><div class="line">    var img = new Image();</div><div class="line">    img.src = e.target.result;</div><div class="line">    document.body.append(img);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="基于XHR2直接上传二进制内容。"><a href="#基于XHR2直接上传二进制内容。" class="headerlink" title="基于XHR2直接上传二进制内容。"></a>基于XHR2直接上传二进制内容。</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var file = this.files[0];</div><div class="line">var reader = new FileReader();</div><div class="line">reader.readAsArrayBuffer(file);</div><div class="line">reader.onload = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var binary = this.result;</div><div class="line">    upload(binary);</div><div class="line">&#125;</div><div class="line"><span class="keyword">function</span> upload(binary) &#123;</div><div class="line">    var xhr = new XMLHttpRequest();</div><div class="line">    xhr.open(<span class="string">'POST'</span>, <span class="string">'http://xxxx/upload'</span>);</div><div class="line">    xhr.overrideMimeType(<span class="string">'application/octet-stream'</span>);</div><div class="line">    // 直接发送二进制数据</div><div class="line">    <span class="keyword">if</span>(xhr.sendAsBinary) &#123;</div><div class="line">        xhr.sendAsBinary(binary);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        xhr.send(binary);</div><div class="line">    &#125;</div><div class="line">    xhr.onreadystatechange = <span class="keyword">function</span>(e) &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blob/" rel="tag">#Blob</a>
+          
+            <a href="/tags/FileReader/" rel="tag">#FileReader</a>
+          
+            <a href="/tags/File/" rel="tag">#File</a>
+          
+            <a href="/tags/URL/" rel="tag">#URL</a>
+          
+            <a href="/tags/clipboardData/" rel="tag">#clipboardData</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/27/reg/" rel="next" title="常见正则表达式">
+                <i class="fa fa-chevron-left"></i> 常见正则表达式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/01/class/" rel="prev" title="class分析与extends、super应用">
+                class分析与extends、super应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">81</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本信息"><span class="nav-number">1.</span> <span class="nav-text">基本信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建"><span class="nav-number">1.1.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MIME"><span class="nav-number">1.1.1.</span> <span class="nav-text">MIME</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">1.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">1.3.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#导出csv表格文件"><span class="nav-number">2.1.</span> <span class="nav-text">导出csv表格文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取剪切板内容"><span class="nav-number">2.2.</span> <span class="nav-text">获取剪切板内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作步骤"><span class="nav-number">2.2.1.</span> <span class="nav-text">操作步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">2.2.2.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取文件"><span class="nav-number">2.3.</span> <span class="nav-text">读取文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#clipboardData"><span class="nav-number">3.</span> <span class="nav-text">clipboardData</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性-1"><span class="nav-number">3.1.</span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#items"><span class="nav-number">3.1.1.</span> <span class="nav-text">items</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FileReader"><span class="nav-number">4.</span> <span class="nav-text">FileReader</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性-2"><span class="nav-number">4.1.</span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#readyState"><span class="nav-number">4.1.1.</span> <span class="nav-text">readyState</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#result"><span class="nav-number">4.1.2.</span> <span class="nav-text">result</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error"><span class="nav-number">4.1.3.</span> <span class="nav-text">error</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法-1"><span class="nav-number">4.2.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#readAsArrayBuffer-file"><span class="nav-number">4.2.1.</span> <span class="nav-text">readAsArrayBuffer(file)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于XHR2直接上传二进制内容。"><span class="nav-number">4.2.2.</span> <span class="nav-text">基于XHR2直接上传二进制内容。</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

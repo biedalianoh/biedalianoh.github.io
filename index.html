@@ -214,6 +214,498 @@
             
               
                 
+                <a class="post-title-link" href="/2018/08/01/class/" itemprop="url">
+                  class分析与extends、super应用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-08-01T16:59:47+08:00" content="2018-08-01">
+              2018-08-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          class类的示例：12345678910111213141516const symbolBar = Symbol('bar');const Myclass = class Mc &#123;          //类的名字是Myclass，Mc只是类内部使用    constructor(x, y) &#123;        this.x = x;        this.y = y;    &#125;    toString() &#123;                    //原型方法，构造函数通过原型访问，或实例直接访问        return `$&#123;this.x&#125;的年龄是$&#123;this.y&#125;岁`;    &#125;    static getAge() &#123;               //静态方法，构造函数直接访问        return this.y;    &#125;    [symbolBar]() &#123;                 //私有方法，外部无法调用的方法        retu
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/08/01/class/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/07/27/blob/" itemprop="url">
+                  Blob对象应用，获取二进制对象及使用实例
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-27T15:55:59+08:00" content="2018-07-27">
+              2018-07-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          在计算机中，Blob通常是数据库中用来存储二进制文件的字段类型。在HTML5中，Blob是一种js的对象类型，可用来存储二进制数据。一个Blob对象是一个包含只读原始数据的类文件对象。js中的File对象，就是继承自Blob对象。
+基本信息创建好的Blob对象，是只读的。
+创建第一个参数为一个数据序列，可以是任意格式的值第二个参数为一个包含两个属性的对象:{    type: MIME类型,    endings: 决定第一个参数的数据格式   //可取值transparent(默认), native(按操作系统转换)}123456var blob = new Blob(['Blob数据内容'], &#123;type: 'application/json'&#125;);blob;//显示：Blob(16)    size: 16,    type: 'application/json'
+MIME设定某种扩展名的文件用哪种应用程序来打开的类型。多用于指定一些客户端自定义的文件名，以及一些媒体文件打开方式。常见MIME类型：123456789101112131415161718text
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/07/27/blob/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/07/27/reg/" itemprop="url">
+                  常见正则表达式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-27T11:30:58+08:00" content="2018-07-27">
+              2018-07-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          正则基础字符匹配
+[…]查找方括号之间的嗯任何字符
+[^…]查找任何不在方括号之间的字符
+[a-z]查找任何从小写a到小写z的字符
+[A-Z]拆招任何从大写A到大写Z的字符
+.查找单个字符，除了换行和行结束符
+\w查找单词字符，等价于[a-zA-Z0-9]
+\W查找非单词字符，等价于[^a-zA-Z0-9]
+\s查找空白字符
+\S查找非空白字符
+\d查找数字，等价于[0-9]
+\D查找非数字，等价于[^0-9]
+\b匹配单词边界
+\r查找回车符
+\t查找制表符
+\0查找NULL字符
+\n查找换行符
+
+重复字符匹配
+{n, m}匹配前一项至少n次，但不能超过m次
+{n,}匹配前一项至少n次
+{n}匹配前一项n次
+n?匹配前一项0次或1次
+n+匹配前一项1次或多次
+n*匹配前一项任意次
+n$匹配任意结尾为n的字符串
+^n匹配任意开头为n的字符串
+?=n匹配任何其后紧接指定字符串n的字符串
+?!n匹配任何其后没有紧接指定字符串n的字符串
+
+匹配特定数字
+^[1-9]\d*$匹配正整数
+^-[1-9]\d*$匹配负整数
+^-?[0-9]\d*$匹配整数
+^[1-9]\d|0$匹配非负整数
+^-
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/07/27/reg/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/07/25/datatype-transfer/" itemprop="url">
+                  Javascript强制数据类型转换
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-25T14:17:29+08:00" content="2018-07-25">
+              2018-07-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          显示数据类型转换数值类型Number(), parseInt(), parseFloat()通过Number的实例来说明，其他2个类似Number。
+非对象转换1234567Number(Boolean)     //true和false分别被转为1和0Number(Number)      //返回本身Number(null)        //返回0Number(undefined)   //返回NaNNumber(String)      //纯数字字符串转为数字，                      空字符串转为0，                      混合字符串转为NaN
+对象转换转换的是对象时：先调用valueOf()方法，然后依据非对象转换的规则转换返回的值；转换后如果是NaN，再调用toString()，然后再按非对象转换一次。1234567// valueOf()各类对象返回值Number(Array)       //返回原始数组值，一般和数组本身没有区别。然后调用toString()会返回通过逗号连接生成的字符串，                   
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/07/25/datatype-transfer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/07/11/async/" itemprop="url">
                   async解决方案及和generator、promise对比
                 </a>
@@ -400,9 +892,10 @@
 
 writable: 是否可写
 enumerable: 是否可枚举
-configurable: 是否可修改或删除ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable, configurable– 通过getter和setter方法来定义的，有四个属性：get, set, enumerable, configurable
+configurable: 是否可修改或删除     
 
-获取对象属性的描述ECMA5中，可通过Object.getOwnPropertyDescriptor()来获取对象自身属性的描述。继承的属性，无法获取12var obj = &#123;x: 1&#125;Object.getOwnPropertyDescriptor(obj, 'x');    //Object &#123;configurable=true, enumerable=true, writable=true, value=1
+ECMA3中:– 这三个值均为true且不可改。ECMA5中:– 可通过decriptor来进行修改。– 不通过getter和setter方法来定义的，有四个属性：value, writable, enumerable, configurable– 通过getter和setter方法来定义的，有四个属性：get, set, enumerable, configurable
+获取对象属性的描述ECMA5中，可通过Object.getOwnPropertyDescriptor()来获取对象自身属性的描述。继承的属性，无法获取12var obj = &#123;x: 1&#125;Object.getOwnPropertyDescriptor(obj, 'x');    //Object &#123;configurable=true, enumerable=true, writable=true, v
           ...
 
           <div class="post-more-link text-center">
@@ -907,485 +1400,12 @@ micro-task（微任务）：then，process
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/30/npm/" itemprop="url">
-                  使用npm发布自建包
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-05-30T10:55:31+08:00" content="2018-05-30">
-              2018-05-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Environment/" itemprop="url" rel="index">
-                    <span itemprop="name">Environment</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          准备工作去npm官网注册npm帐号。配置包目录：12341. LICENSE          *2. package.json     *3. README.md        *4. 其他目录
-package.json配置package.json代表着包信息和具体使用和依赖的配置。全部配置项可参考官方配置一个常规的配置项：1234567891011121314151617181920212223242526272829303132// package.json&#123;  "name": "vuex",  "version": "2.3.1",  "description": "state management for Vue.js",  "main": "dist/vuex.js",           //main 和 module 的区别可看下面解释  "module": "dist/vuex.esm.js",       "unpkg": "dist/vuex.js",          //cdn访问节点。部署在cloudflare上  "files": [      
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/05/30/npm/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/18/vue-mistake/" itemprop="url">
-                  vue踩坑注意点
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-05-18T15:45:10+08:00" content="2018-05-18">
-              2018-05-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          列表track-by添加track-by追踪数组变动渲染。当使用全新对象替换数组时，可能导致重新渲染整个列表。用track-by给vue一个提示，尽可能复用已有实例。123456789&lt;div v-for="item in items" track-by="_uid"&gt;&lt;/div&gt;&#123;    items: [        &#123;_uid: '88f869d', ...&#125;,        &#123;_uid: '7496c10', ...&#125;    ]&#125;
-数组变化
-Vue不能检测到下面数组变化：1231. vm.items[1] = &#123;&#125;2. vm.items.length = 03. Object.freeze()
-
-
-对于问题一，可使用this.$set(this.arr, 1, 100000)对于问题二，可使用this.arr = []对于问题三，若是引用时是已经冻结的对象，则无法自动追踪对象的变化；若是绑定后再冻结对象，则无影响
-
-数组变化方法123456789101112131415161
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/05/18/vue-mistake/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/18/debounce-throttle-raf/" itemprop="url">
-                  防抖动和节流阀及raf的应用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-05-18T11:13:16+08:00" content="2018-05-18">
-              2018-05-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          防抖(debounce)和节流(throttle)都是用来控制某个函数在一定时间内执行多少次的技巧。两者的主要区别为：防抖为直到超过触发事件的时间间隔，才会执行，如果一直不超过，则会一直延迟下去节流为触发事件过程中，定期执行事件
-防抖，debounce可使用lodash的_.debouncedebounce也可取消。1234var debounced = _.debounce(dosomething, 200);$(window).on('scroll', debounced);debounced.cancel();     //取消
-防抖适用场景把触发频繁的事件，比如按键合并成一次执行。如文本输入、自动完成的keyup事件
-节流，throttle可使用lodash的_.throttle
-节流适用场景如鼠标移动的mousemove事件resize和scroll事件
-requestAnimationFrame跟_.throttle(dosomething, 16)等价。不过追求更好的精确度的花，可使用raf
-优点动画保持60fps(每一帧16ms)，浏览器内部决定渲染最佳时机标准的api
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/05/18/debounce-throttle-raf/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/17/observer/" itemprop="url">
-                  浏览器中四种不同类型的观察者
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-05-17T10:18:16+08:00" content="2018-05-17">
-              2018-05-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          IntersectionObserver用于观察两个DOM元素之间的交集。可用来检测DOM进入或离开可见视窗。
-
-用来延迟加载图像或其他资源
-识别广告可见性并计算广告收入
-实现网站无限滚动
-元素在视窗中时，加载和自动播放视频或动画
-
-使用1234567891011121314151617181920212223241. 创建观察者const options = &#123;    root: document.querySelector('.scrollContainer'),    rootMargin: '0px',    threshold: [0.3, 0.5, 0.8, 1]   //代表可见的百分比时，调用回调函数&#125;const observer = new IntersectionObserver(handler, options)2. 定义要观察的目标对象const target = document.querySelector('.targetBox');observer.observe(target);3. 定义回调事件function handler(en
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/05/17/observer/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1426,7 +1446,7 @@ requestAnimationFrame跟_.throttle(dosomething, 16)等价。不过追求更好�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">77</span>
+              <span class="site-state-item-count">81</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1443,7 +1463,7 @@ requestAnimationFrame跟_.throttle(dosomething, 16)等价。不过追求更好�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">93</span>
+                <span class="site-state-item-count">103</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

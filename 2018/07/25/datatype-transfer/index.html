@@ -1,0 +1,776 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="dataType," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chavin's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="显示数据类型转换数值类型Number(), parseInt(), parseFloat()通过Number的实例来说明，其他2个类似Number。
+非对象转换1234567Number(Boolean)     //true和false分别被转为1和0Number(Number)      //返回本身Number(null)        //返回0Number(undefined)   //">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript强制数据类型转换">
+<meta property="og:url" content="http://yoursite.com/2018/07/25/datatype-transfer/index.html">
+<meta property="og:site_name" content="Chavin's Blog">
+<meta property="og:description" content="显示数据类型转换数值类型Number(), parseInt(), parseFloat()通过Number的实例来说明，其他2个类似Number。
+非对象转换1234567Number(Boolean)     //true和false分别被转为1和0Number(Number)      //返回本身Number(null)        //返回0Number(undefined)   //">
+<meta property="og:updated_time" content="2018-07-26T08:26:00.202Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript强制数据类型转换">
+<meta name="twitter:description" content="显示数据类型转换数值类型Number(), parseInt(), parseFloat()通过Number的实例来说明，其他2个类似Number。
+非对象转换1234567Number(Boolean)     //true和false分别被转为1和0Number(Number)      //返回本身Number(null)        //返回0Number(undefined)   //">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: "",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Javascript强制数据类型转换 | Chavin's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chavin's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">FE Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Javascript强制数据类型转换
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-25T14:17:29+08:00" content="2018-07-25">
+              2018-07-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="显示数据类型转换"><a href="#显示数据类型转换" class="headerlink" title="显示数据类型转换"></a>显示数据类型转换</h1><h2 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h2><p>Number(), parseInt(), parseFloat()<br>通过Number的实例来说明，其他2个类似Number。</p>
+<h3 id="非对象转换"><a href="#非对象转换" class="headerlink" title="非对象转换"></a>非对象转换</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Number(Boolean)     //<span class="literal">true</span>和<span class="literal">false</span>分别被转为1和0</div><div class="line">Number(Number)      //返回本身</div><div class="line">Number(null)        //返回0</div><div class="line">Number(undefined)   //返回NaN</div><div class="line">Number(String)      //纯数字字符串转为数字，</div><div class="line">                      空字符串转为0，</div><div class="line">                      混合字符串转为NaN</div></pre></td></tr></table></figure>
+<h3 id="对象转换"><a href="#对象转换" class="headerlink" title="对象转换"></a>对象转换</h3><p>转换的是对象时：先调用valueOf()方法，然后依据非对象转换的规则转换返回的值；转换后如果是NaN，再调用toString()，然后再按非对象转换一次。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// valueOf()各类对象返回值</div><div class="line">Number(Array)       //返回原始数组值，一般和数组本身没有区别。然后调用toString()会返回通过逗号连接生成的字符串，</div><div class="line">                      然后返回这个字符串Number(str)之后的值。</div><div class="line">Number(Date)        //返回从1970.1.1开始的毫秒数UTC，毫秒数本身是number类型直接返回</div><div class="line">Number(Function)    //返回原函数，此时是NaN，则调用toString()，然后Number(str)之后的值，肯定为NaN</div><div class="line">Number(Object)      //返回原对象。因此为NaN，然后调用toString(obj)，为<span class="string">'[object Object]'</span>，</div><div class="line">                      再Number(<span class="string">'[object Object]'</span>)，所以肯定为NaN</div></pre></td></tr></table></figure></p>
+<h2 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h2><p>String()<br>可将任何类型转为字符串。</p>
+<ol>
+<li>调用时，如果有toString()方法，则直接调用该方法。null和undefined没有这个方法。其他都有</li>
+<li>null返回’null’</li>
+<li>undefined返回’undefined’<h2 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h2>以下值会被转为false: false, ‘’, 0, NaN, null, undefined<br>其他都会转为true</li>
+</ol>
+<h1 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h1><p>某些情况，js会自动进行类型转换。</p>
+<h2 id="isNaN"><a href="#isNaN" class="headerlink" title="isNaN"></a>isNaN</h2><p>调用isNaN时，js会自动调用Number()进行转换。<br>获取到Number()返回值后，如果是非数值，则返回true，如果是数值，则返回false<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">isNaN(<span class="literal">true</span>)     //会先被Number(<span class="literal">true</span>)转为1，然后判断，结果为<span class="literal">false</span></div><div class="line">                  其他参考上面的Number()</div></pre></td></tr></table></figure></p>
+<h2 id="递增、递减操作符-一元正负操作符"><a href="#递增、递减操作符-一元正负操作符" class="headerlink" title="递增、递减操作符, 一元正负操作符"></a>递增、递减操作符, 一元正负操作符</h2><p>会先对变量执行Number()操作。若转化为正常数字类型，则执行操作。<br>若返回不是正常数字类型，则返回NaN<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = <span class="string">'2'</span>; ++a;       //3</div><div class="line">var a = <span class="literal">false</span>; ++a;     //1</div><div class="line">var a = new Date; <span class="_">-a</span>    //-1532516392579</div></pre></td></tr></table></figure></p>
+<h2 id="加法操作符"><a href="#加法操作符" class="headerlink" title="加法操作符"></a>加法操作符</h2><p>若其中有一个为字符串，则将另一个通过String()转为字符串，然后连接起来。<br>若均为非字符串，则调用Number()转化。<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var a = <span class="string">'1'</span> + 1;        //<span class="string">'11'</span></div><div class="line">var a = <span class="literal">true</span> + <span class="literal">true</span>     //2</div></pre></td></tr></table></figure></p>
+<h2 id="减法、乘除、取模操作符"><a href="#减法、乘除、取模操作符" class="headerlink" title="减法、乘除、取模操作符"></a>减法、乘除、取模操作符</h2><p>所有非数值的变量均会调用Number()进行转换。</p>
+<h2 id="逻辑操作符-、-amp-amp-、"><a href="#逻辑操作符-、-amp-amp-、" class="headerlink" title="逻辑操作符(!、&amp;&amp;、||)"></a>逻辑操作符(!、&amp;&amp;、||)</h2><p>均通过Boolean()转换变量，然后判断</p>
+<h2 id="大小操作符-lt-、-gt-、-lt-、-gt"><a href="#大小操作符-lt-、-gt-、-lt-、-gt" class="headerlink" title="大小操作符(&lt;、&gt;、&lt;=、&gt;=)"></a>大小操作符(&lt;、&gt;、&lt;=、&gt;=)</h2><p>任意类型，都可进行大小操作符判断。</p>
+<ol>
+<li>均为数值，则直接比较大小</li>
+<li>均为字符串，则比较字符串对应的字符编码值         </li>
+<li>如有一个为数值，则将另一个转为数值，进行比较。若另一个为NaN，则肯定为false</li>
+<li>如有一个为对象，则调用valueOf()方法，若没有此方法，则调用toString()方法，然后按之前规则比较。由于对象为NaN，所以肯定为false</li>
+<li>如有变量为布尔值，则转为数值进行比较</li>
+<li>如有一个为NaN，则肯定返回false</li>
+</ol>
+<h3 id="字符串编码"><a href="#字符串编码" class="headerlink" title="字符串编码"></a>字符串编码</h3><p>字符串编码发展的历史：</p>
+<ol>
+<li>最先提出ASCII码，用于在不同硬件软件中实现数据传输标准化。目前属于国际标准。由7或8为二进制数字来表示。如1100001表示A</li>
+<li>后来各国为显示本国语言，各自指定编码标准。如大陆GB2312，台湾BIG5，日本JIS</li>
+<li>插一个，由于很多大陆GB2312不能编码很多生僻字，后来出现了GBK</li>
+<li>由于存在各类编码造成混乱，所以出现了Unicode编码，各类编码都能切换到Unicode，也能再切换回去。Unicode的缺点是存储和传输很耗资源。</li>
+<li>为了提高Unicode编码效率，出现了UTF-8。实际过程为，如”汉”字：汉的Unicode编码是U+00006C49，把U+00006C49通过UTF-8编码器进行编码，输出E6B189</li>
+<li>有的电子邮件需要使用Base64编码。如发送时GB2312–&gt;根据Base64规则–&gt;转换为ASCII码，接收时反过来。</li>
+</ol>
+<h2 id="相等操作符"><a href="#相等操作符" class="headerlink" title="相等操作符(==)"></a>相等操作符(==)</h2><p>任意类型，都可进行相等操作符判断。</p>
+<ol>
+<li>如有一个为布尔值，则转为数值</li>
+<li>如有一个为字符串，另一个为数值，则用Number()转换字符串为数值</li>
+<li>如有一个为对象，另一个不是，则调用对象的valueOf(), 然后按之前规则比较。由于对象为NaN，则肯定为false</li>
+<li>null与undefined是相等的</li>
+<li>如有一个为NaN，则肯定返回false</li>
+<li>如两个均为对象，则比较指向是否相同</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>特别是在使用isNaN、加减乘除、对比操作符时，会进行隐式转换，这个转换主要为：普通变量用Number()转换，对象通过valueOf()和toString()方法转过之后然后再Number()转换。<br>然后记住：</p>
+<ol>
+<li>boolean值转为1或0</li>
+<li>两个字符串做对比，会比较字符串编码值</li>
+<li>其他</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dataType/" rel="tag">#dataType</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/11/async/" rel="next" title="async解决方案及和generator、promise对比">
+                <i class="fa fa-chevron-left"></i> async解决方案及和generator、promise对比
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/27/reg/" rel="prev" title="常见正则表达式">
+                常见正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Chavin" />
+          <p class="site-author-name" itemprop="name">Chavin</p>
+          <p class="site-description motion-element" itemprop="description">争取明日不被后浪拍在沙滩上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">81</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/biedalianoh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/biedalian_oh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.biedalianoh.com" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 个人站点
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#显示数据类型转换"><span class="nav-number">1.</span> <span class="nav-text">显示数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数值类型"><span class="nav-number">1.1.</span> <span class="nav-text">数值类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非对象转换"><span class="nav-number">1.1.1.</span> <span class="nav-text">非对象转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象转换"><span class="nav-number">1.1.2.</span> <span class="nav-text">对象转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串类型"><span class="nav-number">1.2.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔类型"><span class="nav-number">1.3.</span> <span class="nav-text">布尔类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#隐式转换"><span class="nav-number">2.</span> <span class="nav-text">隐式转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#isNaN"><span class="nav-number">2.1.</span> <span class="nav-text">isNaN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递增、递减操作符-一元正负操作符"><span class="nav-number">2.2.</span> <span class="nav-text">递增、递减操作符, 一元正负操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加法操作符"><span class="nav-number">2.3.</span> <span class="nav-text">加法操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#减法、乘除、取模操作符"><span class="nav-number">2.4.</span> <span class="nav-text">减法、乘除、取模操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑操作符-、-amp-amp-、"><span class="nav-number">2.5.</span> <span class="nav-text">逻辑操作符(!、&&、||)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大小操作符-lt-、-gt-、-lt-、-gt"><span class="nav-number">2.6.</span> <span class="nav-text">大小操作符(<、>、<=、>=)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串编码"><span class="nav-number">2.6.1.</span> <span class="nav-text">字符串编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相等操作符"><span class="nav-number">2.7.</span> <span class="nav-text">相等操作符(==)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chavin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

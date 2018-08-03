@@ -214,8 +214,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/selector/" itemprop="url">
-                  js选择器之id，name，tag
+                <a class="post-title-link" href="/2017/01/11/call-apply/" itemprop="url">
+                  call, apply, callee, caller, bind应用
                 </a>
               
             
@@ -275,119 +275,15 @@
 
       
         
-          js选择器之id，name，tag
+          
+          call将函数绑定到另外一个对象上运行。即函数通过绑定的对象为主体执行了一遍。1example.call(obj, [arg, ]);
+即将一个函数的上下文从初始的上下文改变为指定的thisArg。
+不带参数arg1234567891011121314function base() &#123;    this.name = 'zhou';    this.getName = function() &#123;        console.log(this.name);    &#125;;&#125;;function extend() &#123;    base.call(this)     //让base代替执行this    console.log(this)       var c = &#123;&#125;    base.call(c);       //让base代替执行c    console.log(c);&#125;;
+extend 中，将 this 改变为 base，将 c 改变为调用 base即在 extend 中：调用 this 时，都是调用 base
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/selector/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/lodash/" itemprop="url">
-                  Lodash实用中文api
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Lodash.js是一个现代模块化性能良好的Javascript工具库。和Underscore功能类似，并提供了更为丰富的API。 近期会持续更新一份实用的lodash(v4.6)使用参考，数组部分参考了cnblogs的shikelong(v3.8)，这拼音和我一个同事kelong的还挺像的，难道是他？
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/lodash/">
+            <a class="btn" href="/2017/01/11/call-apply/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -549,8 +445,8 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/stapes/" itemprop="url">
-                  Stapes.js 用法详解
+                <a class="post-title-link" href="/2017/01/11/react-study/" itemprop="url">
+                  React 学习笔记
                 </a>
               
             
@@ -610,9 +506,236 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
 
       
         
-          Stapes.js是一个灵活，简单，轻量级的Javascript框架。因为框架的易用性以及所能提供的丰富的功能，在之前的项目中已经用到stapes.js，近期由于想查询一些问题，发现当时项目中没有相关的注释，加上官网api排列很乱，查阅起来很麻烦，便由此想到写一篇stapes.js入门，以增强记忆并以备之后查阅。
+          React study。此篇属《React精髓》书本的学习笔记，记载一些常规的用法，书中对React的理解，以及自己在看书过程中的理解。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/stapes/">
+            <a class="btn" href="/2017/01/11/react-study/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/runorder/" itemprop="url">
+                  关于Js中运算与赋值的执行顺序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Js中涉及到赋值，调用，函数的执行，赋值，参数赋值等计算，赋值的机制并不是按照统一的顺序，在此对于常用的执行顺序进行总结。
+参数的赋值参数的解析顺序是： 从左到右Es6提到TDZ(暂存死区)，指这样的程序区域：初始化前的变量或参数不能被访问。函数的参数既是这样的典型区域。123456// 下面的代码出错// 参数中 x = x，会让x被解释为参数级作用于中的x，全局的x会被屏蔽，而且x位于TDZ，因此初始化前不能被访问，因此出错var x = 1;function foo(x = x) &#123;     ...&#125;
+12345// 下面代码正确// 因为参数解析从左到右，因此 y=x 时，x已经可用function foo(x, y = x) &#123;  ...&#125;
+赋值表达式赋值赋值顺序为：从右到左1a = b = 5;    // 1. b = 5;  2. a = b
+运算符优先级其中 () 优先级高于 . 高于 new此处的 () 为把表达式括起来的括号，而不是 new 操作符后面跟随的 ()123new Foo.getName();      //实际
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/runorder/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/selector/" itemprop="url">
+                  js选择器之id，name，tag
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          js选择器之id，name，tag
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/selector/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -754,125 +877,8 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/nbsp/" itemprop="url">
-                  类&amp;nbsp多种空格方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          html提供了5种实体空格(&amp;ensp; &amp;emsp; &amp;thinsp; &amp;zwnj; &amp;zwj;)和1种非断行空格(&amp;nbsp;)。关于空格大家常用的是 &amp;nbsp; ，但是在不同的浏览器，&amp;nbsp; 显示的宽度不一样，可能会导致无法对齐。可使用其他空格方式替代。
-&amp;nbsp;不换行空格。是按下space键产生的空格。在HTML中，如果你用空格键产生此空格，空格是不会累加的（只算1个）。要使用html实体表示才可累加，该空格占据宽度受字体影响明显而强烈。
-&amp;ensp;半角空格。全称是En Space，en是字体排印学的计量单位，为em宽度的一半。此空格有个相当稳健的特性，就是其占据的宽度正好是1/2个中文宽度，而且基本上不受字体影响。
-&amp;emsp;全角空格。全称是Em Space，em是字体排印学的计量单位，相当于当前指定的点数。此空格也有个相当稳健的特性，就是其占据的宽度正好是1个中文宽度，而且基本上不受字体影响。
-&amp;thinsp;窄空格。全称是Thin Space。占据的宽度比较小。
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nbsp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/nodejs-console/" itemprop="url">
-                  nodejs深入系列--console
+                <a class="post-title-link" href="/2017/01/11/lodash/" itemprop="url">
+                  Lodash实用中文api
                 </a>
               
             
@@ -932,119 +938,9 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
 
       
         
-          nodejs深入系列之console
+          Lodash.js是一个现代模块化性能良好的Javascript工具库。和Underscore功能类似，并提供了更为丰富的API。 近期会持续更新一份实用的lodash(v4.6)使用参考，数组部分参考了cnblogs的shikelong(v3.8)，这拼音和我一个同事kelong的还挺像的，难道是他？
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/nodejs-console/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/11/timeline-error/" itemprop="url">
-                  时间乱了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
-              2017-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/杂项/" itemprop="url" rel="index">
-                    <span itemprop="name">杂项</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          换了新电脑，重新发布一遍之后，之前发的post，发布顺序变成倒序了。。。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/timeline-error/">
+            <a class="btn" href="/2017/01/11/lodash/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1201,8 +1097,118 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/createElement_method/" itemprop="url">
-                  几种创建标签节点和属性的方法
+                <a class="post-title-link" href="/2017/01/11/css3-sizes/" itemprop="url">
+                  Css3中各类尺寸应用详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-11T18:31:41+08:00" content="2017-01-11">
+              2017-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          随着响应式页面开发的需求增多，前端页面中响应浏览器容器大小比例显示对应尺寸的应用变得越来越重要。随着em, rem, vw, vh等应用，css设置响应式大小尺寸也变得多样化起来。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/css3-sizes/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/nodejs-events/" itemprop="url">
+                  nodejs深入系列--events
                 </a>
               
             
@@ -1262,14 +1268,9 @@ transform-origin在理解matrix之前，先了解一个属性：transform-origin
 
       
         
-          
-          在写一个纯净的es6代码时，涉及到创建dom元素的事情，我一度被jquery的字符串式append给惯坏了，因此也直接就上了document.body.appendChild(‘&lt;div&gt;&lt;/div&gt;‘)这种代码，出错一查之下，发现几个好玩的创建标签和属性的方法。
-createDocumentFragment()创建文档碎片节点。主要的特点为，创建多个节点时，不用每个节点都单独append到body中去进行渲染，而是把所有节点都apped到这个fragment里面，然后把fragment append到body中，因此能提升渲染性能。123456var fragment = document.createDocumentFragment();for(let i = 0; i &lt; 10; i++) &#123;  var p = document.createElement('p');  fragment.appendChild(p);&#125;document.body.appendChild(fragment);
-createAttribute(nam
-          ...
-
+          nodejs深入系列之events
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/11/createElement_method/#more" rel="contents">
+            <a class="btn" href="/2017/01/11/nodejs-events/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1300,7 +1301,7 @@ createAttribute(nam
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1341,7 +1342,7 @@ createAttribute(nam
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">77</span>
+              <span class="site-state-item-count">81</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1358,7 +1359,7 @@ createAttribute(nam
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">93</span>
+                <span class="site-state-item-count">103</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -214,6 +214,477 @@
             
               
                 
+                <a class="post-title-link" href="/2018/05/30/npm/" itemprop="url">
+                  使用npm发布自建包
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-30T10:55:31+08:00" content="2018-05-30">
+              2018-05-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Environment/" itemprop="url" rel="index">
+                    <span itemprop="name">Environment</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          准备工作去npm官网注册npm帐号。配置包目录：12341. LICENSE          *2. package.json     *3. README.md        *4. 其他目录
+package.json配置package.json代表着包信息和具体使用和依赖的配置。全部配置项可参考官方配置一个常规的配置项：1234567891011121314151617181920212223242526272829303132// package.json&#123;  "name": "vuex",  "version": "2.3.1",  "description": "state management for Vue.js",  "main": "dist/vuex.js",           //main 和 module 的区别可看下面解释  "module": "dist/vuex.esm.js",       "unpkg": "dist/vuex.js",          //cdn访问节点。部署在cloudflare上  "files": [      
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/05/30/npm/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/18/vue-mistake/" itemprop="url">
+                  vue踩坑注意点
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-18T15:45:10+08:00" content="2018-05-18">
+              2018-05-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          列表:key添加key追踪数组变动渲染。当使用全新对象替换数组时，可能导致重新渲染整个列表。用key给vue一个提示，尽可能复用已有实例的作用域和DOM元素。如果位置变化就发生dom片段移动，绑定值变动就更新值。1234567891011&lt;div v-for="item in items" :key="item._uid"&gt;&lt;/div&gt;&#123;    items: [        &#123;_uid: '88f869d', ...&#125;,        &#123;_uid: '7496c10', ...&#125;    ]&#125;
+让数据替换非常高效，但是：
+
+会移除key不存在的元素
+重复的key会造成渲染错误
+会让v-for强制进入原位更新模式，因此不适用于不依赖子组件状态或临时DOM状态的列表渲染输出。原位更新模式：当v-for指令使用数据索引作为frag缓存id的时候，当数据改变时，新旧数据对应相同缓存索引id是相同的，所使用的frag也是同一份，这种更新列表的方式不会移动DOM元素，而是在原位更新，这会导致新列表的frags失去和
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/05/18/vue-mistake/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/18/debounce-throttle-raf/" itemprop="url">
+                  防抖动和节流阀及raf的应用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-18T11:13:16+08:00" content="2018-05-18">
+              2018-05-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          防抖(debounce)和节流(throttle)都是用来控制某个函数在一定时间内执行多少次的技巧。两者的主要区别为：防抖为直到超过触发事件的时间间隔，才会执行，如果一直不超过，则会一直延迟下去节流为触发事件过程中，定期执行事件
+防抖，debounce可使用lodash的_.debouncedebounce也可取消。1234var debounced = _.debounce(dosomething, 200);$(window).on('scroll', debounced);debounced.cancel();     //取消
+防抖适用场景把触发频繁的事件，比如按键合并成一次执行。如文本输入、自动完成的keyup事件
+节流，throttle可使用lodash的_.throttle
+节流适用场景如鼠标移动的mousemove事件resize和scroll事件
+requestAnimationFrame跟_.throttle(dosomething, 16)等价。不过追求更好的精确度的花，可使用raf
+优点动画保持60fps(每一帧16ms)，浏览器内部决定渲染最佳时机标准的api
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/05/18/debounce-throttle-raf/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/17/observer/" itemprop="url">
+                  浏览器中四种不同类型的观察者
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-17T10:18:16+08:00" content="2018-05-17">
+              2018-05-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          IntersectionObserver用于观察两个DOM元素之间的交集。可用来检测DOM进入或离开可见视窗。
+
+用来延迟加载图像或其他资源
+识别广告可见性并计算广告收入
+实现网站无限滚动
+元素在视窗中时，加载和自动播放视频或动画
+
+使用1234567891011121314151617181920212223241. 创建观察者const options = &#123;    root: document.querySelector('.scrollContainer'),    rootMargin: '0px',    threshold: [0.3, 0.5, 0.8, 1]   //代表可见的百分比时，调用回调函数&#125;const observer = new IntersectionObserver(handler, options)2. 定义要观察的目标对象const target = document.querySelector('.targetBox');observer.observe(target);3. 定义回调事件function handler(en
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/05/17/observer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/03/06/this/" itemprop="url">
                   彻底理解this指向
                 </a>
@@ -856,494 +1327,12 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/18/react-native/" itemprop="url">
-                  不停歇的 React Native
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-02-18T18:43:27+08:00" content="2018-02-18">
-              2018-02-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          搭建环境以苹果操作系统为例。
-
-安装Homebrew
-安装基本操作库
-123brew install node       //nodejs brew install watchman   //观察文件变动brew install flow       //类型检查库
-
-安装React Native安装官方cli工具，来生成react native项目
-1npm install -g react-native-cli
-
-然后需要安装ios和android依赖   
-
-
-安装ios依赖安装或更新xcode即可
-安装android依赖安卓依赖需要较多步骤，可参考官方文档。主要分为三步：
-
-安装SDK
-
-
-安装最新版本JDK(java开发工具包)：JDK。
-安装Android SDK：通过brew install android-sdk 安装。
-在shell配置文件中(~/.bashrc、~/.zshrc、或其他shell)正确导出ANDROID_HOME环境变量: export ANDROID_HOME=/usr/local/opt/android-skd
-执行source命令使得配置可以
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/18/react-native/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/30/forEach/" itemprop="url">
-                  for, forEach, $.each, _.forEach中的跳出循环
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-30T10:34:41+08:00" content="2018-01-30">
-              2018-01-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          forfor支持全部的跳出方法：continue – 跳出当前回合到下一回合break – 跳出整个循环return – 跳出整个循环，并且返回值
-forEach只支持returnreturn – 跳出当前回合，并且return不会有任何返回值
-$.each只支持returnreturn false – 跳出整个循环，相当于breakreturn true – 跳出当前回合，相当于continue
-_.forEach只支持returnreturn false – 跳出整个循环，相当于breakreturn true – 跳出当前回合，相当于continue
-
-          
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/30/forEach/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/11/outerHTML/" itemprop="url">
-                  outerHTML,outerText,innerHTML,innerText对比
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-11T10:52:56+08:00" content="2018-01-11">
-              2018-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          outerHTML获取dom元素自身的字符串123&lt;h1 id="title"&gt;这是&lt;em&gt;借款申请表&lt;/em&gt;&lt;/h1&gt;title.outerHTML输出： '&lt;h1 id="title"&gt;这是&lt;em&gt;借款申请表&lt;/em&gt;&lt;/h1&gt;'
-outerText获取自身所有的文字123&lt;h1 id="title"&gt;这是&lt;em&gt;借款申请表&lt;/em&gt;&lt;/h1&gt;title.outerText输出： '这是借款申请表'
-innerHTML获取内部元素字符串123&lt;h1 id="title"&gt;这是&lt;em&gt;借款申请表&lt;/em&gt;&lt;/h1&gt;title.innerHTML输出： '这是&lt;em&gt;借款申请表&lt;/em&gt;'
-innerText获取内部所有文字123&lt;h1 id="title"&gt;这是&lt;em&gt;借款申请表&lt;/em&gt;&lt;/h1&gt;title.innerT
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/11/outerHTML/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/10/css3-postcss/" itemprop="url">
-                  PostCSS平台
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-10T15:49:48+08:00" content="2018-01-10">
-              2018-01-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          PostCSS本身只做两件事：提供方式能方便的用Js代码来处理CSS；把CSS代码解析成语法树结构，让插件来处理
-webpackwebpack中用postcss-loader来执行插件处理。1234567891011module: &#123;    loaders: [        &#123;            test: /\.css$/,            loader: "style-loader!css-loader!postcss-loader"        &#125;    ]&#125;,postcss: function() &#123;    return [require('autoprefixer')]&#125;
-gulp123456gulp.task('css', function() &#123;    var postcss = require('gulp-postcss')    return gulp.src('app/**/*.css')        .pipe(postcss([require('autoprefixer')])
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/10/css3-postcss/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1384,7 +1373,7 @@ gulp123456gulp.task('css', function() &#123;    var postcss = require('gulp-post
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">77</span>
+              <span class="site-state-item-count">81</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1401,7 +1390,7 @@ gulp123456gulp.task('css', function() &#123;    var postcss = require('gulp-post
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">93</span>
+                <span class="site-state-item-count">103</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
