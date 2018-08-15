@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="Chavin's Blog">
 <meta property="og:description" content="显示数据类型转换数值类型Number(), parseInt(), parseFloat()通过Number的实例来说明，其他2个类似Number。
 非对象转换1234567Number(Boolean)     //true和false分别被转为1和0Number(Number)      //返回本身Number(null)        //返回0Number(undefined)   //">
-<meta property="og:updated_time" content="2018-07-26T08:26:00.202Z">
+<meta property="og:updated_time" content="2018-08-06T04:49:18.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript强制数据类型转换">
 <meta name="twitter:description" content="显示数据类型转换数值类型Number(), parseInt(), parseFloat()通过Number的实例来说明，其他2个类似Number。
@@ -274,8 +274,9 @@
 <ol>
 <li>调用时，如果有toString()方法，则直接调用该方法。null和undefined没有这个方法。其他都有</li>
 <li>null返回’null’</li>
-<li>undefined返回’undefined’<h2 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h2>以下值会被转为false: false, ‘’, 0, NaN, null, undefined<br>其他都会转为true</li>
+<li>undefined返回’undefined’   </li>
 </ol>
+<h2 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h2><p>以下值会被转为false: false, ‘’, 0, NaN, null, undefined<br>其他都会转为true</p>
 <h1 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h1><p>某些情况，js会自动进行类型转换。</p>
 <h2 id="isNaN"><a href="#isNaN" class="headerlink" title="isNaN"></a>isNaN</h2><p>调用isNaN时，js会自动调用Number()进行转换。<br>获取到Number()返回值后，如果是非数值，则返回true，如果是数值，则返回false<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">isNaN(<span class="literal">true</span>)     //会先被Number(<span class="literal">true</span>)转为1，然后判断，结果为<span class="literal">false</span></div><div class="line">                  其他参考上面的Number()</div></pre></td></tr></table></figure></p>
 <h2 id="递增、递减操作符-一元正负操作符"><a href="#递增、递减操作符-一元正负操作符" class="headerlink" title="递增、递减操作符, 一元正负操作符"></a>递增、递减操作符, 一元正负操作符</h2><p>会先对变量执行Number()操作。若转化为正常数字类型，则执行操作。<br>若返回不是正常数字类型，则返回NaN<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = <span class="string">'2'</span>; ++a;       //3</div><div class="line">var a = <span class="literal">false</span>; ++a;     //1</div><div class="line">var a = new Date; <span class="_">-a</span>    //-1532516392579</div></pre></td></tr></table></figure></p>
@@ -433,7 +434,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-count">104</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
